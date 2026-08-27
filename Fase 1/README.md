@@ -1,10 +1,10 @@
-# Tech Challenge — Pós-Tech FIAP (AI Scientist, turma 1IAST)
+# Fase 1 — Tech Challenge: Case NPS Preditivo
 
-Repositório do **Tech Challenge** da Pós-Tech da FIAP. O Tech Challenge é o projeto que reúne os
-conhecimentos de todas as disciplinas da fase, desenvolvido em grupo, e corresponde a **90% da nota
-final** de cada fase.
+Entrega da **Fase 1** do Tech Challenge da Pós-Tech FIAP (AI Scientist, turma 1IAST). O Tech
+Challenge é o projeto que reúne os conhecimentos de todas as disciplinas da fase, desenvolvido em
+grupo, e corresponde a **90% da nota final**.
 
-**Fase 1 — Case NPS Preditivo.**
+> Visão geral do curso e das demais fases: [README do repositório](../README.md).
 
 ---
 
@@ -67,7 +67,8 @@ cadastrais, do pedido, logísticos e de atendimento.
 
 A base é **sintética, de estudo**: não possui valores nulos nem linhas duplicadas, e cada cliente
 aparece uma única vez. O arquivo não é versionado neste repositório — o notebook o lê de
-`data/raw/` ou o baixa automaticamente do repositório da disciplina.
+`../data/raw/` se existir ou, caso contrário, direto do repositório público da disciplina
+(2.500 linhas × 19 colunas).
 
 ---
 
@@ -120,28 +121,31 @@ devem ser comparados a benchmarks de mercado.
 
 ---
 
-## Estrutura do repositório
+## Estrutura desta fase
 
 ```
-.
-├── 1IAST - Fase 1 - Tech Challenge.pdf     # enunciado do desafio
-├── README.md
-└── Fase 1/
-    ├── 01-analise exploratoria.ipynb       # EDA completa e conclusões
-    ├── NPS crítico_ Alavancas de Retenção.pdf   # apresentação executiva (storytelling)
-    └── notebooks/
+Fase 1/
+├── README.md                                    # este arquivo
+├── 1IAST - Fase 1 - Tech Challenge.pdf          # enunciado do desafio
+├── Apresentacao FIAP_1.pdf                      # slides da apresentação executiva
+├── 01_analise_exploratoria_FASE_1.ipynb         # mesma EDA, versão executada no Google Colab
+└── notebooks/
+    └── 01-analise exploratoria.ipynb            # EDA completa e conclusões
 ```
 
-Pastas geradas na execução (não versionadas):
+Os notebooks usam caminhos relativos no padrão `../data/...` e `../reports/...`, ou seja, gravam
+as saídas na pasta **acima daquela em que são executados** (pastas não versionadas):
+
+| Notebook | Executar a partir de | Saídas em |
+|---|---|---|
+| `notebooks/01-analise exploratoria.ipynb` | `Fase 1/notebooks/` | `Fase 1/data/` e `Fase 1/reports/` |
+| `01_analise_exploratoria_FASE_1.ipynb` | `Fase 1/` (ou Colab) | raiz do repositório |
 
 ```
-data/raw/          # base original (.csv)
+data/raw/          # base original (.csv), caso você queira usá-la offline
 data/processed/    # base tratada com as colunas derivadas
 reports/figures/   # gráficos exportados em .png
 ```
-
-> **Observação:** o notebook usa caminhos relativos no padrão `../data/...` e `../reports/...`,
-> ou seja, espera ser executado a partir de uma subpasta `notebooks/`.
 
 ---
 
@@ -154,21 +158,24 @@ Pré-requisitos: **Python 3.10+**.
 git clone <url-do-repositorio>
 cd POS-TECH-CIENCIA-DE-DADOS
 
-# 2. Criar e ativar um ambiente virtual
+# 2. Criar e ativar um ambiente virtual (na raiz do repositório)
 python -m venv .venv
 source .venv/bin/activate      # Windows: .venv\Scripts\activate
 
 # 3. Instalar as dependências
 pip install pandas matplotlib jupyter
 
-# 4. Abrir o notebook
+# 4. Abrir o Jupyter a partir da pasta do notebook
+cd "Fase 1/notebooks"
 jupyter lab
 ```
 
-Abra `Fase 1/01-analise exploratoria.ipynb` e execute **Run → Run All Cells**. Não é necessário
-baixar a base manualmente: se o arquivo não estiver em `data/raw/desafio_nps_fase_1.csv`, o
-notebook faz o download automaticamente. Ao final, a base tratada é salva em
-`data/processed/nps_tratado_simples.csv` e os gráficos em `reports/figures/`.
+Abra `01-analise exploratoria.ipynb` e execute **Run → Run All Cells** — a execução completa leva
+menos de um minuto. Não é necessário baixar a base manualmente: se o arquivo não estiver em
+`../data/raw/desafio_nps_fase_1.csv`, o notebook o lê direto da URL pública da disciplina (por isso
+`data/raw/` normalmente fica vazia). Ao final, a base tratada é salva em
+`../data/processed/nps_tratado_simples.csv` e os quatro gráficos em `../reports/figures/`,
+relativos à pasta `notebooks/`.
 
 ---
 
@@ -177,5 +184,6 @@ notebook faz o download automaticamente. Ao final, a base tratada é salva em
 - [x] Tratamento e preparação da base de dados
 - [x] Análise exploratória (EDA) com foco em negócio
 - [x] Material de apresentação para público não técnico (storytelling gerencial)
+      — `Apresentacao FIAP_1.pdf`
 - [ ] Modelo preditivo de NPS *(desafio opcional — próxima etapa)*
 - [ ] Vídeo executivo de até 5 minutos
