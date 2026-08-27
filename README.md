@@ -46,13 +46,14 @@ padrão de organização.
     └── *.pdf            # enunciado e materiais de apresentação
 ```
 
-Cada notebook grava suas saídas na pasta acima daquela em que é executado, em diretórios criados
-na execução e **não versionados** (`data/`, `reports/` estão no `.gitignore`):
+Os notebooks ficam em `<Fase>/notebooks/` e gravam suas saídas um nível acima, dentro da própria
+pasta da fase. Esses diretórios são criados na execução e **não são versionados** — `data/` e
+`reports/` estão no `.gitignore`, já que podem ser regerados rodando o notebook:
 
 ```
-data/raw/          # bases originais (.csv)
-data/processed/    # bases tratadas
-reports/figures/   # gráficos exportados em .png
+<Fase>/data/raw/          # bases originais (.csv)
+<Fase>/data/processed/    # bases tratadas
+<Fase>/reports/figures/   # gráficos exportados em .png
 ```
 
 ---

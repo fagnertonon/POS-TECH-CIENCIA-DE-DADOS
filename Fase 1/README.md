@@ -126,26 +126,24 @@ devem ser comparados a benchmarks de mercado.
 ```
 Fase 1/
 ├── README.md                                    # este arquivo
-├── 1IAST - Fase 1 - Tech Challenge.pdf          # enunciado do desafio
+├── Fase 1 - Tech Challenge.pdf                  # enunciado do desafio
 ├── Apresentacao FIAP_1.pdf                      # slides da apresentação executiva
-├── 01_analise_exploratoria_FASE_1.ipynb         # mesma EDA, versão executada no Google Colab
 └── notebooks/
-    └── 01-analise exploratoria.ipynb            # EDA completa e conclusões
+    └── 01_analise_exploratoria_FASE_1.ipynb     # EDA completa e conclusões
 ```
 
-Os notebooks usam caminhos relativos no padrão `../data/...` e `../reports/...`, ou seja, gravam
-as saídas na pasta **acima daquela em que são executados** (pastas não versionadas):
-
-| Notebook | Executar a partir de | Saídas em |
-|---|---|---|
-| `notebooks/01-analise exploratoria.ipynb` | `Fase 1/notebooks/` | `Fase 1/data/` e `Fase 1/reports/` |
-| `01_analise_exploratoria_FASE_1.ipynb` | `Fase 1/` (ou Colab) | raiz do repositório |
+O notebook usa caminhos relativos no padrão `../data/...` e `../reports/...`: executado a partir
+de `Fase 1/notebooks/`, ele grava as saídas em `Fase 1/`. Essas pastas são **geradas na execução e
+não versionadas** (`data/` e `reports/` estão no `.gitignore`):
 
 ```
-data/raw/          # base original (.csv), caso você queira usá-la offline
-data/processed/    # base tratada com as colunas derivadas
-reports/figures/   # gráficos exportados em .png
+Fase 1/data/raw/          # base original (.csv), caso você queira usá-la offline
+Fase 1/data/processed/    # base tratada com as colunas derivadas
+Fase 1/reports/figures/   # gráficos exportados em .png
 ```
+
+O mesmo notebook roda sem alterações no **Google Colab**: quando `../data/raw/` não existe, a base
+é lida direto da URL pública da disciplina.
 
 ---
 
@@ -170,12 +168,12 @@ cd "Fase 1/notebooks"
 jupyter lab
 ```
 
-Abra `01-analise exploratoria.ipynb` e execute **Run → Run All Cells** — a execução completa leva
-menos de um minuto. Não é necessário baixar a base manualmente: se o arquivo não estiver em
-`../data/raw/desafio_nps_fase_1.csv`, o notebook o lê direto da URL pública da disciplina (por isso
-`data/raw/` normalmente fica vazia). Ao final, a base tratada é salva em
-`../data/processed/nps_tratado_simples.csv` e os quatro gráficos em `../reports/figures/`,
-relativos à pasta `notebooks/`.
+Abra `01_analise_exploratoria_FASE_1.ipynb` e execute **Run → Run All Cells** — a execução
+completa leva menos de um minuto. Não é necessário baixar a base manualmente: se o arquivo não
+estiver em `../data/raw/desafio_nps_fase_1.csv`, o notebook o lê direto da URL pública da
+disciplina (por isso `data/raw/` normalmente fica vazia). Ao final, a base tratada é salva em
+`Fase 1/data/processed/nps_tratado_simples.csv` e os quatro gráficos em
+`Fase 1/reports/figures/`.
 
 ---
 
