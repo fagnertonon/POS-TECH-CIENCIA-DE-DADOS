@@ -1,0 +1,19 @@
+FIXTURE LOCAL — REFERÊNCIA HISTÓRICA ANONIMIZADA
+
+events_reference.jsonl contém 30 eventos para os testes offline. Foi derivado
+da amostra pública do Inep usada como referência histórica em 20/10/2026.
+Os IDs de aluno e escola foram substituídos por códigos sintéticos; run_id,
+source_snapshot_run_id e event_id também são identificadores exclusivos da
+fixture. Ano, município, rede, série, pesos e respostas foram preservados para
+reproduzir os somatórios ponderados já conferidos.
+
+Este arquivo não comprova uma execução na AWS e não é o events.jsonl do produtor
+de uma rodada real. O teste usa somente FakeS3 em memória, sem rede, credenciais
+ou mensagens SQS. Não deve ser enviado à fila para validar uma execução real.
+
+Referências da amostra (não representam indicadores nacionais oficiais):
+2023: 13 eventos, 8 avaliados, taxa ponderada 23,2230%.
+2024: 17 eventos, 15 avaliados, taxa ponderada 65,1107%.
+
+Para reproduzir a suíte completa, mantenha esta fixture no mesmo diretório de
+test_finalize_simulation.py, lambda_function.py e finalize_simulation.py.

@@ -1,0 +1,189 @@
+{
+  "status": "COMPLETE",
+  "item_1_complete": true,
+  "as_of_utc": "2026-10-27T20:16:45.117579+00:00",
+  "budget_total_usd": 140,
+  "plan_sha256": "9fb8dd2a8b65b6b55d3144f9cddecc822232eca221bed20a209b687fe84304d9",
+  "recipient_masked": "r***@fiap.com.br",
+  "recipient_sha256": "48c4f6955cf77e73245356ebd7ef01bbcc41bc35cd7d809f36779d3884561fb4",
+  "notification_subscription_confirmed": true,
+  "notification_test_alarm_action_success": true,
+  "notification_test_evidence": {
+    "test_requested_at_utc": "2026-10-27T20:03:54.250797+00:00",
+    "current_alarm_state": "OK",
+    "provider_metrics": {
+      "NumberOfNotificationsDelivered": {
+        "datapoints": [
+          {
+            "timestamp": "2026-10-27 20:03:00+00:00",
+            "sum": 1.0
+          }
+        ],
+        "sum": 1.0,
+        "scope": "Topic and window; supporting provider telemetry, not proof of inbox receipt"
+      },
+      "NumberOfNotificationsFailed": {
+        "datapoints": [
+          {
+            "timestamp": "2026-10-27 20:03:00+00:00",
+            "sum": 0.0
+          }
+        ],
+        "sum": 0.0,
+        "scope": "Topic and window; supporting provider telemetry, not proof of inbox receipt"
+      }
+    },
+    "matching_actions": [
+      {
+        "timestamp": "2026-10-27 20:03:54.274000+00:00",
+        "summary": "Successfully executed action arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+        "notification_resource": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+        "action_state": "Succeeded",
+        "alarm_name": "fiap-inep-streaming-rejected",
+        "state_reason": "TESTE AUTORIZADO FIAP observabilidade 20261027. Somente rota de notificacao; nao representa nova falha de dados.",
+        "state_change_time": "2026-10-27T20:03:54.238+0000"
+      }
+    ]
+  },
+  "recipient_confirmed_receipt": true,
+  "existing_alarms_with_actions_enabled": 5,
+  "recipient_receipt_source": {
+    "path": "recipient_receipt.json",
+    "sha256": "a35bd73a3e0b4e2aa7c337702f0647eacb00154f4756d031143761cb85470b45"
+  },
+  "batch_rule_enabled": true,
+  "positive_attempt": {
+    "attempt_id": "91276d3a-5b02-4c65-a84b-b41cc6601499",
+    "audit_key": "auditoria/streaming/analitico/execucoes/attempt_id=91276d3a-5b02-4c65-a84b-b41cc6601499/metrics.json",
+    "duration_scope": "Validation through immutable publication and local analytical evidence; excludes metrics persistence",
+    "duration_seconds": 6.912393028000224,
+    "expected_events": 30,
+    "finalizer_version": "2.0.1",
+    "finished_at_utc": "2026-10-27T19:44:17.533445+00:00",
+    "input_event_objects": 30,
+    "manifest_key": "auditoria/streaming/analitico/runs/run_id=sim_gold_20261027T155422Z_a52da0a7/snapshot_id=364dc24b2ba6e750ef0103b8138a9750c9bb24e081b325234a42a509cd717c2b/manifest.json",
+    "origin": "simulacao_replay_inep",
+    "output_gold_groups": 19,
+    "output_parquet_bytes": {
+      "gold": 5763,
+      "silver": 12781
+    },
+    "output_silver_rows": 30,
+    "pipeline_version": "2.0.0",
+    "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+    "schema": "fiap.finalizer.observability.v1",
+    "simulation": true,
+    "snapshot_id": "364dc24b2ba6e750ef0103b8138a9750c9bb24e081b325234a42a509cd717c2b",
+    "stages": [
+      {
+        "duration_seconds": 6.497476374999678,
+        "finished_at_utc": "2026-10-27T19:44:17.118560+00:00",
+        "stage": "validate_and_read",
+        "started_at_utc": "2026-10-27T19:44:10.621091+00:00",
+        "status": "SUCCEEDED"
+      },
+      {
+        "duration_seconds": 0.05384805900030187,
+        "finished_at_utc": "2026-10-27T19:44:17.172416+00:00",
+        "stage": "encode_parquet",
+        "started_at_utc": "2026-10-27T19:44:17.118578+00:00",
+        "status": "SUCCEEDED"
+      },
+      {
+        "duration_seconds": 0.16080857700035267,
+        "finished_at_utc": "2026-10-27T19:44:17.333233+00:00",
+        "stage": "publish_silver",
+        "started_at_utc": "2026-10-27T19:44:17.172435+00:00",
+        "status": "SUCCEEDED"
+      },
+      {
+        "duration_seconds": 0.10646739100047853,
+        "finished_at_utc": "2026-10-27T19:44:17.439754+00:00",
+        "stage": "publish_gold",
+        "started_at_utc": "2026-10-27T19:44:17.333295+00:00",
+        "status": "SUCCEEDED"
+      },
+      {
+        "duration_seconds": 0.09264236400031223,
+        "finished_at_utc": "2026-10-27T19:44:17.532495+00:00",
+        "stage": "publish_manifest",
+        "started_at_utc": "2026-10-27T19:44:17.439861+00:00",
+        "status": "SUCCEEDED"
+      }
+    ],
+    "started_at_utc": "2026-10-27T19:44:10.621050+00:00",
+    "status": "SUCCEEDED"
+  },
+  "negative_attempt": {
+    "attempt_id": "495da030-c41b-4c8e-9b8c-a6101db08f77",
+    "audit_key": "auditoria/streaming/analitico/execucoes/attempt_id=495da030-c41b-4c8e-9b8c-a6101db08f77/metrics.json",
+    "duration_scope": "Validation through immutable publication and local analytical evidence; excludes metrics persistence",
+    "duration_seconds": 0.09774248000030639,
+    "error_type": "FinalizationError",
+    "expected_events": 1,
+    "finalizer_version": "2.0.1",
+    "finished_at_utc": "2026-10-27T19:49:14.886895+00:00",
+    "input_event_objects": null,
+    "origin": "simulacao_replay_inep",
+    "output_gold_groups": null,
+    "output_parquet_bytes": null,
+    "output_silver_rows": null,
+    "pipeline_version": "2.0.0",
+    "run_id": "invalid_weight_489d809c1c474853",
+    "schema": "fiap.finalizer.observability.v1",
+    "simulation": true,
+    "stages": [
+      {
+        "duration_seconds": 0.09770199300055538,
+        "error_type": "FinalizationError",
+        "finished_at_utc": "2026-10-27T19:49:14.886877+00:00",
+        "stage": "validate_and_read",
+        "started_at_utc": "2026-10-27T19:49:14.789182+00:00",
+        "status": "FAILED"
+      }
+    ],
+    "started_at_utc": "2026-10-27T19:49:14.789142+00:00",
+    "status": "FAILED"
+  },
+  "analytical_bytes_unchanged": true,
+  "offline_tests": {
+    "streaming": 96,
+    "notification_configuration": 5
+  },
+  "jobs_started": [],
+  "new_bigquery_extractions": 0,
+  "new_sqs_messages": 0,
+  "new_lambda_invocations_requested": 0,
+  "iam_role_or_scp_changes": [],
+  "new_schedules": [],
+  "new_operational_resources": [
+    "SNS project topic and email subscription",
+    "EventBridge batch failure rule"
+  ],
+  "scope_notes": [
+    "Notification test is a controlled alarm-state test, not a new data failure.",
+    "EventBridge pattern test proves matching, not a new Glue failure execution.",
+    "SNS acceptance or a confirmed subscription alone does not prove receipt of the test email.",
+    "The global FinOps forecast is unchanged; SNS price example is not measured usage or a spending cap.",
+    "Historical deployment template lacks the externally configured SNS integration; preserve/review actions before redeploy."
+  ],
+  "financial_artifacts_unchanged": {
+    "outputs/finops_pendencias_20261027/modelo_finops.json": "97cc2f32069a916b479395c0c0026b6997335b12bd23e7f74e5a05478b38c26b",
+    "outputs/finops_pendencias_20261027/FinOps_Medicoes.xlsx": "93a35d218d8ae3c8a3c491ea91fb86729a8bae97125ebeb9af6e171122844c95",
+    "FinOps_Resultado_Duas_Medicoes.pdf": "f4c45341f9e7144f3712a6fd9882f9f14d8b0a3c2fddf4e65481578c5751bf5d"
+  },
+  "evidence": {
+    "raw/before.json": "b40392637314878b37637f0cd3b2f5efb979b796017a77e41bb86c14691e9cf9",
+    "raw/negative_verified.json": "7cd691f2a71ca3c22b38d884e2a71b415bd830c54b23f4a309da3befaa6c80b2",
+    "raw/notification_alarm_history_01.json": "0a61bb11b332de2da5232c3ac42257a49b055e4819a0d8c7a2cb7fc9b9b97797",
+    "raw/notification_apply.json": "5e1bb516612cffcf14280fd53d50eb24e0be758ecee10fcdac4f499768bc25a5",
+    "raw/notification_test_request.json": "297c8bde0ff708f8509f209b30e053ef1c5bbe405e5fc375b82de271de9f71a8",
+    "raw/notification_test_verified.json": "ba1bac136ddccecf4ade1f4accd85fd679d8cafe14ee2d1206cc4d22ea069b80",
+    "raw/notifications_verified_01.json": "6b1771d3bacb397a8e6e8e25def9342314aaf8c423916d07b94eeae089660bb8",
+    "raw/notifications_verified_02.json": "108d87a243734ba6016e25eee1ebd37ad3d45bb0ce02322c35d6cac733856e26",
+    "raw/notifications_verified_03.json": "e3317bdfb281a1e9ee6f93eedd86b5ce8e50a28f41b63599446795e405ed7d3f",
+    "raw/notifications_verified_04.json": "0106d566b47d055b9980eaebea828c3e3312ee80cd0bbb58f85bc6724ee7c2ab",
+    "raw/positive_verified.json": "d6a1bba556b364a28fbc3b1238f3f771f593961fbe770eba9eef2716c29b000d",
+    "raw/subscription_direct_01.json": "02a145c02473918f882e2c8a5497798d7825743367463dab9c7c06d4be4292cf"
+  }
+}

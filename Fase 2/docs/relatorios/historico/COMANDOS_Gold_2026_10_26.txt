@@ -1,0 +1,48 @@
+COMANDOS BASH — CLOUDSHELL — PASTA RAIZ DO PACOTE EXTRAÍDO
+
+A. Dependências de verificação (não instalar PySpark para os observadores)
+python3 -m venv .venv-verificacao
+source .venv-verificacao/bin/activate
+python3 -m pip install -r requirements-verificacao.txt
+
+B. Testes unitários locais, sem AWS e sem Spark
+python3 -m unittest discover -s gold -p 'test_gold_*.py' -q
+
+C. Conferir novamente a publicação aprovada, sem iniciar Glue
+RUN=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29
+python3 verify_continuacao.py --layer gold --run-id "$RUN" --verify-parquet --output verificacao_gold_repetida.json
+python3 verificar_cobertura_publicada.py --output-dir conferencia_repetida_01
+
+O segundo comando exige diretório novo. Ambos precisam da sessão AWS autenticada
+na conta 637246457028 e permissões de leitura do Glue/S3. Não criam recursos AWS.
+verify_continuacao.py sempre grava relatório; confira verification_status, published
+e errors no JSON, pois seu processo não usa exit code para reprovações de qualidade.
+
+D. Publicação/reexecução opcional: JÁ CONCLUÍDA, gera novo custo se usar --run
+SHA_ANTERIOR=43ff8eb000efd0c946629f7683ce2fd9f712a829e40077c58c20702ed6912ae8
+python3 gold/publicar_gold_cobertura.py --directory gold --output-dir deploy_nova_execucao --expected-previous-sha256 "$SHA_ANTERIOR" --run
+
+O SHA é da primeira tentativa de 26/10. O publicador aceita esse SHA ou o SHA do
+próprio código novo para recusar sobrescrita de alterações inesperadas. Sem --run,
+publica assets/atualiza o job, mas não inicia processamento. Exige pasta nova.
+O código preserva a configuração atual, verifica conta/tags/capacidade e recusa
+troca de script com run ativo. Nunca repetir StartJobRun cegamente se a resposta
+de rede for desconhecida: conferir o deployment_id nos runs primeiro.
+
+E. Comandos AWS de leitura equivalentes
+aws glue get-job-run --job-name fiap-gold-inep-batch --run-id "$RUN" --region us-east-2 --query 'JobRun.{Status:JobRunState,Seconds:ExecutionTime,DPUSeconds:DPUSeconds}'
+aws s3 cp "s3://fiap-tc-fase2-2026/auditoria/gold/ingestion_date=2026-10-26/run_id=$RUN/manifest.json" manifest_gold_copia.json --region us-east-2
+
+F. Verificar integridade local (opcional, não acessa AWS)
+python3 - <<'PY'
+import hashlib,json
+from pathlib import Path
+root=Path.cwd()
+checks=json.loads((root/'SHA256.json').read_text(encoding='utf-8'))
+for name,digest in checks.items():
+    assert hashlib.sha256((root/name).read_bytes()).hexdigest()==digest,name
+print('Integridade confirmada:',len(checks),'arquivos')
+PY
+
+LINK DO RESULTADO
+https://637246457028-dwytzzzh.us-east-2.console.aws.amazon.com/gluestudio/home?region=us-east-2#/job/fiap-gold-inep-batch/run/jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29

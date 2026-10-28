@@ -1,0 +1,36 @@
+{
+  "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+  "source": {
+    "manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/manifest.json",
+    "snapshot_run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+    "source_table": "alunos",
+    "source_columns": [
+      "ano",
+      "id_municipio",
+      "id_escola",
+      "id_aluno",
+      "caderno",
+      "serie",
+      "rede",
+      "presenca",
+      "preenchimento_caderno",
+      "alfabetizado",
+      "proficiencia",
+      "peso_aluno"
+    ],
+    "source_target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/alunos/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/"
+  },
+  "new_events": 30,
+  "duplicate_sends": 5,
+  "semantic_rejections": 1,
+  "glue_runs_started": 0,
+  "bigquery_queries_started": 0,
+  "schedulers_created": 0,
+  "pipeline_version": "2.0.0",
+  "source_sha256": "a41f53b8ac337c198fb0c8ad955eeb35184bbf1857ffca3a02c9a998b39a9ee7",
+  "template_export_exact_match": false,
+  "template_export_ascii_replacement_match": true,
+  "running_lambda_source_exact_match": true,
+  "started_at_utc": "2026-10-27T15:54:22.722242Z",
+  "completed_at_utc": "2026-10-27T15:54:57.018210Z"
+}

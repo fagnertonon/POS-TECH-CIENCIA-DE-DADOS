@@ -1,0 +1,37 @@
+{
+  "stack_status": "UPDATE_COMPLETE",
+  "outputs": [
+    {
+      "OutputKey": "FunctionName",
+      "OutputValue": "fiap-inep-streaming-consumer"
+    },
+    {
+      "OutputKey": "FunctionArn",
+      "OutputValue": "arn:aws:lambda:us-east-2:637246457028:function:fiap-inep-streaming-consumer"
+    },
+    {
+      "OutputKey": "ExecutionRoleArn",
+      "OutputValue": "arn:aws:iam::637246457028:role/fiap-lambda-inep-streaming"
+    },
+    {
+      "OutputKey": "DeadLetterQueueUrl",
+      "OutputValue": "https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming-dlq"
+    },
+    {
+      "OutputKey": "LogGroup",
+      "OutputValue": "/aws/lambda/fiap-inep-streaming-consumer"
+    },
+    {
+      "OutputKey": "EventSourceMappingUuid",
+      "OutputValue": "6bad077d-e592-4109-a81c-edb62a53340e"
+    },
+    {
+      "OutputKey": "QueueArn",
+      "OutputValue": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming"
+    },
+    {
+      "OutputKey": "QueueUrl",
+      "OutputValue": "https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming"
+    }
+  ]
+}

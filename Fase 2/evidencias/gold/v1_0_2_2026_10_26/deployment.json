@@ -1,0 +1,31 @@
+{
+  "observed_at_utc": "2026-10-26T12:35:39.865173+00:00",
+  "job_name": "fiap-gold-inep-batch",
+  "account": "637246457028",
+  "region": "us-east-2",
+  "script_version": "1.0.2",
+  "previous_script_uri": "s3://aws-glue-assets-637246457028-us-east-2/scripts/fiap-gold-inep-batch/43ff8eb000efd0c946629f7683ce2fd9f712a829e40077c58c20702ed6912ae8/gold_glue.py",
+  "previous_script_sha256": "43ff8eb000efd0c946629f7683ce2fd9f712a829e40077c58c20702ed6912ae8",
+  "assets": {
+    "script": {
+      "uri": "s3://aws-glue-assets-637246457028-us-east-2/scripts/fiap-gold-inep-batch/a36f8f94b15a574c0c8d79631c00b7dd016526437ef5d55645df83b1249e0d7e/gold_glue.py",
+      "sha256": "a36f8f94b15a574c0c8d79631c00b7dd016526437ef5d55645df83b1249e0d7e",
+      "bytes": 58467
+    },
+    "notebook": {
+      "uri": "s3://aws-glue-assets-637246457028-us-east-2/notebooks/fiap-gold-inep-batch/62ddea5261809ab8cda664cd2db0e35b3949ed5bc891c1d8a1c1edb7a7df1808/03_camada_gold_glue.ipynb",
+      "sha256": "62ddea5261809ab8cda664cd2db0e35b3949ed5bc891c1d8a1c1edb7a7df1808",
+      "bytes": 74257
+    }
+  },
+  "workers": 2,
+  "worker_type": "G.1X",
+  "timeout_minutes": 15,
+  "max_retries": 0,
+  "silver_manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+  "new_resources": [],
+  "iam_changes": false,
+  "job_run_id": "jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29",
+  "run_start_requested": true,
+  "deployment_id": "coverage_db63536759e24b1788a40c449db49a01"
+}

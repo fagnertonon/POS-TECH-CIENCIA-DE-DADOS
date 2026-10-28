@@ -1,0 +1,11 @@
+{
+  "source_sha256": "a41f53b8ac337c198fb0c8ad955eeb35184bbf1857ffca3a02c9a998b39a9ee7",
+  "installed_code_zip_sha256_base64": "ZlKsp6oUtqxAFOYudrhcxgFuDAETZFMiVjXdk+yxAoo=",
+  "historical_running_source_exact_match": true,
+  "source_reference_run": "sim_gold_20261027T155422Z_a52da0a7",
+  "live_zip_hash_matches_historical_verified_zip": true,
+  "api_export_source_sha256": "50d5dfe342e2e10c779cd5f47d884bbb32ce6bd9b47f91f5ea5b1d5146919a7d",
+  "api_export_matches_ascii_replacement_only": true,
+  "native_change_set_must_still_exclude_ConsumerFunction": true,
+  "reason": "GetTemplate export replaces non-ASCII characters with question marks. Reuse the proven installed source to avoid a Lambda Code change. Never permit a native ConsumerFunction modification."
+}

@@ -1,0 +1,239 @@
+# Celula original 3
+dbutils.widgets.text("CATALOGO", "tech_challenge_fase2", "Catálogo")
+dbutils.widgets.text("BRONZE_SCHEMA", "bronze", "Schema da Bronze")
+dbutils.widgets.text("SILVER_SCHEMA", "silver", "Schema da Silver")
+
+def variavel(nome, padrao=None):
+    """Lê um parâmetro do notebook. Valor vazio conta como 'não definido'."""
+    valor = dbutils.widgets.get(nome) or padrao
+    if valor is None:
+        raise RuntimeError(f"Parâmetro {nome} não definido. Preencha o widget no topo do notebook.")
+    return valor
+
+CATALOGO = variavel("CATALOGO")
+BRONZE_SCHEMA = variavel("BRONZE_SCHEMA")
+SILVER_SCHEMA = variavel("SILVER_SCHEMA")
+
+# Celula original 5
+from functools import reduce
+from operator import or_
+
+# Mantém a última versão da tabela
+def deduplicar(df, colunas_chave):
+    janela = Window.partitionBy(*colunas_chave).orderBy(F.col("data_ingestao").desc())
+    df_numerado = df.withColumn("linha_num", F.row_number().over(janela))
+    df_deduplicado = df_numerado.filter(F.col("linha_num") == 1)
+    df_deduplicado = df_deduplicado.drop("linha_num")
+    return df_deduplicado
+
+# Tradução de um código numérico de uma coluna para o texto correspondente
+def decodificar(df, df_dicionario, id_tabela, coluna, nova_coluna):
+    # Pega do dicionário só as linhas dessa tabela e dessa coluna
+    dic = (
+        df_dicionario
+        .where((F.col("id_tabela") == id_tabela) & (F.col("nome_coluna") == coluna))
+        .select(F.col("chave").alias("_chave"), F.col("valor").alias("_valor"))
+    )
+
+    # Junta o código da tabela com a chave do dicionário (left: não perde linha)
+    df_join = df.join(F.broadcast(dic), df[coluna] == dic["_chave"], "left")
+
+    # Código nulo continua nulo; código sem correspondência vira 'desconhecido'
+    df_join = df_join.withColumn(
+        nova_coluna,
+        F.when(F.col(coluna).isNull(), F.lit(None).cast("string"))
+         .otherwise(F.coalesce(F.col("_valor"), F.lit("desconhecido")))
+    )
+
+    return df_join.drop("_chave", "_valor")
+
+def limpar_texto(coluna):
+    # Tira espaços das pontas; texto vazio vira nulo
+    c = F.trim(F.col(coluna).cast("string"))
+    return F.when(c == "", F.lit(None).cast("string")).otherwise(c)
+
+# Preenche o ID do município com zeros à esquerda até completar 7 dígitos
+def normalizar_id_municipio(coluna="id_municipio"):
+    # Código IBGE como string de 7 dígitos, com zero à esquerda se faltar
+    c = F.trim(F.col(coluna).cast("string"))
+    return F.when(F.length(c) <= 7, F.lpad(c, 7, "0")).otherwise(c)
+
+# Confere se a tabela não tem valores nulos nem duplicados na chave; levanta erro se encontrar
+def validar_qualidade(df, colunas_chave, nome="tabela"):
+    total = df.count()
+    nulos_chave = df.where(reduce(or_, [F.col(c).isNull() for c in colunas_chave])).count()
+    duplicadas = total - df.select(*colunas_chave).distinct().count()
+
+    resultados = {
+        "tem_linhas": total > 0,
+        "chave_sem_nulo": nulos_chave == 0,
+        "chave_sem_duplicata": duplicadas == 0,
+    }
+    print(f"[{nome}] linhas={total} | chave nula={nulos_chave} | chave duplicada={duplicadas}")
+
+    reprovadas = [regra for regra, passou in resultados.items() if not passou]
+    if reprovadas:
+        raise ValueError(f"[{nome}] reprovada nas regras: {reprovadas}")
+    return True
+
+# Confere se a coluna decodificada não tem nenhum valor "desconhecido"; levanta erro se encontrar
+def validar_desconhecidos(df, coluna, nome="tabela"):
+    total = df.filter(F.col(coluna) == "desconhecido").count()
+    if total > 0:
+        raise ValueError(f"{nome}: {total} linhas com '{coluna}' = desconhecido")
+    print(f"{nome}: nenhum valor desconhecido em '{coluna}'")
+
+# Calcula o percentual de linhas da tabela esquerda que encontram correspondência na tabela direita
+def taxa_correspondencia_join(df_esquerda, df_direita, colunas_join, nome="tabela"):
+    total = df_esquerda.count()
+    correspondentes = df_esquerda.join(df_direita, on=colunas_join, how="inner").count()
+    taxa = (correspondentes / total) * 100 if total > 0 else 0
+    print(f"{nome}: {correspondentes}/{total} linhas com correspondência ({taxa:.1f}%)")
+    return taxa 
+
+
+
+
+# Celula original 7
+from pyspark.sql import Window
+from pyspark.sql import functions as F
+from pyspark.sql.types import (BooleanType, DoubleType, StringType,
+                               StructField, StructType, TimestampType)
+
+# Tabelas pequenas primeiro e a `alunos` (a maior) por último: se houver erro de
+# permissão ou de conector, ele aparece logo, sem esperar a tabela grande.
+TABELAS = ["uf", "meta_alfabetizacao_brasil", "meta_alfabetizacao_uf",
+           "meta_alfabetizacao_municipio", "municipio", "dicionario", "alunos"]
+
+dfs_bronze = {}
+
+for tabela in TABELAS:
+    dfs_bronze[tabela] = spark.read.table(f"{CATALOGO}.{BRONZE_SCHEMA}.{tabela}")
+    print(f"{tabela}: lida")
+
+# Celula original 9
+# Deduplicação da tabela dicionário — usada para decodificar colunas de código em outras tabelas
+def tratar_dicionario(df, df_dicionario=None):
+    df = deduplicar(df, ["id_tabela", "nome_coluna", "chave"])
+    return df
+
+# Celula original 10
+# Tratamento da tabela município para camada silver
+def tratar_municipio(df, df_dicionario):
+    df = deduplicar(df, ["ano", "id_municipio", "serie", "rede"])
+    df = df.withColumn("id_municipio", normalizar_id_municipio("id_municipio"))
+    return df
+
+# Celula original 11
+# Tratamento da tabela uf para camada silver
+def tratar_uf(df, df_dicionario):
+    df = deduplicar(df, ["ano", "sigla_uf", "serie", "rede"])
+    return df
+
+# Celula original 12
+# Tratamento da tabela meta brasil para camada silver
+def tratar_meta_brasil(df, df_dicionario):
+    df = deduplicar(df, ["ano", "rede"])
+    return df
+
+# Celula original 13
+# Tratamento da tabela meta uf para camada silver
+def tratar_meta_uf(df, df_dicionario):
+    df = deduplicar(df, ["ano", "sigla_uf", "rede"])
+    return df
+
+# Celula original 14
+# Tratamento da tabela meta municipio para camada silver
+def tratar_meta_municipio(df, df_dicionario):
+    df = deduplicar(df, ["ano", "id_municipio", "rede"])
+    df = df.withColumn("id_municipio", normalizar_id_municipio("id_municipio"))
+    return df
+
+# Celula original 15
+# Tratamento da tabela alunos para camada silver
+def tratar_alunos(df, df_dicionario):
+    df = deduplicar(df, ["ano", "id_aluno"])
+
+    df = df.withColumn("id_municipio", normalizar_id_municipio("id_municipio"))
+
+    df = decodificar(df, df_dicionario, "alunos", "rede", "rede_descricao")
+    df = decodificar(df, df_dicionario, "alunos", "serie", "serie_descricao")
+    df = decodificar(df, df_dicionario, "alunos", "presenca", "presenca_descricao")
+    df = decodificar(df, df_dicionario, "alunos", "preenchimento_caderno", "preenchimento_caderno_descricao")
+    df = decodificar(df, df_dicionario, "alunos", "alfabetizado", "alfabetizado_descricao")
+
+    df = df.withColumn("presente", F.col("presenca_descricao") == "Presente")
+    df = df.withColumn("caderno_preenchido", F.col("preenchimento_caderno_descricao") == "Prova preenchida")
+    df = df.withColumn(
+    "avaliado",
+    F.col("presente") & F.col("caderno_preenchido")
+    )
+    df = df.withColumn(
+    "alfabetizado_avaliado",
+    F.when(F.col("avaliado"), F.col("alfabetizado_descricao") == "Sim").otherwise(F.lit(None).cast("boolean"))
+    )
+
+    return df
+
+# Celula original 17
+df_dicionario_silver = tratar_dicionario(dfs_bronze["dicionario"])
+
+df_municipio_silver = tratar_municipio(dfs_bronze["municipio"], df_dicionario_silver)
+df_uf_silver = tratar_uf(dfs_bronze["uf"], df_dicionario_silver)
+df_meta_brasil_silver = tratar_meta_brasil(dfs_bronze["meta_alfabetizacao_brasil"], df_dicionario_silver)
+df_meta_uf_silver = tratar_meta_uf(dfs_bronze["meta_alfabetizacao_uf"], df_dicionario_silver)
+df_meta_municipio_silver = tratar_meta_municipio(dfs_bronze["meta_alfabetizacao_municipio"], df_dicionario_silver)
+df_alunos_silver = tratar_alunos(dfs_bronze["alunos"], df_dicionario_silver)
+
+print("Transformações aplicadas nas sete tabelas")
+
+# Celula original 18
+df_alunos_silver.select(
+"presente", "caderno_preenchido", "avaliado", "alfabetizado_descricao", "alfabetizado_avaliado"
+).distinct().show()
+
+
+# Celula original 20
+validar_qualidade(df_dicionario_silver, ["id_tabela", "nome_coluna", "chave"], "dicionario")
+validar_qualidade(df_municipio_silver, ["ano", "id_municipio", "serie", "rede"], "municipio")
+validar_qualidade(df_uf_silver, ["ano", "sigla_uf", "serie", "rede"], "uf")
+validar_qualidade(df_meta_brasil_silver, ["ano", "rede"], "meta_alfabetizacao_brasil")
+validar_qualidade(df_meta_uf_silver, ["ano", "sigla_uf", "rede"], "meta_alfabetizacao_uf")
+validar_qualidade(df_meta_municipio_silver, ["ano", "id_municipio", "rede"], "meta_alfabetizacao_municipio")
+validar_qualidade(df_alunos_silver, ["ano", "id_aluno"], "alunos")
+
+print("Todas as tabelas passaram na validação de qualidade")
+
+# Celula original 22
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS {CATALOGO}.{SILVER_SCHEMA}")
+
+tabelas_silver = {
+"dicionario": df_dicionario_silver,
+"municipio": df_municipio_silver,
+"uf": df_uf_silver,
+"meta_alfabetizacao_brasil": df_meta_brasil_silver,
+"meta_alfabetizacao_uf": df_meta_uf_silver,
+"meta_alfabetizacao_municipio": df_meta_municipio_silver,
+"alunos": df_alunos_silver,
+}
+
+for nome, df in tabelas_silver.items():
+    destino = f"{CATALOGO}.{SILVER_SCHEMA}.{nome}"
+    df.write.format("delta").mode("overwrite").option("overwriteSchema", "true").saveAsTable(destino)
+    print(f"{nome}: gravada em {destino} ({df.count()} linhas)")
+
+# Celula original 24
+spark.sql(f"SHOW TABLES IN {CATALOGO}.{SILVER_SCHEMA}").show(truncate=False)
+
+print("Comparação Bronze x Silver:")
+for nome in tabelas_silver:
+    total_bronze = dfs_bronze[nome].count()
+    total_silver = spark.read.table(f"{CATALOGO}.{SILVER_SCHEMA}.{nome}").count()
+    print(f"{nome}: bronze={total_bronze} | silver={total_silver}")
+
+# Celula original 25
+validar_desconhecidos(df_alunos_silver, "rede_descricao", "alunos.rede_descricao")
+validar_desconhecidos(df_alunos_silver, "serie_descricao", "alunos.serie_descricao")
+validar_desconhecidos(df_alunos_silver, "presenca_descricao", "alunos.presenca_descricao")
+validar_desconhecidos(df_alunos_silver, "preenchimento_caderno_descricao", "alunos.preenchimento_caderno_descricao")
+validar_desconhecidos(df_alunos_silver, "alfabetizado_descricao", "alunos.alfabetizado_descricao")

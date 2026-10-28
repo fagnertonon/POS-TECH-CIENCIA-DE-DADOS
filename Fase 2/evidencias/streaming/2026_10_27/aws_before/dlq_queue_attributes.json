@@ -1,0 +1,17 @@
+{
+  "Attributes": {
+    "QueueArn": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming-dlq",
+    "ApproximateNumberOfMessages": "1",
+    "ApproximateNumberOfMessagesNotVisible": "0",
+    "ApproximateNumberOfMessagesDelayed": "0",
+    "CreatedTimestamp": "1792521456",
+    "LastModifiedTimestamp": "1792521456",
+    "VisibilityTimeout": "30",
+    "MaximumMessageSize": "1048576",
+    "MessageRetentionPeriod": "1209600",
+    "DelaySeconds": "0",
+    "RedriveAllowPolicy": "{\"redrivePermission\":\"byQueue\",\"sourceQueueArns\":[\"arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming\"]}",
+    "ReceiveMessageWaitTimeSeconds": "0",
+    "SqsManagedSseEnabled": "true"
+  }
+}

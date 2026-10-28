@@ -1,0 +1,75 @@
+{
+  "StackId": "arn:aws:cloudformation:us-east-2:637246457028:stack/fiap-inep-streaming/31903fc0-ccb5-11f1-b6bf-02e1331493ff",
+  "StackName": "fiap-inep-streaming",
+  "ChangeSetId": "arn:aws:cloudformation:us-east-2:637246457028:changeSet/sim-gold-20261027T153447Z/f2495306-2e97-41a0-bdea-0c9562d6ad8f",
+  "Description": "FIAP Fase2 streaming simulacao Bronze-Silver-Gold: SQS/Lambda/S3, role restrita e DLQ.",
+  "Parameters": [
+    {
+      "ParameterKey": "BucketName",
+      "ParameterValue": "fiap-tc-fase2-2026"
+    }
+  ],
+  "CreationTime": "2026-10-20T18:36:41.908000Z",
+  "LastUpdatedTime": "2026-10-27T15:47:52.893000Z",
+  "RollbackConfiguration": {},
+  "StackStatus": "UPDATE_COMPLETE",
+  "DisableRollback": false,
+  "DeploymentConfig": {
+    "Mode": "STANDARD",
+    "DisableRollback": false
+  },
+  "NotificationARNs": [],
+  "Capabilities": [
+    "CAPABILITY_NAMED_IAM"
+  ],
+  "Outputs": [
+    {
+      "OutputKey": "FunctionName",
+      "OutputValue": "fiap-inep-streaming-consumer"
+    },
+    {
+      "OutputKey": "FunctionArn",
+      "OutputValue": "arn:aws:lambda:us-east-2:637246457028:function:fiap-inep-streaming-consumer"
+    },
+    {
+      "OutputKey": "ExecutionRoleArn",
+      "OutputValue": "arn:aws:iam::637246457028:role/fiap-lambda-inep-streaming"
+    },
+    {
+      "OutputKey": "DeadLetterQueueUrl",
+      "OutputValue": "https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming-dlq"
+    },
+    {
+      "OutputKey": "LogGroup",
+      "OutputValue": "/aws/lambda/fiap-inep-streaming-consumer"
+    },
+    {
+      "OutputKey": "EventSourceMappingUuid",
+      "OutputValue": "6bad077d-e592-4109-a81c-edb62a53340e"
+    },
+    {
+      "OutputKey": "QueueArn",
+      "OutputValue": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming"
+    },
+    {
+      "OutputKey": "QueueUrl",
+      "OutputValue": "https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming"
+    }
+  ],
+  "Tags": [
+    {
+      "Key": "Project",
+      "Value": "FIAP-TC-Fase2"
+    }
+  ],
+  "EnableTerminationProtection": false,
+  "DriftInformation": {
+    "StackDriftStatus": "NOT_CHECKED"
+  },
+  "LastOperations": [
+    {
+      "OperationType": "UPDATE_STACK",
+      "OperationId": "d6bb18bd-b379-4087-9125-199492497a5b"
+    }
+  ]
+}

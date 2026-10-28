@@ -1,0 +1,111 @@
+{
+  "status": "SUCCEEDED",
+  "compared_at_utc": "2026-10-27T15:58:21.687541+00:00",
+  "scope": "Saved metadata inventories, not a reconstruction of transient writes; inline role policy only",
+  "official_prefixes": {
+    "auditoria/bronze/": {
+      "unchanged": true,
+      "before": {
+        "object_count": 12,
+        "total_bytes": 46195,
+        "sha256": "549c4dd47b500104bd06542bbb3a474c79f4471685f76ff95b2d32453c0124d2",
+        "complete": true,
+        "file": "official_auditoria_bronze.json"
+      },
+      "after": {
+        "object_count": 12,
+        "total_bytes": 46195,
+        "sha256": "549c4dd47b500104bd06542bbb3a474c79f4471685f76ff95b2d32453c0124d2",
+        "complete": true,
+        "file": "official_auditoria_bronze.json"
+      }
+    },
+    "auditoria/gold/": {
+      "unchanged": true,
+      "before": {
+        "object_count": 45,
+        "total_bytes": 352568,
+        "sha256": "7f730dc7224810e489eba5983b9f0e366896b987d653badadc59b429cf7feb09",
+        "complete": true,
+        "file": "official_auditoria_gold.json"
+      },
+      "after": {
+        "object_count": 45,
+        "total_bytes": 352568,
+        "sha256": "7f730dc7224810e489eba5983b9f0e366896b987d653badadc59b429cf7feb09",
+        "complete": true,
+        "file": "official_auditoria_gold.json"
+      }
+    },
+    "auditoria/silver/": {
+      "unchanged": true,
+      "before": {
+        "object_count": 10,
+        "total_bytes": 447666,
+        "sha256": "e41465277e86cdefcf63d6eae96743f4c94910bafb74f9fe2bf8d316fdcfe37f",
+        "complete": true,
+        "file": "official_auditoria_silver.json"
+      },
+      "after": {
+        "object_count": 10,
+        "total_bytes": 447666,
+        "sha256": "e41465277e86cdefcf63d6eae96743f4c94910bafb74f9fe2bf8d316fdcfe37f",
+        "complete": true,
+        "file": "official_auditoria_silver.json"
+      }
+    },
+    "bronze/inep/": {
+      "unchanged": true,
+      "before": {
+        "object_count": 55,
+        "total_bytes": 186744593,
+        "sha256": "8a47059fbb2617182f13875166cc8d632ee884a09d9912a9a76c73c6dcb28bea",
+        "complete": true,
+        "file": "official_bronze_inep.json"
+      },
+      "after": {
+        "object_count": 55,
+        "total_bytes": 186744593,
+        "sha256": "8a47059fbb2617182f13875166cc8d632ee884a09d9912a9a76c73c6dcb28bea",
+        "complete": true,
+        "file": "official_bronze_inep.json"
+      }
+    },
+    "gold/inep/": {
+      "unchanged": true,
+      "before": {
+        "object_count": 103,
+        "total_bytes": 8029402,
+        "sha256": "1f2ec605ed3fd9abb73306b69577fdc952ff19aa93e866d9b97020ca5be2922e",
+        "complete": true,
+        "file": "official_gold_inep.json"
+      },
+      "after": {
+        "object_count": 103,
+        "total_bytes": 8029402,
+        "sha256": "1f2ec605ed3fd9abb73306b69577fdc952ff19aa93e866d9b97020ca5be2922e",
+        "complete": true,
+        "file": "official_gold_inep.json"
+      }
+    },
+    "silver/inep/": {
+      "unchanged": true,
+      "before": {
+        "object_count": 10,
+        "total_bytes": 61906268,
+        "sha256": "2ceb712953555c5d84444695fb91ac9bbf88f254c0fb56f7b7333313dc01e06d",
+        "complete": true,
+        "file": "official_silver_inep.json"
+      },
+      "after": {
+        "object_count": 10,
+        "total_bytes": 61906268,
+        "sha256": "2ceb712953555c5d84444695fb91ac9bbf88f254c0fb56f7b7333313dc01e06d",
+        "complete": true,
+        "file": "official_silver_inep.json"
+      }
+    }
+  },
+  "authorized_iam_additions_only": true,
+  "errors": []
+}

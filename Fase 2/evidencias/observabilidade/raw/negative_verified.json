@@ -1,0 +1,37 @@
+{
+  "status": "EXPECTED_FAILURE_VERIFIED",
+  "execution_metrics": {
+    "attempt_id": "495da030-c41b-4c8e-9b8c-a6101db08f77",
+    "audit_key": "auditoria/streaming/analitico/execucoes/attempt_id=495da030-c41b-4c8e-9b8c-a6101db08f77/metrics.json",
+    "duration_scope": "Validation through immutable publication and local analytical evidence; excludes metrics persistence",
+    "duration_seconds": 0.09774248000030639,
+    "error_type": "FinalizationError",
+    "expected_events": 1,
+    "finalizer_version": "2.0.1",
+    "finished_at_utc": "2026-10-27T19:49:14.886895+00:00",
+    "input_event_objects": null,
+    "origin": "simulacao_replay_inep",
+    "output_gold_groups": null,
+    "output_parquet_bytes": null,
+    "output_silver_rows": null,
+    "pipeline_version": "2.0.0",
+    "run_id": "invalid_weight_489d809c1c474853",
+    "schema": "fiap.finalizer.observability.v1",
+    "simulation": true,
+    "stages": [
+      {
+        "duration_seconds": 0.09770199300055538,
+        "error_type": "FinalizationError",
+        "finished_at_utc": "2026-10-27T19:49:14.886877+00:00",
+        "stage": "validate_and_read",
+        "started_at_utc": "2026-10-27T19:49:14.789182+00:00",
+        "status": "FAILED"
+      }
+    ],
+    "started_at_utc": "2026-10-27T19:49:14.789142+00:00",
+    "status": "FAILED"
+  },
+  "s3_audit_matches_local": true,
+  "no_publication_stage_entered": true,
+  "emails_sent": 0
+}

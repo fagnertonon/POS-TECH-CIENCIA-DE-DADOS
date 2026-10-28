@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "date": "2026-10-28",
+  "scope": "Offline migration scope and integrity guards",
+  "tests": 7,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "python": "3.13.14",
+  "final_run_seconds": 0.052,
+  "plan_revision": 3,
+  "plan_sha256": "8098aa82131a3e21b39b7d6b5d5a29e8afc0c96d961aab7caa115e95497d57fd",
+  "native_change_set_must_exclude": ["ConsumerFunction", "ConsumerRole", "SourceQueue", "DeadLetterQueue"],
+  "notification_test_run": false,
+  "notes": "Original 132/138 project suites were not repeated because processing code was unchanged. These seven tests specifically validate the migration guards and the independently proven template-export encoding defect."
+}

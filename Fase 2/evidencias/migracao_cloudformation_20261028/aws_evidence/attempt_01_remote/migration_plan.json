@@ -1,0 +1,73 @@
+{
+  "schema": "fiap.cfn-alert-migration.v1",
+  "account": "637246457028",
+  "region": "us-east-2",
+  "before_snapshot_sha256": "110b78a9fd1f0520f879642b0764e5d6a083b151633968da6dfe54a4b8c7e8bf",
+  "import_stack": "fiap-inep-observabilidade",
+  "streaming_stack": "fiap-inep-streaming",
+  "import_existing_resources": [
+    {
+      "ResourceType": "AWS::SNS::Topic",
+      "LogicalResourceId": "AlertTopic",
+      "ResourceIdentifier": {
+        "TopicArn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais"
+      }
+    },
+    {
+      "ResourceType": "AWS::SNS::Subscription",
+      "LogicalResourceId": "AlertSubscription",
+      "ResourceIdentifier": {
+        "Arn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais:a4d3b188-4e11-41f0-a76f-a7426f9dc0b9"
+      }
+    },
+    {
+      "ResourceType": "AWS::SNS::TopicInlinePolicy",
+      "LogicalResourceId": "AlertTopicPolicy",
+      "ResourceIdentifier": {
+        "TopicArn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais"
+      }
+    },
+    {
+      "ResourceType": "AWS::Events::Rule",
+      "LogicalResourceId": "BatchFailureRule",
+      "ResourceIdentifier": {
+        "Arn": "arn:aws:events:us-east-2:637246457028:rule/fiap-inep-batch-failures"
+      }
+    },
+    {
+      "ResourceType": "AWS::CloudWatch::Alarm",
+      "LogicalResourceId": "SilverFailureAlarm",
+      "ResourceIdentifier": {
+        "AlarmName": "fiap-silver-inep-failure"
+      }
+    },
+    {
+      "ResourceType": "AWS::CloudWatch::Alarm",
+      "LogicalResourceId": "GoldFailureAlarm",
+      "ResourceIdentifier": {
+        "AlarmName": "fiap-gold-inep-failure"
+      }
+    }
+  ],
+  "streaming_modified_logical_ids": [
+    "DeadLetterAlarm",
+    "RejectedEventAlarm",
+    "QueueAgeAlarm"
+  ],
+  "new_operational_resources": [],
+  "delete_or_replace_resources": [],
+  "new_subscriptions": [],
+  "new_emails": [],
+  "iam_changes": [],
+  "job_runs": [],
+  "replays": [],
+  "project_total_ceiling_usd": 140,
+  "template_hashes": {
+    "import_template.json": "4fa0a9b9a98e919b6ec4991127690ab3e3405fd49e369b859feda22c8081afaf",
+    "resources_to_import.json": "deab5314ede4cae49cbc481648840daf998118b845e4c7c5c7417f622ba1d879",
+    "streaming_update_template.json": "8610749d53d5aa891aee201e877e717da1f0f8b6f0c83152085bf32f9189d76f"
+  },
+  "subscription_preserved_arn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais:a4d3b188-4e11-41f0-a76f-a7426f9dc0b9",
+  "approved_scope": "Human explicitly requested migration of existing alerts to CloudFormation.",
+  "status": "LOCAL_PLAN_READY_FOR_NATIVE_CHANGE_SET_REVIEW"
+}

@@ -1,0 +1,8 @@
+table,source_count,target_count,parquet_file_count,parquet_bytes,duration_seconds,target_uri,status
+alunos,3867999,3867999,4,79232999,56.545,s3://fiap-tc-fase2-2026/bronze/inep/alunos/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/,SUCCEEDED
+municipio,23995,23995,1,541294,7.429,s3://fiap-tc-fase2-2026/bronze/inep/municipio/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/,SUCCEEDED
+uf,145,145,1,12279,5.017,s3://fiap-tc-fase2-2026/bronze/inep/uf/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/,SUCCEEDED
+meta_alfabetizacao_brasil,3,3,1,5634,4.32,s3://fiap-tc-fase2-2026/bronze/inep/meta_alfabetizacao_brasil/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/,SUCCEEDED
+meta_alfabetizacao_uf,81,81,1,8403,4.093,s3://fiap-tc-fase2-2026/bronze/inep/meta_alfabetizacao_uf/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/,SUCCEEDED
+meta_alfabetizacao_municipio,10704,10704,1,261324,4.412,s3://fiap-tc-fase2-2026/bronze/inep/meta_alfabetizacao_municipio/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/,SUCCEEDED
+dicionario,27,27,1,3775,4.517,s3://fiap-tc-fase2-2026/bronze/inep/dicionario/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/,SUCCEEDED

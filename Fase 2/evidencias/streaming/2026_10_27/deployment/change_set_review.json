@@ -1,0 +1,96 @@
+{
+  "status": "REVIEWABLE",
+  "change_set_id": "arn:aws:cloudformation:us-east-2:637246457028:changeSet/sim-gold-20261027T153447Z/f2495306-2e97-41a0-bdea-0c9562d6ad8f",
+  "stack_id": "arn:aws:cloudformation:us-east-2:637246457028:stack/fiap-inep-streaming/31903fc0-ccb5-11f1-b6bf-02e1331493ff",
+  "template_sha256": "861df610ab6f3d729bf18ae614ee80427a06b71aa4c96fb168c96481aa27c19f",
+  "changes": [
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "ConsumerFunction",
+      "PhysicalResourceId": "fiap-inep-streaming-consumer",
+      "ResourceType": "AWS::Lambda::Function",
+      "Replacement": "False",
+      "Scope": [
+        "Properties"
+      ],
+      "Details": [
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "Code",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "Environment",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "Role",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Dynamic",
+          "ChangeSource": "ResourceAttribute",
+          "CausingEntity": "ConsumerRole.Arn"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "Description",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        }
+      ]
+    },
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "ConsumerRole",
+      "PhysicalResourceId": "fiap-lambda-inep-streaming",
+      "ResourceType": "AWS::IAM::Role",
+      "Replacement": "False",
+      "Scope": [
+        "Properties"
+      ],
+      "Details": [
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "Policies",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        }
+      ]
+    }
+  ],
+  "cloudformation_status": "CREATE_COMPLETE",
+  "reason": null,
+  "compute_caps": {
+    "memory_mb": 256,
+    "timeout_seconds": 10,
+    "max_concurrency": 2
+  },
+  "new_iam_object_prefixes": [
+    "silver/inep_streaming/entity=alunos/*",
+    "gold/inep_streaming/contribuicoes/*",
+    "auditoria/streaming/processed/*"
+  ],
+  "iam_actions": [
+    "s3:GetObject",
+    "s3:PutObject"
+  ],
+  "no_official_prefix_access": true,
+  "no_scheduler": true
+}

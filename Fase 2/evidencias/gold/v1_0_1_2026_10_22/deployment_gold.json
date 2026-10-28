@@ -1,0 +1,51 @@
+{
+  "verified_at_utc": "2026-10-22T14:11:26.386902+00:00",
+  "layer": "gold",
+  "job_name": "fiap-gold-inep-batch",
+  "operation": "updated",
+  "account": "637246457028",
+  "region": "us-east-2",
+  "assets": {
+    "script": {
+      "uri": "s3://aws-glue-assets-637246457028-us-east-2/scripts/fiap-gold-inep-batch/3bc498f022924739bfd3a892a00a000604088a8b9c1b0439d07f1b1dcabca642/gold_glue.py",
+      "sha256": "3bc498f022924739bfd3a892a00a000604088a8b9c1b0439d07f1b1dcabca642",
+      "bytes": 46512
+    },
+    "original": {
+      "uri": "s3://aws-glue-assets-637246457028-us-east-2/notebooks/fiap-gold-inep-batch/3cfa6fe66a1121e3cc6c98d2f286d6d7c149e6c47fe314c9e1ba73dae8ebcc5e/03_camada_gold_original.ipynb",
+      "sha256": "3cfa6fe66a1121e3cc6c98d2f286d6d7c149e6c47fe314c9e1ba73dae8ebcc5e",
+      "bytes": 36515
+    },
+    "notebook": {
+      "uri": "s3://aws-glue-assets-637246457028-us-east-2/notebooks/fiap-gold-inep-batch/69ec26ba4e8a936cac1f35c129581f630ac986ac541ada0d2ca395ec52bd7485/03_camada_gold_glue.ipynb",
+      "sha256": "69ec26ba4e8a936cac1f35c129581f630ac986ac541ada0d2ca395ec52bd7485",
+      "bytes": 61107
+    }
+  },
+  "script_uri": "s3://aws-glue-assets-637246457028-us-east-2/scripts/fiap-gold-inep-batch/3bc498f022924739bfd3a892a00a000604088a8b9c1b0439d07f1b1dcabca642/gold_glue.py",
+  "original_uri": "s3://aws-glue-assets-637246457028-us-east-2/notebooks/fiap-gold-inep-batch/3cfa6fe66a1121e3cc6c98d2f286d6d7c149e6c47fe314c9e1ba73dae8ebcc5e/03_camada_gold_original.ipynb",
+  "notebook_uri": "s3://aws-glue-assets-637246457028-us-east-2/notebooks/fiap-gold-inep-batch/69ec26ba4e8a936cac1f35c129581f630ac986ac541ada0d2ca395ec52bd7485/03_camada_gold_glue.ipynb",
+  "workers": 2,
+  "worker_type": "G.1X",
+  "timeout_minutes": 15,
+  "max_retries": 0,
+  "run_started": false,
+  "default_arguments": {
+    "--S3_BUCKET": "fiap-tc-fase2-2026",
+    "--GOLD_PREFIX": "gold/inep",
+    "--AUDIT_PREFIX": "auditoria/gold",
+    "--DATABASE_SILVER": "tech_challenge_fase2_silver",
+    "--DATABASE_GOLD": "tech_challenge_fase2_gold",
+    "--SILVER_MANIFEST_URI": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+    "--LIMIAR_JOIN": "0.95",
+    "--TOLERANCIA_PP": "0.1",
+    "--REGISTER_CATALOG": "true",
+    "--DEMO_FAILURE": "false",
+    "--job-bookmark-option": "job-bookmark-disable",
+    "--enable-glue-datacatalog": "",
+    "--enable-metrics": "",
+    "--enable-continuous-cloudwatch-log": "true",
+    "--enable-spark-ui": "false",
+    "--TempDir": "s3://aws-glue-assets-637246457028-us-east-2/temporary/fiap-gold-inep-batch/"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "fiap-inep-observabilidade": {
+    "StackDriftDetectionId": "600ebde0-d2d2-11f1-9c08-0245f2cca0cd",
+    "ResponseMetadata": {
+      "RequestId": "a31e7655-1b7d-4783-bc0a-b513bc7f1f50",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "x-amzn-requestid": "a31e7655-1b7d-4783-bc0a-b513bc7f1f50",
+        "strict-transport-security": "max-age=47304000; includeSubDomains",
+        "cache-control": "no-store, no-cache",
+        "date": "Wed, 28 Oct 2026 13:20:42 GMT",
+        "content-type": "text/xml",
+        "content-length": "365",
+        "connection": "keep-alive"
+      },
+      "RetryAttempts": 0
+    }
+  },
+  "fiap-inep-streaming": {
+    "StackDriftDetectionId": "60154d90-d2d2-11f1-8749-029deeda5617",
+    "ResponseMetadata": {
+      "RequestId": "b30ca6be-44f2-4536-aeb3-5fa8f5cf81af",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "x-amzn-requestid": "b30ca6be-44f2-4536-aeb3-5fa8f5cf81af",
+        "strict-transport-security": "max-age=47304000; includeSubDomains",
+        "cache-control": "no-store, no-cache",
+        "date": "Wed, 28 Oct 2026 13:20:42 GMT",
+        "content-type": "text/xml",
+        "content-length": "365",
+        "connection": "keep-alive"
+      },
+      "RetryAttempts": 0
+    }
+  }
+}

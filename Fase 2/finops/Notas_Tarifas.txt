@@ -1,0 +1,118 @@
+TARIFAS OFICIAIS PARA A ESTIMATIVA FINOPS
+Pesquisa em 27/10/2026 | moeda USD | AWS alvo us-east-2 (Ohio)
+
+Este registro contém preços unitários e critérios de medição. Não contém uso
+atual, fatura, saldo nem autorização de nova execução. Nenhuma credencial foi
+lida e nenhuma alteração foi feita na AWS por esta pesquisa.
+
+VALIDAÇÃO REGIONAL CONCLUÍDA
+O arquivo aws/regional_price_list.json reúne 1158 linhas de preço de
+seis serviços. A seleção foi refeita de forma independente por serviço, usageType,
+unidade e primeira faixa, exigindo regionCode=us-east-2 e location=Ohio.
+Quinze tarifas AWS pagas coincidem com o catálogo, sem mudança dos valores de
+referência. Os SKUs, faixas, URLs, publicationDate e effectiveDate estão no JSON.
+A entrada gratuita comum do S3 vem da regra oficial de pricing: o SKU MRAP de
+US$0,0033/GB foi rejeitado porque representa roteamento, não ingresso comum.
+As três referências GCP continuam condicionais à região e ao uso comprovado.
+
+ITEM | SKU OHIO | PREÇO NORMALIZADO | PUBLICAÇÃO | VIGÊNCIA
+glue_etl_dpu_hour | 35EA4QMYDXPWWRHJ | USD 0.44/DPU-hour | 2026-10-12T18:55:42Z | 2026-10-01T00:00:00Z
+s3_standard_storage_gb_month | YPGKVRB2EKTVDJDT | USD 0.023/GB-month | 2026-10-15T17:35:40Z | 2026-10-01T00:00:00Z
+s3_standard_put_request | GJKK9PMSTKPNGZS9 | USD 0.000005/request | 2026-10-15T17:35:40Z | 2026-10-01T00:00:00Z
+s3_standard_get_request | DJEKB32FV4HNZJZY | USD 0.0000004/request | 2026-10-15T17:35:40Z | 2026-10-01T00:00:00Z
+cloudwatch_standard_log_ingestion_gb | 5T6Z6V26DSR7SZ49 | USD 0.5/GB | 2026-10-07T11:55:40Z | 2026-10-01T00:00:00Z
+cloudwatch_log_archive_gb_month | X7X4WD4A95NDR9U5 | USD 0.03/GB-month | 2026-10-07T11:55:40Z | 2026-10-01T00:00:00Z
+cloudwatch_custom_metric_month | XK7C3D2X45XTHURD | USD 0.3/metric-month | 2026-10-07T11:55:40Z | 2026-10-01T00:00:00Z
+cloudwatch_standard_alarm_metric_month | 28VSMYRVQXUWCTMA | USD 0.1/alarm-metric-month | 2026-10-07T11:55:40Z | 2026-10-01T00:00:00Z
+lambda_x86_gb_second | 3BYZH4NKJN8TJUQ6 | USD 0.0000166667/GB-second | 2026-10-22T18:39:59Z | 2026-10-01T00:00:00Z
+lambda_request | ZEA64MMVK5QRB5TC | USD 0.0000002/request | 2026-10-22T18:39:59Z | 2026-10-01T00:00:00Z
+sqs_standard_request | 9C8YFGPNBKF9HP9A | USD 0.0000004/request-unit | 2026-09-11T12:46:07Z | 2025-08-01T00:00:00Z
+secretsmanager_secret_month | HHK3AZN6HN5CFDJM | USD 0.4/secret-month | 2026-09-11T12:46:10Z | 2025-07-01T00:00:00Z
+secretsmanager_api_request | DYZUZWKV5HMGF5A9 | USD 0.000005/request | 2026-09-11T12:46:10Z | 2025-07-01T00:00:00Z
+glue_catalog_object_month_paid | C5UPA7D6QYMRDSC6 | USD 0.00001/object-month | 2026-10-12T18:55:42Z | 2026-10-01T00:00:00Z
+glue_catalog_request_paid | ZV78NH9F34YRJ8B6 | USD 0.000001/request | 2026-10-12T18:55:42Z | 2026-10-01T00:00:00Z
+
+Foram excluídos explicitamente Glue6.0+Gen2, S3 Tables/Annotations/Files/Vectors,
+SQS FIFO/Fair, Lambda ARM/provisioned/durable e alarmes composite/high-resolution.
+Lambda vended logs Standard primeiro tier: SKU PRXGWKFJ46PX74MD,
+US$0,50/GB; a mesma taxa do SKU custom/application Standard selecionado.
+
+REFERÊNCIAS DE BAIXO VOLUME
+Glue Spark Standard: US$0,44/DPU-hora. G.1X representa uma DPU; dois workers
+representam duas DPUs. Preferir DPUSeconds da API, dividido por3600.
+S3 Standard: US$0,023/GB-mês na primeira faixa, US$0,005/1000 PUT-like e
+US$0,0004/1000 GET-like, confirmados nos SKUs Ohio.
+CloudWatch Standard Logs: US$0,50/GB ingerido; arquivo comprimido a
+US$0,03/GB-mês. Diferenciar a classe e os SKUs de logs fornecidos por serviços.
+Métrica customizada: US$0,30/métrica-mês na primeira faixa, proporcional às
+horas em que recebeu dados, não às horas em que aparece em list_metrics.
+Alarme standard: US$0,10/métrica avaliada-mês, proporcional às horas de existência.
+Lambda x86 sob demanda: US$0,0000166667/GB-segundo e US$0,20/milhão de requests.
+SQS Standard: US$0,40/milhão de unidades de request na primeira faixa paga.
+Secrets Manager: US$0,40/segredo-mês e US$0,05/10000 chamadas.
+Glue Catalog: primeiro milhão de objetos e primeiro milhão de requests gratuitos;
+acima disso US$1/100mil objetos-mês e US$1/1milhão de requests, respectivamente.
+
+FONTES PRIMÁRIAS
+https://aws.amazon.com/glue/pricing/
+https://aws.amazon.com/s3/pricing/
+https://aws.amazon.com/s3/faqs/
+https://aws.amazon.com/cloudwatch/pricing/
+https://aws.amazon.com/lambda/pricing/
+https://aws.amazon.com/sqs/pricing/
+https://aws.amazon.com/secrets-manager/pricing/
+https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html
+https://repost.aws/knowledge-center/sqs-high-charges
+
+ARMAZENAMENTO E REQUISIÇÕES
+O GB do S3 é binário: 2^30 bytes. GB-mês exige ponderação pelo tempo; novos
+snapshots não existiram durante o mês todo. Não usar a quantidade final por um
+mês completo como se fosse medição. PUT/LIST/multipart, GET/HEAD e chamadas
+de verificação podem exceder o número de arquivos Parquet gerados.
+Não pressupor a antiga franquia S3 de5GB/12meses para esta conta criada em2026;
+o plano de créditos deve ser registrado separadamente.
+
+CLOUDWATCH E LAMBDA
+EMF cobra ingestão/armazenamento de logs e as métricas extraídas. As dimensões
+definem identidades distintas. Eventos curtos de batch não justificam cobrar
+todas as métricas por um mês inteiro. GetMetricData tem regras de cobrança
+próprias; evitar consultas amplas repetidas apenas para fabricar medições.
+GB-segundos Lambda devem usar BilledDuration e memória, não a latência do evento
+ou apenas duração do código de negócio. Uma invocação em lote pode processar
+várias mensagens; número de mensagens não equivale a Invocations.
+
+SQS OCIOSO
+Empty receives são requests cobrados. Long polling reduz respostas vazias, mas
+não transforma polling contínuo em uso zero. Verificar NumberOfEmptyReceives,
+requests de envio/recebimento/deleção, lotes e tamanho (blocos64KB). MessageGroupId
+em Standard pode acionar tarifa adicional Fair Queue; confirmar payload/config.
+
+GOOGLE CLOUD / MULTICLOUD
+Referência BigQuery on-demand US/Iowa: US$6,25/TiB, primeira1TiB/mês gratuita.
+Storage Read API: US$1,10/TiB lido acima da franquia300TiB/mês da conta de billing.
+A franquia de leitura não cobre saída de rede. A tabela General Network Usage
+para destinos mundiais exceto Ásia/Austrália informa US$0,12/GiB na primeira
+faixa (até1TiB), US$0,11/GiB de1a10TiB e US$0,08/GiB acima de10TiB.
+
+São referências, não custo GCP apurado. Confirmar região, billing project, API,
+bytes faturáveis e consumo das franquias. O código Bronze revisado utiliza o
+conector nativo Glue BigQuery com sourceType=table e parentProject; não há opção
+query nessa leitura. Não somar automaticamente query SQL e Storage Read como
+se ambos tivessem ocorrido. Bytes Parquet comprimidos do S3 não medem bytes
+de query, bytes lidos nem egress do Google. A consulta/dry-run de SQL também
+não mede por si só egress do caminho de leitura usado pelo conector.
+
+https://cloud.google.com/bigquery/pricing
+https://cloud.google.com/bigquery
+https://docs.cloud.google.com/bigquery/docs/reference/storage
+https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-connect-bigquery-home.html
+
+COMO USAR NA PLANILHA
+Manter quatro conceitos separados: fatura acumulada da conta; quantidades
+medidas do projeto; projeção futura por cadência; créditos e teto deUS$140.
+Uma linha de fatura zero não prova uso zero ou custo zero em produção.
+As franquias permanentes podem ser apresentadas separadamente do preço bruto,
+mas não aplicadas duas vezes nem presumidas livres para todo o projeto.
+Caso não exista medição confiável de uma dimensão, registrar PENDENTE e sua
+fórmula em vez de inventar zero. Não incluir treinamento/modelos ou novas
+consultas no cenário de manutenção se não fazem parte da operação pretendida.

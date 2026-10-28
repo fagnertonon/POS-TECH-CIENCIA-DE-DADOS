@@ -1,0 +1,923 @@
+COMPARACAO TEXTUAL DA ADAPTACAO
+Nao representa historico Git nem transcricao de comandos.
+
+--- 03_camada_gold_original.ipynb (celulas de codigo)
++++ gold_glue.py
+@@ -1,54 +1,291 @@
+-# Celula original 3
++"""FIAP Gold: AWS Glue 5.1 / Spark; no schedules or source mutations.
++
++Only an immutable SUCCEEDED manifest publishes a complete five-table run.
++Versioned Parquet paths remain unavailable to consumers until that commit.
++The original notebook is preserved separately; this file contains its port.
++"""
++import hashlib
++import json
++import math
++import re
++import sys
+ import uuid
+ from datetime import datetime, timezone
+ from functools import reduce
+-
++from time import monotonic, time
++from urllib.parse import urlparse
++
++import boto3
++from pyspark import StorageLevel
+ from pyspark.sql import functions as F
+-from pyspark.sql.types import (BooleanType, DoubleType, StringType,
+-                               StructField, StructType, TimestampType)
+-
+-dbutils.widgets.text("CATALOGO", "tech_challenge_fase2", "Catálogo")
+-dbutils.widgets.text("SILVER_SCHEMA", "silver", "Schema da Silver")
+-dbutils.widgets.text("GOLD_SCHEMA", "gold", "Schema da Gold")
+-dbutils.widgets.text("LIMIAR_JOIN", "0.95", "Limiar mínimo da taxa de correspondência dos joins (0 a 1)")
+-dbutils.widgets.text("TOLERANCIA_PP", "0.1", "Tolerância (pontos percentuais) entre taxa recalculada e oficial")
+-
+-
+-def variavel(nome, padrao=None):
+-    """Lê um parâmetro do notebook. Valor vazio conta como 'não definido'."""
+-    valor = dbutils.widgets.get(nome) or padrao
+-    if valor is None:
+-        raise RuntimeError(f"Parâmetro {nome} não definido. Preencha o widget no topo do notebook.")
+-    return valor
+-
+-
+-CATALOGO = variavel("CATALOGO")
+-SILVER_SCHEMA = variavel("SILVER_SCHEMA")
+-GOLD_SCHEMA = variavel("GOLD_SCHEMA")
+-LIMIAR_JOIN = float(variavel("LIMIAR_JOIN"))
+-TOLERANCIA_PP = float(variavel("TOLERANCIA_PP"))
+-FORMATO_TABELA = "delta"
+-
+-print(f"Origem:  {CATALOGO}.{SILVER_SCHEMA}")
+-print(f"Destino: {CATALOGO}.{GOLD_SCHEMA}")
+-print(f"Limiar de correspondência dos joins: {LIMIAR_JOIN:.0%} | tolerância recalculada x oficial: {TOLERANCIA_PP} p.p.")
+-
+-# Celula original 5
++
++SCRIPT_VERSION = "1.0.1"
++ORIGINAL_NOTEBOOK_SHA256 = "3cfa6fe66a1121e3cc6c98d2f286d6d7c149e6c47fe314c9e1ba73dae8ebcc5e"
++DEFAULTS = {
++    "JOB_NAME": "fiap-gold-inep-batch",
++    "DATABASE_SILVER": "tech_challenge_fase2_silver",
++    "DATABASE_GOLD": "tech_challenge_fase2_gold",
++    "S3_BUCKET": "fiap-tc-fase2-2026",
++    "SILVER_MANIFEST_URI": "",
++    "GOLD_PREFIX": "gold/inep",
++    "AUDIT_PREFIX": "auditoria/gold",
++    "LIMIAR_JOIN": "0.95",
++    "TOLERANCIA_PP": "0.1",
++    "SERIE_BRASIL": "2",
++    "REGISTER_CATALOG": "false",
++    "DEMO_FAILURE": "false",
++}
++NOMES_SILVER = ["alunos", "municipio", "uf", "dicionario",
++                "meta_alfabetizacao_brasil", "meta_alfabetizacao_uf",
++                "meta_alfabetizacao_municipio"]
+ REDE_META_PARA_CODIGO = {"Municipal": "3", "Pública": "5"}
+ COMPOSICAO_REDE = {"5": ["2", "3"], "0": ["1", "2", "3", "4"]}
+-
+ ANOS_META = list(range(2024, 2031))
+ COLUNAS_META = [f"meta_alfabetizacao_{ano}" for ano in ANOS_META]
+-NIVEIS = [f"proporcao_aluno_nivel_{n}" for n in range(0, 9)]
+-
+-# Celula original 7
+-def tabela_silver(nome):
+-    return f"`{CATALOGO}`.`{SILVER_SCHEMA}`.`{nome}`"
+-
+-
+-def tabela_gold(nome):
+-    return f"`{CATALOGO}`.`{GOLD_SCHEMA}`.`{nome}`"
+-
++NIVEIS = [f"proporcao_aluno_nivel_{n}" for n in range(9)]
++NUMERIC = {"tinyint", "smallint", "int", "integer", "bigint", "long", "float", "double"}
++
++
++def required_columns():
++    comum = {"ano": "numeric", "rede": "string", "serie": "string"}
++    resultado = dict(comum, rede_descricao="string", taxa_alfabetizacao="numeric")
++    metas = {"ano": "numeric", "rede_descricao": "string", "taxa_alfabetizacao": "numeric"}
++    metas.update({c: "numeric" for c in COLUNAS_META})
++    municipio = dict(resultado, id_municipio="string", serie_descricao="string", media_portugues="numeric")
++    municipio.update({c: "numeric" for c in NIVEIS})
++    return {
++        "alunos": dict(comum, id_municipio="string", peso_aluno="numeric",
++                       avaliado="boolean", alfabetizado_avaliado="boolean"),
++        "municipio": municipio,
++        "uf": dict(resultado, sigla_uf="string"),
++        "dicionario": {c: "string" for c in ("id_tabela", "nome_coluna", "chave", "valor")},
++        "meta_alfabetizacao_brasil": metas,
++        "meta_alfabetizacao_uf": dict(metas, sigla_uf="string"),
++        "meta_alfabetizacao_municipio": dict(metas, id_municipio="string"),
++    }
++
++
++def utcnow():
++    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
++
++
++def params(overrides=None):
++    result = dict(DEFAULTS)
++    for i, item in enumerate(sys.argv[1:], 1):
++        if item.startswith("--") and "=" in item:
++            name, value = item[2:].split("=", 1)
++            result[name] = value
++        elif item.startswith("--") and i + 1 < len(sys.argv):
++            result[item[2:]] = sys.argv[i + 1]
++    result.update(overrides or {})
++    result["JOB_RUN_ID"] = result.get("JOB_RUN_ID") or "interactive_" + str(uuid.uuid4())
++    for name in ("DATABASE_SILVER", "DATABASE_GOLD"):
++        if not re.fullmatch(r"[a-z][a-z0-9_]{0,251}", result[name]):
++            raise ValueError(f"Invalid {name}: use a Glue database identifier")
++    if result["DATABASE_SILVER"] == result["DATABASE_GOLD"]:
++        raise ValueError("Silver and Gold databases must differ")
++    if not re.fullmatch(r"[A-Za-z0-9_-]{1,200}", result["JOB_RUN_ID"]):
++        raise ValueError("Invalid JOB_RUN_ID")
++    if result["SERIE_BRASIL"] != "2":
++        raise ValueError("Official CNCA Brazil comparison requires series 2 (second year of elementary school)")
++    for name, root in (("GOLD_PREFIX", "gold/"), ("AUDIT_PREFIX", "auditoria/gold")):
++        result[name] = result[name].strip("/")
++        if not result[name].startswith(root) or ".." in result[name].split("/"):
++            raise ValueError(f"{name} must stay under {root}")
++    for name in ("REGISTER_CATALOG", "DEMO_FAILURE"):
++        if str(result[name]).lower() not in ("true", "false"):
++            raise ValueError(f"{name} must be true or false")
++        result[name] = str(result[name]).lower() == "true"
++    result["LIMIAR_JOIN"] = float(result["LIMIAR_JOIN"])
++    result["TOLERANCIA_PP"] = float(result["TOLERANCIA_PP"])
++    if not (math.isfinite(result["LIMIAR_JOIN"]) and 0 <= result["LIMIAR_JOIN"] <= 1):
++        raise ValueError("LIMIAR_JOIN must be finite and in [0,1]")
++    if not (math.isfinite(result["TOLERANCIA_PP"]) and result["TOLERANCIA_PP"] >= 0):
++        raise ValueError("TOLERANCIA_PP must be finite and nonnegative")
++    return result
++
++
++def type_matches(actual, expected):
++    actual = actual.lower()
++    return (actual in NUMERIC or actual.startswith("decimal(")) if expected == "numeric" else actual == expected
++
++
++def inspect_silver(glue, cfg):
++    """Read one committed Silver manifest; never use all-history table roots.
++
++    Glue is retained as an argument for interface stability, but this function
++    needs no Glue catalog entries. Silver is selected explicitly by manifest.
++    """
++    source_uri = cfg.get("SILVER_MANIFEST_URI", "")
++    uri = urlparse(source_uri)
++    if uri.scheme != "s3" or not uri.netloc or not uri.path.endswith("/manifest.json"):
++        raise RuntimeError("BLOCKED_MISSING_SILVER: supply SILVER_MANIFEST_URI of a successful complete Silver run")
++    content = boto3.client("s3").get_object(Bucket=uri.netloc, Key=uri.path.lstrip("/"))["Body"].read()
++    manifest = json.loads(content)
++    if (manifest.get("status") != "SUCCEEDED" or manifest.get("layer") != "silver"
++            or manifest.get("is_full_batch") is not True):
++        raise RuntimeError("Silver manifest must be SUCCEEDED, layer=silver, is_full_batch=true")
++    items = manifest.get("tables", [])
++    if len(items) != len(NOMES_SILVER) or {item.get("table") for item in items} != set(NOMES_SILVER):
++        raise RuntimeError("Silver manifest must contain exactly the seven distinct required tables")
++    by_name = {item["table"]: item for item in items}
++    errors, result = [], {}
++    for name, required in required_columns().items():
++        item = by_name[name]
++        if item.get("status") != "SUCCEEDED" or item.get("counts_match") is not True or item.get("target_count", 0) <= 0:
++            errors.append(f"{name}: Silver table must be successful, nonempty and count-validated")
++        columns = item.get("schema", {}).get("fields", [])
++        actual = {c["name"]: c["type"] for c in columns if isinstance(c.get("type"), str)}
++        for column, expected in required.items():
++            if column not in actual:
++                errors.append(f"{name}: missing {column}")
++            elif not type_matches(actual[column], expected):
++                errors.append(f"{name}.{column}: expected {expected}, found {actual[column]}")
++        location = item.get("target_uri", "")
++        uri = urlparse(location)
++        run = re.search(r"(?:^|/)run_id=([A-Za-z0-9_-]+)(?:/|$)", uri.path)
++        if uri.scheme != "s3" or not uri.netloc or not run:
++            errors.append(f"{name}: Silver location must be an S3 path of one run_id")
++        if run and run.group(1) != manifest.get("run_id"):
++            errors.append(f"{name}: location run_id differs from committed Silver manifest")
++        if not uri.path.lstrip("/").startswith("silver/"):
++            errors.append(f"{name}: source location must stay in the Silver layer")
++        if item.get("format", "parquet") != "parquet":
++            errors.append(f"{name}: this port expects Parquet Silver")
++        result[name] = {
++            "database": cfg["DATABASE_SILVER"], "table": name,
++            "version_id": manifest.get("run_id"), "location": location,
++            "silver_run_id": run.group(1) if run else None,
++            "columns": actual, "expected_count": item.get("target_count"),
++            "silver_manifest_uri": source_uri,
++            "silver_manifest_sha256": hashlib.sha256(content).hexdigest(),
++        }
++    runs = {item["silver_run_id"] for item in result.values()}
++    if len(runs) > 1:
++        errors.append("Silver tables point to different run_id values")
++    if errors:
++        raise RuntimeError("Silver preflight failed; no Gold data was read or written: " + "; ".join(errors))
++    return result
++
++
++def put_json(key, value):
++    body = json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False).encode("utf-8")
++    S3.put_object(Bucket=CFG["S3_BUCKET"], Key=key, Body=body,
++                  ContentType="application/json", IfNoneMatch="*")
++    return {"s3_uri": f"s3://{CFG['S3_BUCKET']}/{key}", "sha256": hashlib.sha256(body).hexdigest(), "bytes": len(body)}
++
++
++def registrar_qualidade(entidade, resultados):
++    if entidade in QUALITY:
++        raise RuntimeError("Quality entity already recorded: " + entidade)
++    QUALITY[entidade] = resultados
++    put_json(f"{AUDIT_RUN}/quality/{entidade}.json", {
++        "run_id": ID_EXECUCAO, "recorded_at_utc": utcnow(),
++        "entity": entidade, "results": resultados,
++    })
++    for r in resultados:
++        print(json.dumps({"entity": entidade, **r}, ensure_ascii=False))
++
++
++def audit_join(left, right, keys, how, name, blocking=True, eligible=None, universe_description=None):
++    if eligible is not None:
++        full_ratio, full_matched, full_total = taxa_correspondencia(left, right, keys)
++        full = regra("cobertura_total:" + name, "informativa", full_ratio, None, True,
++                     f"{full_matched} of {full_total}; all left rows including intentionally ineligible cohorts")
++        if full_total == 0:
++            full.update(valor_medido=None, passou=None, aplicavel=False, detalhe="N/A: no left rows")
++        JOIN_METRICS.append(full)
++    ratio, matched, total = taxa_correspondencia(eligible if eligible is not None else left, right, keys)
++    metric = regra(
++        "taxa_correspondencia:" + name, "bloqueante" if blocking else "informativa",
++        ratio, LIMIAR_JOIN if blocking else None, ratio >= LIMIAR_JOIN if blocking else True,
++        f"{matched} of {total}; join={how}; keys={keys}; measured before join; "
++        + (universe_description or "Universe: all left rows"),
++    )
++    if total == 0:
++        metric.update(tipo="informativa", valor_medido=None, limite=None, passou=None, aplicavel=False,
++                      detalhe="N/A: eligible universe empty; no match-rate pass is asserted; "
++                              + (universe_description or "Universe: all left rows"))
++    else:
++        metric["aplicavel"] = True
++    JOIN_METRICS.append(metric)
++    exigir("join:" + name, [metric])
++    return left.join(right, keys, how)
++
++
++def emit_outcome(failed, duration_seconds):
++    """CloudWatch EMF via stdout only; logging must not mask a job exception."""
++    try:
++        print(json.dumps({
++            "_aws": {"Timestamp": int(time() * 1000), "CloudWatchMetrics": [{
++                "Namespace": "FIAP/Medallion", "Dimensions": [["Layer", "JobName"]],
++                "Metrics": [{"Name": "Failed", "Unit": "Count"}],
++            }]},
++            "Layer": "gold", "JobName": CFG["JOB_NAME"], "Failed": 1 if failed else 0,
++            "Status": "FAILED" if failed else "SUCCEEDED", "RunId": ID_EXECUCAO,
++            "DurationSeconds": round(duration_seconds, 3),
++        }, ensure_ascii=False))
++        return True
++    except Exception:
++        return False
++
++
++def invalid_number(col):
++    value = F.col(col).cast("double")
++    return F.isnan(value) | (F.abs(value) == F.lit(float("inf")))
++
++
++def regras_entrada(silver):
++    res = []
++    unique_keys = {
++        "municipio": ["ano", "id_municipio", "serie", "rede"],
++        "uf": ["ano", "sigla_uf", "serie", "rede"],
++        "meta_alfabetizacao_brasil": ["ano", "rede_descricao"],
++        "meta_alfabetizacao_uf": ["ano", "sigla_uf", "rede_descricao"],
++        "meta_alfabetizacao_municipio": ["ano", "id_municipio", "rede_descricao"],
++    }
++    for name, keys in unique_keys.items():
++        df = silver[name]
++        total = df.count()
++        nulls = df.where(reduce(lambda a, b: a | b, [F.col(c).isNull() for c in keys])).count()
++        duplicated = total - df.select(*keys).distinct().count()
++        res.extend([
++            regra("chaves_nulas:" + name, "bloqueante", nulls, 0, nulls == 0, str(keys)),
++            regra("chaves_duplicadas:" + name, "bloqueante", duplicated, 0, duplicated == 0, str(keys)),
++        ])
++    for name, columns in required_columns().items():
++        numeric_columns = [column for column, kind in columns.items() if kind == "numeric"]
++        if numeric_columns:
++            invalid = silver[name].where(reduce(lambda a, b: a | b, [invalid_number(c) for c in numeric_columns])).count()
++            res.append(regra("numericos_finitos:" + name, "bloqueante", invalid, 0, invalid == 0,
++                             "All present numeric input values must be finite; nulls are preserved"))
++    alunos = silver["alunos"]
++    evaluated = alunos.where(F.col("avaliado"))
++    bad = evaluated.where(
++        F.col("alfabetizado_avaliado").isNull() | F.col("peso_aluno").isNull()
++        | invalid_number("peso_aluno") | (F.col("peso_aluno") <= 0)
++        | reduce(lambda a, b: a | b, [F.col(c).isNull() for c in ("ano", "id_municipio", "serie", "rede")])
++    ).count()
++    res.append(regra("avaliados_denominador_valido", "bloqueante", bad, 0, bad == 0,
++                     "Every evaluated pupil needs known alphabetization, finite positive weight and keys; no silent drop"))
++    unknown_network = evaluated.where(~F.col("rede").isin("1", "2", "3", "4")).count()
++    res.append(regra("microdados_rede_elementar", "bloqueante", unknown_network, 0, unknown_network == 0,
++                     "Aggregate networks 5/0 must be built once from elementary networks"))
++    # Official Brazil lacks a series dimension: comparison is meaningful only
++    # if evaluated public pupils have one exact series for each year.
++    ambiguous_series = (evaluated.where(F.col("rede").isin("2", "3"))
++                        .groupBy("ano").agg(F.countDistinct("serie").alias("n"))
++                        .where(F.col("n") != 1).count())
++    res.append(regra("brasil_serie_unica_por_ano", "bloqueante", ambiguous_series, 0, ambiguous_series == 0,
++                     "Official Brazil has no series key; multiple series require an explicit business decision"))
++    incompatible_series = evaluated.where(F.col("rede").isin("2", "3") & (F.col("serie") != CFG["SERIE_BRASIL"])).count()
++    res.append(regra("brasil_serie_compativel_cnca", "bloqueante", incompatible_series, 0, incompatible_series == 0,
++                     "CNCA is end of second year of elementary school; source dictionary maps this cohort to series code 2"))
++    for name, network in (("municipio", "3"), ("uf", "5")):
++        excluded = silver[name].where((F.col("rede") == network) & (F.col("serie") != CFG["SERIE_BRASIL"])).count()
++        res.append(regra("resultado_meta_outras_series_excluidas:" + name, "informativa", excluded, None, True,
++                         "Only second-year records enter result-vs-meta; other cohorts remain in their source/indicator tables"))
++    return res
+ 
+ def codigo_rede_meta(coluna="rede_descricao"):
+     """Traduz o texto de rede das tabelas de meta para o código de rede. Texto fora do mapa fica nulo (e a regra bloqueante acusa)."""
+@@ -57,7 +294,6 @@
+         expr = F.when(F.col(coluna) == texto, F.lit(codigo)).otherwise(expr)
+     return expr
+ 
+-
+ def meta_do_ano(coluna_ano="ano", deslocamento=0):
+     """Escolhe a coluna meta_alfabetizacao_<ano + deslocamento>. Ano sem coluna de meta (ex.: 2023) fica nulo."""
+     return F.coalesce(*[
+@@ -65,21 +301,22 @@
+         for a in ANOS_META
+     ])
+ 
+-
+ def aplicar_meta(df, coluna_taxa="taxa_alfabetizacao"):
+-    """Compara a taxa com a meta do mesmo ano, com TRÊS estados (ausência de meta não é fracasso)."""
++    """Compara a taxa com a meta do mesmo ano, com ausência de meta e resultado explícitas."""
+     return (
+         df.withColumn("meta_alfabetizacao_ano", meta_do_ano())
+         .withColumn(
+             "status_meta",
+-            F.when(F.col("meta_alfabetizacao_ano").isNull() | F.col(coluna_taxa).isNull(), "sem_meta")
++            F.when(F.col("meta_alfabetizacao_ano").isNull(), "sem_meta")
++            .when(F.col(coluna_taxa).isNull(), "sem_resultado")
+             .when(F.col(coluna_taxa) >= F.col("meta_alfabetizacao_ano"), "atingiu")
+             .otherwise("nao_atingiu"),
+         )
++        .withColumn("meta_disponivel", F.col("meta_alfabetizacao_ano").isNotNull())
++        .withColumn("resultado_disponivel", F.col(coluna_taxa).isNotNull())
+         .withColumn("distancia_ate_meta_pp", F.round(F.col(coluna_taxa) - F.col("meta_alfabetizacao_ano"), 4))
+         .withColumn("distancia_ate_meta_2030_pp", F.round(F.col(coluna_taxa) - F.col("meta_alfabetizacao_2030"), 4))
+     )
+-
+ 
+ def taxa_calculada_microdados(alunos, por=("id_municipio",)):
+     """Taxa de alfabetização (%) recalculada dos microdados: ponderada pelo peso amostral, só alunos avaliados."""
+@@ -99,7 +336,6 @@
+         .alias("taxa_alfabetizacao_calculada"),
+     )
+ 
+-# Celula original 9
+ def construir_indicador_municipio(municipio, alunos):
+     """Município × ano × série × rede: taxa oficial (Silver `municipio`) + taxa recalculada dos microdados (`alunos`)."""
+     calculada = taxa_calculada_microdados(alunos)
+@@ -109,7 +345,7 @@
+         F.col("media_portugues").alias("media_portugues_oficial"),
+         *NIVEIS,
+     )
+-    df = oficial.join(calculada, ["ano", "id_municipio", "serie", "rede"], "left")
++    df = audit_join(oficial, calculada, ["ano", "id_municipio", "serie", "rede"], "left", "indicador_municipio")
+     df = (
+         df.withColumn("diferenca_pp", F.round(F.col("taxa_alfabetizacao_calculada") - F.col("taxa_alfabetizacao_oficial"), 4))
+         .withColumn("dentro_tolerancia",
+@@ -122,7 +358,6 @@
+         "alunos_avaliados", "soma_peso_avaliados", "media_portugues_oficial", *NIVEIS,
+     )
+ 
+-
+ def construir_resultado_vs_meta(municipio, uf, meta_brasil, meta_uf, meta_municipio):
+     """Resultado × meta nos três níveis, sempre no mesmo recorte de rede (municipal = rede 3; UF e Brasil = rede 5)."""
+     colunas = ["nivel", "ano", "id_municipio", "sigla_uf", "serie", "rede", "rede_descricao",
+@@ -131,16 +366,14 @@
+ 
+     mm = meta_municipio.withColumn("rede", codigo_rede_meta()).select("ano", "id_municipio", "rede", *COLUNAS_META)
+     nivel_municipio = (
+-        municipio.where(F.col("rede") == "3")
+-        .join(mm, ["ano", "id_municipio", "rede"], "left")
++        audit_join(municipio.where((F.col("rede") == "3") & (F.col("serie") == CFG["SERIE_BRASIL"])), mm, ["ano", "id_municipio", "rede"], "left", "resultado_municipio_meta")
+         .select(F.lit("municipio").alias("nivel"), "ano", "id_municipio", nulo.alias("sigla_uf"),
+                 "serie", "rede", "rede_descricao", "taxa_alfabetizacao", *COLUNAS_META)
+     )
+ 
+     mf = meta_uf.withColumn("rede", codigo_rede_meta()).select("ano", "sigla_uf", "rede", *COLUNAS_META)
+     nivel_uf = (
+-        uf.where(F.col("rede") == "5")
+-        .join(mf, ["ano", "sigla_uf", "rede"], "left")
++        audit_join(uf.where((F.col("rede") == "5") & (F.col("serie") == CFG["SERIE_BRASIL"])), mf, ["ano", "sigla_uf", "rede"], "left", "resultado_uf_meta")
+         .select(F.lit("uf").alias("nivel"), "ano", nulo.alias("id_municipio"), "sigla_uf",
+                 "serie", "rede", "rede_descricao", "taxa_alfabetizacao", *COLUNAS_META)
+     )
+@@ -155,21 +388,20 @@
+                    [d.select(*colunas) for d in (nivel_municipio, nivel_uf, nivel_brasil)])
+     return aplicar_meta(uniao)
+ 
+-
+ def construir_evolucao_temporal(resultado_vs_meta):
+     """Série por UF e Brasil, com variação em p.p. em relação ao ano anterior. Sem projeção (poucos pontos)."""
+     from pyspark.sql import Window
+     base = resultado_vs_meta.where(F.col("nivel").isin("uf", "brasil"))
+-    janela = Window.partitionBy("nivel", "sigla_uf").orderBy("ano")
++    janela = Window.partitionBy("nivel", "sigla_uf", "serie", "rede").orderBy("ano")
+     return (
+         base.withColumn("taxa_ano_anterior", F.lag("taxa_alfabetizacao").over(janela))
+-        .withColumn("variacao_pp_ano_anterior", F.round(F.col("taxa_alfabetizacao") - F.col("taxa_ano_anterior"), 4))
+-        .withColumn("pontos_na_serie", F.count("ano").over(Window.partitionBy("nivel", "sigla_uf")))
+-        .select("nivel", "sigla_uf", "ano", "rede", "rede_descricao", "taxa_alfabetizacao",
++        .withColumn("ano_anterior", F.lag("ano").over(janela))
++        .withColumn("variacao_pp_ano_anterior", F.when(F.col("ano") - F.col("ano_anterior") == 1, F.round(F.col("taxa_alfabetizacao") - F.col("taxa_ano_anterior"), 4)))
++        .withColumn("pontos_na_serie", F.count("ano").over(Window.partitionBy("nivel", "sigla_uf", "serie", "rede")))
++        .select("nivel", "sigla_uf", "ano", "serie", "rede", "rede_descricao", "taxa_alfabetizacao",
+                 "meta_alfabetizacao_ano", "status_meta", "distancia_ate_meta_pp",
+                 "variacao_pp_ano_anterior", "pontos_na_serie")
+     )
+-
+ 
+ def construir_validacao_cruzada_brasil(alunos, meta_brasil):
+     """Brasil (rede pública): taxa recalculada dos microdados × taxa publicada em `meta_alfabetizacao_brasil`."""
+@@ -177,15 +409,14 @@
+     oficial = meta_brasil.withColumn("rede", codigo_rede_meta()).select(
+         "ano", "rede", F.col("taxa_alfabetizacao").alias("taxa_oficial_publicada"))
+     return (
+-        calculada.join(oficial, ["ano", "rede"], "left")
++        audit_join(calculada, oficial, ["ano", "rede"], "left", "validacao_brasil_oficial")
+         .withColumn("diferenca_pp", F.round(F.col("taxa_alfabetizacao_calculada") - F.col("taxa_oficial_publicada"), 4))
+         .withColumn("dentro_tolerancia",
+                     F.when(F.col("diferenca_pp").isNull(), F.lit(None).cast("boolean"))
+                     .otherwise(F.abs(F.col("diferenca_pp")) <= TOLERANCIA_PP))
+-        .select("ano", "rede", "alunos_avaliados", "taxa_alfabetizacao_calculada",
++        .select("ano", "serie", "rede", "alunos_avaliados", "taxa_alfabetizacao_calculada",
+                 "taxa_oficial_publicada", "diferenca_pp", "dentro_tolerancia")
+     )
+-
+ 
+ def construir_features(indicador, meta_municipio):
+     """Features em t (ano_features) e alvo em t+1 (ano_alvo). Só entram dados conhecidos até t.
+@@ -214,30 +445,20 @@
+                 meta_do_ano("ano", deslocamento=1).alias("meta_ano_alvo"))
+     )
+     chaves = ["ano_features", "id_municipio", "serie", "rede"]
+-    return atual.join(alvo, chaves, "inner").join(meta_alvo, ["ano_features", "id_municipio", "rede"], "left")
+-
+-# Celula original 11
+-SCHEMA_QUALIDADE = StructType([
+-    StructField("id_execucao", StringType()), StructField("data_execucao", TimestampType()),
+-    StructField("entidade", StringType()), StructField("regra", StringType()),
+-    StructField("tipo", StringType()), StructField("valor_medido", DoubleType()),
+-    StructField("limite", DoubleType()), StructField("passou", BooleanType()),
+-    StructField("detalhe", StringType()),
+-])
+-
++    max_year = indicador.agg(F.max("ano").alias("max_year")).first()["max_year"]
++    eligible = atual.where(F.col("ano_features") < F.lit(max_year))
++    paired = audit_join(atual, alvo, chaves, "inner", "features_t_para_t_mais_1", eligible=eligible)
++    # Eligible coverage is defined by network and available years, never by
++    # matching municipality IDs (missing geographic matches must still fail).
++    available_years = [r["ano_features"] for r in meta_alvo.select("ano_features").distinct().collect()]
++    meta_eligible = paired.where((F.col("rede") == "3") & F.col("ano_features").isin(available_years))
++    return audit_join(paired, meta_alvo, ["ano_features", "id_municipio", "rede"],
++                      "left", "features_meta_contextual", eligible=meta_eligible,
++                      universe_description="Network 3 and feature year present in municipal meta; no geography-based eligibility filter")
+ 
+ def regra(nome, tipo, medido, limite, passou, detalhe):
+     return dict(regra=nome, tipo=tipo, valor_medido=float(medido),
+                 limite=None if limite is None else float(limite), passou=bool(passou), detalhe=detalhe)
+-
+-
+-def registrar_qualidade(entidade, resultados):
+-    """Grava as regras numa tabela Delta, que sobrevive ao fim da execução."""
+-    linhas = [(ID_EXECUCAO, DATA_EXECUCAO, entidade, r["regra"], r["tipo"], r["valor_medido"],
+-               r["limite"], r["passou"], r["detalhe"]) for r in resultados]
+-    (spark.createDataFrame(linhas, schema=SCHEMA_QUALIDADE).write.format(FORMATO_TABELA).mode("append")
+-     .saveAsTable(tabela_gold("_quality_results")))
+-
+ 
+ def exigir(entidade, resultados):
+     """Levanta erro se alguma regra BLOQUEANTE reprovou. Não há try/except: a falha interrompe a execução."""
+@@ -245,20 +466,6 @@
+     if falhas:
+         resumo = "; ".join(f"{r['regra']}={r['valor_medido']:.4g}" for r in falhas)
+         raise RuntimeError(f"[{entidade}] regras bloqueantes reprovadas: {resumo}")
+-
+-
+-def regras_basicas(df, chaves, colunas_taxa=()):
+-    total = df.count()
+-    unicas = df.select(*chaves).distinct().count()
+-    res = [
+-        regra("linhas_maior_que_zero", "bloqueante", total, 1, total > 0, "linhas na tabela"),
+-        regra("chave_sem_duplicata", "bloqueante", total - unicas, 0, total == unicas, f"chave {list(chaves)}"),
+-    ]
+-    for c in colunas_taxa:
+-        fora = df.where(F.col(c).isNotNull() & ((F.col(c) < 0) | (F.col(c) > 100))).count()
+-        res.append(regra(f"valor_entre_0_e_100:{c}", "bloqueante", fora, 0, fora == 0, "valores fora de [0, 100]"))
+-    return res
+-
+ 
+ def taxa_correspondencia(esquerda, direita, chaves):
+     """Parte das linhas da esquerda que encontram par na direita (join que não casa vira nulo, não erro)."""
+@@ -268,7 +475,6 @@
+     casados = j.where(F.col("_achou").isNotNull()).count()
+     return (casados / total if total else 0.0), casados, total
+ 
+-
+ def regras_dos_joins(silver):
+     """Rodam ANTES de construir/publicar a Gold. Taxas abaixo do limiar são bloqueantes."""
+     res = []
+@@ -284,9 +490,9 @@
+ 
+     joins = [
+         ("municipio -> microdados recalculados", silver["municipio"], calculada, ["ano", "id_municipio", "serie", "rede"]),
+-        ("municipio(rede 3) -> meta_alfabetizacao_municipio", silver["municipio"].where(F.col("rede") == "3"), mm,
++        ("municipio(rede 3) -> meta_alfabetizacao_municipio", silver["municipio"].where((F.col("rede") == "3") & (F.col("serie") == CFG["SERIE_BRASIL"])), mm,
+          ["ano", "id_municipio", "rede"]),
+-        ("uf(rede 5) -> meta_alfabetizacao_uf", silver["uf"].where(F.col("rede") == "5"), mf, ["ano", "sigla_uf", "rede"]),
++        ("uf(rede 5) -> meta_alfabetizacao_uf", silver["uf"].where((F.col("rede") == "5") & (F.col("serie") == CFG["SERIE_BRASIL"])), mf, ["ano", "sigla_uf", "rede"]),
+     ]
+     for nome, esq, dir_, chaves in joins:
+         taxa, casados, total = taxa_correspondencia(esq, dir_, chaves)
+@@ -296,8 +502,8 @@
+     # Informativa: linhas de meta sem resultado correspondente.
+     for nome, meta, resultado, chaves in [
+         ("meta_alfabetizacao_municipio sem municipio(rede 3)", mm,
+-         silver["municipio"].where(F.col("rede") == "3"), ["ano", "id_municipio", "rede"]),
+-        ("meta_alfabetizacao_uf sem uf(rede 5)", mf, silver["uf"].where(F.col("rede") == "5"), ["ano", "sigla_uf", "rede"]),
++         silver["municipio"].where((F.col("rede") == "3") & (F.col("serie") == CFG["SERIE_BRASIL"])), ["ano", "id_municipio", "rede"]),
++        ("meta_alfabetizacao_uf sem uf(rede 5)", mf, silver["uf"].where((F.col("rede") == "5") & (F.col("serie") == CFG["SERIE_BRASIL"])), ["ano", "sigla_uf", "rede"]),
+     ]:
+         taxa, casados, total = taxa_correspondencia(meta, resultado, chaves)
+         res.append(regra(f"meta_sem_resultado:{nome}", "informativa", total - casados, None, True,
+@@ -308,8 +514,18 @@
+         ("meta_municipio x municipio", mm, silver["municipio"], ["ano", "id_municipio", "rede"]),
+         ("meta_uf x uf", mf, silver["uf"], ["ano", "sigla_uf", "rede"]),
+     ]:
+-        j = (meta.select(*chaves, F.col("taxa_alfabetizacao").alias("t_meta"))
+-             .join(resultado.select(*chaves, F.col("taxa_alfabetizacao").alias("t_res")), chaves, "inner")
++        resultado = resultado.where(F.col("serie") == CFG["SERIE_BRASIL"])
++        # Consistency enriches published results with their available reference.
++        # Reference rows lacking a published result remain separately audited
++        # by meta_sem_resultado; they cannot create a missing official result.
++        eligible_pairs = meta.select("ano", "rede").distinct().collect()
++        eligible_condition = reduce(lambda a, b: a | b,
++            [(F.col("ano") == row["ano"]) & (F.col("rede") == row["rede"]) for row in eligible_pairs], F.lit(False))
++        eligible_result = resultado.where(eligible_condition).select(*chaves, F.col("taxa_alfabetizacao").alias("t_res"))
++        j = (audit_join(resultado.select(*chaves, F.col("taxa_alfabetizacao").alias("t_res")),
++                        meta.select(*chaves, F.col("taxa_alfabetizacao").alias("t_meta")),
++                        chaves, "inner", "consistencia_resultado_x_meta:" + nome, eligible=eligible_result,
++                        universe_description="Published official second-year results whose year/network pair exists in meta references; no geography-based eligibility filter")
+              .where(F.col("t_meta").isNotNull() & F.col("t_res").isNotNull()))
+         total = j.count()
+         ok = j.where(F.abs(F.col("t_meta") - F.col("t_res")) <= TOLERANCIA_PP).count()
+@@ -317,15 +533,14 @@
+                          f"{ok} de {total} pares dentro de {TOLERANCIA_PP} p.p."))
+     return res
+ 
+-
+ def regras_extras(nome, df):
+     res = []
+     if nome == "resultado_vs_meta":
+         estados = {r["status_meta"]: r["count"] for r in df.groupBy("status_meta").count().collect()}
+-        invalidos = sum(v for k, v in estados.items() if k not in ("atingiu", "nao_atingiu", "sem_meta"))
+-        res.append(regra("status_meta_so_tres_valores", "bloqueante", invalidos, 0, invalidos == 0,
+-                         "valores fora de atingiu / nao_atingiu / sem_meta"))
+-        for k in ("atingiu", "nao_atingiu", "sem_meta"):
++        invalidos = sum(v for k, v in estados.items() if k not in ("atingiu", "nao_atingiu", "sem_meta", "sem_resultado"))
++        res.append(regra("status_meta_valores_permitidos", "bloqueante", invalidos, 0, invalidos == 0,
++                         "valores fora de atingiu / nao_atingiu / sem_meta / sem_resultado"))
++        for k in ("atingiu", "nao_atingiu", "sem_meta", "sem_resultado"):
+             res.append(regra(f"linhas_status_meta:{k}", "informativa", estados.get(k, 0), None, True,
+                              "sem_meta > 0 prova que o terceiro estado funciona" if k == "sem_meta" else "contagem"))
+     if nome in ("indicador_municipio", "validacao_cruzada_brasil"):
+@@ -343,99 +558,228 @@
+         res.append(regra("linhas_com_meta_do_ano_alvo", "informativa", com_meta, None, True, "meta nula é preservada, não vira zero"))
+     return res
+ 
+-
+-def publicar_gold(nome, df, chaves, colunas_taxa=()):
+-    """Gold -> staging -> regras -> (reprovou: para) -> promove."""
+-    staging, destino = tabela_gold(f"_staging_{nome}"), tabela_gold(nome)
+-    df.write.format(FORMATO_TABELA).mode("overwrite").option("overwriteSchema", "true").saveAsTable(staging)
+-    stg = spark.table(staging)
+-    resultados = regras_basicas(stg, chaves, colunas_taxa) + regras_extras(nome, stg)
+-    linhas = int(resultados[0]["valor_medido"])
+-    resultados.append(regra("linhas_saida", "informativa", linhas, None, True, "linhas publicadas na Gold"))
+-    registrar_qualidade(nome, resultados)
+-    exigir(nome, resultados)
+-    spark.sql(f"CREATE OR REPLACE TABLE {destino} AS SELECT * FROM {staging}")
+-    spark.sql(f"DROP TABLE {staging}")
+-    return linhas
+-
+-# Celula original 13
+-spark.sql(f"CREATE SCHEMA IF NOT EXISTS `{CATALOGO}`.`{GOLD_SCHEMA}`")
+-
+-ID_EXECUCAO = str(uuid.uuid4())
+-DATA_EXECUCAO = datetime.now(timezone.utc)
+-print(f"Execução {ID_EXECUCAO} iniciada em {DATA_EXECUCAO.isoformat()}")
+-
+-NOMES_SILVER = ["alunos", "municipio", "uf", "dicionario", "meta_alfabetizacao_brasil",
+-                "meta_alfabetizacao_uf", "meta_alfabetizacao_municipio"]
+-silver = {nome: spark.table(tabela_silver(nome)) for nome in NOMES_SILVER}
+-
+-# 1) Regras dos joins: bloqueantes, ANTES de construir qualquer Gold.
+-resultados_joins = regras_dos_joins(silver)
+-registrar_qualidade("joins", resultados_joins)
+-for r in resultados_joins:
+-    print(f"{'OK ' if r['passou'] else 'FALHA'} [{r['tipo']}] {r['regra']}: {r['valor_medido']:.4g}  ({r['detalhe']})")
+-exigir("joins", resultados_joins)
+-
+-# 2) Constrói e publica cada tabela (a próxima só roda se a anterior passou nas regras bloqueantes).
+-indicador = construir_indicador_municipio(silver["municipio"], silver["alunos"])
+-n = publicar_gold("indicador_municipio", indicador, ["ano", "id_municipio", "serie", "rede"],
+-                  ["taxa_alfabetizacao_oficial", "taxa_alfabetizacao_calculada"])
+-print(f"indicador_municipio: {n} linhas")
+-
+-resultado = construir_resultado_vs_meta(silver["municipio"], silver["uf"], silver["meta_alfabetizacao_brasil"],
+-                                        silver["meta_alfabetizacao_uf"], silver["meta_alfabetizacao_municipio"])
+-n = publicar_gold("resultado_vs_meta", resultado, ["nivel", "ano", "id_municipio", "sigla_uf", "serie", "rede"],
+-                  ["taxa_alfabetizacao", "meta_alfabetizacao_ano"])
+-print(f"resultado_vs_meta: {n} linhas")
+-
+-evolucao = construir_evolucao_temporal(spark.table(tabela_gold("resultado_vs_meta")))
+-n = publicar_gold("evolucao_temporal", evolucao, ["nivel", "sigla_uf", "ano"], ["taxa_alfabetizacao"])
+-print(f"evolucao_temporal: {n} linhas")
+-
+-validacao = construir_validacao_cruzada_brasil(silver["alunos"], silver["meta_alfabetizacao_brasil"])
+-n = publicar_gold("validacao_cruzada_brasil", validacao, ["ano", "rede"],
+-                  ["taxa_alfabetizacao_calculada", "taxa_oficial_publicada"])
+-print(f"validacao_cruzada_brasil: {n} linhas")
+-
+-features = construir_features(spark.table(tabela_gold("indicador_municipio")), silver["meta_alfabetizacao_municipio"])
+-n = publicar_gold("features_alfabetizacao", features, ["ano_features", "id_municipio", "serie", "rede"],
+-                  ["taxa_t", "alvo_taxa_alfabetizacao"])
+-print(f"features_alfabetizacao: {n} linhas")
+-
+-# Celula original 15
+-print("Regras desta execução:")
+-display(spark.table(tabela_gold("_quality_results")).where(F.col("id_execucao") == ID_EXECUCAO)
+-        .select("entidade", "regra", "tipo", "valor_medido", "limite", "passou", "detalhe")
+-        .orderBy("entidade", "tipo", "regra"))
+-
+-print("resultado_vs_meta: contagem por nível e status (sem_meta deve ser > 0):")
+-display(spark.table(tabela_gold("resultado_vs_meta")).groupBy("nivel", "ano", "status_meta").count()
+-        .orderBy("nivel", "ano", "status_meta"))
+-
+-print("Validação cruzada (Brasil, rede pública): taxa recalculada dos microdados x taxa publicada")
+-display(spark.table(tabela_gold("validacao_cruzada_brasil")).orderBy("ano"))
+-
+-print("evolucao_temporal (Brasil):")
+-display(spark.table(tabela_gold("evolucao_temporal")).where(F.col("nivel") == "brasil").orderBy("ano"))
+-
+-# Celula original 17
+-corrompida = spark.table(tabela_gold("resultado_vs_meta")).limit(100).withColumn(
+-    "taxa_alfabetizacao", F.lit(150.0))  # dado ruim proposital: taxa acima de 100%
+-
+-resultados_demo = regras_basicas(
+-    corrompida, ["nivel", "ano", "id_municipio", "sigla_uf", "serie", "rede"], ["taxa_alfabetizacao"])
+-registrar_qualidade("demo_falha", resultados_demo)
+-
+-try:
+-    exigir("demo_falha", resultados_demo)
+-    raise AssertionError("A demonstração deveria ter falhado e não falhou.")
+-except RuntimeError as erro:
+-    print("FALHA ESPERADA (prova de que regra bloqueante interrompe):")
+-    print(erro)
+-
+-# Celula original 19
+-spark.sql(f"CREATE VOLUME IF NOT EXISTS `{CATALOGO}`.`{GOLD_SCHEMA}`.`exportacoes`")
+-CAMINHO_EXPORTACAO = f"/Volumes/{CATALOGO}/{GOLD_SCHEMA}/exportacoes/features_alfabetizacao"
+-(spark.table(tabela_gold("features_alfabetizacao")).write.mode("overwrite").parquet(CAMINHO_EXPORTACAO))
+-print(f"Parquet exportado em {CAMINHO_EXPORTACAO}")
+-print(f"Linhas lidas de volta: {spark.read.parquet(CAMINHO_EXPORTACAO).count()}")
++def regras_basicas(df, chaves, colunas_taxa=(), nullable_keys=()):
++    total = df.count()
++    unique = df.select(*chaves).distinct().count()
++    not_nullable = [c for c in chaves if c not in nullable_keys]
++    null_count = df.where(reduce(lambda a, b: a | b, [F.col(c).isNull() for c in not_nullable])).count()
++    results = [
++        regra("linhas_maior_que_zero", "bloqueante", total, 1, total > 0, "Rows in staged table"),
++        regra("chave_sem_duplicata", "bloqueante", total - unique, 0, total == unique, str(chaves)),
++        regra("chaves_obrigatorias_sem_nulo", "bloqueante", null_count, 0, null_count == 0, str(not_nullable)),
++    ]
++    for column in colunas_taxa:
++        bad = df.where(F.col(column).isNotNull() &
++                       (invalid_number(column) | (F.col(column) < 0) | (F.col(column) > 100))).count()
++        results.append(regra("valor_finito_entre_0_e_100:" + column, "bloqueante", bad, 0, bad == 0,
++                             "Null remains null; NaN/infinity/out-of-range block publication"))
++    return results
++
++
++def validate_level_keys(df):
++    bad = ~F.col("nivel").isin("municipio", "uf", "brasil")
++    if "id_municipio" in df.columns:
++        bad = bad | ((F.col("nivel") == "municipio") & (F.col("id_municipio").isNull() | F.col("serie").isNull()))
++    else:
++        bad = bad | (F.col("nivel") == "municipio")
++    bad = bad | ((F.col("nivel") == "uf") & (F.col("sigla_uf").isNull() | F.col("serie").isNull()))
++    invalid = df.where(bad).count()
++    return regra("chaves_por_nivel", "bloqueante", invalid, 0, invalid == 0,
++                 "Municipality needs municipality/series; UF needs UF/series; Brazil has neither geography key")
++
++
++def stage_gold(name, df, keys, rate_columns=(), nullable_keys=()):
++    """Write immutable data, reread it, validate it; no latest alias changes."""
++    prefix = f"{CFG['GOLD_PREFIX']}/{name}/ingestion_date={INGESTION_DATE}/run_id={ID_EXECUCAO}/"
++    uri = f"s3://{CFG['S3_BUCKET']}/{prefix}"
++    started, timer = utcnow(), monotonic()
++    df = df.persist(StorageLevel.MEMORY_AND_DISK)
++    try:
++        source_count = df.count()
++        if source_count <= 0:
++            results = [regra("linhas_maior_que_zero", "bloqueante", source_count, 1, False, "No output written")]
++            registrar_qualidade(name, results)
++            exigir(name, results)
++        (df.write.mode("errorifexists").option("compression", "snappy").parquet(uri))
++        reread = spark.read.parquet(uri).persist(StorageLevel.MEMORY_AND_DISK)
++        try:
++            results = regras_basicas(reread, keys, rate_columns, nullable_keys) + regras_extras(name, reread)
++            output_count = int(results[0]["valor_medido"])
++            results.append(regra("contagem_gravada_confere", "bloqueante", output_count, source_count,
++                                 output_count == source_count, f"built={source_count}, S3={output_count}"))
++            if name in ("resultado_vs_meta", "evolucao_temporal"):
++                results.append(validate_level_keys(reread))
++            registrar_qualidade(name, results)
++            metric = {"table": name, "s3_uri": uri, "source_count": source_count,
++                      "s3_count": output_count, "schema": json.loads(reread.schema.json()),
++                      "keys": keys, "status": "STAGED", "started_at_utc": started,
++                      "finished_at_utc": utcnow(), "duration_seconds": round(monotonic() - timer, 3)}
++            TABLE_METRICS.append(metric)
++            exigir(name, results)
++            return reread
++        except Exception:
++            reread.unpersist()
++            raise
++    finally:
++        df.unpersist()
++
++
++def register_versioned_tables(glue):
++    """Optional metadata only. Catalog writes are not atomic across tables.
++
++    Never update a stable latest table. A consumer must first check this run's
++    SUCCEEDED manifest, which is written only after every registration succeeds.
++    """
++    if not CFG["REGISTER_CATALOG"]:
++        return
++    try:
++        glue.get_database(Name=CFG["DATABASE_GOLD"])
++    except glue.exceptions.EntityNotFoundException:
++        glue.create_database(DatabaseInput={"Name": CFG["DATABASE_GOLD"],
++                                           "Description": "FIAP Gold; consume only SUCCEEDED manifest runs"})
++    suffix = hashlib.sha256(ID_EXECUCAO.encode()).hexdigest()[:16]
++    for metric in TABLE_METRICS:
++        name = metric["table"] + "_r_" + suffix
++        frame = spark.read.parquet(metric["s3_uri"])
++        columns = [{"Name": field.name, "Type": field.dataType.simpleString()} for field in frame.schema.fields]
++        definition = {
++            "Name": name, "TableType": "EXTERNAL_TABLE",
++            "Parameters": {"classification": "parquet", "EXTERNAL": "TRUE", "fiap_run_id": ID_EXECUCAO,
++                           "fiap_commit_manifest": f"s3://{CFG['S3_BUCKET']}/{AUDIT_RUN}/manifest.json"},
++            "StorageDescriptor": {"Columns": columns, "Location": metric["s3_uri"],
++                "InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
++                "OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
++                "SerdeInfo": {"SerializationLibrary": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
++                              "Parameters": {"serialization.format": "1"}}},
++        }
++        glue.create_table(DatabaseName=CFG["DATABASE_GOLD"], TableInput=definition)
++        metric["catalog_table"] = CFG["DATABASE_GOLD"] + "." + name
++
++
++def main(overrides=None):
++    global CFG, S3, spark, ID_EXECUCAO, DATA_EXECUCAO, INGESTION_DATE, AUDIT_RUN
++    global LIMIAR_JOIN, TOLERANCIA_PP, QUALITY, JOIN_METRICS, TABLE_METRICS
++    CFG = params(overrides)
++    ID_EXECUCAO = CFG["JOB_RUN_ID"]
++    DATA_EXECUCAO = datetime.now(timezone.utc)
++    INGESTION_DATE = DATA_EXECUCAO.date().isoformat()
++    LIMIAR_JOIN, TOLERANCIA_PP = CFG["LIMIAR_JOIN"], CFG["TOLERANCIA_PP"]
++    AUDIT_RUN = f"{CFG['AUDIT_PREFIX']}/ingestion_date={INGESTION_DATE}/run_id={ID_EXECUCAO}"
++    QUALITY, JOIN_METRICS, TABLE_METRICS = {}, [], []
++    S3, glue = boto3.client("s3"), boto3.client("glue")
++    started, timer = utcnow(), monotonic()
++    put_json(AUDIT_RUN + "/start.json", {"run_id": ID_EXECUCAO, "status": "RUNNING",
++             "started_at_utc": started, "script_version": SCRIPT_VERSION,
++             "original_notebook_sha256": ORIGINAL_NOTEBOOK_SHA256,
++             "silver_manifest_uri": CFG["SILVER_MANIFEST_URI"],
++             "demo_failure": CFG["DEMO_FAILURE"]})
++    silver, staged, lineage = {}, [], {}
++    try:
++        # Audit writes precede metadata preflight; no Gold data or Spark scans
++        # occur until the committed Silver manifest has passed its contract.
++        lineage = inspect_silver(glue, CFG)
++        from awsglue.context import GlueContext
++        from awsglue.job import Job
++        from pyspark.context import SparkContext
++        ctx = GlueContext(SparkContext.getOrCreate())
++        spark = ctx.spark_session
++        spark.conf.set("spark.sql.session.timeZone", "UTC")
++        spark.conf.set("spark.sql.shuffle.partitions", "8")
++        job = Job(ctx)
++        job.init(CFG["JOB_NAME"], {k: str(v) for k, v in CFG.items()})
++        for name in NOMES_SILVER:
++            frame = spark.read.parquet(lineage[name]["location"])
++            actual = {f.name: f.dataType.simpleString() for f in frame.schema.fields}
++            for column, expected in required_columns()[name].items():
++                if column not in actual or not type_matches(actual[column], expected):
++                    raise RuntimeError(f"Physical Parquet schema mismatch: {name}.{column}")
++            # Project declared Silver columns only; directory partition inference
++            # must never inject Gold or source snapshot metadata into the output.
++            frame = frame.select(*required_columns()[name]).persist(StorageLevel.MEMORY_AND_DISK)
++            count = frame.count()
++            if count <= 0 or count != lineage[name]["expected_count"]:
++                raise RuntimeError("Silver count differs from committed manifest: " + name)
++            lineage[name]["row_count"] = count
++            silver[name] = frame
++        result = regras_entrada(silver)
++        registrar_qualidade("silver_inputs", result)
++        exigir("silver_inputs", result)
++        joins = regras_dos_joins(silver)
++        registrar_qualidade("source_joins", joins)
++        exigir("source_joins", joins)
++
++        indicador = stage_gold("indicador_municipio", construir_indicador_municipio(silver["municipio"], silver["alunos"]),
++                               ["ano", "id_municipio", "serie", "rede"],
++                               ["taxa_alfabetizacao_oficial", "taxa_alfabetizacao_calculada"])
++        staged.append(indicador)
++        resultado_input = construir_resultado_vs_meta(silver["municipio"], silver["uf"],
++                                silver["meta_alfabetizacao_brasil"], silver["meta_alfabetizacao_uf"],
++                                silver["meta_alfabetizacao_municipio"])
++        if CFG["DEMO_FAILURE"]:
++            # Isolated run, preserved as FAILED evidence; never commits Gold.
++            resultado_input = resultado_input.withColumn("taxa_alfabetizacao", F.lit(150.0))
++        resultado = stage_gold("resultado_vs_meta", resultado_input,
++                               ["nivel", "ano", "id_municipio", "sigla_uf", "serie", "rede"],
++                               ["taxa_alfabetizacao", "meta_alfabetizacao_ano"], ["id_municipio", "sigla_uf", "serie"])
++        staged.append(resultado)
++        evolucao = stage_gold("evolucao_temporal", construir_evolucao_temporal(resultado),
++                              ["nivel", "sigla_uf", "ano", "serie", "rede"], ["taxa_alfabetizacao"], ["sigla_uf", "serie"])
++        staged.append(evolucao)
++        validacao = stage_gold("validacao_cruzada_brasil", construir_validacao_cruzada_brasil(silver["alunos"],
++                                silver["meta_alfabetizacao_brasil"]), ["ano", "serie", "rede"],
++                               ["taxa_alfabetizacao_calculada", "taxa_oficial_publicada"])
++        staged.append(validacao)
++        features = stage_gold("features_alfabetizacao", construir_features(indicador, silver["meta_alfabetizacao_municipio"]),
++                               ["ano_features", "id_municipio", "serie", "rede"], ["taxa_t", "alvo_taxa_alfabetizacao"])
++        staged.append(features)
++        registrar_qualidade("all_construction_joins", JOIN_METRICS)
++        # Detect catalog changes during execution; immutable source locations
++        # remain an upstream requirement (this is not a multi-table transaction).
++        refreshed = inspect_silver(glue, CFG)
++        for name in NOMES_SILVER:
++            if any(refreshed[name][k] != lineage[name][k] for k in ("version_id", "location", "columns", "silver_manifest_sha256")):
++                raise RuntimeError("Silver manifest changed during the run: " + name)
++        register_versioned_tables(glue)
++        job.commit()
++        for metric in TABLE_METRICS:
++            metric["status"] = "VALIDATED"
++        manifest = {
++            "status": "SUCCEEDED", "run_id": ID_EXECUCAO, "job_name": CFG["JOB_NAME"],
++            "script_version": SCRIPT_VERSION, "original_notebook_sha256": ORIGINAL_NOTEBOOK_SHA256,
++            "started_at_utc": started, "finished_at_utc": utcnow(), "source_tables": lineage,
++            "duration_seconds": round(monotonic() - timer, 3),
++            "table_metrics": TABLE_METRICS, "all_five_tables_validated": len(TABLE_METRICS) == 5,
++            "quality": QUALITY, "catalog_registration_enabled": CFG["REGISTER_CATALOG"],
++            "publication_contract": "Consume only paths listed in this SUCCEEDED manifest; catalog writes are not atomic",
++            "training_feature_columns": ["serie", "rede", "taxa_t", "taxa_calculada_t", "media_portugues_t", "alunos_avaliados_t"],
++            "training_identifiers": ["id_municipio", "ano_features", "ano_alvo"],
++            "target_column": "alvo_taxa_alfabetizacao",
++            "meta_ano_alvo_usage": "Context only; excluded from model features without proof of point-in-time availability",
++            "national_comparison_cohort": {"serie": CFG["SERIE_BRASIL"], "meaning": "Second year of elementary school", "network": "5"},
++            "simulation": False,
++        }
++        result = put_json(AUDIT_RUN + "/manifest.json", manifest)
++        emit_outcome(False, monotonic() - timer)
++        print(json.dumps({"status": "SUCCEEDED", "run_id": ID_EXECUCAO, "manifest": result}, ensure_ascii=False))
++        return manifest
++    except Exception as error:
++        emit_outcome(True, monotonic() - timer)
++        # Keep original failure even if auditing itself is unavailable.
++        try:
++            put_json(AUDIT_RUN + "/failed.json", {
++                "status": "FAILED", "run_id": ID_EXECUCAO, "finished_at_utc": utcnow(),
++                "duration_seconds": round(monotonic() - timer, 3), "demo_failure": CFG["DEMO_FAILURE"],
++                "error_type": type(error).__name__, "error": str(error)[:3000],
++                "staged_tables": TABLE_METRICS, "quality": QUALITY, "joins": JOIN_METRICS,
++                "published": False, "source_tables": lineage,
++            })
++        except Exception as audit_error:
++            print("Failure audit could not be persisted: " + type(audit_error).__name__)
++        raise
++    finally:
++        for frame in staged + list(silver.values()):
++            frame.unpersist()
++
++
++if __name__ == "__main__":
++    main()

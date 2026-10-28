@@ -1,0 +1,10 @@
+{
+  "phase": "prepare-import",
+  "operation": "cloudformation:CreateChangeSet",
+  "error_code": "ValidationError",
+  "message": "As part of the import operation, you cannot modify or add [Outputs]",
+  "execution_requested": false,
+  "destination_stack_exists_after_attempt": false,
+  "resource_configuration_changes": [],
+  "repair": "Revision 2 removes Outputs; six imports and three-alarm update scope unchanged."
+}

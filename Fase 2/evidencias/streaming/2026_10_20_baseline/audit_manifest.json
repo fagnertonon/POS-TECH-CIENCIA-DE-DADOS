@@ -1,0 +1,32 @@
+{
+  "status": "SUCCEEDED",
+  "simulation": true,
+  "run_id": "sim_20261020T184106Z_65ed95850eeb",
+  "published_at_utc": "2026-10-20T18:47:17.602686+00:00",
+  "objects": [
+    {
+      "key": "auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/streaming_report.json",
+      "sha256": "2c226cf824797d5f75deace5ff4e4712c1ea49a2363a7d7cbeb6d30456549b31",
+      "bytes": 46403
+    },
+    {
+      "key": "auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/producer_report.json",
+      "sha256": "044b4a5025bb83830b0f87c13d5a17790d1db0ac7a1adf44ee43112bf60e9f00",
+      "bytes": 16133
+    },
+    {
+      "key": "auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/infra_state.json",
+      "sha256": "2da13f855b215df2e4768d1b0d628a5fad3db713d50a8ce0ec0e06e92f5fa3cc",
+      "bytes": 1032
+    },
+    {
+      "key": "auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/invalid_message.json",
+      "sha256": "259f308b98dba4d63827f511af8e2ba0068a75fd67bbd1097065cb5f5ac90cbc",
+      "bytes": 715
+    }
+  ],
+  "report_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/streaming_report.json",
+  "source_queue_empty": true,
+  "unique_events": 30,
+  "invalid_dlq_message_id": "622aaa22-577c-4b80-b56b-459454707967"
+}

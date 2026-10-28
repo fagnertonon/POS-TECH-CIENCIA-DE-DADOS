@@ -1,0 +1,16 @@
+{
+  "recipient_confirmed_receipt": true,
+  "evidence_type": "HUMAN_USER_ACKNOWLEDGEMENT_IN_THIS_CHAT",
+  "confirmation_text": "Recebi o e-mail de teste",
+  "confirmation_recorded_at_utc": "2026-10-27T20:16:06+00:00",
+  "confirmation_recorded_at_brasilia": "2026-10-27T17:16:06-03:00",
+  "actual_inbox_received_at_utc": null,
+  "timestamp_scope": "Acknowledgement record time; not the time of inbox delivery or a delivery-latency measurement",
+  "recipient_masked": "r***@fiap.com.br",
+  "recipient_sha256": "48c4f6955cf77e73245356ebd7ef01bbcc41bc35cd7d809f36779d3884561fb4",
+  "alarm_name": "fiap-inep-streaming-rejected",
+  "test_requested_at_utc": "2026-10-27T20:03:54.250797+00:00",
+  "test_request_id": "308d6cd0-40c0-4b95-9024-5647c1f8fa7a",
+  "test_reason_contains": "TESTE AUTORIZADO FIAP",
+  "new_notifications_sent_to_collect_this_acknowledgement": 0
+}

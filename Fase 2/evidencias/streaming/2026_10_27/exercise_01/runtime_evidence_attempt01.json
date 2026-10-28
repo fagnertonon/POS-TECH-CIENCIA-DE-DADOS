@@ -1,0 +1,1842 @@
+{
+  "captured_at_utc": "2026-10-27T16:00:16.337323Z",
+  "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+  "invalid_message_id": "5dcca064-4ab7-4b09-9f17-706f96d96e8d",
+  "scope": "operational evidence for this demand; FinOps reconciliation is deferred",
+  "window_start_utc": "2026-10-27T15:54:17.722242Z",
+  "window_end_utc": "2026-10-27T16:00:16.337323Z",
+  "pending": [],
+  "configuration_deviations": [],
+  "metrics_window_context": [
+    {
+      "namespace": "AWS/Lambda",
+      "metric_name": "Invocations",
+      "dimensions": [
+        {
+          "Name": "FunctionName",
+          "Value": "fiap-inep-streaming-consumer"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 1.0,
+          "Sum": 35.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "AWS/Lambda",
+      "metric_name": "Errors",
+      "dimensions": [
+        {
+          "Name": "FunctionName",
+          "Value": "fiap-inep-streaming-consumer"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "AWS/Lambda",
+      "metric_name": "Duration",
+      "dimensions": [
+        {
+          "Name": "FunctionName",
+          "Value": "fiap-inep-streaming-consumer"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 437.9668571428571,
+          "Sum": 15328.839999999998,
+          "Minimum": 157.28,
+          "Maximum": 3348.47,
+          "Unit": "Milliseconds"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 497.3,
+          "Sum": 497.3,
+          "Minimum": 497.3,
+          "Maximum": 497.3,
+          "Unit": "Milliseconds"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 513.92,
+          "Sum": 513.92,
+          "Minimum": 513.92,
+          "Maximum": 513.92,
+          "Unit": "Milliseconds"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 508.02,
+          "Sum": 508.02,
+          "Minimum": 508.02,
+          "Maximum": 508.02,
+          "Unit": "Milliseconds"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 485.43,
+          "Sum": 485.43,
+          "Minimum": 485.43,
+          "Maximum": 485.43,
+          "Unit": "Milliseconds"
+        }
+      ]
+    },
+    {
+      "namespace": "AWS/Lambda",
+      "metric_name": "Throttles",
+      "dimensions": [
+        {
+          "Name": "FunctionName",
+          "Value": "fiap-inep-streaming-consumer"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "AWS/Lambda",
+      "metric_name": "ConcurrentExecutions",
+      "dimensions": [
+        {
+          "Name": "FunctionName",
+          "Value": "fiap-inep-streaming-consumer"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 1.0857142857142856,
+          "Sum": 38.0,
+          "Minimum": 1.0,
+          "Maximum": 2.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "FIAP/Streaming",
+      "metric_name": "Received",
+      "dimensions": [
+        {
+          "Name": "Pipeline",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 1.0285714285714285,
+          "Sum": 36.0,
+          "Minimum": 1.0,
+          "Maximum": 2.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "FIAP/Streaming",
+      "metric_name": "Accepted",
+      "dimensions": [
+        {
+          "Name": "Pipeline",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 0.8571428571428571,
+          "Sum": 30.0,
+          "Minimum": 0.0,
+          "Maximum": 2.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "FIAP/Streaming",
+      "metric_name": "Duplicate",
+      "dimensions": [
+        {
+          "Name": "Pipeline",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 0.14285714285714285,
+          "Sum": 5.0,
+          "Minimum": 0.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "FIAP/Streaming",
+      "metric_name": "Failed",
+      "dimensions": [
+        {
+          "Name": "Pipeline",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 0.02857142857142857,
+          "Sum": 1.0,
+          "Minimum": 0.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "FIAP/Streaming",
+      "metric_name": "LatencySeconds",
+      "dimensions": [
+        {
+          "Name": "Pipeline",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 30.0,
+          "Average": 1.1727193333333334,
+          "Sum": 35.181580000000004,
+          "Minimum": 0.154975,
+          "Maximum": 8.045309,
+          "Unit": "Seconds"
+        }
+      ]
+    },
+    {
+      "namespace": "AWS/SQS",
+      "metric_name": "NumberOfMessagesSent",
+      "dimensions": [
+        {
+          "Name": "QueueName",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 37.0,
+          "Average": 0.972972972972973,
+          "Sum": 36.0,
+          "Minimum": 0.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "AWS/SQS",
+      "metric_name": "NumberOfMessagesReceived",
+      "dimensions": [
+        {
+          "Name": "QueueName",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 36.0,
+          "Average": 1.0,
+          "Sum": 36.0,
+          "Minimum": 0.0,
+          "Maximum": 2.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 2.0,
+          "Average": 0.5,
+          "Sum": 1.0,
+          "Minimum": 0.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 2.0,
+          "Average": 0.5,
+          "Sum": 1.0,
+          "Minimum": 0.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 2.0,
+          "Average": 0.5,
+          "Sum": 1.0,
+          "Minimum": 0.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 2.0,
+          "Average": 0.5,
+          "Sum": 1.0,
+          "Minimum": 0.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "AWS/SQS",
+      "metric_name": "NumberOfMessagesDeleted",
+      "dimensions": [
+        {
+          "Name": "QueueName",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 1.0,
+          "Sum": 35.0,
+          "Minimum": 0.0,
+          "Maximum": 2.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        }
+      ]
+    },
+    {
+      "namespace": "AWS/SQS",
+      "metric_name": "ApproximateAgeOfOldestMessage",
+      "dimensions": [
+        {
+          "Name": "QueueName",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "scope": "shared function/pipeline/queue and time window; NOT exclusively attributable to this run",
+      "datapoints": [
+        {
+          "Timestamp": "2026-10-27T15:54:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 13.0,
+          "Sum": 13.0,
+          "Minimum": 13.0,
+          "Maximum": 13.0,
+          "Unit": "Seconds"
+        },
+        {
+          "Timestamp": "2026-10-27T15:55:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 77.0,
+          "Sum": 77.0,
+          "Minimum": 77.0,
+          "Maximum": 77.0,
+          "Unit": "Seconds"
+        },
+        {
+          "Timestamp": "2026-10-27T15:56:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 128.0,
+          "Sum": 128.0,
+          "Minimum": 128.0,
+          "Maximum": 128.0,
+          "Unit": "Seconds"
+        },
+        {
+          "Timestamp": "2026-10-27T15:57:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 15.0,
+          "Sum": 15.0,
+          "Minimum": 15.0,
+          "Maximum": 15.0,
+          "Unit": "Seconds"
+        },
+        {
+          "Timestamp": "2026-10-27T15:58:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 50.0,
+          "Sum": 50.0,
+          "Minimum": 50.0,
+          "Maximum": 50.0,
+          "Unit": "Seconds"
+        },
+        {
+          "Timestamp": "2026-10-27T15:59:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Seconds"
+        }
+      ]
+    }
+  ],
+  "logs": {
+    "positive_run": {
+      "events": [
+        {
+          "timestamp": 1793116466573,
+          "event_id": "58f0e790-cd7b-5af1-8b4a-42e99ef7463f",
+          "sqs_message_id": "e248e5d8-21ef-43e6-8af5-28461423aa00",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116468991,
+          "event_id": "ae602334-a088-5ab3-8471-1384c5397e17",
+          "sqs_message_id": "7bc7348c-0bc5-48d0-b115-17cf38b25340",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116469057,
+          "event_id": "541a2495-497c-5d68-86a7-35137d297d1e",
+          "sqs_message_id": "883d6f85-d6dc-4dbc-9a75-075d6bf7e058",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116470576,
+          "event_id": "37204d53-0b19-5199-83d4-c43d50990b68",
+          "sqs_message_id": "5102804e-4603-4fe5-9bd9-88c7f0e4f7f4",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116470814,
+          "event_id": "e1e9b5f9-d095-5adb-99fe-aa156b8d9c3e",
+          "sqs_message_id": "a46902c3-3958-4a3d-8ebd-3f0d3914f714",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116471412,
+          "event_id": "a98315be-2fda-5e83-a3e1-a09f16e389b5",
+          "sqs_message_id": "b7ab09b2-1ce3-4356-aa53-f312da495ea0",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116471596,
+          "event_id": "5e467034-47e3-5270-9c3d-48484bf37a0e",
+          "sqs_message_id": "50af3161-4ed0-4c15-9670-379f84911028",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116471858,
+          "event_id": "4bc9633d-4a97-5ea5-9d0e-c7ca1400741f",
+          "sqs_message_id": "930589bd-e0f9-434a-ad1d-14627b043800",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116472065,
+          "event_id": "a641969a-591f-5d5a-8e81-b6e8dba8d09d",
+          "sqs_message_id": "28f64b73-9628-48bc-a474-94e544e4463a",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116472065,
+          "event_id": "2eb03a35-2250-5cc3-845a-2fdd583bf0e2",
+          "sqs_message_id": "de0e38bb-bfd7-4c95-b958-766d4862e6c6",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116473094,
+          "event_id": "2a981705-d320-52f4-874c-3d46698481f8",
+          "sqs_message_id": "88e88da9-798f-442f-ad17-aa7688328621",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116474060,
+          "event_id": "a52ad633-65c8-5865-8ecf-ba29a6aa3d54",
+          "sqs_message_id": "67d966e5-297a-45d0-945d-5373016918ee",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116475070,
+          "event_id": "a8cda8a1-d212-53bb-84d3-d6fa6f96fddd",
+          "sqs_message_id": "da4b5e7f-8d7d-4002-ade1-feeec6104ab9",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116476069,
+          "event_id": "e43d3311-3d6d-5d5b-b351-a4942770dce5",
+          "sqs_message_id": "0d642a0e-1d71-45e6-947d-a59683539a17",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116477089,
+          "event_id": "d7e73af2-5a6b-52ee-8bb1-6c986be6b1e9",
+          "sqs_message_id": "86dd7b9d-9c89-420d-9c03-dfd161185eef",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116478091,
+          "event_id": "215ae617-9b73-5e02-a5f7-39735de8c7d4",
+          "sqs_message_id": "580d356c-4b0d-438d-8b12-fd02c89bd393",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116479118,
+          "event_id": "56e3bf93-36a4-5d28-920f-81397fc2a034",
+          "sqs_message_id": "83e0eba6-74db-4a66-9162-5718cfffb7fc",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116480106,
+          "event_id": "ed79eba8-ec1e-56b8-8da9-c2c90dfe675e",
+          "sqs_message_id": "1ed24d70-8309-4294-aefc-cad7595cfce3",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116481124,
+          "event_id": "0e0d07d8-1c87-52e7-9d24-e8d096a6abea",
+          "sqs_message_id": "12f6c5c4-2961-4e26-b482-ae1847b2a82a",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116482118,
+          "event_id": "02ef11c4-14fb-549c-8572-6454f0736290",
+          "sqs_message_id": "e35400ed-a657-4adf-93ec-5f1ca411edb4",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116483120,
+          "event_id": "558853c1-24fa-548b-bafa-b04793020524",
+          "sqs_message_id": "1cde1d1a-9e46-4a98-b679-77b8bfafabcd",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116484147,
+          "event_id": "610d64cf-a6ab-5425-829d-6f0f20903779",
+          "sqs_message_id": "8b8c775d-e9d5-4d14-9b76-df7a616bff01",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116485131,
+          "event_id": "faaca1f9-93f6-54d0-962d-f3e2f0837680",
+          "sqs_message_id": "a8a9d0e3-ce9b-46ad-9805-2a884b67386c",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116486133,
+          "event_id": "49e33f3b-437a-5b0b-a72b-984a3403cc52",
+          "sqs_message_id": "fa03e2f4-b16e-4c68-b913-c01d2c1f66ef",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116487148,
+          "event_id": "11549186-f29e-57a4-acb5-2fbab63d1fd5",
+          "sqs_message_id": "b27edb45-126e-4c41-b1a7-9df45cf1477e",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116488149,
+          "event_id": "9c2c4be0-6bfd-5f96-88ac-9bdfd7f14bcf",
+          "sqs_message_id": "b68f4aa0-b808-4ecc-9a54-dd07f53e2554",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116489165,
+          "event_id": "e443f265-f288-5b89-900c-85cdbdca397c",
+          "sqs_message_id": "507b9af3-3323-45cd-b352-7701c4f47e62",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116490269,
+          "event_id": "9012337e-7317-538e-9492-d789cfa33f29",
+          "sqs_message_id": "fea66f4f-5e13-4cf0-a625-3ce147110e49",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116491181,
+          "event_id": "81cc0bc4-2721-542f-9a54-f49c54ccabb8",
+          "sqs_message_id": "5335eab0-7bd5-48fd-8dc4-1b9f6605bae6",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116492183,
+          "event_id": "d3227586-1dca-5c3b-bf34-cb3b0d730d3a",
+          "sqs_message_id": "7c5432cc-2aa9-4507-9b81-f860ca3977ec",
+          "status": "ACCEPTED",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116493764,
+          "event_id": "58f0e790-cd7b-5af1-8b4a-42e99ef7463f",
+          "sqs_message_id": "1f991475-9d92-4289-b7b1-c214e3fde355",
+          "status": "DUPLICATE",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116494797,
+          "event_id": "4bc9633d-4a97-5ea5-9d0e-c7ca1400741f",
+          "sqs_message_id": "fc7e88f3-6db1-4857-bb43-a507df8a1c53",
+          "status": "DUPLICATE",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116495698,
+          "event_id": "e1e9b5f9-d095-5adb-99fe-aa156b8d9c3e",
+          "sqs_message_id": "09785f3e-86c6-4f15-9140-8c53c0ad76c4",
+          "status": "DUPLICATE",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116496739,
+          "event_id": "37204d53-0b19-5199-83d4-c43d50990b68",
+          "sqs_message_id": "b9b5d48d-b6aa-4fdd-9a11-da5e2db4724a",
+          "status": "DUPLICATE",
+          "error_type": null
+        },
+        {
+          "timestamp": 1793116497771,
+          "event_id": "ae602334-a088-5ab3-8471-1384c5397e17",
+          "sqs_message_id": "78b7a3c0-0086-41f0-9f59-15b7ada0b029",
+          "status": "DUPLICATE",
+          "error_type": null
+        }
+      ],
+      "status_counts": {
+        "ACCEPTED": 30,
+        "DUPLICATE": 5
+      }
+    },
+    "invalid_message": {
+      "events": [
+        {
+          "timestamp": 1793116466553,
+          "event_id": null,
+          "sqs_message_id": "5dcca064-4ab7-4b09-9f17-706f96d96e8d",
+          "status": "FAILED",
+          "error_type": "InvalidPayload"
+        },
+        {
+          "timestamp": 1793116523301,
+          "event_id": null,
+          "sqs_message_id": "5dcca064-4ab7-4b09-9f17-706f96d96e8d",
+          "status": "FAILED",
+          "error_type": "InvalidPayload"
+        },
+        {
+          "timestamp": 1793116583340,
+          "event_id": null,
+          "sqs_message_id": "5dcca064-4ab7-4b09-9f17-706f96d96e8d",
+          "status": "FAILED",
+          "error_type": "InvalidPayload"
+        },
+        {
+          "timestamp": 1793116643322,
+          "event_id": null,
+          "sqs_message_id": "5dcca064-4ab7-4b09-9f17-706f96d96e8d",
+          "status": "FAILED",
+          "error_type": "InvalidPayload"
+        },
+        {
+          "timestamp": 1793116703296,
+          "event_id": null,
+          "sqs_message_id": "5dcca064-4ab7-4b09-9f17-706f96d96e8d",
+          "status": "FAILED",
+          "error_type": "InvalidPayload"
+        }
+      ],
+      "status_counts": {
+        "FAILED": 5
+      },
+      "invalid_payload_failures": 5
+    },
+    "correlated_invocations": [
+      {
+        "request_id": "0eb272a3-a1b8-55b6-ba90-11f96ace42a6",
+        "log_stream": "2026/10/27/[$LATEST]7a3f87ef6b3640edb88c1388e3a0b4b0",
+        "report": {
+          "request_id": "0eb272a3-a1b8-55b6-ba90-11f96ace42a6",
+          "duration_ms": 165.01,
+          "billed_duration_ms": 166.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 92.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "24bc9207-1612-5668-a852-f15ddd6444e7",
+        "log_stream": "2026/10/27/[$LATEST]7a3f87ef6b3640edb88c1388e3a0b4b0",
+        "report": {
+          "request_id": "24bc9207-1612-5668-a852-f15ddd6444e7",
+          "duration_ms": 179.69,
+          "billed_duration_ms": 180.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 92.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "326b39c2-573e-5d69-85e5-5a989c491fe6",
+        "log_stream": "2026/10/27/[$LATEST]7a3f87ef6b3640edb88c1388e3a0b4b0",
+        "report": {
+          "request_id": "326b39c2-573e-5d69-85e5-5a989c491fe6",
+          "duration_ms": 378.62,
+          "billed_duration_ms": 379.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 92.0
+        },
+        "scope_counts": {
+          "positive_run": 2
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "341d1ed3-37e8-590e-81c5-7d89fc9c5e1e",
+        "log_stream": "2026/10/27/[$LATEST]7a3f87ef6b3640edb88c1388e3a0b4b0",
+        "report": {
+          "request_id": "341d1ed3-37e8-590e-81c5-7d89fc9c5e1e",
+          "duration_ms": 167.74,
+          "billed_duration_ms": 168.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 92.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "5e04d583-34e6-5062-80dc-b6d9ff9192ed",
+        "log_stream": "2026/10/27/[$LATEST]7a3f87ef6b3640edb88c1388e3a0b4b0",
+        "report": {
+          "request_id": "5e04d583-34e6-5062-80dc-b6d9ff9192ed",
+          "duration_ms": 174.17,
+          "billed_duration_ms": 175.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 92.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "d1d23eea-ba12-5b8f-928c-5db07172f900",
+        "log_stream": "2026/10/27/[$LATEST]7a3f87ef6b3640edb88c1388e3a0b4b0",
+        "report": {
+          "request_id": "d1d23eea-ba12-5b8f-928c-5db07172f900",
+          "duration_ms": 3346.59,
+          "billed_duration_ms": 3480.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 92.0,
+          "init_duration_ms": 132.41
+        },
+        "scope_counts": {
+          "invalid_message": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "d542b57e-69af-5a2f-b5b8-d624a2d8cd3f",
+        "log_stream": "2026/10/27/[$LATEST]7a3f87ef6b3640edb88c1388e3a0b4b0",
+        "report": {
+          "request_id": "d542b57e-69af-5a2f-b5b8-d624a2d8cd3f",
+          "duration_ms": 158.73,
+          "billed_duration_ms": 159.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 92.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "0189805b-8847-5748-82dd-e301433abd19",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "0189805b-8847-5748-82dd-e301433abd19",
+          "duration_ms": 169.59,
+          "billed_duration_ms": 170.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "01c0712a-e1ce-554d-b9af-12702ab0bf1c",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "01c0712a-e1ce-554d-b9af-12702ab0bf1c",
+          "duration_ms": 166.14,
+          "billed_duration_ms": 167.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "0e8f6531-2689-52d8-918c-066bedf665c8",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "0e8f6531-2689-52d8-918c-066bedf665c8",
+          "duration_ms": 164.23,
+          "billed_duration_ms": 165.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "17063d25-62f7-5602-b0b1-5e7fa98c4e90",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "17063d25-62f7-5602-b0b1-5e7fa98c4e90",
+          "duration_ms": 169.38,
+          "billed_duration_ms": 170.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "17eedad5-53b4-56c6-8aab-b98f98325449",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "17eedad5-53b4-56c6-8aab-b98f98325449",
+          "duration_ms": 658.99,
+          "billed_duration_ms": 659.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "1c5f0f1a-fbc9-5138-a859-6c40304bc9aa",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "1c5f0f1a-fbc9-5138-a859-6c40304bc9aa",
+          "duration_ms": 167.4,
+          "billed_duration_ms": 168.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "1e595116-6a90-572c-a786-324ca1f3c03c",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "1e595116-6a90-572c-a786-324ca1f3c03c",
+          "duration_ms": 3348.47,
+          "billed_duration_ms": 3488.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0,
+          "init_duration_ms": 139.09
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "207bbaf5-29b0-53a2-ae00-d9afe235f12d",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "207bbaf5-29b0-53a2-ae00-d9afe235f12d",
+          "duration_ms": 157.28,
+          "billed_duration_ms": 158.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "2407392a-ef45-512d-b865-5a70243163a2",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "2407392a-ef45-512d-b865-5a70243163a2",
+          "duration_ms": 169.0,
+          "billed_duration_ms": 170.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "2839d9b8-758a-5f61-bec6-bae2bef22871",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "2839d9b8-758a-5f61-bec6-bae2bef22871",
+          "duration_ms": 164.54,
+          "billed_duration_ms": 165.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "2c281700-e62b-567d-8415-745a2d57216d",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "2c281700-e62b-567d-8415-745a2d57216d",
+          "duration_ms": 188.17,
+          "billed_duration_ms": 189.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "33e26d15-2547-5575-ad53-0e4feeca3c1a",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "33e26d15-2547-5575-ad53-0e4feeca3c1a",
+          "duration_ms": 690.01,
+          "billed_duration_ms": 691.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "40b7c3c1-daca-542a-9afa-a09b1145133a",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "40b7c3c1-daca-542a-9afa-a09b1145133a",
+          "duration_ms": 721.93,
+          "billed_duration_ms": 722.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "42c7005c-ef74-5369-9113-630624fd3479",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "42c7005c-ef74-5369-9113-630624fd3479",
+          "duration_ms": 761.08,
+          "billed_duration_ms": 762.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "499f652e-34f7-5e27-b7f0-0674ff8e86b5",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "499f652e-34f7-5e27-b7f0-0674ff8e86b5",
+          "duration_ms": 161.84,
+          "billed_duration_ms": 162.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "4b5d7358-593e-59bd-95cf-100292471b32",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "4b5d7358-593e-59bd-95cf-100292471b32",
+          "duration_ms": 167.06,
+          "billed_duration_ms": 168.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "50ea1970-72f4-5dd6-958d-7a2ab977fac6",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "50ea1970-72f4-5dd6-958d-7a2ab977fac6",
+          "duration_ms": 184.09,
+          "billed_duration_ms": 185.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "595f3a7a-3b4c-5501-b729-5920f0c6cd93",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "595f3a7a-3b4c-5501-b729-5920f0c6cd93",
+          "duration_ms": 172.76,
+          "billed_duration_ms": 173.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "62d9b30f-8dde-55d5-9a59-d055465aa2c5",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "62d9b30f-8dde-55d5-9a59-d055465aa2c5",
+          "duration_ms": 160.96,
+          "billed_duration_ms": 161.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "74d960f8-91f5-5d84-8336-03a25a8d1f0b",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "74d960f8-91f5-5d84-8336-03a25a8d1f0b",
+          "duration_ms": 205.2,
+          "billed_duration_ms": 206.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "7a0a5192-d45a-5b5d-b4da-32c81ffc39d2",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "7a0a5192-d45a-5b5d-b4da-32c81ffc39d2",
+          "duration_ms": 497.3,
+          "billed_duration_ms": 498.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "invalid_message": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "83b4784e-ed5e-5667-b277-1b1426292177",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "83b4784e-ed5e-5667-b277-1b1426292177",
+          "duration_ms": 163.96,
+          "billed_duration_ms": 164.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "a96d8ed4-9c83-5d72-98a9-ed8e57f92a62",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "a96d8ed4-9c83-5d72-98a9-ed8e57f92a62",
+          "duration_ms": 159.26,
+          "billed_duration_ms": 160.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "c5871663-4d37-58af-8e32-7539812892fe",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "c5871663-4d37-58af-8e32-7539812892fe",
+          "duration_ms": 508.02,
+          "billed_duration_ms": 509.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "invalid_message": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "c58f7ed8-0a5c-5771-91ae-1d82c1dc05fe",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "c58f7ed8-0a5c-5771-91ae-1d82c1dc05fe",
+          "duration_ms": 181.59,
+          "billed_duration_ms": 182.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "cf787750-de3d-5944-8c97-140a15e044cc",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "cf787750-de3d-5944-8c97-140a15e044cc",
+          "duration_ms": 513.92,
+          "billed_duration_ms": 514.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "invalid_message": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "d54a0141-9ebd-51db-a63b-621b553c0354",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "d54a0141-9ebd-51db-a63b-621b553c0354",
+          "duration_ms": 161.63,
+          "billed_duration_ms": 162.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "e642392c-c354-55bd-bdac-5a76082d0fec",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "e642392c-c354-55bd-bdac-5a76082d0fec",
+          "duration_ms": 168.14,
+          "billed_duration_ms": 169.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "e7c3f8d5-5fc6-5877-b685-9b8f944e0f67",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "e7c3f8d5-5fc6-5877-b685-9b8f944e0f67",
+          "duration_ms": 167.59,
+          "billed_duration_ms": 168.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "f16201e0-3e42-54b4-8caf-62baf209fee5",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "f16201e0-3e42-54b4-8caf-62baf209fee5",
+          "duration_ms": 485.43,
+          "billed_duration_ms": 486.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "invalid_message": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "f624197b-7fa6-5d73-8058-7a21b42df5e1",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "f624197b-7fa6-5d73-8058-7a21b42df5e1",
+          "duration_ms": 742.87,
+          "billed_duration_ms": 743.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      },
+      {
+        "request_id": "fc8112e2-995e-5fd7-ba65-71b852d97745",
+        "log_stream": "2026/10/27/[$LATEST]f98554b94a494318ac4fafa1234552c3",
+        "report": {
+          "request_id": "fc8112e2-995e-5fd7-ba65-71b852d97745",
+          "duration_ms": 265.13,
+          "billed_duration_ms": 266.0,
+          "memory_size_mb": 256.0,
+          "max_memory_used_mb": 93.0
+        },
+        "scope_counts": {
+          "positive_run": 1
+        },
+        "contains_unrelated_records": false,
+        "report_metrics_complete": true
+      }
+    ],
+    "unassigned_target_records": [],
+    "exclusive_target_invocation_totals": {
+      "invocations_with_report": 39,
+      "duration_ms_sum": 17333.51,
+      "billed_duration_ms_sum": 17627.0,
+      "max_memory_used_mb": 93.0,
+      "configured_mb_seconds_from_billed_reports": 4512.512
+    },
+    "attribution_note": "REPORT totals include only START-correlated invocations containing target records and no unrelated STREAMING_EVENT records. Mixed invocations are listed but excluded; no cost allocation or monthly extrapolation is made.",
+    "query_pagination_complete": true,
+    "discovered_positive_records": 35,
+    "discovered_invalid_records": 5,
+    "context_stream_count": 2
+  },
+  "lambda_configuration": {
+    "FunctionName": "fiap-inep-streaming-consumer",
+    "Runtime": "python3.12",
+    "MemorySize": 256,
+    "Timeout": 10,
+    "State": "Active",
+    "LastUpdateStatus": "Successful",
+    "LastModified": "2026-10-27T15:48:20.000+0000",
+    "CodeSha256": "ZlKsp6oUtqxAFOYudrhcxgFuDAETZFMiVjXdk+yxAoo="
+  },
+  "lambda_concurrency": {
+    "ResponseMetadata": {
+      "RequestId": "4a49260c-bce1-4c08-9196-51e5cb12b131",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "date": "Tue, 27 Oct 2026 16:00:17 GMT",
+        "content-type": "application/json",
+        "content-length": "34",
+        "connection": "keep-alive",
+        "x-amzn-requestid": "4a49260c-bce1-4c08-9196-51e5cb12b131"
+      },
+      "RetryAttempts": 0
+    },
+    "ReservedConcurrentExecutions": 2
+  },
+  "event_source_mappings": [
+    {
+      "UUID": "6bad077d-e592-4109-a81c-edb62a53340e",
+      "State": "Enabled",
+      "EventSourceArn": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming",
+      "BatchSize": 5,
+      "FunctionResponseTypes": [
+        "ReportBatchItemFailures"
+      ],
+      "ScalingConfig": {
+        "MaximumConcurrency": 2
+      }
+    }
+  ],
+  "queues": {
+    "fiap-inep-streaming": {
+      "scope": "shared queue, counts are not exclusive to this run",
+      "attributes": {
+        "QueueArn": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming",
+        "ApproximateNumberOfMessages": "0",
+        "ApproximateNumberOfMessagesNotVisible": "0",
+        "ApproximateNumberOfMessagesDelayed": "0",
+        "VisibilityTimeout": "60",
+        "MessageRetentionPeriod": "345600",
+        "RedrivePolicy": "{\"deadLetterTargetArn\":\"arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming-dlq\",\"maxReceiveCount\":5}"
+      }
+    },
+    "fiap-inep-streaming-dlq": {
+      "scope": "shared queue, counts are not exclusive to this run",
+      "attributes": {
+        "QueueArn": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming-dlq",
+        "ApproximateNumberOfMessages": "2",
+        "ApproximateNumberOfMessagesNotVisible": "0",
+        "ApproximateNumberOfMessagesDelayed": "0",
+        "VisibilityTimeout": "30",
+        "MessageRetentionPeriod": "1209600"
+      }
+    }
+  },
+  "alarms": [
+    {
+      "AlarmName": "fiap-inep-streaming-age",
+      "StateValue": "OK",
+      "StateUpdatedTimestamp": "2026-10-27T15:59:12.328000+00:00",
+      "StateReason": "Threshold Crossed: 1 out of the last 1 datapoints [15.0 (27/10/26 15:57:00)] was not greater than or equal to the threshold (120.0) (minimum 1 datapoint for ALARM -> OK transition).",
+      "ActionsEnabled": true,
+      "AlarmActions": [],
+      "Namespace": "AWS/SQS",
+      "MetricName": "ApproximateAgeOfOldestMessage",
+      "Period": 60,
+      "EvaluationPeriods": 1,
+      "Threshold": 120.0
+    },
+    {
+      "AlarmName": "fiap-inep-streaming-dlq",
+      "StateValue": "ALARM",
+      "StateUpdatedTimestamp": "2026-10-20T18:48:04.488000+00:00",
+      "StateReason": "Threshold Crossed: 1 out of the last 1 datapoints [1.0 (20/10/26 18:46:00)] was greater than or equal to the threshold (1.0) (minimum 1 datapoint for OK -> ALARM transition).",
+      "ActionsEnabled": true,
+      "AlarmActions": [],
+      "Namespace": "AWS/SQS",
+      "MetricName": "ApproximateNumberOfMessagesVisible",
+      "Period": 60,
+      "EvaluationPeriods": 1,
+      "Threshold": 1.0
+    },
+    {
+      "AlarmName": "fiap-inep-streaming-rejected",
+      "StateValue": "ALARM",
+      "StateUpdatedTimestamp": "2026-10-27T15:55:14.047000+00:00",
+      "StateReason": "Threshold Crossed: 1 out of the last 1 datapoints [1.0 (27/10/26 15:54:00)] was greater than or equal to the threshold (1.0) (minimum 1 datapoint for OK -> ALARM transition).",
+      "ActionsEnabled": true,
+      "AlarmActions": [],
+      "Namespace": "FIAP/Streaming",
+      "MetricName": "Failed",
+      "Period": 60,
+      "EvaluationPeriods": 1,
+      "Threshold": 1.0
+    }
+  ],
+  "capture_status": "COMPLETE"
+}

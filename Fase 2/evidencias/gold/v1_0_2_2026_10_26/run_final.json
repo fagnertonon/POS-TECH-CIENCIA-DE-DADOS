@@ -1,0 +1,27 @@
+{
+  "Id": "jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29",
+  "Attempt": 0,
+  "JobName": "fiap-gold-inep-batch",
+  "JobMode": "SCRIPT",
+  "JobRunQueuingEnabled": false,
+  "StartedOn": "2026-10-26 12:35:39.952000+00:00",
+  "LastModifiedOn": "2026-10-26 12:38:42.088000+00:00",
+  "CompletedOn": "2026-10-26 12:38:42.088000+00:00",
+  "JobRunState": "SUCCEEDED",
+  "Arguments": {
+    "--VERIFY_COVERAGE_FIXTURE": "true",
+    "--COVERAGE_DEPLOYMENT_ID": "coverage_db63536759e24b1788a40c449db49a01",
+    "--DEMO_FAILURE": "false"
+  },
+  "PredecessorRuns": [],
+  "AllocatedCapacity": 2,
+  "ExecutionTime": 174,
+  "Timeout": 15,
+  "MaxCapacity": 2.0,
+  "WorkerType": "G.1X",
+  "NumberOfWorkers": 2,
+  "LogGroupName": "/aws-glue/jobs",
+  "GlueVersion": "5.1",
+  "DPUSeconds": 349.0,
+  "ExecutionClass": "STANDARD"
+}

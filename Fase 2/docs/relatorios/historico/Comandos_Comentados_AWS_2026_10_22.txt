@@ -1,0 +1,162 @@
+COMANDOS COMENTADOS - AWS CLOUDSHELL BASH
+Data: 22/10/2026. Conta 637246457028, regiao us-east-2.
+Nao e uma transcricao integral do terminal: sao receitas compativeis com os
+scripts finais. Os resultados efetivamente observados estao nos JSON de evidencia.
+Comandos de implantacao/execucao criam efeitos na AWS e podem gerar custo.
+Nenhum deles foi executado para gerar este relatorio.
+Extraia o pacote e entre na raiz antes de usa-los. Python significa o Python
+do ambiente isolado autenticado no CloudShell. Exemplos de consulta historica
+nao disparam carga nova. Caminhos do S3 exibidos como arvore sao documentacao.
+
+Semântica dos alunos e dos indicadores
+Cálculo ponderado usado na Gold
+universo = alunos avaliados com classificação conhecida
+numerador = soma(peso_aluno dos alfabetizados nesse universo)
+denominador = soma(peso_aluno de todos os avaliados elegíveis)
+taxa_calculada = 100 * numerador / denominador
+# Denominador zero permanece sem resultado; não fabricar taxa zero.
+
+Histórico no S3 e fronteira de publicação
+Padrões de dados e auditoria
+s3://fiap-tc-fase2-2026/
+  bronze/inep/<tabela>/ingestion_date=<data>/run_id=<id>/
+  silver/inep/<tabela>/process_date=<data>/run_id=<id>/
+  gold/inep/<dataset>/ingestion_date=<data>/run_id=<id>/
+  bronze/inep_streaming/entity=alunos/event_date=<data>/
+    run_id=<id>/event_id=<id>.json
+  auditoria/bronze/ingestion_date=<data>/run_id=<id>/
+  auditoria/silver/process_date=<data>/run_id=<id>/
+  auditoria/gold/ingestion_date=<data>/run_id=<id>/
+  auditoria/streaming/runs/run_id=<id>/
+
+Comandos de consulta e preparação do ambiente
+Somente leitura: identidade e inspeção dos jobs
+aws sts get-caller-identity
+aws glue get-jobs --region us-east-2 \
+  --query 'Jobs[].{Job:Name,Workers:NumberOfWorkers,Tipo:WorkerType,Timeout:Timeout}'
+aws glue get-triggers --region us-east-2
+aws glue list-sessions --region us-east-2
+
+Comandos de consulta e preparação do ambiente
+Somente leitura: uso atual de S3 e catálogo
+aws s3 ls s3://fiap-tc-fase2-2026/ --recursive --summarize
+aws glue get-tables --database-name tech_challenge_fase2_silver \
+  --region us-east-2 --query 'TableList[].Name'
+aws glue get-tables --database-name tech_challenge_fase2_gold \
+  --region us-east-2 --query 'TableList[].Name'
+aws cloudwatch describe-alarms --alarm-name-prefix fiap- \
+  --region us-east-2
+
+Comandos de consulta e preparação do ambiente
+Preparação local: ambiente isolado para scripts SDK
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-verificacao.txt
+# Nao inicia Spark nem job Glue.
+# Registre as versoes instaladas para sua nova reproducao:
+python -m pip freeze > dependencias_reproducao.txt
+
+Comandos da Bronze e da conferência histórica
+Criação do job Bronze: comando de implantação, não de consulta
+python deploy_bronze.py \
+  --script-file bronze_glue.py \
+  --source-job fiap-ingestao-bigquery-uf \
+  --job-name fiap-bronze-inep-batch \
+  --region us-east-2
+
+Comandos da Bronze e da conferência histórica
+Nova execução: gera custo e outro run_id
+aws glue start-job-run --job-name fiap-bronze-inep-batch \
+  --region us-east-2
+# Guarde JobRunId retornado. Nao reutilize um ID antigo.
+
+Comandos da Bronze e da conferência histórica
+Somente leitura: conferir a Bronze histórica já concluída
+python verify_bronze.py \
+  --run-id jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700 \
+  --date 2026-10-20 --region us-east-2 \
+  --output conferencia_bronze_historica.json \
+  --csv contagens_bronze_historica.csv
+
+Comandos da Bronze e da conferência histórica
+Somente leitura: copiar o manifesto histórico
+aws s3 cp \
+  's3://fiap-tc-fase2-2026/auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/manifest.json' \
+  manifesto_bronze_consulta.json --region us-east-2
+
+Comandos de implantação da Silver e da Gold
+Implantar Silver: cria o job, sem iniciar execução
+python deploy_continuacao.py --layer silver \
+  --directory silver --defaults-json silver/job_defaults.json \
+  --output deployment_silver_novo.json
+
+Comandos de implantação da Silver e da Gold
+Implantar ou atualizar Gold: altera configuração, sem executar
+python deploy_continuacao.py --layer gold \
+  --directory gold --defaults-json gold/job_defaults.json \
+  --output deployment_gold_novo.json --update-existing
+
+Comandos de implantação da Silver e da Gold
+Início explícito de uma nova Silver
+aws glue start-job-run --job-name fiap-silver-inep-batch \
+  --region us-east-2
+# Aguarde SUCCEEDED e o manifesto completo antes da Gold.
+
+Comandos de implantação da Silver e da Gold
+Início explícito de uma nova Gold com parâmetros atuais
+aws glue start-job-run --job-name fiap-gold-inep-batch \
+  --region us-east-2
+
+Comandos de validação da Silver e da Gold
+Somente leitura: Silver real, incluindo footers Parquet
+python verify_continuacao.py --layer silver \
+  --run-id jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288 \
+  --output conferencia_silver_historica.json --verify-parquet
+
+Comandos de validação da Silver e da Gold
+Somente leitura: Gold final real, incluindo footers Parquet
+python verify_continuacao.py --layer gold \
+  --run-id jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd \
+  --output conferencia_gold_historica.json --verify-parquet
+
+Comandos de validação da Silver e da Gold
+Somente leitura: tentativa Gold bloqueada
+python verify_continuacao.py --layer gold \
+  --run-id jr_737aa335fc338309fb383cb2ac7874b3d1f05f609e607e4e64e40758d6c7576e \
+  --output conferencia_gold_falha.json
+# O retorno de falha e esperado. Nao renomear esse estado para SUCCEEDED.
+
+Comandos do streaming e testes locais
+Implantar infraestrutura: cria ou atualiza recursos e role
+python streaming/build_stack.py
+aws cloudformation deploy --stack-name fiap-inep-streaming \
+  --template-file streaming/streaming_stack.json \
+  --capabilities CAPABILITY_NAMED_IAM --region us-east-2
+
+Comandos do streaming e testes locais
+Demonstração nova: envia eventos e um inválido para a AWS
+python streaming/exercise_streaming.py \
+  --output-dir streaming-evidence-nova \
+  --events 30 --duplicates 5 --interval-seconds 1
+# Use pasta nova. O programa preserva evidencias anteriores.
+# Aguarde as cinco tentativas do invalido e sua chegada a DLQ.
+
+Comandos do streaming e testes locais
+Somente leitura operacional: verificar a demonstração histórica
+python streaming/verify_streaming.py \
+  --producer-report streaming/evidence/producer/producer_report.json \
+  --events streaming/evidence/producer/events.jsonl \
+  --queue-url 'https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming' \
+  --dlq-url 'https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming-dlq' \
+  --invalid-message-id 622aaa22-577c-4b80-b56b-459454707967 \
+  --output conferencia_streaming_historica.json
+
+Comandos do streaming e testes locais
+Testes locais sem AWS ou Spark
+python -m unittest discover -s silver -p 'test_*.py' -v
+python -m unittest discover -s gold -p 'test_*.py' -v
+python -m unittest discover -s streaming -p 'test_*.py' -v
+
+Comandos do streaming e testes locais
+Checks estáticos adicionais, também sem AWS
+python verification/check_contracts_independent.py

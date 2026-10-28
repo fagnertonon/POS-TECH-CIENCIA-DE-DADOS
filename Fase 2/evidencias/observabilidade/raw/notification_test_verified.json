@@ -1,0 +1,48 @@
+{
+  "status": "ALARM_NOTIFICATION_ACTION_VERIFIED",
+  "captured_at_utc": "2026-10-27T20:05:32.234343+00:00",
+  "alarm_action_success": true,
+  "matching_actions": [
+    {
+      "timestamp": "2026-10-27 20:03:54.274000+00:00",
+      "summary": "Successfully executed action arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+      "notification_resource": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+      "action_state": "Succeeded",
+      "alarm_name": "fiap-inep-streaming-rejected",
+      "state_reason": "TESTE AUTORIZADO FIAP observabilidade 20261027. Somente rota de notificacao; nao representa nova falha de dados.",
+      "state_change_time": "2026-10-27T20:03:54.238+0000"
+    }
+  ],
+  "test_request_id": "308d6cd0-40c0-4b95-9024-5647c1f8fa7a",
+  "test_requested_at_utc": "2026-10-27T20:03:54.250797+00:00",
+  "subscription_confirmed": true,
+  "provider_metrics": {
+    "NumberOfNotificationsDelivered": {
+      "datapoints": [
+        {
+          "timestamp": "2026-10-27 20:03:00+00:00",
+          "sum": 1.0
+        }
+      ],
+      "sum": 1.0,
+      "scope": "Topic and window; supporting provider telemetry, not proof of inbox receipt"
+    },
+    "NumberOfNotificationsFailed": {
+      "datapoints": [
+        {
+          "timestamp": "2026-10-27 20:03:00+00:00",
+          "sum": 0.0
+        }
+      ],
+      "sum": 0.0,
+      "scope": "Topic and window; supporting provider telemetry, not proof of inbox receipt"
+    }
+  },
+  "current_alarm_state": "OK",
+  "current_state_reason": "Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].",
+  "recipient_receipt_confirmed_by_this_collector": false,
+  "source_history_sha256": "0a61bb11b332de2da5232c3ac42257a49b055e4819a0d8c7a2cb7fc9b9b97797",
+  "collector_mutations": [],
+  "new_test_notifications_sent": 0,
+  "jobs_started": []
+}

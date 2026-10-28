@@ -1,0 +1,13 @@
+{
+  "notification_configuration_mock_tests": 5,
+  "status": "PASS",
+  "scope": "Offline configuration validation; no messages sent by tests",
+  "sources": {
+    "configure_notifications.py": "3913e2d6ba13dc2ad8921dfda6b35275d3511c331eea2bb21412d327ee5aca0c",
+    "inspect_observability.py": "8e7fc35d85797793b6a4df1e41a5856a2a1ebd08e41223c9f42ea56b97c2f9a3",
+    "test_alarm_delivery.py": "1da7940a0aa1c7495a212e18be9ccdf05b6c0e2e778925e52d8141ff7f4f9980",
+    "test_configure_notifications.py": "a35b1a4d9145e37600f624fc78bdb97f75667de123cba9026f68167d16ea507c",
+    "verify_finalizer_evidence.py": "a6b79b416446b59abdfe37b0de869990ed5bb219c0d7a28b0619e4da22559e3b",
+    "verify_notifications.py": "c3577aa2080231c92e16243e44f2ac2b5634543163fff94d1005e953c1b5cd9d"
+  }
+}

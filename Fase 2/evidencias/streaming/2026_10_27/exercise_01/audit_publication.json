@@ -1,0 +1,7 @@
+{
+  "status": "SUCCEEDED",
+  "manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/runs/run_id=sim_gold_20261027T155422Z_a52da0a7/manifest.json",
+  "manifest_key": "auditoria/streaming/runs/run_id=sim_gold_20261027T155422Z_a52da0a7/manifest.json",
+  "manifest_sha256": "c322ff4a5271488ca19e1e55a6d4185938bc2d412d33a625244887bf433e73e4",
+  "run_id": "sim_gold_20261027T155422Z_a52da0a7"
+}

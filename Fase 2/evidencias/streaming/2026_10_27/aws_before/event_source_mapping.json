@@ -1,0 +1,17 @@
+{
+  "UUID": "6bad077d-e592-4109-a81c-edb62a53340e",
+  "BatchSize": 5,
+  "MaximumBatchingWindowInSeconds": 0,
+  "EventSourceArn": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming",
+  "ScalingConfig": {
+    "MaximumConcurrency": 2
+  },
+  "FunctionArn": "arn:aws:lambda:us-east-2:637246457028:function:fiap-inep-streaming-consumer",
+  "LastModified": "2026-10-20T18:39:10.603000Z",
+  "State": "Enabled",
+  "StateTransitionReason": "USER_INITIATED",
+  "FunctionResponseTypes": [
+    "ReportBatchItemFailures"
+  ],
+  "EventSourceMappingArn": "arn:aws:lambda:us-east-2:637246457028:event-source-mapping:6bad077d-e592-4109-a81c-edb62a53340e"
+}

@@ -1,0 +1,65 @@
+1. Testes locais
+PowerShell local; clientes AWS simulados e Parquet real. A primeira tentativa no TMP padrão encontrou bloqueio de escrita. A execução válida usou pasta temporária do workspace e ambiente com as versões fixadas.
+& work/.venv-streaming/Scripts/python.exe -X utf8 work/validar_observabilidade.py
+
+
+2. Descoberta e plano
+A primeira linha foi somente leitura na AWS; a segunda corresponde à preparação local do plano, sem --apply e sem envio de e-mail.
+python3 /home/cloudshell-user/inspect_observability_20261027.py --output /home/cloudshell-user/observability_before_20261027.json
+python configure_notifications.py --email <e-mail-operacional-mascarado> --output-dir notification_plan
+
+
+3. Finalização medida, sem novo replay
+CloudShell: leitura dos 30 eventos prontos. Resultado analítico conferido contra os arquivos anteriores; nova auditoria operacional.
+/home/cloudshell-user/streaming_sim_v2_20261027/.venv/bin/python \
+  /home/cloudshell-user/observabilidade_20261027_code/finalize_simulation.py \
+  --events /home/cloudshell-user/streaming_sim_v2_20261027/exercise_01/producer/events.jsonl \
+  --output-dir /home/cloudshell-user/observabilidade_20261027_positive --region us-east-2
+
+
+4. Falha esperada com evento preservado
+O arquivo foi obtido do envelope em invalid_semantic.json, já existente. Não houve envio a SQS nem nova extração. A ausência dos derivados do evento rejeitado impediu a publicação.
+/home/cloudshell-user/streaming_sim_v2_20261027/.venv/bin/python \
+  /home/cloudshell-user/observabilidade_20261027_code/finalize_simulation.py \
+  --events /home/cloudshell-user/observabilidade_20261027_invalid_events.jsonl \
+  --output-dir /home/cloudshell-user/observabilidade_20261027_negative --region us-east-2
+
+
+5. Aplicação após autorização do responsável
+Forma CLI equivalente. Antes da aplicação, o plano foi conferido pelo hash e o usuário autorizou explicitamente configuração, confirmação e um teste.
+python3 /home/cloudshell-user/configure_observability_notifications_20261027.py \
+  --apply --email <e-mail-operacional-mascarado> \
+  --output-dir /home/cloudshell-user/observability_notifications_apply_20261027
+
+
+6. Verificação da rota e teste único autorizado
+O verificador não envia mensagens. O teste só prossegue após assinatura confirmada, e valida que a única ação é SNS. A pasta nova impede repetir silenciosamente a mesma execução de teste.
+python3 /home/cloudshell-user/observabilidade_20261027_code/verify_notifications.py \
+  --output /home/cloudshell-user/notifications_verified_20261027_04.json
+python3 /home/cloudshell-user/observabilidade_20261027_code/test_alarm_delivery.py \
+  --output-dir /home/cloudshell-user/observability_notification_test_20261027
+
+
+CONSULTA SOMENTE LEITURA
+aws cloudwatch describe-alarms --region us-east-2 --alarm-names fiap-silver-inep-failure fiap-gold-inep-failure fiap-inep-streaming-dlq fiap-inep-streaming-rejected fiap-inep-streaming-age
+
+
+CONSULTA SOMENTE LEITURA
+aws sns get-topic-attributes --region us-east-2 --topic-arn arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais
+
+
+CONSULTA SOMENTE LEITURA
+aws sns list-subscriptions-by-topic --region us-east-2 --topic-arn arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais
+
+
+CONSULTA SOMENTE LEITURA
+aws events describe-rule --region us-east-2 --name fiap-inep-batch-failures
+
+
+CONSULTA SOMENTE LEITURA
+aws events list-targets-by-rule --region us-east-2 --rule fiap-inep-batch-failures
+
+
+CONSULTA SOMENTE LEITURA
+aws cloudwatch describe-alarm-history --region us-east-2 --alarm-name fiap-inep-streaming-rejected --history-item-type Action --max-records 20
+

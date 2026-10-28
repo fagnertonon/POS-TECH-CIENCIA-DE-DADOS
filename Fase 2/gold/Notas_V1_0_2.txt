@@ -1,0 +1,219 @@
+NOTAS DA GOLD v1.0.2 — COBERTURA E COMPARABILIDADE
+Data da revisão local: 26/10/2026
+
+Situação deste registro
+
+ATUALIZAÇÃO FINAL: a publicação e a execução AWS foram concluídas e verificadas
+em 26/10/2026. O complemento ao final deste arquivo contém os identificadores e
+os resultados finais. O texto inicial abaixo preserva o registro da revisão
+local anterior à implantação; suas pendências de execução foram resolvidas.
+
+Este arquivo documenta o código preparado e a revisão local. Não comprova envio
+do script à AWS, execução Glue nem publicação de um novo snapshot. Esses eventos
+dependem das evidências de execução: run_id, status do job, arquivos de qualidade,
+contagens e manifesto final SUCCEEDED da versão 1.0.2.
+
+Alinhamento com o Tech Challenge Fase 2
+
+O enunciado aceita tanto o acesso pelo BigQuery quanto o download direto da
+plataforma e exige justificar arquitetura, atualização e custos no README
+(página 4). A origem no BigQuery é compatível com o desafio. Os arquivos diretos
+do Inep foram consultados para investigar uma divergência, sem substituir a
+linhagem do pipeline: BigQuery → Bronze → Silver → Gold.
+
+A Silver continua responsável por limpeza, padronização de nomes/tipos,
+normalização de chaves, tratamento de ausências e validação de consistência
+(página 6). Uma fonte disponibilizada e tratada no BigQuery não permite concluir,
+por si só, que todos os microdados necessários para reproduzir um indicador
+oficial estão presentes, ou que qualquer diferença entre tabelas é um erro.
+
+As validações continuam separadas em bloqueantes e informativas, com evidências
+persistidas. Falhas bloqueantes impedem a publicação do manifesto aprovado; não
+são convertidas em sucesso por um tratamento genérico de exceções (página 7).
+Os joins continuam com medição de correspondência e limiar de 95%.
+
+O desafio também valoriza a investigação documentada de anomalias e reconhece
+que dados públicos reais têm lacunas (página 13). Nesta mudança, a resposta à
+divergência é acrescentar evidência de cobertura e manter a diferença visível.
+Não foram alteradas observações para fazer os resultados coincidirem.
+
+Evidências que motivaram a mudança
+
+A conferência de 26/10/2026 reproduziu os agregados dos microdados originais do
+Inep e da Silver por UF: contagens, contagens de alfabetizados, somas de pesos e
+taxas arredondadas do universo público (redes 2+3, série 2). Esse é um teste de
+agregados; não constitui comparação de identidade de todas as linhas.
+
+No snapshot analisado:
+
+* 2023: 23 UFs nos alunos elegíveis; faltam AC, DF, RR e SP. A tabela de resultados
+  UF contém SP. O Leia-Me de 2023, página 17, documenta a publicação de TS_ALUNO
+  sem São Paulo.
+* 2024: 26 UFs nos alunos elegíveis; falta RR. DF possui microdados, mas não consta
+  nos resultados em uf/TS_ESTADO. O Leia-Me de 2024, páginas 21–22, documenta a
+  ausência de RR na avaliação e a situação do resultado do DF em TS_MUNICIPIO.
+* 2023 nacional: taxa recalculada 57,4622%; oficial 55,9%; diferença +1,5622 p.p.
+* 2024 nacional: taxa recalculada 59,1996%; oficial 59,2%; diferença −0,0004 p.p.
+
+A ausência de SP não foi demonstrada como explicação exclusiva de toda a
+diferença nacional. As diferenças de MS (+0,3149 p.p.) e SE (−0,2619 p.p.) em 2023
+também se reproduzem a partir da fonte; sua explicação metodológica permanece
+pendente. Esses limites constam no diagnóstico anterior e não são uma dispensa
+para deixar de investigar novas divergências.
+
+Referência das evidências locais:
+outputs/passo_a_passo_gold/diagnostico_2026-10-26/Conclusoes_Diagnostico.json
+
+O que muda na saída validacao_cruzada_brasil
+
+Os oito campos anteriores permanecem: ano, serie, rede, alunos_avaliados,
+taxa_alfabetizacao_calculada, taxa_oficial_publicada, diferenca_pp e
+dentro_tolerancia.
+
+São acrescentados:
+
+* quantidade_ufs_microdados: número de UFs distintas dos alunos efetivamente
+  incluídos no denominador público do cálculo.
+* ufs_microdados: lista ordenada e sem repetição dessas UFs.
+* ufs_sem_microdados: complemento dessa lista em relação às 27 UFs; é uma
+  referência geográfica, não uma estimativa da participação de alunos/escolas.
+* ufs_resultados_uf: UFs com resultado publicado não nulo em uf, para o mesmo
+  ano, série e rede pública 5.
+* ufs_resultados_sem_microdados: diferença resultados UF menos microdados.
+* ufs_microdados_sem_resultado_uf: diferença microdados menos resultados UF.
+* status_comparabilidade: classificação dos conjuntos geográficos.
+* nota_fonte: descrição do universo comparado e dos limites de interpretação.
+
+As UFs dos alunos são inferidas pelos dois primeiros dígitos do código IBGE de
+município, já normalizado na Silver. O mapa explícito UF_IBGE contém 27 códigos.
+Alunos privados e ausentes não entram na cobertura do denominador público.
+Chaves/pesos inválidos continuam bloqueados; não são descartados silenciosamente
+para melhorar a taxa ou a cobertura. Prefixo de UF desconhecido nos alunos
+públicos avaliados passa a produzir uma falha bloqueante específica.
+
+Significado dos três status
+
+REFERENCIA_UF_INDISPONIVEL
+Não há conjunto de resultados UF disponível para aquela coorte. Esse status
+tem precedência sobre uma comparação entre conjuntos.
+
+COBERTURA_DIFERENTE_ENTRE_BASES
+O conjunto de UFs dos alunos incluídos no cálculo difere do conjunto de UFs com
+resultado publicado em uf. A diferença pode ocorrer mesmo quando a taxa nacional
+fica dentro da tolerância, como acontece no snapshot de 2024.
+
+COBERTURA_UF_COINCIDENTE_METODOLOGIA_NAO_COMPROVADA
+Os conjuntos de UFs coincidem. Isso não comprova equivalência metodológica,
+participação integral de alunos/escolas ou identidade do universo nacional.
+Nem mesmo a presença das 27 UFs autoriza essas conclusões.
+
+A tabela uf/TS_ESTADO não é tratada como definição completa do universo do
+indicador Brasil. As notas documentais são condicionais ao snapshot: a nota da
+ausência de SP só é adicionada em 2023 se SP continuar ausente dos alunos; a
+nota do DF em 2024 exige DF nos alunos e ausente nos resultados UF. Não existe
+aprovação automática de um ano por se tratar de uma divergência já conhecida.
+
+O que permanece preservado
+
+* Fórmula: 100 × soma(peso × alfabetizado) / soma(peso), sobre alunos avaliados,
+  com arredondamento a quatro casas decimais.
+* Composição da rede pública: redes elementares 2+3 geram a rede agregada 5.
+* Série da comparação nacional: segundo ano do ensino fundamental, código 2.
+* Tolerância numérica: 0,1 ponto percentual, separada do status de comparabilidade.
+* Diferenças observadas e sinal de dentro_tolerancia, sem forçar concordância.
+* Threshold de joins de 95% e regras bloqueantes anteriores.
+* Cinco saídas Gold e identificação das linhas da validação por ano/série/rede.
+* Histórico por execução, escrita errorifexists e seleção de uma única Silver
+  comprometida por manifesto aprovado; uma execução não apaga outra.
+* Publicação somente pelo manifesto final SUCCEEDED, depois de gravar, reler e
+  validar as cinco saídas. Escritas de dados e de catálogo não são uma transação
+  atômica entre tabelas; consumidores devem respeitar esse contrato.
+
+A revisão anterior foi preservada em history/gold_glue_v1_0_1.py. O notebook
+adaptado é mantido sincronizado com gold_glue.py; o notebook original permanece
+preservado separadamente.
+
+Qualidade e evidência novas
+
+A Gold valida após releitura do Parquet a presença dos novos metadados, o domínio
+dos status e a consistência dos conjuntos de UFs presentes/ausentes. O join com
+a cobertura também tem correspondência medida. As linhas de cobertura ficam
+registradas nos arquivos de qualidade e em national_coverage_audit no manifesto.
+Uma diferença numérica segue informativa e visível; nenhuma limitação da fonte
+altera o resultado dos checks bloqueantes existentes.
+
+Testes e limites da revisão local
+
+Foram executados 24 testes unitários sem AWS: 16 do preflight/contratos e 8 dos
+novos metadados. Os oito novos casos exercitam a função de produção extraída por
+AST, sem importar boto3 ou Spark: mapa de 27 UFs; SP ausente em 2023; SP presente
+em snapshot posterior; DF 2024; coincidência das 27 UFs sem equivalência
+metodológica; referência UF vazia; siglas inválidas; listas ordenadas/únicas e
+ausência de mutação das entradas. Os casos foram aprovados localmente.
+
+Esses testes não executam transformações Spark, nem verificam a leitura/gravação
+real de Parquet ou a publicação em S3. O ambiente local não dispõe de PySpark e
+Java para essa integração.
+
+Para a execução integrada foi preparada a opção VERIFY_COVERAGE_FIXTURE,
+desativada por padrão. Quando habilitada, uma pequena fixture sintética verifica
+no Spark as taxas esperadas, cardinalidade, exclusão de alunos privados e
+ausentes da cobertura e rejeição de prefixo de UF desconhecido. As métricas de
+joins da fixture são isoladas e restauradas em finally. A evidência é identificada
+por synthetic=true em quality/coverage_spark_fixture.json; a fixture não grava
+dados analíticos sintéticos na Gold. Os dados reais continuam com simulation=false.
+
+A aprovação dessa fixture em Glue e o sucesso da execução com dados reais ainda
+precisam ser comprovados pelos respectivos registros AWS. Habilitar a opção,
+enviar o código ou sincronizar o notebook não constituem prova de execução.
+
+Arquivos relevantes desta revisão
+
+gold_glue.py
+03_camada_gold_glue.ipynb
+test_gold_preflight.py
+test_gold_coverage.py
+history/gold_glue_v1_0_1.py
+
+O código desta alteração usa os dados Silver já existentes. A investigação e os
+testes locais aqui descritos não iniciaram consultas BigQuery nem novos jobs Glue.
+
+Complemento final — execução AWS de 26/10/2026
+
+Run aprovado:
+jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29
+Estado Glue e manifesto: SUCCEEDED.
+Script SHA-256:
+a36f8f94b15a574c0c8d79631c00b7dd016526437ef5d55645df83b1249e0d7e
+
+O observador independente confirmou schemas físicos e contagens Parquet das
+cinco saídas, totalizando 46.342 linhas. Os oito campos antigos das duas linhas
+da validação nacional são idênticos aos da publicação anterior. Essa comparação
+não equivale a conferir todos os valores de todas as cinco tabelas.
+
+A fixture Spark passou: seis regras bloqueantes e quatro registros informativos.
+Também exercita regras_extras para detectar incompatibilidades de runtime antes
+dos dados reais. As métricas sintéticas permanecem isoladas das produtivas.
+
+A primeira tentativa, jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29,
+falhou em 148 segundos porque Column.isin recebeu tuple. O código final usa list.
+A falha deixou arquivos staged, mas não publicou manifesto aprovado. O histórico
+anterior permanece preservado; somente o manifesto final SUCCEEDED autoriza
+consumo. Não foi feita limpeza destrutiva dos arquivos da tentativa falha.
+
+A execução final durou 174 segundos, com 349 DPU-segundos. Somando os 296
+DPU-segundos da tentativa falha, são 645 DPU-segundos. À tarifa regional consultada
+de US$0,44/DPU-hora, a estimativa é US$0,078833, cerca de US$0,08 somente de Glue,
+antes de créditos e impostos. Não é a fatura ou o saldo atual do orçamento.
+
+Foram reutilizados o job existente, dois workers G.1X, zero retentativas, timeout
+de 15 minutos e o mesmo manifesto Silver aprovado. Novos assets S3 e tabelas de
+catálogo versionadas foram criados. Não houve mudança IAM, nova agenda ou consulta
+BigQuery nesta atualização.
+
+A divergência nacional de 2023 permanece documentada (+1,5622 p.p.); a taxa de
+2024 continua dentro da tolerância (-0,0004 p.p.). Os dois anos recebem cobertura
+diferente entre bases. O sucesso técnico não comprova equivalência metodológica.
+
+Evidências finais: evidence_v1_0_2/aws/evidence_final/.
+Relatório: Resumo_Atualizacao_Gold_AWS.pdf, incluído no pacote desta atualização.

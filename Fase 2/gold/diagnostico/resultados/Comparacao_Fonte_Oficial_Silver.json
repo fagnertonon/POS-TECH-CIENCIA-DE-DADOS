@@ -1,0 +1,986 @@
+{
+  "observed_at_utc": "2026-10-26T12:06:51.756915+00:00",
+  "audit_sha256": "ca502dbad142c8eae1fc0afafa5bdf3bf1a9037aa7c7f38610cf105997791c29",
+  "gold_run_id": "jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd",
+  "silver_run_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+  "years": [
+    {
+      "ano": 2023,
+      "official_zip": "C:\\Users\\USER\\Documents\\Codex\\2026-10-20\\vo\\work\\diagnostico_cobertura\\microdados_avaliacao_da_alfabetizacao_2023.zip",
+      "official_zip_sha256": "3b5a9a2e5f20deba2878cd754149c49854d88b76f2048d69f87e6aa182eda803",
+      "url": "https://download.inep.gov.br/dados_abertos/microdados_avaliacao_da_alfabetizacao_2023.zip",
+      "rows_read": 1747439,
+      "ufs_alunos_publicos": [
+        "AL",
+        "AM",
+        "AP",
+        "BA",
+        "CE",
+        "ES",
+        "GO",
+        "MA",
+        "MG",
+        "MS",
+        "MT",
+        "PA",
+        "PB",
+        "PE",
+        "PI",
+        "PR",
+        "RJ",
+        "RN",
+        "RO",
+        "RS",
+        "SC",
+        "SE",
+        "TO"
+      ],
+      "ufs_ausentes_alunos_publicos": [
+        "AC",
+        "DF",
+        "RR",
+        "SP"
+      ],
+      "ufs_ts_estado_rede_publica": [
+        "AL",
+        "AM",
+        "AP",
+        "BA",
+        "CE",
+        "ES",
+        "GO",
+        "MA",
+        "MG",
+        "MS",
+        "MT",
+        "PA",
+        "PB",
+        "PE",
+        "PI",
+        "PR",
+        "RJ",
+        "RN",
+        "RO",
+        "RS",
+        "SC",
+        "SE",
+        "SP",
+        "TO"
+      ],
+      "ufs_alunos_sem_ts_estado": [],
+      "silver_ufs_without_source_match": [],
+      "all_compared_aggregates_match": true,
+      "recalculated_public_rate": 57.4622,
+      "por_uf": [
+        {
+          "uf": "AL",
+          "registros": 35503,
+          "avaliados": 32789,
+          "alfabetizados": 14584,
+          "soma_pesos": 35502.9999802,
+          "soma_pesos_alfabetizados": 15580.1494332,
+          "taxa": 43.884,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "AM",
+          "registros": 63055,
+          "avaliados": 48010,
+          "alfabetizados": 25582,
+          "soma_pesos": 63055.0000364,
+          "soma_pesos_alfabetizados": 32916.7424457,
+          "taxa": 52.2032,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "AP",
+          "registros": 12349,
+          "avaliados": 11075,
+          "alfabetizados": 4609,
+          "soma_pesos": 12349.000002,
+          "soma_pesos_alfabetizados": 5132.468314899999,
+          "taxa": 41.5618,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "BA",
+          "registros": 137724,
+          "avaliados": 116412,
+          "alfabetizados": 43486,
+          "soma_pesos": 137724.0002197,
+          "soma_pesos_alfabetizados": 50651.185980199996,
+          "taxa": 36.7773,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "CE",
+          "registros": 100349,
+          "avaliados": 95549,
+          "alfabetizados": 80942,
+          "soma_pesos": 100348.99999750001,
+          "soma_pesos_alfabetizados": 84757.79161429999,
+          "taxa": 84.463,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "ES",
+          "registros": 50482,
+          "avaliados": 44628,
+          "alfabetizados": 30511,
+          "soma_pesos": 50481.999988999996,
+          "soma_pesos_alfabetizados": 34294.0085905,
+          "taxa": 67.9331,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "GO",
+          "registros": 83741,
+          "avaliados": 72868,
+          "alfabetizados": 48821,
+          "soma_pesos": 83738.9435496,
+          "soma_pesos_alfabetizados": 55872.275845899996,
+          "taxa": 66.722,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "MA",
+          "registros": 74958,
+          "avaliados": 66793,
+          "alfabetizados": 38039,
+          "soma_pesos": 74957.9999679,
+          "soma_pesos_alfabetizados": 42298.1423943,
+          "taxa": 56.4291,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "MG",
+          "registros": 210107,
+          "avaliados": 188236,
+          "alfabetizados": 114607,
+          "soma_pesos": 210106.9987756,
+          "soma_pesos_alfabetizados": 125663.14226290002,
+          "taxa": 59.8091,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "MS",
+          "registros": 42199,
+          "avaliados": 37113,
+          "alfabetizados": 17727,
+          "soma_pesos": 37113.0,
+          "soma_pesos_alfabetizados": 17727.0,
+          "taxa": 47.7649,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "MT",
+          "registros": 54526,
+          "avaliados": 47696,
+          "alfabetizados": 26499,
+          "soma_pesos": 54526.0859216,
+          "soma_pesos_alfabetizados": 30026.2259216,
+          "taxa": 55.0676,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "PA",
+          "registros": 104972,
+          "avaliados": 84557,
+          "alfabetizados": 41621,
+          "soma_pesos": 104971.9999625,
+          "soma_pesos_alfabetizados": 50786.028899799996,
+          "taxa": 48.3805,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "PB",
+          "registros": 38215,
+          "avaliados": 33714,
+          "alfabetizados": 17366,
+          "soma_pesos": 38215.0000243,
+          "soma_pesos_alfabetizados": 19536.2993497,
+          "taxa": 51.1221,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "PE",
+          "registros": 88271,
+          "avaliados": 81148,
+          "alfabetizados": 48012,
+          "soma_pesos": 88271.00006280001,
+          "soma_pesos_alfabetizados": 52038.8736045,
+          "taxa": 58.9535,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "PI",
+          "registros": 35415,
+          "avaliados": 33067,
+          "alfabetizados": 17583,
+          "soma_pesos": 35414.999911499996,
+          "soma_pesos_alfabetizados": 18586.9675046,
+          "taxa": 52.4833,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "PR",
+          "registros": 138532,
+          "avaliados": 119385,
+          "alfabetizados": 87921,
+          "soma_pesos": 138532.0001236,
+          "soma_pesos_alfabetizados": 101295.27901239999,
+          "taxa": 73.1205,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "RJ",
+          "registros": 159997,
+          "avaliados": 129935,
+          "alfabetizados": 69351,
+          "soma_pesos": 159996.9996443,
+          "soma_pesos_alfabetizados": 83401.3291295,
+          "taxa": 52.1268,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "RN",
+          "registros": 31748,
+          "avaliados": 24937,
+          "alfabetizados": 9472,
+          "soma_pesos": 31748.000131900004,
+          "soma_pesos_alfabetizados": 11822.468799,
+          "taxa": 37.2385,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "RO",
+          "registros": 22834,
+          "avaliados": 20116,
+          "alfabetizados": 13126,
+          "soma_pesos": 22833.9999952,
+          "soma_pesos_alfabetizados": 14751.670999000002,
+          "taxa": 64.604,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "RS",
+          "registros": 121148,
+          "avaliados": 98660,
+          "alfabetizados": 63830,
+          "soma_pesos": 121147.99985719999,
+          "soma_pesos_alfabetizados": 76844.7392072,
+          "taxa": 63.4305,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "SC",
+          "registros": 102621,
+          "avaliados": 80656,
+          "alfabetizados": 50549,
+          "soma_pesos": 102620.999924,
+          "soma_pesos_alfabetizados": 62992.1805029,
+          "taxa": 61.3833,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "SE",
+          "registros": 18634,
+          "avaliados": 18634,
+          "alfabetizados": 5832,
+          "soma_pesos": 19901.11,
+          "soma_pesos_alfabetizados": 6176.93,
+          "taxa": 31.0381,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "TO",
+          "registros": 20059,
+          "avaliados": 16831,
+          "alfabetizados": 7357,
+          "soma_pesos": 20059.0000276,
+          "soma_pesos_alfabetizados": 8768.7960205,
+          "taxa": 43.715,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        }
+      ],
+      "scope_limit": "Agreement of counts and weighted aggregates is not a row-by-row identity check or proof of official national methodology."
+    },
+    {
+      "ano": 2024,
+      "official_zip": "C:\\Users\\USER\\Documents\\Codex\\2026-10-20\\vo\\work\\diagnostico_cobertura\\microdados_avaliacao_da_alfabetizacao_2024.zip",
+      "official_zip_sha256": "1d698162ff6b478dfd4a923dd858fc7b0f1704679a438d8334e0ed1046ccba7e",
+      "url": "https://download.inep.gov.br/dados_abertos/microdados_avaliacao_da_alfabetizacao_2024.zip",
+      "rows_read": 2120560,
+      "ufs_alunos_publicos": [
+        "AC",
+        "AL",
+        "AM",
+        "AP",
+        "BA",
+        "CE",
+        "DF",
+        "ES",
+        "GO",
+        "MA",
+        "MG",
+        "MS",
+        "MT",
+        "PA",
+        "PB",
+        "PE",
+        "PI",
+        "PR",
+        "RJ",
+        "RN",
+        "RO",
+        "RS",
+        "SC",
+        "SE",
+        "SP",
+        "TO"
+      ],
+      "ufs_ausentes_alunos_publicos": [
+        "RR"
+      ],
+      "ufs_ts_estado_rede_publica": [
+        "AC",
+        "AL",
+        "AM",
+        "AP",
+        "BA",
+        "CE",
+        "ES",
+        "GO",
+        "MA",
+        "MG",
+        "MS",
+        "MT",
+        "PA",
+        "PB",
+        "PE",
+        "PI",
+        "PR",
+        "RJ",
+        "RN",
+        "RO",
+        "RS",
+        "SC",
+        "SE",
+        "SP",
+        "TO"
+      ],
+      "ufs_alunos_sem_ts_estado": [
+        "DF"
+      ],
+      "silver_ufs_without_source_match": [],
+      "all_compared_aggregates_match": true,
+      "recalculated_public_rate": 59.1996,
+      "por_uf": [
+        {
+          "uf": "AC",
+          "registros": 12655,
+          "avaliados": 10234,
+          "alfabetizados": 5311,
+          "soma_pesos": 12658.029999999999,
+          "soma_pesos_alfabetizados": 6504.16,
+          "taxa": 51.3837,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "AL",
+          "registros": 33668,
+          "avaliados": 31575,
+          "alfabetizados": 15454,
+          "soma_pesos": 33675.94,
+          "soma_pesos_alfabetizados": 16378.449999999999,
+          "taxa": 48.6355,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "AM",
+          "registros": 58608,
+          "avaliados": 46628,
+          "alfabetizados": 23238,
+          "soma_pesos": 58651.23,
+          "soma_pesos_alfabetizados": 28840.98,
+          "taxa": 49.1737,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "AP",
+          "registros": 12580,
+          "avaliados": 11214,
+          "alfabetizados": 5302,
+          "soma_pesos": 12583.75,
+          "soma_pesos_alfabetizados": 5866.34,
+          "taxa": 46.6184,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "BA",
+          "registros": 115576,
+          "avaliados": 104069,
+          "alfabetizados": 37424,
+          "soma_pesos": 104069.0,
+          "soma_pesos_alfabetizados": 37424.0,
+          "taxa": 35.9608,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "CE",
+          "registros": 89841,
+          "avaliados": 88158,
+          "alfabetizados": 75223,
+          "soma_pesos": 89848.22,
+          "soma_pesos_alfabetizados": 76650.87,
+          "taxa": 85.3115,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "DF",
+          "registros": 27698,
+          "avaliados": 22111,
+          "alfabetizados": 13140,
+          "soma_pesos": 27683.230000000003,
+          "soma_pesos_alfabetizados": 16370.29,
+          "taxa": 59.1343,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "ES",
+          "registros": 47538,
+          "avaliados": 42751,
+          "alfabetizados": 30818,
+          "soma_pesos": 47552.51,
+          "soma_pesos_alfabetizados": 34096.97,
+          "taxa": 71.7038,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "GO",
+          "registros": 77166,
+          "avaliados": 70799,
+          "alfabetizados": 51698,
+          "soma_pesos": 77185.06,
+          "soma_pesos_alfabetizados": 56148.16,
+          "taxa": 72.7449,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "MA",
+          "registros": 69284,
+          "avaliados": 62974,
+          "alfabetizados": 37889,
+          "soma_pesos": 69300.23000000001,
+          "soma_pesos_alfabetizados": 41335.090000000004,
+          "taxa": 59.6464,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "MG",
+          "registros": 203450,
+          "avaliados": 180771,
+          "alfabetizados": 131226,
+          "soma_pesos": 203521.2,
+          "soma_pesos_alfabetizados": 146688.86000000002,
+          "taxa": 72.0755,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "MS",
+          "registros": 41327,
+          "avaliados": 37212,
+          "alfabetizados": 21027,
+          "soma_pesos": 41336.41,
+          "soma_pesos_alfabetizados": 23095.26,
+          "taxa": 55.8715,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "MT",
+          "registros": 50965,
+          "avaliados": 45083,
+          "alfabetizados": 27488,
+          "soma_pesos": 50992.31,
+          "soma_pesos_alfabetizados": 30894.43,
+          "taxa": 60.5864,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "PA",
+          "registros": 99977,
+          "avaliados": 83193,
+          "alfabetizados": 40575,
+          "soma_pesos": 100007.25,
+          "soma_pesos_alfabetizados": 48206.25,
+          "taxa": 48.2028,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "PB",
+          "registros": 35118,
+          "avaliados": 31004,
+          "alfabetizados": 17551,
+          "soma_pesos": 35127.83,
+          "soma_pesos_alfabetizados": 19658.63,
+          "taxa": 55.9631,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "PE",
+          "registros": 80359,
+          "avaliados": 75953,
+          "alfabetizados": 46385,
+          "soma_pesos": 80374.66,
+          "soma_pesos_alfabetizados": 48856.96000000001,
+          "taxa": 60.7865,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "PI",
+          "registros": 32792,
+          "avaliados": 31105,
+          "alfabetizados": 18747,
+          "soma_pesos": 32796.61,
+          "soma_pesos_alfabetizados": 19621.019999999997,
+          "taxa": 59.8264,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "PR",
+          "registros": 138914,
+          "avaliados": 119806,
+          "alfabetizados": 84819,
+          "soma_pesos": 138958.92,
+          "soma_pesos_alfabetizados": 97857.39,
+          "taxa": 70.4218,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "RJ",
+          "registros": 151201,
+          "avaliados": 125671,
+          "alfabetizados": 70236,
+          "soma_pesos": 151233.55999999997,
+          "soma_pesos_alfabetizados": 83568.54,
+          "taxa": 55.2579,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "RN",
+          "registros": 29399,
+          "avaliados": 22848,
+          "alfabetizados": 9130,
+          "soma_pesos": 29404.29,
+          "soma_pesos_alfabetizados": 11553.27,
+          "taxa": 39.2911,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "RO",
+          "registros": 22673,
+          "avaliados": 20027,
+          "alfabetizados": 12621,
+          "soma_pesos": 22680.07,
+          "soma_pesos_alfabetizados": 14204.949999999999,
+          "taxa": 62.6319,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "RS",
+          "registros": 108262,
+          "avaliados": 89562,
+          "alfabetizados": 40993,
+          "soma_pesos": 108062.4357861,
+          "soma_pesos_alfabetizados": 48364.5988491,
+          "taxa": 44.7562,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "SC",
+          "registros": 98550,
+          "avaliados": 69035,
+          "alfabetizados": 43941,
+          "soma_pesos": 98545.71,
+          "soma_pesos_alfabetizados": 61117.86,
+          "taxa": 62.0198,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "SE",
+          "registros": 19424,
+          "avaliados": 17802,
+          "alfabetizados": 6865,
+          "soma_pesos": 19430.9,
+          "soma_pesos_alfabetizados": 7459.9,
+          "taxa": 38.3919,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "SP",
+          "registros": 443777,
+          "avaliados": 395444,
+          "alfabetizados": 231582,
+          "soma_pesos": 443732.9994381,
+          "soma_pesos_alfabetizados": 257966.171664,
+          "taxa": 58.1354,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        },
+        {
+          "uf": "TO",
+          "registros": 19733,
+          "avaliados": 16799,
+          "alfabetizados": 8420,
+          "soma_pesos": 19737.55,
+          "soma_pesos_alfabetizados": 9879.380000000001,
+          "taxa": 50.0537,
+          "comparacao_silver": {
+            "registros": true,
+            "avaliados": true,
+            "alfabetizados": true,
+            "soma_pesos": true,
+            "soma_pesos_alfabetizados": true,
+            "taxa": true
+          }
+        }
+      ],
+      "scope_limit": "Agreement of counts and weighted aggregates is not a row-by-row identity check or proof of official national methodology."
+    }
+  ]
+}

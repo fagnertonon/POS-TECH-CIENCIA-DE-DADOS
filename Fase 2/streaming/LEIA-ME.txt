@@ -1,0 +1,362 @@
+STREAMING ATE A GOLD DE SIMULACAO — FIAP TECH CHALLENGE FASE 2
+
+Fluxo: amostra real da Bronze batch -> produtor de replay -> SQS Standard ->
+Lambda Python 3.12 -> Bronze JSON -> Silver JSON gzip por evento -> contribuicao
+Gold JSON gzip por evento -> compactacao controlada Silver/Gold Parquet Snappy.
+Auditoria, comprovante de conclusao e CloudWatch acompanham o caminho.
+
+Esta fonte representa uma SIMULACAO de chegadas incrementais. Nao e CDC nem
+uma conexao de atualizacao ao vivo do INEP. O produtor le somente as 12 colunas
+originais dos Parquet alunos de um manifesto batch completo e validado.
+Cada envelope inclui simulation=true, source=inep_bronze_replay, run_id,
+event_id, event_time UTC e source_snapshot_run_id. O ano educacional permanece
+inalterado no payload. event_time mede a emissao da simulacao.
+
+Recursos (us-east-2):
+- Stack: fiap-inep-streaming
+- Fila: fiap-inep-streaming (Standard, visibilidade 60s, retencao 4 dias)
+- DLQ: fiap-inep-streaming-dlq (retencao 14 dias, maxReceiveCount=5 na origem)
+- Lambda: fiap-inep-streaming-consumer (timeout 10s, memoria 256MB)
+- Limite de concorrencia: 2; lote de ate 5; ReportBatchItemFailures habilitado
+- Logs: /aws/lambda/fiap-inep-streaming-consumer, retencao 14 dias
+- Role: fiap-lambda-inep-streaming, restrita a fila, logs e prefixos S3 do fluxo
+
+Bronze: s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/
+event_date=AAAA-MM-DD/run_id=<id>/event_id=<id>.json
+Claims: s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/
+run_id=<id>/event_id=<id>.json
+
+Um evento unico gera um objeto Bronze e um claim. A identidade e o par
+(run_id,event_id). O claim guarda o envelope completo e os metadados da primeira
+recepcao. Os dois PUTs sao condicionais a chave ainda nao existir. Um retry
+recupera o claim e conclui a escrita Bronze. Um envelope identico e reconhecido
+como duplicata; mesmo ID com conteudo diferente falha. Nunca ha overwrite.
+SQS entrega pelo menos uma vez e nao garante ordem. A protecao e sobre o efeito
+no S3; ela nao converte a fila em uma mensageria exatamente uma vez.
+
+O consumidor valida o envelope e preserva o payload. Mensagens invalidas retornam
+em batchItemFailures e chegam a DLQ apos cinco recebimentos malsucedidos.
+Os validos do mesmo lote podem ser confirmados. Nao ha descarte silencioso.
+Um JSON por evento facilita a rastreabilidade desta demonstracao de baixo volume.
+A extensao Silver/Gold abaixo trata e compacta somente a simulacao. Os dados
+oficiais em bronze/inep, silver/inep e gold/inep permanecem em seus snapshots.
+
+OBSERVABILIDADE
+Namespace FIAP/Streaming, dimensao Pipeline=fiap-inep-streaming:
+Received, Accepted, Duplicate, Failed e LatencySeconds via logs EMF.
+Na versao inicial, LatencySeconds mede event_time -> retorno do PUT Bronze.
+Na versao 2, mede ate a contribuicao Gold pronta; o log inclui pipeline_version
+e latency_target=gold_contribution. Comparar metricas da mesma versao e escopo.
+received_at_utc e claim_started_at_utc no objeto nao representam o fim do PUT.
+O verificador tambem mede event_time -> S3 LastModified, explicitando a resolucao
+de segundos deste segundo metodo. As metricas e resultados ficam historicos.
+
+Atualizacao de observabilidade em 27/10/2026: os tres alarmes streaming
+fiap-inep-streaming-dlq, fiap-inep-streaming-rejected e fiap-inep-streaming-age,
+mais fiap-silver-inep-failure e fiap-gold-inep-failure, estao com AlarmActions
+apontando para o SNS fiap-inep-alertas-operacionais e ActionsEnabled=true.
+Os limiares anteriores foram preservados. A regra EventBridge
+fiap-inep-batch-failures recebe estados de falha dos jobs Bronze, Silver e Gold
+e envia apenas metadados operacionais ao mesmo topico, sem dados de alunos.
+Ela nao tem agendamento e nao inicia jobs. Pode haver dois avisos de uma falha
+Silver/Gold: o evento Glue e o alarme da metrica; correlacionar job/run/horario.
+
+O endereco foi indicado pelo responsavel: <e-mail-operacional-mascarado>. As primeiras
+verificacoes registraram PendingConfirmation; notifications_verified_04.json
+confirmou a assinatura. Um unico teste autorizado foi acionado em 27/10/2026
+as 17:03:54 de Brasilia, com razao TESTE AUTORIZADO FIAP. O historico CloudWatch
+registrou a acao SNS como Succeeded, e a janela do topico registrou 1 entrega
+e 0 falhas; o alarme retornou a OK. Isso comprova a acao e a telemetria do provedor,
+nao a leitura da mensagem pelo destinatario. O destinatario tambem confirmou
+"Recebi o e-mail de teste" nesta conversa. O registro separado esta em
+recipient_receipt.json no pacote de observabilidade, vinculado ao mesmo teste.
+O horario dessa confirmacao nao foi tratado como medida de latencia do e-mail.
+Consultar o estado mais recente em outputs/observabilidade_20261027.
+Nao reenviar Subscribe nem testes repetidamente enquanto se aguarda a pessoa.
+Nao foram usados notifications-contacts, SMS, upgrade ou alteracoes IAM/SCP.
+
+Durante a demonstracao, o destinatario designado acompanha os avisos e consulta
+CloudWatch/DLQ ao receber uma falha. A avaliacao dos alarmes usa periodos de 60s
+apos a publicacao da metrica; o limiar de idade da fila e 120s. A publicacao de
+metricas, o encaminhamento e a leitura humana acrescentam tempo. E-mail nao
+tem garantia de entrega em 60s; medir e documentar o teste, sem prometer esse SLA.
+Ao receber alerta: consultar logs, inspecionar a DLQ, corrigir causa/codigo e
+so entao fazer redrive mantendo o envelope/IDs. Nao fazer purge da evidencia.
+Uma mensagem invalida de teste e mantida na DLQ como evidencia real.
+
+REPRODUZIR O EXERCICIO ORIGINAL DA BRONZE
+1. python build_stack.py
+2. aws cloudformation deploy --stack-name fiap-inep-streaming --template-file streaming_stack.json --capabilities CAPABILITY_NAMED_IAM --region us-east-2
+3. python -m venv .venv
+4. Instalar requirements-producer.txt no Python do ambiente virtual (3.11+).
+5. Executar nesse ambiente: python exercise_streaming.py --output-dir <pasta-nova>
+   O teste padrao envia 30 eventos em intervalos de 1s, 5 duplicatas identicas e
+   1 mensagem intencionalmente invalida. Nao cria agendamento recorrente.
+6. Aguardar retentativas e DLQ (aproximadamente cinco minutos, sujeito ao polling).
+7. Executar verify_streaming.py com --producer-report, --events, --queue-url,
+   --dlq-url, --invalid-message-id e --output. Os IDs/URLs sao salvos em
+   infra_state.json e invalid_message.json pelo exercicio.
+8. Para reenviar o mesmo lote: producer.py --queue-url <url> --replay-file
+   <events.jsonl> --output-dir <outra-pasta-nova>. Preserva IDs, horarios e bytes.
+
+O verificador nao apaga mensagens: inspeciona a DLQ e devolve a visibilidade.
+INCOMPLETE significa que fila, logs, metricas ou DLQ ainda nao estao prontos.
+FAILED significa divergencia/erro; SUCCEEDED exige todas as verificacoes.
+O programa nao deve mascarar esses estados. Nenhuma credencial e armazenada aqui.
+
+EXECUCAO REAL VALIDADA EM 20/10/2026
+Run: sim_20261020T184106Z_65ed95850eeb
+Status final: SUCCEEDED, sem erros ou pendencias no verificador.
+36 envios SQS: 30 eventos novos + 5 duplicatas + 1 mensagem invalida.
+40 recebimentos Lambda: 30 aceitos, 5 duplicatas e 5 tentativas da mensagem invalida.
+30 objetos Bronze (33.759 bytes) e 30 claims. Fila principal vazia.
+Mensagem invalida preservada na DLQ: 622aaa22-577c-4b80-b56b-459454707967.
+Latencia real dos aceitos: media 0,962s; mediana 0,117s; p95 4,967s; maxima 7,468s.
+16 testes locais passaram. O alarme de rejeicao foi observado em ALARM.
+Os estados de alarme sao dinamicos; evidence/streaming_report.json guarda o
+estado no instante da verificacao. Nenhum e-mail/SMS foi enviado.
+O produtor terminou; nao ha emissao recorrente agendada. A infraestrutura fica
+disponivel para novas execucoes manuais e o consumidor continua ligado a fila.
+
+Auditoria persistida no S3:
+s3://fiap-tc-fase2-2026/auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/manifest.json
+O manifesto referencia relatorio, produtor, infraestrutura e falha, com hashes.
+evidence/ preserva os arquivos baixados da execucao; streaming_filas.jpg mostra
+a fila principal vazia e uma mensagem de teste na DLQ.
+
+EXTENSAO SILVER/GOLD — CONTRATO E RECUPERACAO
+
+Envelope de entrada continua schema_version=1. O derivado usa schema_version=2
+e pipeline_version=2.0.0; a alteracao da projecao nao altera o evento bruto.
+Toda saida derivada carrega simulation=true e origin=simulacao_replay_inep.
+run_id, event_id, source_snapshot_run_id e event_time estao em provenance nos
+objetos derivados, e na raiz do comprovante de conclusao. A identidade de um
+evento continua (run_id,event_id); id_aluno nao substitui a identidade do evento.
+
+Os prefixos exclusivos sao silver/inep_streaming e gold/inep_streaming. Um aluno
+reproduzido nao se torna uma nova observacao oficial. Nao ha uniao com o indicador
+oficial, regravacao dos snapshots batch, CDC ou atualizacao ao vivo do INEP.
+O recorte de 30 registros e uma demonstracao; nao representa a populacao nacional.
+
+Silver normaliza chaves e tipos, preserva ausencias e identifica a UF pelo prefixo
+IBGE do municipio. Os codigos desta versao foram conferidos no dicionario do
+snapshot Silver, registrado em conferencia_pesos_silver.json de 26/10/2026:
+presenca: 1=Presente, 0=Ausente; preenchimento_caderno: 1=Prova preenchida,
+0=Prova nao preenchida; alfabetizado: 1=Sim, 0=Nao. Redes 1=Federal, 2=Estadual,
+3=Municipal, 4=Privada. Serie 2 corresponde ao 2o ano do Ensino Fundamental.
+Codigo desconhecido nao e convertido em falso. Mudanca desse dominio exige nova
+versao de transformacao e validacao; nao reinterpretar retroativamente o historico.
+
+Avaliado = presente E caderno_preenchido. Somente avaliados entram no denominador
+da taxa. Um avaliado precisa de alfabetizacao conhecida e peso positivo finito;
+peso nulo, zero, negativo ou infinito impede a publicacao Silver/Gold. Proficiencia
+nao define elegibilidade. Um aluno nao avaliado continua rastreavel na Silver,
+com contribuicao zero ao numerador e ao denominador da taxa.
+
+A Gold de simulacao acumula contagens e contribuicoes ponderadas por UF, ano,
+serie e rede. Taxa = 100 * SUM(peso dos alfabetizados avaliados) /
+SUM(peso dos avaliados). Nunca calcular a media simples das taxas de eventos ou
+municipios. Denominador zero resulta em taxa ausente, sem inventar resultado.
+O ano educacional do payload e separado da data real de emissao do replay.
+
+Bronze, Silver, contribuicao Gold e comprovante usam escritas condicionais.
+Nao existe contador compartilhado atualizado por read-modify-write no S3.
+Isso evita perda de atualizacao com dois consumidores concorrentes. Um retry
+completa etapas que faltam mesmo quando a Bronze ja existe. So ha confirmacao do
+evento apos Gold e comprovante completos; um claim isolado nao prova conclusao.
+Mesmo ID com envelope ou derivacao divergente falha; o historico nao e sobrescrito.
+
+Comprovante:
+s3://<bucket>/auditoria/streaming/processed/run_id=<RUN>/event_id=<ID>.json
+Status GOLD_READY, hashes do envelope e dados Silver/Gold, chaves dos tres
+objetos, completed_at_utc e end_to_end_latency_seconds permitem conferir o efeito.
+completed_at_utc e medido depois do PUT Gold, por um relogio do consumidor;
+event_time vem do produtor. O comprovante e persistido depois dessa medicao.
+Duplicatas preservam o primeiro comprovante. Esta latencia e do evento ate a
+contribuicao analitica Gold; a compactacao Parquet posterior tem duracao propria.
+Reenviar um replay antigo conserva horarios e mede tambem o tempo decorrido desde
+a emissao antiga; usar uma rodada nova para medir a operacao atual do fluxo.
+
+FINALIZADOR COM METRICAS POR TENTATIVA - 27/10/2026
+
+A CLI finalize_simulation.py agora usa finalize_observed, finalizer_version=2.0.1.
+Ela registra inicio/fim UTC independentes do evento e duracoes monotonicas
+de validacao/leitura, codificacao Parquet, publicacao Silver, Gold e manifesto.
+Grava status, contagens de entrada/saida e bytes Parquet por tentativa em:
+s3://<bucket>/auditoria/streaming/analitico/execucoes/attempt_id=<UUID>/metrics.json
+As metricas ficam tambem em execution_metrics.json e finalization_report.json
+na pasta local nova. A duracao total exclui a propria persistencia das metricas;
+nao equivale a latencia do evento nem ao tempo de uma nova carga BigQuery.
+
+O manifesto analitico e os Parquets continuam deterministicos e imutaveis;
+uma nova tentativa gera outro registro operacional, sem mudar o snapshot.
+O helper finalize_simulation continua disponivel para reconciliacao deterministica
+em testes/bibliotecas; execucoes reais devem usar a CLI/finalize_observed.
+Falhas persistem status FAILED antes de propagar a excecao. Falha ao gravar a
+auditoria tambem faz a CLI terminar com erro; evidencia local explicita o problema.
+
+Para habilitar a notificacao de falhas desta etapa na identidade autorizada:
+python finalize_simulation.py --events <RUN_DIR>/events.jsonl --output-dir <PASTA_NOVA> --bucket fiap-tc-fase2-2026 --region us-east-2 --notification-topic-arn arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais
+O aviso nao inclui payloads de alunos e a excecao original continua sendo propagada.
+failure_notification.json registra aceita/recusada pelo SNS; aceite nao prova
+recebimento na caixa de e-mail. Nao conceder permissoes automaticamente se a
+identidade de execucao nao puder publicar no topico.
+
+Execucao real reutilizando os eventos prontos: SUCCEEDED em 6,912393s,
+30 linhas Silver e 19 grupos Gold. Hashes dos dois Parquets e do manifesto
+anteriores permaneceram identicos. Tentativa com evento ja rejeitado: FAILED
+em 0,097742s, auditoria conferida no S3 e nenhuma etapa de publicacao iniciada.
+Nao houve novo envio SQS, invocacao de produtor, job Glue ou extracao BigQuery.
+96 testes offline e 5 testes da configuracao de notificacao passaram.
+
+As notificacoes foram configuradas por SDK depois do deploy original. O template
+historico ainda nao incorpora o topico/regra; antes de um redeploy CloudFormation,
+integrar/revisar AlarmActions para preservar o canal. Nao fazer deploy cego do
+template antigo sobre a configuracao operacional. Os registros de release_20261027
+e os ZIPs anteriores continuam sendo fotografias historicas, sem reescrita.
+
+QUALIDADE E EVIDENCIA DE FALHA
+Regras de contrato, chaves, dominios, peso avaliado e hashes sao bloqueantes.
+Proficiencia ausente pode ser informativa quando nao usada no calculo. Qualquer
+regra bloqueante falha antes de publicar a camada seguinte. Uma falha semantica
+pode deixar Bronze/claim preservados, mas nao deve ter Gold nem comprovante.
+Uma falha de envelope pode ser rejeitada antes da Bronze. Erro nao e convertido
+em sucesso: ReportBatchItemFailures solicita nova tentativa e o redrive leva a DLQ.
+Os relatatorios locais e manifestos devem permanecer como evidencia historica.
+
+REPRODUZIR A EXTENSAO E VERIFICAR
+Usar Python 3.12 para reproduzir o runtime da Lambda, ou 3.11+ para as ferramentas
+locais, com requirements-producer.txt em ambiente virtual. Nenhum comando abaixo
+contem chaves, senhas ou tokens; boto3 usa a identidade ja autenticada no ambiente.
+Executar os comandos desta secao a partir da pasta que contem estes scripts
+(outputs/streaming no projeto). O finalizador e o verificador precisam permanecer
+junto a lambda_function.py e producer.py para usar exatamente o mesmo contrato.
+Substituir <RUN_DIR> por uma pasta nova e guardar events.jsonl/producer_report.json
+da mesma rodada. Os comandos abaixo nao criam agendamento de execucao recorrente.
+
+1. Testar localmente, antes de qualquer publicacao AWS:
+   python -m unittest discover -s . -p "test_*.py" -v
+   Incluir duplicata, identidade conflitante, falha parcial recuperavel,
+   concorrencia, peso invalido e preservacao de prefixos oficiais.
+2. Conferir recursos/inventarios antes da publicacao:
+   python aws_preflight.py --output-dir aws_before
+   Exigir validation_status=SUCCEEDED. Preparar uma mudanca revisavel:
+   python deploy_simulation.py --mode prepare --output-dir deployment
+   Conferir change_set_review.json: apenas Modify de ConsumerRole/ConsumerFunction,
+   Replacement=False, limites mantidos e permissoes S3 so de simulacao. Executar
+   somente o plano revisado/autorizado: python deploy_simulation.py --mode execute --output-dir deployment
+   Consultar sem redisparar: python deploy_simulation.py --mode status --output-dir deployment
+   Exigir UPDATE_COMPLETE antes de enviar qualquer evento.
+   python exercise_simulation.py --output-dir <EXERCISE_DIR>
+   Envia exatamente 30 novos + 5 duplicatas + 1 peso invalido em rodada isolada.
+   Valida todos os payloads, codigo Lambda real e limites antes do primeiro envio.
+   A amostra e carregada uma unica vez do S3; nao ha consulta BigQuery.
+   Os arquivos validos ficam em <EXERCISE_DIR>/producer: usar essa pasta como
+   <RUN_DIR> nos passos seguintes. invalid_semantic.json identifica a falha.
+   O exercicio original exercise_streaming.py verifica apenas o caminho Bronze.
+   Nao usar um arquivo editado para simular duplicata.
+3. Verificar todos os objetos por identidade, sem enviar/receber/apagar mensagens:
+   python verify_simulation.py --events <RUN_DIR>/events.jsonl --producer-report <RUN_DIR>/producer_report.json --output <RUN_DIR>/verification_events.json --bucket fiap-tc-fase2-2026 --region us-east-2
+4. Finalizar apenas a lista exata de eventos validos da rodada:
+   python finalize_simulation.py --events <RUN_DIR>/events.jsonl --output-dir <RUN_DIR>/finalized --bucket fiap-tc-fase2-2026 --region us-east-2
+   O finalizador le objetos ja prontos; nao envia eventos nem inicia jobs Glue.
+   Gera Silver e Gold indicador_uf em Parquet Snappy, particionados por run_id
+   e snapshot_id. O snapshot deriva das identidades, hashes e versao; nao mistura
+   rodadas. Publica o manifesto SUCCEEDED por ultimo, apos validacoes e arquivos.
+5. Conferir tambem o snapshot Parquet e manifesto final:
+   python verify_simulation.py --events <RUN_DIR>/events.jsonl --producer-report <RUN_DIR>/producer_report.json --finalization-report <RUN_DIR>/finalized/finalization_report.json --output <RUN_DIR>/verification_final.json --bucket fiap-tc-fase2-2026 --region us-east-2
+6. Capturar novamente os mesmos seis prefixos oficiais:
+   python aws_preflight.py --output-dir aws_after
+   Comparar official_inventory[prefix].sha256/object_count/total_bytes com aws_before:
+   todos devem permanecer iguais. Se houver outra operacao no projeto, investigar
+   qualquer diferenca antes de atribui-la a esta rodada.
+   Para evidencia de fila/DLQ/metricas, conservar verify_streaming.py do exercicio
+   Bronze. Ele inspeciona a DLQ e devolve visibilidade; nao remove a mensagem.
+   Nao fazer purge para deixar a demonstracao parecer limpa.
+
+7. O exercicio novo exercise_simulation.py registra a falha de peso zero em
+   invalid_semantic.json. Conferir a barreira de qualidade e o redrive desse ID:
+   python verify_negative_simulation.py --invalid-report <RUN_DIR>/invalid_semantic.json --output <RUN_DIR>/verification_negative.json --region us-east-2 --bucket fiap-tc-fase2-2026
+   Exige Bronze/claim originais e QUALITY_REJECTED, sem Silver/Gold/comprovante.
+   Inspeciona no maximo 30 mensagens da DLQ, devolvendo a visibilidade de todas;
+   nao envia, apaga ou faz redrive. Conta as falhas InvalidPayload pelo message_id
+   nos logs. Antes das cinco tentativas ou da chegada na DLQ, fica INCOMPLETE.
+   A fila principal e compartilhada: se houver mensagens pendentes, o resultado
+   fica inconclusivo sem atribuir esse volume ao evento de teste.
+
+Validacao local da extensao em 27/10/2026: 88 testes passaram, incluindo leitura
+de Parquet Snappy real, consolidacao ponderada, ausencia de denominador, isolamento
+dos dados oficiais, documento de outra rodada rejeitado, adulteracao de conteudo,
+duplicatas, falhas recuperaveis, concorrencia e pesos invalidos. Esses testes usam
+S3 em memoria; a evidencia AWS de uma rodada nova deve ser registrada separadamente.
+
+Na exportacao GetTemplate observada nesta conta, comentarios Unicode do inline
+Python foram retornados como '?'. O ZIP realmente instalado na Lambda preservou
+o codigo UTF-8 exato. O exercicio aceita apenas essa conversao conhecida na
+exportacao e exige SEMPRE SHA256 do ZIP e bytes exatos de index.py instalado.
+Um codigo instalado alterado, mesmo so por essa conversao, bloqueia todos os
+envios. exercise_metadata.json registra separadamente as duas comparacoes.
+
+verify_simulation exige os eventos unicos de exatamente uma rodada. Compara
+hashes, payload bruto, proveniencia, dados normalizados, chaves, latencias e
+inventarios de identidades: ausentes geram INCOMPLETE; divergentes/extras geram
+FAILED; ambos retornam exit code diferente de zero. --producer-report permite
+conferir envios novos e duplicatas com os mesmos bytes. O relatorio de envios,
+sozinho, nao prova processamento; os objetos e comprovantes sao conferidos no S3.
+Sem --finalization-report, o resultado cobre as contribuicoes Gold por evento e
+marca a verificacao do snapshot compactado como NOT_CHECKED.
+
+Preservacao de historico: cada rodada tem run_id proprio; cada finalizacao tem
+snapshot_id proprio. Nao usar overwrite do diretorio raiz, WRITE_TRUNCATE ou
+CREATE OR REPLACE para esses artefatos. Reexecucao identica verifica o objeto
+existente; uma versao diferente deve produzir outro snapshot. O bloco de evidencia
+de 20/10/2026 acima documenta apenas a Bronze da versao inicial, sem atribuir
+Silver/Gold retroativamente a essa execucao.
+
+Controle de recursos desta demanda: replay finito sob demanda, consumidor com
+concorrencia limitada e compactacao local/controlada; sem Spark/Glue continuo,
+Kinesis, cluster ou agendamento adicional. O teto total continua US$140 para o
+projeto inteiro. A medicao e conciliacao FinOps sera concluida depois desta demanda,
+conforme solicitado; estes controles nao substituem uma medicao de faturamento.
+
+EXECUCAO AWS VALIDADA EM 27/10/2026 - VERSAO 2
+Run: sim_gold_20261027T155422Z_a52da0a7.
+Snapshot: 364dc24b2ba6e750ef0103b8138a9750c9bb24e081b325234a42a509cd717c2b.
+30 eventos aceitos +5 duplicatas identicas; 30 objetos por camada incremental,
+30 linhas Silver compactada e19 grupos UF/ano/serie/rede na Gold Parquet Snappy.
+Taxas representam somente essa amostra de simulacao. A amostra de teste local
+events_reference.jsonl e historica/sintetica e nao e a lista dos envios desta rodada.
+Latencia evento->contribuicao Gold: media1,172719s; p95 nearest rank5,997005s;
+maxima8,045309s. A compactacao foi executada sob demanda depois do replay.
+Peso zero em rodada negativa separada:5 falhas InvalidPayload, Bronze preservada,
+Silver/Gold ausentes e mensagem original preservada na DLQ; nada foi apagado.
+Mensagem:5dcca064-4ab7-4b09-9f17-706f96d96e8d.
+Os6 inventarios oficiais antes/depois mantiveram hashes/contagens/bytes identicos.
+A role recebeu somente os3 novos caminhos S3 autorizados; demais statements iguais.
+CloudFormationUPDATE_COMPLETE; codigo real Lambda igual ao codigo local testado.
+CloudWatch correlacionou39 invocacoes com REPORT, soma billed17,627s e memoria
+maxima93MB. Essas medidas nao equivalem a custo conciliado da fatura.
+Nenhum Glue/BigQuery foi iniciado por esta demanda; nenhum produtor foi agendado.
+Destino da auditoria final: s3://fiap-tc-fase2-2026/auditoria/streaming/runs/run_id=sim_gold_20261027T155422Z_a52da0a7/manifest.json
+Snapshot analitico: s3://fiap-tc-fase2-2026/auditoria/streaming/analitico/runs/run_id=sim_gold_20261027T155422Z_a52da0a7/snapshot_id=364dc24b2ba6e750ef0103b8138a9750c9bb24e081b325234a42a509cd717c2b/manifest.json
+
+ARQUIVOS
+lambda_function.py: consumidor; producer.py: produtor controlado;
+exercise_streaming.py: exercicio integrado; verify_streaming.py: evidencia;
+build_stack.py/streaming_stack.json: infraestrutura reproduzivel;
+iam_role_review.json: trust/policy restritas; test_*.py: testes locais.
+finalize_simulation.py: compactacao e manifesto do snapshot analitico simulado;
+verify_simulation.py: verificacao read-only das identidades e artefatos finais.
+verify_negative_simulation.py: evidencia da rejeicao semantica, retries e DLQ.
+aws_preflight.py: captura limitada de configuracao e metadados oficiais;
+deploy_simulation.py: prepara/valida/executa um unico change set restrito;
+exercise_simulation.py: replay finito e falha semantica, sem leitura repetida.
+capture_runtime_evidence.py: logs/metadados/REPORT correlacionados por invocacao;
+compare_official.py: compara os seis inventarios e a alteracao inline IAM;
+publish_run_evidence.py: publica evidencia imutavel e manifesto final por ultimo;
+view_validation_summary.py: mostra resumo dos JSONs verificados, sem chamar AWS.
+
+Referencias oficiais:
+https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html
+https://docs.aws.amazon.com/lambda/latest/dg/services-sqs-configure.html
+https://docs.aws.amazon.com/lambda/latest/dg/services-sqs-errorhandling.html

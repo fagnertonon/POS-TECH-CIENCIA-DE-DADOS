@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "date": "2026-10-28",
+  "scope": "LOCAL_ONLY",
+  "python": "3.13.14",
+  "boto3": "1.43.115",
+  "pyarrow": "26.0.0",
+  "total_tests": 138,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "cloud_calls": 0,
+  "glue_jobs_started": 0,
+  "bigquery_extractions": 0,
+  "emails_sent": 0,
+  "cloudformation_validation_api_used": false,
+  "notes": "132 original tests plus six evidence-based local infrastructure checks. Existing local environment; no dependency installation. This does not validate service import support or current AWS state.",
+  "suites": [
+    {
+      "name": "silver",
+      "chunk_id": "96caf0",
+      "wall_time_seconds": 3.3680216,
+      "exit_code": 0,
+      "original_token_count": 28,
+      "output": ".......\r\n----------------------------------------------------------------------\r\nRan 7 tests in 0.015s\r\n\r\nOK\r\n"
+    },
+    {
+      "name": "gold",
+      "chunk_id": "6a4540",
+      "wall_time_seconds": 3.6383974,
+      "exit_code": 0,
+      "original_token_count": 32,
+      "output": "........................\r\n----------------------------------------------------------------------\r\nRan 24 tests in 0.044s\r\n\r\nOK\r\n"
+    },
+    {
+      "name": "streaming",
+      "chunk_id": "e06550",
+      "wall_time_seconds": 9.2735029,
+      "exit_code": 0,
+      "original_token_count": 50,
+      "output": "................................................................................................\r\n----------------------------------------------------------------------\r\nRan 96 tests in 5.463s\r\n\r\nOK\r\n"
+    },
+    {
+      "name": "observabilidade/scripts",
+      "chunk_id": "5b6b58",
+      "wall_time_seconds": 3.480256,
+      "exit_code": 0,
+      "original_token_count": 27,
+      "output": ".....\r\n----------------------------------------------------------------------\r\nRan 5 tests in 0.059s\r\n\r\nOK\r\n"
+    },
+    {
+      "name": "tests",
+      "chunk_id": "4b1757",
+      "wall_time_seconds": 3.2586735,
+      "exit_code": 0,
+      "original_token_count": 28,
+      "output": "......\r\n----------------------------------------------------------------------\r\nRan 6 tests in 0.035s\r\n\r\nOK\r\n"
+    }
+  ]
+}

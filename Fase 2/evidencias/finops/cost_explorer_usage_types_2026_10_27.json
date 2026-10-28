@@ -1,0 +1,585 @@
+{
+  "request": {
+    "TimePeriod": {
+      "Start": "2026-10-01",
+      "End": "2026-10-28"
+    },
+    "Granularity": "MONTHLY",
+    "Metrics": [
+      "UnblendedCost",
+      "UsageQuantity"
+    ],
+    "GroupBy": [
+      {
+        "Type": "DIMENSION",
+        "Key": "SERVICE"
+      },
+      {
+        "Type": "DIMENSION",
+        "Key": "USAGE_TYPE"
+      }
+    ],
+    "Filter": {
+      "Dimensions": {
+        "Key": "RECORD_TYPE",
+        "Values": [
+          "Usage"
+        ]
+      }
+    }
+  },
+  "pages": [
+    {
+      "GroupDefinitions": [
+        {
+          "Type": "DIMENSION",
+          "Key": "SERVICE"
+        },
+        {
+          "Type": "DIMENSION",
+          "Key": "USAGE_TYPE"
+        }
+      ],
+      "ResultsByTime": [
+        {
+          "TimePeriod": {
+            "Start": "2026-10-01",
+            "End": "2026-10-28"
+          },
+          "Total": {},
+          "Groups": [
+            {
+              "Keys": [
+                "AWS CloudFormation",
+                "USE2-Resource-Operation-Count"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "11",
+                  "Unit": "Count"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS CloudShell",
+                "USE2-DataTransfer-xAZ-In-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.00144769",
+                  "Unit": "GB"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS CloudShell",
+                "USE2-DataTransfer-xAZ-Out-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.0052731754",
+                  "Unit": "GB"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS CloudShell",
+                "USE2-USE1-AWS-In-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.00000375",
+                  "Unit": "GB"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS CloudShell",
+                "USE2-USE1-AWS-Out-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0.0000000375",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.00000375",
+                  "Unit": "GB"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS Glue",
+                "USE2-Catalog-Request"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "333",
+                  "Unit": "Requests"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS Glue",
+                "USE2-Catalog-Storage"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "2.6397848797",
+                  "Unit": "Obj-Month"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS Glue",
+                "USE2-ETL-DPU-Hour"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0.56588884",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "1.286111",
+                  "Unit": "DPU-Hour"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS Glue",
+                "USE2-GlueInteractiveSession-DPU-Hour"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "2.75513128",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "6.261662",
+                  "Unit": "DPU-Hour"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS Key Management Service",
+                "us-east-2-KMS-Requests"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "18",
+                  "Unit": "Requests"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS Lambda",
+                "USE2-Lambda-GB-Second"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "2.41575",
+                  "Unit": "Lambda-GB-Second"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS Lambda",
+                "USE2-Request"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "39",
+                  "Unit": "Requests"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS Secrets Manager",
+                "USE2-AWSSecretsManager-Secrets"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0.0848702512",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.212175628",
+                  "Unit": "Secrets"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AWS Secrets Manager",
+                "USE2-AWSSecretsManagerAPIRequest"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0.00037",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "74",
+                  "Unit": "API Requests"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Notification Service",
+                "USE2-DataTransfer-Out-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.00000004",
+                  "Unit": "GB"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Notification Service",
+                "USE2-Requests-Tier1"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "5",
+                  "Unit": "Requests"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Queue Service",
+                "USE2-DataTransfer-Out-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.00000039",
+                  "Unit": "GB"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Queue Service",
+                "USE2-Requests-Tier1"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "59306",
+                  "Unit": "Requests"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Storage Service",
+                "DataTransfer-Out-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.00000405",
+                  "Unit": "GB"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Storage Service",
+                "Global-Bucket-Hrs-FreeTier"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.024193534",
+                  "Unit": "Bucket-Mo"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Storage Service",
+                "Requests-Tier1"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0.000045",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "9",
+                  "Unit": "Requests"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Storage Service",
+                "USE2-DataTransfer-In-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.0992181477",
+                  "Unit": "GB"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Storage Service",
+                "USE2-DataTransfer-Out-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.0001917855",
+                  "Unit": "GB"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Storage Service",
+                "USE2-Requests-Tier1"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0.006225",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "1245",
+                  "Unit": "Requests"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Storage Service",
+                "USE2-Requests-Tier2"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0.0006528",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "1632",
+                  "Unit": "Requests"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "Amazon Simple Storage Service",
+                "USE2-TimedStorage-ByteHrs"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0.0010908947",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.0474302104",
+                  "Unit": "GB-Month"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AmazonCloudWatch",
+                "USE2-CW:AlarmMonitorUsage"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.9206989145",
+                  "Unit": "Alarms"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AmazonCloudWatch",
+                "USE2-CW:MetricMonitorUsage"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "1.5228494517",
+                  "Unit": "Metrics"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AmazonCloudWatch",
+                "USE2-CW:Requests"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "824",
+                  "Unit": "Requests"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AmazonCloudWatch",
+                "USE2-DataProcessing-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.0212497034",
+                  "Unit": "GB"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AmazonCloudWatch",
+                "USE2-TimedStorage-ByteHrs"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.0008366052",
+                  "Unit": "GB-Month"
+                }
+              }
+            },
+            {
+              "Keys": [
+                "AmazonCloudWatch",
+                "USE2-VendedLog-Bytes"
+              ],
+              "Metrics": {
+                "UnblendedCost": {
+                  "Amount": "0",
+                  "Unit": "USD"
+                },
+                "UsageQuantity": {
+                  "Amount": "0.00004487",
+                  "Unit": "GB"
+                }
+              }
+            }
+          ],
+          "Estimated": true
+        }
+      ],
+      "DimensionValueAttributes": [],
+      "ResponseMetadata": {
+        "RequestId": "2f3a5aa8-aa0a-4a97-893e-ea16b746a455",
+        "HTTPStatusCode": 200,
+        "HTTPHeaders": {
+          "date": "Tue, 27 Oct 2026 11:40:22 GMT",
+          "content-type": "application/x-amz-json-1.1",
+          "content-length": "5779",
+          "connection": "keep-alive",
+          "x-amzn-requestid": "2f3a5aa8-aa0a-4a97-893e-ea16b746a455",
+          "cache-control": "no-cache"
+        },
+        "RetryAttempts": 0
+      }
+    }
+  ],
+  "api_pages": 1,
+  "estimated_ce_query_usd": 0.01
+}

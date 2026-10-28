@@ -1,0 +1,4 @@
+# Sem normalizacao de quebras de linha: o repositorio contem evidencias, modelos e scripts
+# historicos cujos hashes (SHA256_Arquivos.json) precisam sobreviver a commit/clone em
+# qualquer sistema operacional. Nao use core.autocrlf para converter estes arquivos.
+* -text

@@ -1,0 +1,40 @@
+AJUSTES APÓS A REVISÃO LOCAL DE 28/10/2026
+
+Base: pacote files_atualizado (CORRECOES_20261028.txt). Todas as correções daquela
+revisão foram mantidas. Os ajustes abaixo são somente de documentação e de
+configuração de repositório; nenhum script de processamento, evidência ou template
+foi alterado, e nenhuma ação em AWS/GCP foi executada.
+
+1. README §9 — restaurado o bloco de comandos executáveis da pipeline (start-job-run
+   com os manifestos encadeados, cloudformation deploy, producer, verify, finalize,
+   --DEMO_FAILURE), precedido do aviso de custo/efeito na nuvem, e o checklist de
+   reprodutibilidade do enunciado. A etapa de notificações passou a listar as cinco
+   fases separadas: gerar plano, revisar o plan_sha256, aplicar com autorização,
+   confirmação da assinatura pelo destinatário, verificação; o teste de alarme fica
+   como opcional, único e autorizado.
+
+2. README §7 — a pergunta "quem descobre e em quanto tempo?" voltou a ser respondida
+   com o único dado medido (22/10/2026) e com a ressalva explícita: 1 min 56 s é a
+   diferença entre o início do minuto agregado da métrica (14:06) e a transição do
+   alarme (14:07:56); 1 min 54 s a partir da gravação do manifesto de falha
+   (14:06:02). Não comprova o instante da emissão nem a entrega de e-mail (inexistente
+   naquela data). Mantidas as ressalvas da revisão: não é SLA; métrica SNS agregada por
+   minuto; sem evidência de entrega em menos de 1 s.
+
+3. .gitattributes — primeira versão ("* text=auto eol=lf") foi descartada: um teste
+   local de commit + clone alterou 37 arquivos históricos com CRLF, entre eles
+   finops/modelo_finops.json e evidencias/bronze/contagens_bronze.csv, quebrando
+   SHA256_Arquivos.json. A versão atual é "* -text" (nenhuma conversão). O teste foi
+   repetido com core.autocrlf=true e zero hashes mudaram. Os 35 arquivos históricos
+   com CRLF permanecem byte a byte como recebidos.
+
+4. Quebras de linha — apenas VERSOES.md e finops/NOTA_JANELAS_DE_MEDICAO.md (documentos
+   desta revisão) foram convertidos para LF. CORRECOES_20261028.txt, da revisão
+   anterior, foi mantido como recebido.
+
+Verificação local após os ajustes: 138 testes (7 Silver, 24 Gold, 96 streaming,
+5 notificações, 6 IaC), 0 falhas; caminhos citados no README existem; zero e-mails
+pessoais nos textos; SHA256_Arquivos.json regenerado (exclui a si mesmo). O histórico
+das versões anteriores dos arquivos editados está no pacote externo
+(originais_antes_da_correcao/, originais_revisao_28_10/, ALTERACOES.diff e
+ALTERACOES_pos_revisao.diff).

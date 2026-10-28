@@ -1,0 +1,49 @@
+{
+  "verified_at_utc": "2026-10-22T13:57:32.310557+00:00",
+  "layer": "silver",
+  "job_name": "fiap-silver-inep-batch",
+  "operation": "created",
+  "account": "637246457028",
+  "region": "us-east-2",
+  "assets": {
+    "script": {
+      "uri": "s3://aws-glue-assets-637246457028-us-east-2/scripts/fiap-silver-inep-batch/020832c14c9ac4dc466120fe9fb9c15e29abed9bf603b828b2caf22356757030/silver_glue.py",
+      "sha256": "020832c14c9ac4dc466120fe9fb9c15e29abed9bf603b828b2caf22356757030",
+      "bytes": 29892
+    },
+    "original": {
+      "uri": "s3://aws-glue-assets-637246457028-us-east-2/notebooks/fiap-silver-inep-batch/f9f6b0be916b9eef1f8a8039f07268a20dba94f5f2689c8e7ca09f50b672269f/02_camada_silver_original.ipynb",
+      "sha256": "f9f6b0be916b9eef1f8a8039f07268a20dba94f5f2689c8e7ca09f50b672269f",
+      "bytes": 30883
+    },
+    "notebook": {
+      "uri": "s3://aws-glue-assets-637246457028-us-east-2/notebooks/fiap-silver-inep-batch/b35ff679e645f633a6cc3ef6a9b4412b6e7a39d9d07f8786a41eeecf5e5e3214/02_camada_silver_glue.ipynb",
+      "sha256": "b35ff679e645f633a6cc3ef6a9b4412b6e7a39d9d07f8786a41eeecf5e5e3214",
+      "bytes": 45172
+    }
+  },
+  "script_uri": "s3://aws-glue-assets-637246457028-us-east-2/scripts/fiap-silver-inep-batch/020832c14c9ac4dc466120fe9fb9c15e29abed9bf603b828b2caf22356757030/silver_glue.py",
+  "original_uri": "s3://aws-glue-assets-637246457028-us-east-2/notebooks/fiap-silver-inep-batch/f9f6b0be916b9eef1f8a8039f07268a20dba94f5f2689c8e7ca09f50b672269f/02_camada_silver_original.ipynb",
+  "notebook_uri": "s3://aws-glue-assets-637246457028-us-east-2/notebooks/fiap-silver-inep-batch/b35ff679e645f633a6cc3ef6a9b4412b6e7a39d9d07f8786a41eeecf5e5e3214/02_camada_silver_glue.ipynb",
+  "workers": 2,
+  "worker_type": "G.1X",
+  "timeout_minutes": 15,
+  "max_retries": 0,
+  "run_started": false,
+  "default_arguments": {
+    "--BUCKET": "fiap-tc-fase2-2026",
+    "--PREFIX": "silver/inep",
+    "--AUDIT_PREFIX": "auditoria/silver",
+    "--BRONZE_MANIFEST_URI": "s3://fiap-tc-fase2-2026/auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/manifest.json",
+    "--LIMIAR_JOIN": "0.95",
+    "--ALUNOS_PARTITIONS": "4",
+    "--DATABASE_SILVER": "tech_challenge_fase2_silver",
+    "--REGISTER_CATALOG": "true",
+    "--job-bookmark-option": "job-bookmark-disable",
+    "--enable-glue-datacatalog": "",
+    "--enable-metrics": "",
+    "--enable-continuous-cloudwatch-log": "true",
+    "--enable-spark-ui": "false",
+    "--TempDir": "s3://aws-glue-assets-637246457028-us-east-2/temporary/fiap-silver-inep-batch/"
+  }
+}

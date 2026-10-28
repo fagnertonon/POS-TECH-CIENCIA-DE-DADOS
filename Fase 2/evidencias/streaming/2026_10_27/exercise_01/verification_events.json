@@ -1,0 +1,1086 @@
+{
+  "verified_at_utc": "2026-10-27T15:55:37.790865Z",
+  "scope": "Read-only exact identities and immutable objects through simulated Gold contributions",
+  "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+  "simulation": true,
+  "origin": "simulacao_replay_inep",
+  "pipeline_version": "2.0.0",
+  "bucket": "fiap-tc-fase2-2026",
+  "expected_event_count": 30,
+  "events": [
+    {
+      "event_id": "58f0e790-cd7b-5af1-8b4a-42e99ef7463f",
+      "event_sha256": "fdb3e42d721ee06f3e5be43cca5ac8cd825771367f5b3a6d4f4eabe88525a2ed",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=58f0e790-cd7b-5af1-8b4a-42e99ef7463f.json",
+          "bytes": 1125,
+          "object_sha256": "040d96abe70e582b006c78bfbec7307bdfdf770f1245263c20de33ef62d36664"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=58f0e790-cd7b-5af1-8b4a-42e99ef7463f.json",
+          "bytes": 1125,
+          "object_sha256": "040d96abe70e582b006c78bfbec7307bdfdf770f1245263c20de33ef62d36664"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=58f0e790-cd7b-5af1-8b4a-42e99ef7463f.json.gz",
+          "bytes": 586,
+          "object_sha256": "75942f6e3abfdabc09035d704114f376acabd75fcf6a04c2eeebb0b48ed94f62"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=58f0e790-cd7b-5af1-8b4a-42e99ef7463f.json.gz",
+          "bytes": 518,
+          "object_sha256": "8968d3c71be06a39fb2598fe57fafdbe0e9b132ca6d3e7dbdecdb88a473696dd"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=58f0e790-cd7b-5af1-8b4a-42e99ef7463f.json",
+          "bytes": 1198,
+          "object_sha256": "61bc9ad0a63e18cbb3685d938a84607d38e2ce9d94ac9f04fc5a3f8129eb021e"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 3.776246,
+      "completed_at_utc": "2026-10-27T15:54:26.542965Z"
+    },
+    {
+      "event_id": "4bc9633d-4a97-5ea5-9d0e-c7ca1400741f",
+      "event_sha256": "655827f89895dceaa1a67af4f3635c1785a3e65550d31e9cc8b6d3515170169a",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=4bc9633d-4a97-5ea5-9d0e-c7ca1400741f.json",
+          "bytes": 1125,
+          "object_sha256": "21741a8241b8c1112106eaea9928d3adcfbe7969daedac3b9a667e83b7d4aa3b"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=4bc9633d-4a97-5ea5-9d0e-c7ca1400741f.json",
+          "bytes": 1125,
+          "object_sha256": "21741a8241b8c1112106eaea9928d3adcfbe7969daedac3b9a667e83b7d4aa3b"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=4bc9633d-4a97-5ea5-9d0e-c7ca1400741f.json.gz",
+          "bytes": 580,
+          "object_sha256": "5729d9aa76ddd5176a40998146560857e0c156adadf82405e9b56e749c006b93"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=4bc9633d-4a97-5ea5-9d0e-c7ca1400741f.json.gz",
+          "bytes": 515,
+          "object_sha256": "64a68a31dd953feabde923a623fd47a154236eb77222b507064fda9f15e07660"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=4bc9633d-4a97-5ea5-9d0e-c7ca1400741f.json",
+          "bytes": 1198,
+          "object_sha256": "d1c4ff513d11b176d7d4f16571beceff609d10f7848cb1afcacc7ab980bcf3b1"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 8.045309,
+      "completed_at_utc": "2026-10-27T15:54:31.825204Z"
+    },
+    {
+      "event_id": "e1e9b5f9-d095-5adb-99fe-aa156b8d9c3e",
+      "event_sha256": "60a971fda28c63789d9acafffbd346887c0749325e957f579a638eaf0361d7f4",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e1e9b5f9-d095-5adb-99fe-aa156b8d9c3e.json",
+          "bytes": 1132,
+          "object_sha256": "d17dfc63a9e3c5600e37df9d8e0f5ed9717e694e4c1aa8c67989769f53cb59e3"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e1e9b5f9-d095-5adb-99fe-aa156b8d9c3e.json",
+          "bytes": 1132,
+          "object_sha256": "d17dfc63a9e3c5600e37df9d8e0f5ed9717e694e4c1aa8c67989769f53cb59e3"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e1e9b5f9-d095-5adb-99fe-aa156b8d9c3e.json.gz",
+          "bytes": 588,
+          "object_sha256": "e23970785dc683474cd12e695d4a0477c0afd64f7765092a7e1a464d212ef008"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e1e9b5f9-d095-5adb-99fe-aa156b8d9c3e.json.gz",
+          "bytes": 521,
+          "object_sha256": "ba95786d1c2f522bdc2f8065e3df37344bebf821e5c54b85720e047425fa7ca0"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e1e9b5f9-d095-5adb-99fe-aa156b8d9c3e.json",
+          "bytes": 1198,
+          "object_sha256": "98f5a6077fe003c555e0dfd6e6da6ed9e73bd55d0037b5cbd55e73d2fe202feb"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 5.997005,
+      "completed_at_utc": "2026-10-27T15:54:30.783764Z"
+    },
+    {
+      "event_id": "37204d53-0b19-5199-83d4-c43d50990b68",
+      "event_sha256": "fcdea7f1bffac32e07b1290e60c6ee0ec46b0fc26207c05b3b3081d91d749a46",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=37204d53-0b19-5199-83d4-c43d50990b68.json",
+          "bytes": 1123,
+          "object_sha256": "0134d96274dae3c87660c9e54a9221a21345006a726490dd5f088679caae6a68"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=37204d53-0b19-5199-83d4-c43d50990b68.json",
+          "bytes": 1123,
+          "object_sha256": "0134d96274dae3c87660c9e54a9221a21345006a726490dd5f088679caae6a68"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=37204d53-0b19-5199-83d4-c43d50990b68.json.gz",
+          "bytes": 584,
+          "object_sha256": "8072ecadb4a2bc58c10785b1744098c187e0beac40e98a44f71643c4ae3a1230"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=37204d53-0b19-5199-83d4-c43d50990b68.json.gz",
+          "bytes": 521,
+          "object_sha256": "56748577abccb2f494e51de433bdaba5f0669097e9263acf1079746f365251bf"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=37204d53-0b19-5199-83d4-c43d50990b68.json",
+          "bytes": 1198,
+          "object_sha256": "f580ee305d6a0eaa2e0fa3de85e778a8a9b2e86517c7d15b66613a5609bafebc"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 4.742406,
+      "completed_at_utc": "2026-10-27T15:54:30.543018Z"
+    },
+    {
+      "event_id": "ae602334-a088-5ab3-8471-1384c5397e17",
+      "event_sha256": "938754b5b0ec73b106b983df9da29a428ca750ea1e04539284d16b9e04bf6fa3",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=ae602334-a088-5ab3-8471-1384c5397e17.json",
+          "bytes": 1124,
+          "object_sha256": "5ca54a0ff42f57d22669dc914195452fa61fad7db99fa0d9d57c14a19f6c1caf"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=ae602334-a088-5ab3-8471-1384c5397e17.json",
+          "bytes": 1124,
+          "object_sha256": "5ca54a0ff42f57d22669dc914195452fa61fad7db99fa0d9d57c14a19f6c1caf"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=ae602334-a088-5ab3-8471-1384c5397e17.json.gz",
+          "bytes": 580,
+          "object_sha256": "cee158dbfb39a0fc57cc9bb59eae0d5f71e4cad289d1753f340e7d0d0358ffcf"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=ae602334-a088-5ab3-8471-1384c5397e17.json.gz",
+          "bytes": 516,
+          "object_sha256": "8a18e31fd686cf06a6af4c5c89ee26f02c9a2789a77a1fa9e1d8f92f7b2e670d"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=ae602334-a088-5ab3-8471-1384c5397e17.json",
+          "bytes": 1198,
+          "object_sha256": "3c47ff34269c02fb855b1f27339aeb970f6393e6f27aa21b6f8085b4b903af90"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 2.148982,
+      "completed_at_utc": "2026-10-27T15:54:28.957397Z"
+    },
+    {
+      "event_id": "541a2495-497c-5d68-86a7-35137d297d1e",
+      "event_sha256": "e51ae93614f9284b7680610522e19aa9784f2e83868af1119e98cf76c3d71303",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=541a2495-497c-5d68-86a7-35137d297d1e.json",
+          "bytes": 1124,
+          "object_sha256": "d5c694260c7a3259f507b6b97a718c61057f09f00ecd4e8b258ed9520e64040b"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=541a2495-497c-5d68-86a7-35137d297d1e.json",
+          "bytes": 1124,
+          "object_sha256": "d5c694260c7a3259f507b6b97a718c61057f09f00ecd4e8b258ed9520e64040b"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=541a2495-497c-5d68-86a7-35137d297d1e.json.gz",
+          "bytes": 583,
+          "object_sha256": "05c21b9d76a497bb396de37e3390c47cb6f0338914bb64c012ec4daac11f26eb"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=541a2495-497c-5d68-86a7-35137d297d1e.json.gz",
+          "bytes": 515,
+          "object_sha256": "022b7484b91cc073594c0c0e2246ec24c1a7f4fb24006d7ea91e14235f74a5cd"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=541a2495-497c-5d68-86a7-35137d297d1e.json",
+          "bytes": 1198,
+          "object_sha256": "70e2bcc1d7566c81fbf0d9abcd6a485cf83932f59ff7fac8cba113013432621d"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 1.207532,
+      "completed_at_utc": "2026-10-27T15:54:29.024695Z"
+    },
+    {
+      "event_id": "a641969a-591f-5d5a-8e81-b6e8dba8d09d",
+      "event_sha256": "44ffc9d075740ff9412f6ff703525437ecef52b51e6febd0d4378421dcd5596a",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a641969a-591f-5d5a-8e81-b6e8dba8d09d.json",
+          "bytes": 1126,
+          "object_sha256": "494f4b6b4d20790e7ac5fafea950c69fa8386c9ba74700aa2429e0c77654e2ae"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a641969a-591f-5d5a-8e81-b6e8dba8d09d.json",
+          "bytes": 1126,
+          "object_sha256": "494f4b6b4d20790e7ac5fafea950c69fa8386c9ba74700aa2429e0c77654e2ae"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a641969a-591f-5d5a-8e81-b6e8dba8d09d.json.gz",
+          "bytes": 583,
+          "object_sha256": "399b967884ce532dd575443d51c878bbf41d889e5ebbc675b4d45efb580b3efd"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a641969a-591f-5d5a-8e81-b6e8dba8d09d.json.gz",
+          "bytes": 517,
+          "object_sha256": "bcdfc9e26b86521b0b77b4bbff747fa3292c44e71ca7d7bda80965317434cc57"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a641969a-591f-5d5a-8e81-b6e8dba8d09d.json",
+          "bytes": 1198,
+          "object_sha256": "8d46fb1b2b4421a63dc2e3425778c1b69ca8a374cc1d9bbe570e49b8b006b44b"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 3.205445,
+      "completed_at_utc": "2026-10-27T15:54:32.030438Z"
+    },
+    {
+      "event_id": "5e467034-47e3-5270-9c3d-48484bf37a0e",
+      "event_sha256": "54e04b6c509692cca7054f31705b677730ca5df9fa65a7b16c5d53a5158c2444",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=5e467034-47e3-5270-9c3d-48484bf37a0e.json",
+          "bytes": 1129,
+          "object_sha256": "6fe9704ce9bd4266cbef1438e13cdbb0ea9570718586c02f86d91fa92b241261"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=5e467034-47e3-5270-9c3d-48484bf37a0e.json",
+          "bytes": 1129,
+          "object_sha256": "6fe9704ce9bd4266cbef1438e13cdbb0ea9570718586c02f86d91fa92b241261"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=5e467034-47e3-5270-9c3d-48484bf37a0e.json.gz",
+          "bytes": 585,
+          "object_sha256": "8bf33d69843cd197705a48b99a629299301e229b0bf8b1b62fed95137ff5e2a5"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=5e467034-47e3-5270-9c3d-48484bf37a0e.json.gz",
+          "bytes": 515,
+          "object_sha256": "0f580c1fc0bf53d2150dc35923b97536b6486948ccec3de55171df721830e712"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=5e467034-47e3-5270-9c3d-48484bf37a0e.json",
+          "bytes": 1198,
+          "object_sha256": "7847a830c498c893ee9568d575eb7db6a3165942ca6de984123337777d67ea0f"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 1.736216,
+      "completed_at_utc": "2026-10-27T15:54:31.568257Z"
+    },
+    {
+      "event_id": "a98315be-2fda-5e83-a3e1-a09f16e389b5",
+      "event_sha256": "f5a7c3ad1fb36530f027b61189218ecd83717ee43d313c02323e89663af1cd7e",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a98315be-2fda-5e83-a3e1-a09f16e389b5.json",
+          "bytes": 1126,
+          "object_sha256": "3e61ca850347756563a58adaf0ba72569a544ecbeee288cd8743c4595fd622e0"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a98315be-2fda-5e83-a3e1-a09f16e389b5.json",
+          "bytes": 1126,
+          "object_sha256": "3e61ca850347756563a58adaf0ba72569a544ecbeee288cd8743c4595fd622e0"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a98315be-2fda-5e83-a3e1-a09f16e389b5.json.gz",
+          "bytes": 585,
+          "object_sha256": "b59cf7dda5d8a4c50d1184ac1639632f787ad2d50a1f9c3f21f2468ea6ec3cf8"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a98315be-2fda-5e83-a3e1-a09f16e389b5.json.gz",
+          "bytes": 518,
+          "object_sha256": "52de6ac240668e64fa87cfeba615ad92d4d186eee6d1daae70dce314863a3090"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a98315be-2fda-5e83-a3e1-a09f16e389b5.json",
+          "bytes": 1198,
+          "object_sha256": "34737183b0ac7b56c1f6a61e70edbcdb35edc2472c55b1c66e71823c51bcfe22"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.542538,
+      "completed_at_utc": "2026-10-27T15:54:31.381866Z"
+    },
+    {
+      "event_id": "2eb03a35-2250-5cc3-845a-2fdd583bf0e2",
+      "event_sha256": "9555e57db2d019f3eb339d40d88a4b32e1389bdab601f01450aa7f63bd0ffa9f",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=2eb03a35-2250-5cc3-845a-2fdd583bf0e2.json",
+          "bytes": 1126,
+          "object_sha256": "126516193231b140ded2f8b6f8270a61f4e77a1efff9df3b59ab7f75f8769342"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=2eb03a35-2250-5cc3-845a-2fdd583bf0e2.json",
+          "bytes": 1126,
+          "object_sha256": "126516193231b140ded2f8b6f8270a61f4e77a1efff9df3b59ab7f75f8769342"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=2eb03a35-2250-5cc3-845a-2fdd583bf0e2.json.gz",
+          "bytes": 586,
+          "object_sha256": "b13b737b4b8e88729644526a34524e333996c97d91bc3a6833e1fe5b4b5a495b"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=2eb03a35-2250-5cc3-845a-2fdd583bf0e2.json.gz",
+          "bytes": 516,
+          "object_sha256": "7b0a8b3639e067c4ba25cbcbc4b4db50358e4ef8c595ba156f4d1a81a207b68b"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=2eb03a35-2250-5cc3-845a-2fdd583bf0e2.json",
+          "bytes": 1197,
+          "object_sha256": "1df5da2aa6092b36e29e1ab475878902ea17e188f0df60043eca156787c121c0"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.18155,
+      "completed_at_utc": "2026-10-27T15:54:32.027150Z"
+    },
+    {
+      "event_id": "2a981705-d320-52f4-874c-3d46698481f8",
+      "event_sha256": "c790e7c3549cc8d1849882ed56c3a402ad6d8fcba18aad076f80b855896ddd43",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=2a981705-d320-52f4-874c-3d46698481f8.json",
+          "bytes": 1130,
+          "object_sha256": "e6ef60e61b0f08bbb370eb5e1c70bc6739bd4f800351ea19705e4cf9a7d41f40"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=2a981705-d320-52f4-874c-3d46698481f8.json",
+          "bytes": 1130,
+          "object_sha256": "e6ef60e61b0f08bbb370eb5e1c70bc6739bd4f800351ea19705e4cf9a7d41f40"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=2a981705-d320-52f4-874c-3d46698481f8.json.gz",
+          "bytes": 586,
+          "object_sha256": "0143b9bdd9553c2019c99cf56624c6d016b7d0437f4c9d60e4de39170b175fea"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=2a981705-d320-52f4-874c-3d46698481f8.json.gz",
+          "bytes": 515,
+          "object_sha256": "919b98514326836c3180ca3e82a84f6e5e4c9ffe20c021e6afec231ea54d507d"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=2a981705-d320-52f4-874c-3d46698481f8.json",
+          "bytes": 1198,
+          "object_sha256": "62800b3f7430f898b3aea9fd5eefdc4ec77bc55c1cf474f7f42ed52b0da10b8b"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.204328,
+      "completed_at_utc": "2026-10-27T15:54:33.056433Z"
+    },
+    {
+      "event_id": "a52ad633-65c8-5865-8ecf-ba29a6aa3d54",
+      "event_sha256": "842eacb1f0ce62b296646607b0fcbd7ef99e42c38ece98b03972a154447bfc96",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a52ad633-65c8-5865-8ecf-ba29a6aa3d54.json",
+          "bytes": 1124,
+          "object_sha256": "53531c0b61dfe74f92ecc0a7df77b382bb45f017306499b860890ed4cb7d7baf"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a52ad633-65c8-5865-8ecf-ba29a6aa3d54.json",
+          "bytes": 1124,
+          "object_sha256": "53531c0b61dfe74f92ecc0a7df77b382bb45f017306499b860890ed4cb7d7baf"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a52ad633-65c8-5865-8ecf-ba29a6aa3d54.json.gz",
+          "bytes": 582,
+          "object_sha256": "416f9a07fe272b2fc8a98b86e653214869fc823943b979b229575e874be4e9d7"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a52ad633-65c8-5865-8ecf-ba29a6aa3d54.json.gz",
+          "bytes": 517,
+          "object_sha256": "7a4a21495c9c235cc8dcd5f24f337dc6d3ce083a2fcef9a8d0b023221b9073be"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a52ad633-65c8-5865-8ecf-ba29a6aa3d54.json",
+          "bytes": 1198,
+          "object_sha256": "c63a85cb7af86bc65dd7ebb9e624569065607fb0b9f12a6b0e4a141ed6eac158"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.171464,
+      "completed_at_utc": "2026-10-27T15:54:34.030813Z"
+    },
+    {
+      "event_id": "a8cda8a1-d212-53bb-84d3-d6fa6f96fddd",
+      "event_sha256": "55ea45e63b25b88a11a50aef6afd33d0ddf464e437c0540bc4edef950df6c1d2",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a8cda8a1-d212-53bb-84d3-d6fa6f96fddd.json",
+          "bytes": 1130,
+          "object_sha256": "f4792b0c79a1cf2457aa9da3c18c9f713660cc0f1375812b6b5be5fc7e53dad2"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a8cda8a1-d212-53bb-84d3-d6fa6f96fddd.json",
+          "bytes": 1130,
+          "object_sha256": "f4792b0c79a1cf2457aa9da3c18c9f713660cc0f1375812b6b5be5fc7e53dad2"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a8cda8a1-d212-53bb-84d3-d6fa6f96fddd.json.gz",
+          "bytes": 588,
+          "object_sha256": "c38584969002f137f6765f10f05d10bb82a2bc84836e90a8012ffd9285e4443c"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a8cda8a1-d212-53bb-84d3-d6fa6f96fddd.json.gz",
+          "bytes": 516,
+          "object_sha256": "dc0aeafcee9ac366e54ea1710d10e6aa3a40912755c1d0767e031a92daa82d36"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=a8cda8a1-d212-53bb-84d3-d6fa6f96fddd.json",
+          "bytes": 1198,
+          "object_sha256": "75928075de7c57d9784017ae908c3ec869e71d4b8d1d942b3cbc4c9c7f4e63ed"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.174825,
+      "completed_at_utc": "2026-10-27T15:54:35.040390Z"
+    },
+    {
+      "event_id": "e43d3311-3d6d-5d5b-b351-a4942770dce5",
+      "event_sha256": "692bc0721b4732c1b082e8f0abb0c499c989c09b8e287511b46c5b5839ab1c19",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e43d3311-3d6d-5d5b-b351-a4942770dce5.json",
+          "bytes": 1132,
+          "object_sha256": "0391c02460247095fc5c39268efb03a5145a5f7ac84f4b6f14f71ea5ea58d536"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e43d3311-3d6d-5d5b-b351-a4942770dce5.json",
+          "bytes": 1132,
+          "object_sha256": "0391c02460247095fc5c39268efb03a5145a5f7ac84f4b6f14f71ea5ea58d536"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e43d3311-3d6d-5d5b-b351-a4942770dce5.json.gz",
+          "bytes": 592,
+          "object_sha256": "0f6a2471730a4330dbea40ac463db9901367adfad8490825e4f0adee6ba85d62"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e43d3311-3d6d-5d5b-b351-a4942770dce5.json.gz",
+          "bytes": 522,
+          "object_sha256": "6c37ca0b4ebb3a54bfb72bac40cb2db036f53b13cceedca14d8024e3b8db3f80"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e43d3311-3d6d-5d5b-b351-a4942770dce5.json",
+          "bytes": 1198,
+          "object_sha256": "f7d3fb372154d27f56f8614cd43d42edc10509b66d885fa2372cd619f0a67c5d"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.168842,
+      "completed_at_utc": "2026-10-27T15:54:36.040561Z"
+    },
+    {
+      "event_id": "d7e73af2-5a6b-52ee-8bb1-6c986be6b1e9",
+      "event_sha256": "0cbb2d0154b74759495241ca47b3d0b092645bc4c6880befe321795965a6bc33",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=d7e73af2-5a6b-52ee-8bb1-6c986be6b1e9.json",
+          "bytes": 1132,
+          "object_sha256": "8d3f7aba16850a18591e9511162bac7a7defede3c7f6964e5b11cf4cab93f530"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=d7e73af2-5a6b-52ee-8bb1-6c986be6b1e9.json",
+          "bytes": 1132,
+          "object_sha256": "8d3f7aba16850a18591e9511162bac7a7defede3c7f6964e5b11cf4cab93f530"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=d7e73af2-5a6b-52ee-8bb1-6c986be6b1e9.json.gz",
+          "bytes": 589,
+          "object_sha256": "45aa19f70c4c56a7b97ebbd6f3272c232d7ee8af402328c24abb32636ec3793c"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=d7e73af2-5a6b-52ee-8bb1-6c986be6b1e9.json.gz",
+          "bytes": 520,
+          "object_sha256": "eaab70f1525dae66f4c85bdbb1e90539d5e2c207511040687d412c8fd2541ef1"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=d7e73af2-5a6b-52ee-8bb1-6c986be6b1e9.json",
+          "bytes": 1198,
+          "object_sha256": "c5354f20a077672373d1911bc89d7af685cf9233ef2c0118f85c6621a3b2ce71"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.168934,
+      "completed_at_utc": "2026-10-27T15:54:37.047772Z"
+    },
+    {
+      "event_id": "215ae617-9b73-5e02-a5f7-39735de8c7d4",
+      "event_sha256": "a32bcbb712bc71f5bb27128b49578438f95bb1f5e53f6c9386ade5a8c878a1c6",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=215ae617-9b73-5e02-a5f7-39735de8c7d4.json",
+          "bytes": 1129,
+          "object_sha256": "275f8d50b389125fbe82b4b5bcbdd350eaffd55e912605dafc53194cd3429b61"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=215ae617-9b73-5e02-a5f7-39735de8c7d4.json",
+          "bytes": 1129,
+          "object_sha256": "275f8d50b389125fbe82b4b5bcbdd350eaffd55e912605dafc53194cd3429b61"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=215ae617-9b73-5e02-a5f7-39735de8c7d4.json.gz",
+          "bytes": 590,
+          "object_sha256": "d7a702326ccc00ca70a2e1f191bdf94f351e1b8246d4fcfa7948cde4661a7c20"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=215ae617-9b73-5e02-a5f7-39735de8c7d4.json.gz",
+          "bytes": 516,
+          "object_sha256": "54fd896313772b58e0b53e61be3db9e88f0430d6bb0940e6902e5304b317d0f7"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=215ae617-9b73-5e02-a5f7-39735de8c7d4.json",
+          "bytes": 1198,
+          "object_sha256": "9ed4c77b197f782fe4224115f22dee097166e8ccb2476483b93335ff5518ea70"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.177487,
+      "completed_at_utc": "2026-10-27T15:54:38.062890Z"
+    },
+    {
+      "event_id": "56e3bf93-36a4-5d28-920f-81397fc2a034",
+      "event_sha256": "4e39588c4cef46a8a53e219f8d498f30336c4653b9fd5ed11d861497d81e7090",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=56e3bf93-36a4-5d28-920f-81397fc2a034.json",
+          "bytes": 1135,
+          "object_sha256": "44ac94f5f9ac440ca625776ff46fb3881ec6f93b2069418e7eee6898d61f8284"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=56e3bf93-36a4-5d28-920f-81397fc2a034.json",
+          "bytes": 1135,
+          "object_sha256": "44ac94f5f9ac440ca625776ff46fb3881ec6f93b2069418e7eee6898d61f8284"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=56e3bf93-36a4-5d28-920f-81397fc2a034.json.gz",
+          "bytes": 594,
+          "object_sha256": "63cd3f3775b19c52b0946da48236acd85bd70454c991e1f113571d8415106b64"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=56e3bf93-36a4-5d28-920f-81397fc2a034.json.gz",
+          "bytes": 522,
+          "object_sha256": "52cf42d51c2a5ba278f6fe4233e2e49643ebc0b13f10cb328d2c079caa7193fd"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=56e3bf93-36a4-5d28-920f-81397fc2a034.json",
+          "bytes": 1198,
+          "object_sha256": "37f69601d566739f0a88cdf1a79c411803730c43520c2a0746425a5d3990eb82"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.191652,
+      "completed_at_utc": "2026-10-27T15:54:39.083722Z"
+    },
+    {
+      "event_id": "ed79eba8-ec1e-56b8-8da9-c2c90dfe675e",
+      "event_sha256": "d261b89336df98fe16464436956cd7c9e4abbf93c6082f5ebf7058965d097b2e",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=ed79eba8-ec1e-56b8-8da9-c2c90dfe675e.json",
+          "bytes": 1126,
+          "object_sha256": "42d9bc3640e0d29bf3d057bc312070f4ffd4f98cf8e81891f685292a4d4ee657"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=ed79eba8-ec1e-56b8-8da9-c2c90dfe675e.json",
+          "bytes": 1126,
+          "object_sha256": "42d9bc3640e0d29bf3d057bc312070f4ffd4f98cf8e81891f685292a4d4ee657"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=ed79eba8-ec1e-56b8-8da9-c2c90dfe675e.json.gz",
+          "bytes": 585,
+          "object_sha256": "655f154e796c1f072b0490a171dddb3c8fca0c663c922fd67133f6bb0c5a1b67"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=ed79eba8-ec1e-56b8-8da9-c2c90dfe675e.json.gz",
+          "bytes": 516,
+          "object_sha256": "713e1c3ca7a8703d9c7cf3dc9cab07fc781a96363b3e201b34f22807b6fa072e"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=ed79eba8-ec1e-56b8-8da9-c2c90dfe675e.json",
+          "bytes": 1198,
+          "object_sha256": "22a8a68cbe5a118e190d7555f7788eba445ef2a515325fdd28be17dc9ce0953c"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.174419,
+      "completed_at_utc": "2026-10-27T15:54:40.073054Z"
+    },
+    {
+      "event_id": "0e0d07d8-1c87-52e7-9d24-e8d096a6abea",
+      "event_sha256": "fe517af24f2485465596bf0f83138c0062196ffb02086e92628bb4326e674989",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=0e0d07d8-1c87-52e7-9d24-e8d096a6abea.json",
+          "bytes": 1125,
+          "object_sha256": "3620956f0845352181ea35c1a5d731d3cc7703eb47a88eebe630b071f5dd63c8"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=0e0d07d8-1c87-52e7-9d24-e8d096a6abea.json",
+          "bytes": 1125,
+          "object_sha256": "3620956f0845352181ea35c1a5d731d3cc7703eb47a88eebe630b071f5dd63c8"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=0e0d07d8-1c87-52e7-9d24-e8d096a6abea.json.gz",
+          "bytes": 583,
+          "object_sha256": "4c863ab490047ce985ca90790130babf2a2415fb1d17cb7aa36519d9b0ceeef7"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=0e0d07d8-1c87-52e7-9d24-e8d096a6abea.json.gz",
+          "bytes": 515,
+          "object_sha256": "225f278c870c74618f9aebd9ecb6c449cb6573d1e6b031084a486909f538053f"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=0e0d07d8-1c87-52e7-9d24-e8d096a6abea.json",
+          "bytes": 1198,
+          "object_sha256": "76a2e023d309af65c611266db31ba4a2fcf3ef31c6186ed3a0a9e24392695e17"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.185534,
+      "completed_at_utc": "2026-10-27T15:54:41.090813Z"
+    },
+    {
+      "event_id": "02ef11c4-14fb-549c-8572-6454f0736290",
+      "event_sha256": "4ced348ca1fd6a14a730d5f3586b4829b8f6df7e8d65dba57eb9aef8292f7f65",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=02ef11c4-14fb-549c-8572-6454f0736290.json",
+          "bytes": 1135,
+          "object_sha256": "bbf2669e3765a8189d14e971e4c064dfb3cf84c9daee4f594039b2860dd90c2d"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=02ef11c4-14fb-549c-8572-6454f0736290.json",
+          "bytes": 1135,
+          "object_sha256": "bbf2669e3765a8189d14e971e4c064dfb3cf84c9daee4f594039b2860dd90c2d"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=02ef11c4-14fb-549c-8572-6454f0736290.json.gz",
+          "bytes": 592,
+          "object_sha256": "01e9899a54b4b9b97af65a27cb3de825de51f7ab2065ea93d014a93126ee0265"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=02ef11c4-14fb-549c-8572-6454f0736290.json.gz",
+          "bytes": 522,
+          "object_sha256": "08e2a381ccfe9dea64a7e6515c929afdb22fb43b3ffbebb996a8a73f157b72aa"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=02ef11c4-14fb-549c-8572-6454f0736290.json",
+          "bytes": 1198,
+          "object_sha256": "3f1d57a966d51c77522c2c6a0855cdeba075043df7048ec0b4232006619f3c29"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.181136,
+      "completed_at_utc": "2026-10-27T15:54:42.092741Z"
+    },
+    {
+      "event_id": "558853c1-24fa-548b-bafa-b04793020524",
+      "event_sha256": "810bf392b3fedca8b4e1fc137e96a5a082824beab984b1da9973cc045d75d0ea",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=558853c1-24fa-548b-bafa-b04793020524.json",
+          "bytes": 1124,
+          "object_sha256": "0f596f31c8b798d383228cd5e85e496fdb6fbc6ba4d9bcdc1ac40fb091903bf3"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=558853c1-24fa-548b-bafa-b04793020524.json",
+          "bytes": 1124,
+          "object_sha256": "0f596f31c8b798d383228cd5e85e496fdb6fbc6ba4d9bcdc1ac40fb091903bf3"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=558853c1-24fa-548b-bafa-b04793020524.json.gz",
+          "bytes": 584,
+          "object_sha256": "8e6795e5076ca2429b48ceb794624099f5974d6acd1c7327a926efe3fd0afc96"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=558853c1-24fa-548b-bafa-b04793020524.json.gz",
+          "bytes": 517,
+          "object_sha256": "4a0064129e39e9a808a0584ac7f086b0b7fcce84b1d7ed86835a3b461e739033"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=558853c1-24fa-548b-bafa-b04793020524.json",
+          "bytes": 1198,
+          "object_sha256": "bf83d4ddcc3fd1e3dda066edc428e387ec418db6452757b0fc8b40748651c7fe"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.168496,
+      "completed_at_utc": "2026-10-27T15:54:43.086128Z"
+    },
+    {
+      "event_id": "610d64cf-a6ab-5425-829d-6f0f20903779",
+      "event_sha256": "eb65fc64475487c84c5e425a93c2348d4cf2894fb1a22f7896af9e17933ceb90",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=610d64cf-a6ab-5425-829d-6f0f20903779.json",
+          "bytes": 1126,
+          "object_sha256": "588bd0a649fd1fdf5656a6f59141533c457f32fe28aee521d60ce6335e1907f5"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=610d64cf-a6ab-5425-829d-6f0f20903779.json",
+          "bytes": 1126,
+          "object_sha256": "588bd0a649fd1fdf5656a6f59141533c457f32fe28aee521d60ce6335e1907f5"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=610d64cf-a6ab-5425-829d-6f0f20903779.json.gz",
+          "bytes": 587,
+          "object_sha256": "af84b84d8e2f286f6d5d3c814a48fed6b396be86d1b020473e6ee905e9887168"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=610d64cf-a6ab-5425-829d-6f0f20903779.json.gz",
+          "bytes": 518,
+          "object_sha256": "30260f524167611cf076489c3c3c715f9af2e229c25fa6774583d4499e943f02"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=610d64cf-a6ab-5425-829d-6f0f20903779.json",
+          "bytes": 1198,
+          "object_sha256": "d2a8c6b72d484dda437495db4376ed8b81c7ac66317ebca60b120dfbade1c170"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.186161,
+      "completed_at_utc": "2026-10-27T15:54:44.110039Z"
+    },
+    {
+      "event_id": "faaca1f9-93f6-54d0-962d-f3e2f0837680",
+      "event_sha256": "187a338bf4da6631cc7026d6faeb0cfc240ff64c941f7bccccd6811b7acee9d1",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=faaca1f9-93f6-54d0-962d-f3e2f0837680.json",
+          "bytes": 1126,
+          "object_sha256": "d3b301940fcef43d92fa1e82a69d7296af36de217fee6ca60204c96b30c6e694"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=faaca1f9-93f6-54d0-962d-f3e2f0837680.json",
+          "bytes": 1126,
+          "object_sha256": "d3b301940fcef43d92fa1e82a69d7296af36de217fee6ca60204c96b30c6e694"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=faaca1f9-93f6-54d0-962d-f3e2f0837680.json.gz",
+          "bytes": 584,
+          "object_sha256": "dc0b178e9d97b1713ec65c281fcb5c4a5442e4c7a08fd797f93807426781bf0b"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=faaca1f9-93f6-54d0-962d-f3e2f0837680.json.gz",
+          "bytes": 516,
+          "object_sha256": "8eb3308ba2edf0241c92a7139cdf28460fe65bbfbddca8bdedcfbc0ab592d65b"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=faaca1f9-93f6-54d0-962d-f3e2f0837680.json",
+          "bytes": 1198,
+          "object_sha256": "7d0f0036fa64d8deada75e604e6184d7b56f7be3d0097268306d243f3f25749a"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.167257,
+      "completed_at_utc": "2026-10-27T15:54:45.097556Z"
+    },
+    {
+      "event_id": "49e33f3b-437a-5b0b-a72b-984a3403cc52",
+      "event_sha256": "52f6c66a87c1867c0d5b329123ac88afc499e08f12cc322520b15c4b7477100d",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=49e33f3b-437a-5b0b-a72b-984a3403cc52.json",
+          "bytes": 1124,
+          "object_sha256": "15649e79f0daadb8fa26173d7cf8c431f8463ab6ba9a8a0bf24d4b42a97c8abb"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=49e33f3b-437a-5b0b-a72b-984a3403cc52.json",
+          "bytes": 1124,
+          "object_sha256": "15649e79f0daadb8fa26173d7cf8c431f8463ab6ba9a8a0bf24d4b42a97c8abb"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=49e33f3b-437a-5b0b-a72b-984a3403cc52.json.gz",
+          "bytes": 583,
+          "object_sha256": "fcfaca9f3265c83f71f2892878ef8589324dc75790b866f7992f450cbc33cf03"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=49e33f3b-437a-5b0b-a72b-984a3403cc52.json.gz",
+          "bytes": 519,
+          "object_sha256": "69fe2755d5aadc2ed97b62358e85ba04c82d3b272f71ab4b37851ed75bc0c279"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=49e33f3b-437a-5b0b-a72b-984a3403cc52.json",
+          "bytes": 1198,
+          "object_sha256": "9c9f620d7651089ec039b63c503ebe4c188bc74599ce8fef0ffac31260783a9e"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.164775,
+      "completed_at_utc": "2026-10-27T15:54:46.101843Z"
+    },
+    {
+      "event_id": "11549186-f29e-57a4-acb5-2fbab63d1fd5",
+      "event_sha256": "2bfe1e72aee43f92ae48a7893cb16d78444f87a2e371e30121288a4b53923445",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=11549186-f29e-57a4-acb5-2fbab63d1fd5.json",
+          "bytes": 1129,
+          "object_sha256": "0d000f1694a7b09d990658efc43f20f13f30299bfc60394ffe448f33abf811ba"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=11549186-f29e-57a4-acb5-2fbab63d1fd5.json",
+          "bytes": 1129,
+          "object_sha256": "0d000f1694a7b09d990658efc43f20f13f30299bfc60394ffe448f33abf811ba"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=11549186-f29e-57a4-acb5-2fbab63d1fd5.json.gz",
+          "bytes": 587,
+          "object_sha256": "01073598e19b039fe8d390a46d747f01071ebba4e43558552e550f8c1a83125f"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=11549186-f29e-57a4-acb5-2fbab63d1fd5.json.gz",
+          "bytes": 514,
+          "object_sha256": "bb67b62dd800d16d46ba7866ed5819a462674eef2c2f4e53fbab0cb9bea977e4"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=11549186-f29e-57a4-acb5-2fbab63d1fd5.json",
+          "bytes": 1198,
+          "object_sha256": "bdf8c984bd04362667bace66f3ca1a188b9c4c30f4486e2872f1bb2dd7af47db"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.175206,
+      "completed_at_utc": "2026-10-27T15:54:47.118513Z"
+    },
+    {
+      "event_id": "9c2c4be0-6bfd-5f96-88ac-9bdfd7f14bcf",
+      "event_sha256": "42e041d72a3261719d84e9832e52092e60f79cd13324e14e37e84045fc410722",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=9c2c4be0-6bfd-5f96-88ac-9bdfd7f14bcf.json",
+          "bytes": 1126,
+          "object_sha256": "cdc30d4662b6c80b024392764650adbadae11cbf90eafd526e153662e640a098"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=9c2c4be0-6bfd-5f96-88ac-9bdfd7f14bcf.json",
+          "bytes": 1126,
+          "object_sha256": "cdc30d4662b6c80b024392764650adbadae11cbf90eafd526e153662e640a098"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=9c2c4be0-6bfd-5f96-88ac-9bdfd7f14bcf.json.gz",
+          "bytes": 584,
+          "object_sha256": "d845e34af61e779f3cfad75013c275c327af5ed5d243b6a5c93a91f6a0b060e7"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=9c2c4be0-6bfd-5f96-88ac-9bdfd7f14bcf.json.gz",
+          "bytes": 517,
+          "object_sha256": "950948bf0e9f2a6547e096fff5bfdc12f521549b1d7745adbbb7f7b28336c2b8"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=9c2c4be0-6bfd-5f96-88ac-9bdfd7f14bcf.json",
+          "bytes": 1198,
+          "object_sha256": "1764ef2f58ff8c0f9d80fbfe4e388ad8fcf114af3bd24ac8770f3faf1b734d85"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.169717,
+      "completed_at_utc": "2026-10-27T15:54:48.119543Z"
+    },
+    {
+      "event_id": "e443f265-f288-5b89-900c-85cdbdca397c",
+      "event_sha256": "55032fa3bacfa641ef251ffec5aadd948ccf7d53bdc488885fe4969a3f469142",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e443f265-f288-5b89-900c-85cdbdca397c.json",
+          "bytes": 1124,
+          "object_sha256": "6559302c6a14f572e474ad1b5de60a43960ff5d8bf57e0573594353b02da70e0"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e443f265-f288-5b89-900c-85cdbdca397c.json",
+          "bytes": 1124,
+          "object_sha256": "6559302c6a14f572e474ad1b5de60a43960ff5d8bf57e0573594353b02da70e0"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e443f265-f288-5b89-900c-85cdbdca397c.json.gz",
+          "bytes": 583,
+          "object_sha256": "54280ab955e7ff97695192680eb5756ea3556a12e7c368cf84b1bae41328fa08"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e443f265-f288-5b89-900c-85cdbdca397c.json.gz",
+          "bytes": 517,
+          "object_sha256": "0f7871b774e8ead8f0267f9712dc3e474ddedb56ba5c6717baa5905914d827ac"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=e443f265-f288-5b89-900c-85cdbdca397c.json",
+          "bytes": 1198,
+          "object_sha256": "c58e68b8161ccea06cc3ecdd677fabbab913ab36fa49419a9ecd0d01d75e8016"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.169886,
+      "completed_at_utc": "2026-10-27T15:54:49.126941Z"
+    },
+    {
+      "event_id": "9012337e-7317-538e-9492-d789cfa33f29",
+      "event_sha256": "8c647f7e83b555b80571c44dbbfa9e31a508f0edd4a6e3f31e6694b42c5af7ac",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=9012337e-7317-538e-9492-d789cfa33f29.json",
+          "bytes": 1124,
+          "object_sha256": "cc70924be89ac556dfd52c28016379e0521a361ca35c9afcc0033a3097f166fa"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=9012337e-7317-538e-9492-d789cfa33f29.json",
+          "bytes": 1124,
+          "object_sha256": "cc70924be89ac556dfd52c28016379e0521a361ca35c9afcc0033a3097f166fa"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=9012337e-7317-538e-9492-d789cfa33f29.json.gz",
+          "bytes": 582,
+          "object_sha256": "35199f12cc278c486e59ba7a55961260c994f15c89f7a38ff79853478c604e14"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=9012337e-7317-538e-9492-d789cfa33f29.json.gz",
+          "bytes": 519,
+          "object_sha256": "151bf5613ac639a3ef52669d76d7b91ca0c1716edcc7a70edfb60f9988b7b96b"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=9012337e-7317-538e-9492-d789cfa33f29.json",
+          "bytes": 1198,
+          "object_sha256": "c70ea8ab0bc70b7a428b94a74ad37f175006339e85c9cb0dfa5a2fb922f5a281"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.270032,
+      "completed_at_utc": "2026-10-27T15:54:50.235944Z"
+    },
+    {
+      "event_id": "81cc0bc4-2721-542f-9a54-f49c54ccabb8",
+      "event_sha256": "886780e71a12fdeb4d3b34a36011d01752009d8f74630e69f6c397e4e2ebd0d1",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=81cc0bc4-2721-542f-9a54-f49c54ccabb8.json",
+          "bytes": 1126,
+          "object_sha256": "c9ed452f01e7b55395cd92f2fe9e46839f6d53a6526572b0d06d8ee79fb2ec55"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=81cc0bc4-2721-542f-9a54-f49c54ccabb8.json",
+          "bytes": 1126,
+          "object_sha256": "c9ed452f01e7b55395cd92f2fe9e46839f6d53a6526572b0d06d8ee79fb2ec55"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=81cc0bc4-2721-542f-9a54-f49c54ccabb8.json.gz",
+          "bytes": 587,
+          "object_sha256": "4825f0e2599b113d680880390820399ef3fafab3cf3a0736f0f3a2df5f55bcc9"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=81cc0bc4-2721-542f-9a54-f49c54ccabb8.json.gz",
+          "bytes": 517,
+          "object_sha256": "e8f087da77a519109e962e326070b2e5d8a76213aad166b427287a4e93bd3306"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=81cc0bc4-2721-542f-9a54-f49c54ccabb8.json",
+          "bytes": 1198,
+          "object_sha256": "99327d90c0bfe903787a3712bbfbb174c8db38a65c7551ee6b825509a01482bb"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.154975,
+      "completed_at_utc": "2026-10-27T15:54:51.127420Z"
+    },
+    {
+      "event_id": "d3227586-1dca-5c3b-bf34-cb3b0d730d3a",
+      "event_sha256": "d78b8ebca172041ff5999a303ebafbc6cb751bac784464d38eee41750c059b8b",
+      "objects": {
+        "bronze": {
+          "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=d3227586-1dca-5c3b-bf34-cb3b0d730d3a.json",
+          "bytes": 1132,
+          "object_sha256": "265c59dc16e806149a4acbff3f1f6ab1d9983c28c0d7896fdccc153bd549ef60"
+        },
+        "claim": {
+          "key": "auditoria/streaming/idempotency/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=d3227586-1dca-5c3b-bf34-cb3b0d730d3a.json",
+          "bytes": 1132,
+          "object_sha256": "265c59dc16e806149a4acbff3f1f6ab1d9983c28c0d7896fdccc153bd549ef60"
+        },
+        "silver": {
+          "key": "silver/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=d3227586-1dca-5c3b-bf34-cb3b0d730d3a.json.gz",
+          "bytes": 588,
+          "object_sha256": "8efcb544e6b99d5d2f9257f0b0bb7ddfcc7a95b61ab1d10b49da63407777ec90"
+        },
+        "gold": {
+          "key": "gold/inep_streaming/contribuicoes/event_date=2026-10-27/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=d3227586-1dca-5c3b-bf34-cb3b0d730d3a.json.gz",
+          "bytes": 519,
+          "object_sha256": "43520a22925c4f340724d0d7ff8e25c538bf2717a6b02f0040c66879b2e63cf5"
+        },
+        "receipt": {
+          "key": "auditoria/streaming/processed/run_id=sim_gold_20261027T155422Z_a52da0a7/event_id=d3227586-1dca-5c3b-bf34-cb3b0d730d3a.json",
+          "bytes": 1198,
+          "object_sha256": "cb9e9b184f9bc52c10d4679b1e31748a54c21e82d18b3a218c46328c0a062a3c"
+        }
+      },
+      "status": "SUCCEEDED",
+      "end_to_end_latency_seconds": 0.173225,
+      "completed_at_utc": "2026-10-27T15:54:52.152072Z"
+    }
+  ],
+  "errors": [],
+  "pending": [],
+  "inventory": {
+    "bronze": {
+      "expected": 30,
+      "actual": 30,
+      "missing": [],
+      "unexpected": []
+    },
+    "claim": {
+      "expected": 30,
+      "actual": 30,
+      "missing": [],
+      "unexpected": []
+    },
+    "silver": {
+      "expected": 30,
+      "actual": 30,
+      "missing": [],
+      "unexpected": []
+    },
+    "gold": {
+      "expected": 30,
+      "actual": 30,
+      "missing": [],
+      "unexpected": []
+    },
+    "receipt": {
+      "expected": 30,
+      "actual": 30,
+      "missing": [],
+      "unexpected": []
+    }
+  },
+  "latency_definition": "event_time from the producer to completed_at_utc measured after Gold PUT; receipt is written afterwards",
+  "producer_validation": {
+    "confirmed_new": 30,
+    "confirmed_duplicate_sends": 5,
+    "limitation": "Send confirmations alone do not prove delivery; S3 identities are verified separately."
+  },
+  "end_to_end_latency_seconds": {
+    "count": 30,
+    "min": 0.154975,
+    "max": 8.045309,
+    "mean": 1.1727193333333332,
+    "median": 0.18134299999999998,
+    "p95_nearest_rank": 5.997005
+  },
+  "verified_event_count": 30,
+  "validation_status": "SUCCEEDED",
+  "finalized_snapshot": {
+    "status": "NOT_CHECKED",
+    "reason": "Supply --finalization-report to verify compacted analytic Parquet outputs"
+  }
+}

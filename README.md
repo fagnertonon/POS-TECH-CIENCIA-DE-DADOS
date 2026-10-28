@@ -27,7 +27,7 @@ que integra os conteúdos de todas as disciplinas daquela fase e vale **90% da n
 | Fase | Tema | Status | Entrega |
 |---|---|---|---|
 | [Fase 1](Fase%201/README.md) | Case NPS Preditivo — análise exploratória e storytelling com dados | Concluída | EDA + apresentação executiva |
-| Fase 2 | *a definir* | — | — |
+| [Fase 2](Fase%202/README.md) | Pipeline híbrida (batch + streaming) do Indicador Criança Alfabetizada | Em andamento | Arquitetura medalhão em AWS Glue + S3 |
 
 Novas fases serão adicionadas como pastas irmãs (`Fase 2/`, `Fase 3/`, ...), seguindo o mesmo
 padrão de organização.
@@ -40,11 +40,25 @@ padrão de organização.
 .
 ├── README.md            # este arquivo — visão geral do curso
 ├── .gitignore
-└── Fase 1/              # Tech Challenge da Fase 1 (NPS)
+├── Fase 1/              # Tech Challenge da Fase 1 (NPS)
+│   ├── README.md        # descrição completa da entrega
+│   ├── notebooks/       # notebooks da análise
+│   └── *.pdf            # enunciado e materiais de apresentação
+└── Fase 2/              # Tech Challenge da Fase 2 (pipeline híbrida em AWS)
     ├── README.md        # descrição completa da entrega
-    ├── notebooks/       # notebooks da análise
-    └── *.pdf            # enunciado e materiais de apresentação
+    ├── bronze/ silver/ gold/   # script da camada + notebook Glue + testes
+    ├── streaming/       # produtor, consumidor Lambda, verificadores da simulação
+    ├── observabilidade/ # alarmes, notificações e os templates CloudFormation aplicados
+    ├── finops/          # modelo de custo, tarifas e scripts de coleta
+    ├── deploy/          # publicadores dos jobs e verificadores pós-execução
+    ├── evidencias/      # manifestos, runs, falhas preservadas, capturas de console
+    ├── docs/            # enunciado, notebooks de origem + diffs, relatórios por etapa
+    ├── tests/ tools/    # verificações locais e sincronia notebook↔script
+    └── Rascunho/        # embalagens anteriores do pacote (fora do versionamento)
 ```
+
+A Fase 2 não grava dados localmente: as camadas vivem no S3 e as instruções de execução estão
+em [`Fase 2/README.md`](Fase%202/README.md).
 
 Os notebooks ficam em `<Fase>/notebooks/` e gravam suas saídas um nível acima, dentro da própria
 pasta da fase. Esses diretórios são criados na execução e **não são versionados** — `data/` e

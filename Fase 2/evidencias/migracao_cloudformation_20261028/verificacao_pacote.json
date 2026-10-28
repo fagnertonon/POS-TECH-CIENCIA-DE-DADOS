@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "files": 76,
+  "bytes": 537925,
+  "sha256": "43738402670df052c0cc369bef9dc32a433b8ee0278204cdf72858319bab1e30",
+  "path": "C:\\Users\\USER\\Documents\\Codex\\2026-10-20\\vo\\Migracao_Alertas_CloudFormation.zip",
+  "source_artifacts_unchanged": {
+    "outputs/finops_pendencias_20261027/modelo_finops.json": "97cc2f32069a916b479395c0c0026b6997335b12bd23e7f74e5a05478b38c26b",
+    "outputs/finops_pendencias_20261027/FinOps_Medicoes.xlsx": "93a35d218d8ae3c8a3c491ea91fb86729a8bae97125ebeb9af6e171122844c95",
+    "FinOps_Resultado_Duas_Medicoes.pdf": "f4c45341f9e7144f3712a6fd9882f9f14d8b0a3c2fddf4e65481578c5751bf5d",
+    "outputs/streaming/lambda_function.py": "a41f53b8ac337c198fb0c8ad955eeb35184bbf1857ffca3a02c9a998b39a9ee7"
+  },
+  "migration_verified": true
+}

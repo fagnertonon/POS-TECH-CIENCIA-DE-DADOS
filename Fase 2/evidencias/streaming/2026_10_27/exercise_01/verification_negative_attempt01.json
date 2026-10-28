@@ -1,0 +1,104 @@
+{
+  "verified_at_utc": "2026-10-27T15:56:37.233902Z",
+  "simulation": true,
+  "pipeline_version": "2.0.0",
+  "scope": "one supplied semantic rejection identity/message",
+  "errors": [],
+  "pending": [
+    "Expected message not yet observed in bounded DLQ inspection",
+    "CloudWatch retry observations may still be arriving",
+    "Shared source queue is nonempty; unrelated work cannot be ruled out"
+  ],
+  "objects": {
+    "bronze": {
+      "key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-27/run_id=invalid_weight_489d809c1c474853/event_id=74e9defc-48d7-57ae-8d71-6b26ae121c32.json",
+      "bytes": 1116,
+      "object_sha256": "85aa283c2fb197a5835ec3e1ed3f9ec3af8c0924e65a43551b90736374bfc6e7"
+    },
+    "claim": {
+      "key": "auditoria/streaming/idempotency/run_id=invalid_weight_489d809c1c474853/event_id=74e9defc-48d7-57ae-8d71-6b26ae121c32.json",
+      "bytes": 1116,
+      "object_sha256": "85aa283c2fb197a5835ec3e1ed3f9ec3af8c0924e65a43551b90736374bfc6e7"
+    },
+    "rejection": {
+      "key": "auditoria/streaming/processed/run_id=invalid_weight_489d809c1c474853/rejected_event_id=74e9defc-48d7-57ae-8d71-6b26ae121c32.json",
+      "bytes": 499,
+      "object_sha256": "13d30286a8beda060767728aa96a72c0d5f5125cce4a79701f132c5f31bbad32"
+    },
+    "silver": {
+      "expected_count": 0,
+      "actual_count": 0,
+      "unexpected_keys": []
+    },
+    "gold": {
+      "expected_count": 0,
+      "actual_count": 0,
+      "unexpected_keys": []
+    },
+    "receipt": {
+      "expected_count": 0,
+      "actual_count": 0,
+      "unexpected_keys": []
+    }
+  },
+  "run_id": "invalid_weight_489d809c1c474853",
+  "event_id": "74e9defc-48d7-57ae-8d71-6b26ae121c32",
+  "sqs_message_id": "5dcca064-4ab7-4b09-9f17-706f96d96e8d",
+  "input_validation": "InvalidPayload",
+  "expected_max_receive_count": 5,
+  "event_sha256": "1dd57df52ea6a9bbeaa520392df67ae1d0dc51c6138bbd329c8187a2c6ff9fa6",
+  "dlq": {
+    "expected_message_id": "5dcca064-4ab7-4b09-9f17-706f96d96e8d",
+    "matched": null,
+    "messages_inspected": [
+      {
+        "message_id": "622aaa22-577c-4b80-b56b-459454707967",
+        "body_sha256": "f0670e7b907afb494ab9643722c854ccb60c7821ba9c32d28e15d28bf7a488de",
+        "attributes": {
+          "SenderId": "AROAZIXWZITCOVE3WO55C:54b8b4c8-7091-7004-2dc6-85e9f92c8f1d",
+          "ApproximateFirstReceiveTimestamp": "1792521666055",
+          "ApproximateReceiveCount": "7",
+          "SentTimestamp": "1792521666045",
+          "DeadLetterQueueSourceArn": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming"
+        }
+      }
+    ],
+    "inspection_limit": 30,
+    "deleted_messages": 0,
+    "redriven_messages": 0,
+    "visibility_restored": 1,
+    "receive_error": null,
+    "restore_errors": []
+  },
+  "logs": {
+    "entries": [
+      {
+        "timestamp": 1793116466553,
+        "status": "FAILED",
+        "error_type": "InvalidPayload"
+      },
+      {
+        "timestamp": 1793116523301,
+        "status": "FAILED",
+        "error_type": "InvalidPayload"
+      },
+      {
+        "timestamp": 1793116583340,
+        "status": "FAILED",
+        "error_type": "InvalidPayload"
+      }
+    ],
+    "pagination_complete": true,
+    "observed_invalid_payload_failures": 3,
+    "count_note": "Delivery is at least once; retry observations are not distinct input messages. DLQ inspection increments its approximate receive counter."
+  },
+  "source_queue": {
+    "scope": "shared account queue; these counts cannot be attributed to this run",
+    "attributes": {
+      "ApproximateNumberOfMessages": "0",
+      "ApproximateNumberOfMessagesNotVisible": "1",
+      "ApproximateNumberOfMessagesDelayed": "0"
+    }
+  },
+  "validation_status": "INCOMPLETE"
+}

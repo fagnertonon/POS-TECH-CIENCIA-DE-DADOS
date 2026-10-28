@@ -1,0 +1,80 @@
+{
+  "observed_at_utc": "2026-10-26T12:09:33.690828+00:00",
+  "status": "DIAGNOSTICO_CONCLUIDO_COM_LIMITACOES_DA_FONTE",
+  "aws_changes": false,
+  "glue_runs_started": 0,
+  "bigquery_queries_started": 0,
+  "confirmed": {
+    "official_and_silver_total_rows": 3867999,
+    "official_aggregates_match_silver_by_uf_both_years": true,
+    "scope": "Public networks 2+3, series 2; counts, alphabetized counts, weighted sums and rounded rates per UF; not a row-by-row identity check.",
+    "official_document_2023_page": 17,
+    "official_document_2023_finding": "TS_ALUNO was published without Sao Paulo; the official source itself has 23 UFs in student data and 24 in TS_ESTADO.",
+    "official_document_2024_pages": [
+      21,
+      22
+    ],
+    "official_document_2024_finding": "RR did not perform the 2024 evaluation; RR and DF did not send TS_ESTADO results; DF state-network result is in TS_MUNICIPIO.",
+    "uf_numeric_exceptions_over_0_1_pp": [
+      {
+        "ano": 2023,
+        "serie": "2",
+        "uf_inferida_do_municipio": "MS",
+        "registros": 42199,
+        "avaliados": 37113,
+        "avaliacao_nula": 0,
+        "alfabetizacao_nula_entre_avaliados": 0,
+        "peso_invalido_entre_avaliados": 0,
+        "elegiveis_calculo": 37113,
+        "alfabetizados": 17727,
+        "flag_avaliado_diverge_dicionario": 0,
+        "flag_alfabetizado_diverge_dicionario": 0,
+        "codigo_categorico_sem_mapeamento": 0,
+        "soma_peso_avaliados": 37113.0,
+        "soma_peso_alfabetizados": 17727.0,
+        "taxa_ponderada": 47.7649,
+        "taxa_oficial_uf": 47.45,
+        "diferenca_pp": 0.3149
+      },
+      {
+        "ano": 2023,
+        "serie": "2",
+        "uf_inferida_do_municipio": "SE",
+        "registros": 18634,
+        "avaliados": 18634,
+        "avaliacao_nula": 0,
+        "alfabetizacao_nula_entre_avaliados": 0,
+        "peso_invalido_entre_avaliados": 0,
+        "elegiveis_calculo": 18634,
+        "alfabetizados": 5832,
+        "flag_avaliado_diverge_dicionario": 0,
+        "flag_alfabetizado_diverge_dicionario": 0,
+        "codigo_categorico_sem_mapeamento": 0,
+        "soma_peso_avaliados": 19901.109999999997,
+        "soma_peso_alfabetizados": 6176.93,
+        "taxa_ponderada": 31.0381,
+        "taxa_oficial_uf": 31.3,
+        "diferenca_pp": -0.2619
+      }
+    ]
+  },
+  "recommended_gold_change_not_applied": {
+    "preserve_existing_rates_differences_and_tolerance": true,
+    "add_coverage_fields": [
+      "quantidade_ufs_microdados",
+      "ufs_microdados",
+      "ufs_sem_microdados",
+      "status_comparabilidade",
+      "nota_fonte"
+    ],
+    "2023_comparability": "COBERTURA_DIFERENTE_COMPROVADA",
+    "2024_numeric_comparison": "DENTRO_DA_TOLERANCIA_NO_UNIVERSO_DISPONIVEL",
+    "2024_comparability": "ADERENCIA_NUMERICA_NAO_COMPROVA_EQUIVALENCIA_METODOLOGICA",
+    "source_limitations_are_not_to_be_used_to_silence_new_unexplained_discrepancies": true
+  },
+  "unresolved": [
+    "This audit does not attribute all 1.5622 pp exclusively to missing Sao Paulo.",
+    "The exact source/methodology explanation of the MS and SE 2023 UF differences remains unresolved; the differences reproduce directly from official TS_ALUNO.",
+    "No new Gold schema or coverage checks have been deployed; earlier artifacts remain the deployed version."
+  ]
+}

@@ -1,0 +1,366 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "FIAP Fase2 streaming simulacao Bronze-Silver-Gold: SQS/Lambda/S3, role restrita e DLQ.",
+  "Parameters": {
+    "BucketName": {
+      "Type": "String",
+      "Default": "fiap-tc-fase2-2026"
+    },
+    "AlertTopicArn": {
+      "Type": "String",
+      "Default": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+      "AllowedValues": [
+        "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais"
+      ],
+      "Description": "Topico operacional existente desta conta/regiao; sem novo destinatario."
+    }
+  },
+  "Resources": {
+    "DeadLetterQueue": {
+      "Type": "AWS::SQS::Queue",
+      "Properties": {
+        "QueueName": "fiap-inep-streaming-dlq",
+        "MessageRetentionPeriod": 1209600,
+        "SqsManagedSseEnabled": true,
+        "RedriveAllowPolicy": {
+          "redrivePermission": "byQueue",
+          "sourceQueueArns": [
+            {
+              "Fn::Sub": "arn:${AWS::Partition}:sqs:${AWS::Region}:${AWS::AccountId}:fiap-inep-streaming"
+            }
+          ]
+        },
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "FIAP-TC-Fase2"
+          }
+        ]
+      }
+    },
+    "SourceQueue": {
+      "Type": "AWS::SQS::Queue",
+      "Properties": {
+        "QueueName": "fiap-inep-streaming",
+        "VisibilityTimeout": 60,
+        "ReceiveMessageWaitTimeSeconds": 20,
+        "MessageRetentionPeriod": 345600,
+        "SqsManagedSseEnabled": true,
+        "RedrivePolicy": {
+          "deadLetterTargetArn": {
+            "Fn::GetAtt": [
+              "DeadLetterQueue",
+              "Arn"
+            ]
+          },
+          "maxReceiveCount": 5
+        },
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "FIAP-TC-Fase2"
+          }
+        ]
+      }
+    },
+    "ConsumerLogs": {
+      "Type": "AWS::Logs::LogGroup",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/fiap-inep-streaming-consumer",
+        "RetentionInDays": 14
+      }
+    },
+    "ConsumerRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": "fiap-lambda-inep-streaming",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "StreamingScopedAccess",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "PollOnlyTheStreamingQueue",
+                  "Effect": "Allow",
+                  "Action": [
+                    "sqs:ReceiveMessage",
+                    "sqs:DeleteMessage",
+                    "sqs:GetQueueAttributes"
+                  ],
+                  "Resource": {
+                    "Fn::GetAtt": [
+                      "SourceQueue",
+                      "Arn"
+                    ]
+                  }
+                },
+                {
+                  "Sid": "PersistOnlyStreamingObjects",
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/bronze/inep_streaming/*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/silver/inep_streaming/entity=alunos/*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/gold/inep_streaming/contribuicoes/*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/auditoria/streaming/idempotency/*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/auditoria/streaming/processed/*"
+                    }
+                  ]
+                },
+                {
+                  "Sid": "WriteOnlyTheConsumerLogs",
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": {
+                    "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/fiap-inep-streaming-consumer:*"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "FIAP-TC-Fase2"
+          }
+        ]
+      }
+    },
+    "ConsumerFunction": {
+      "Type": "AWS::Lambda::Function",
+      "DependsOn": "ConsumerLogs",
+      "Properties": {
+        "FunctionName": "fiap-inep-streaming-consumer",
+        "Runtime": "python3.12",
+        "Handler": "index.lambda_handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "ConsumerRole",
+            "Arn"
+          ]
+        },
+        "Timeout": 10,
+        "MemorySize": 256,
+        "ReservedConcurrentExecutions": 2,
+        "Description": "Simulacao INEP v2: SQS para Bronze, Silver e Gold isoladas; idempotencia e qualidade.",
+        "Code": {
+          "ZipFile": "\"\"\"SQS -> Bronze -> Silver -> Gold de simula??o, com identidade (run_id,event_id).\n\nevent_time ? o momento de emiss?o do replay simulado, n?o o ano educacional.\nCada evento produz um JSON na Bronze e um claim de idempot?ncia na auditoria.\nO claim inclui o envelope integral para recuperar uma proje??o interrompida.\nDerivados incrementais gzip s?o imut?veis. finalize_simulation.py compacta um\nconjunto fechado em Parquet Snappy; nunca soma snapshots ou dados oficiais.\n\"\"\"\nfrom __future__ import annotations\n\nfrom dataclasses import dataclass\nfrom datetime import datetime, timedelta, timezone\nimport hashlib\nimport gzip\nimport json\nimport math\nimport os\nimport re\nimport time\n\n\nALL_ENTITIES = frozenset({\n    \"alunos\", \"municipio\", \"uf\", \"meta_alfabetizacao_brasil\",\n    \"meta_alfabetizacao_uf\", \"meta_alfabetizacao_municipio\", \"dicionario\",\n})\nSAFE_ID = re.compile(r\"[A-Za-z0-9_-]{1,160}\\Z\")\nUTC_TIMESTAMP = re.compile(r\"\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?(?:Z|\\+00:00)\\Z\")\nPIPELINE = \"fiap-inep-streaming\"\nNAMESPACE = \"FIAP/Streaming\"\nPIPELINE_VERSION = \"2.0.0\"\nORIGIN = \"simulacao_replay_inep\"\nUF_BY_IBGE = dict(zip(\n    \"11 12 13 14 15 16 17 21 22 23 24 25 26 27 28 29 31 32 33 35 41 42 43 50 51 52 53\".split(),\n    \"RO AC AM RR PA AP TO MA PI CE RN PB PE AL SE BA MG ES RJ SP PR SC RS MS MT GO DF\".split(),\n))\n_S3 = None\n\n\nclass InvalidEnvelope(ValueError):\n    pass\n\n\nclass EventIdentityConflict(ValueError):\n    \"\"\"A identidade j? est? associada a outro envelope; nunca sobrescrever.\"\"\"\n\n\nclass StoredEventCorruption(ValueError):\n    pass\n\n\nclass InvalidPayload(ValueError):\n    \"\"\"Bronze preservada; qualidade bloqueia publica??o anal?tica.\"\"\"\n\n\n@dataclass(frozen=True)\nclass Config:\n    bucket: str\n    prefix: str\n    idempotency_prefix: str\n    allowed_entities: frozenset[str]\n    silver_prefix: str = \"silver/inep_streaming\"\n    gold_prefix: str = \"gold/inep_streaming\"\n    processed_prefix: str = \"auditoria/streaming/processed\"\n\n    def __post_init__(self):\n        # Configura??o n?o pode redirecionar a simula??o aos datasets oficiais.\n        for value, root in ((self.prefix, \"bronze/inep_streaming\"),\n                            (self.silver_prefix, \"silver/inep_streaming\"),\n                            (self.gold_prefix, \"gold/inep_streaming\"),\n                            (self.idempotency_prefix, \"auditoria/streaming/idempotency\"),\n                            (self.processed_prefix, \"auditoria/streaming/processed\")):\n            if _prefix(value) != root:\n                raise ValueError(\"Only isolated simulation prefixes are allowed\")\n\n\ndef _prefix(value):\n    value = value.strip(\"/\")\n    if not value or any(part in {\"\", \".\", \"..\"} for part in value.split(\"/\")):\n        raise ValueError(\"Invalid S3 prefix\")\n    if not re.fullmatch(r\"[A-Za-z0-9_./=-]+\", value):\n        raise ValueError(\"Invalid S3 prefix\")\n    return value\n\n\ndef load_config():\n    bucket = os.environ.get(\"BUCKET\", \"fiap-tc-fase2-2026\")\n    if not re.fullmatch(r\"[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]\", bucket):\n        raise ValueError(\"Invalid BUCKET\")\n    prefix = _prefix(os.environ.get(\"PREFIX\", \"bronze/inep_streaming\"))\n    identity_prefix = _prefix(os.environ.get(\"IDEMPOTENCY_PREFIX\", \"auditoria/streaming/idempotency\"))\n    if prefix == identity_prefix or prefix.startswith(identity_prefix + \"/\") or identity_prefix.startswith(prefix + \"/\"):\n        raise ValueError(\"Bronze and idempotency prefixes must be separate\")\n    entities = frozenset(item.strip() for item in os.environ.get(\"ALLOWED_ENTITIES\", \"alunos\").split(\",\"))\n    if not entities or not entities.issubset(ALL_ENTITIES):\n        raise ValueError(\"Invalid ALLOWED_ENTITIES\")\n    if entities != frozenset({\"alunos\"}):\n        raise ValueError(\"Analytical simulation supports only alunos\")\n    return Config(bucket, prefix, identity_prefix, entities,\n                  _prefix(os.environ.get(\"SILVER_PREFIX\", \"silver/inep_streaming\")),\n                  _prefix(os.environ.get(\"GOLD_PREFIX\", \"gold/inep_streaming\")),\n                  _prefix(os.environ.get(\"PROCESSED_PREFIX\", \"auditoria/streaming/processed\")))\n\n\ndef utc_now():\n    return datetime.now(timezone.utc)\n\n\ndef iso_utc(value):\n    return value.isoformat(timespec=\"microseconds\").replace(\"+00:00\", \"Z\")\n\n\ndef canonical_json(value):\n    # allow_nan=False ? essencial: NaN/Infinity n?o pertencem ao contrato JSON.\n    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(\",\", \":\"), allow_nan=False).encode(\"utf-8\")\n\n\ndef sha256(value):\n    return hashlib.sha256(canonical_json(value)).hexdigest()\n\n\ndef _reject_constant(_value):\n    raise InvalidEnvelope(\"Non-finite JSON number\")\n\n\ndef parse_event(body, config):\n    if not isinstance(body, str):\n        raise InvalidEnvelope(\"SQS body must be text\")\n    try:\n        envelope = json.loads(body, parse_constant=_reject_constant)\n    except (json.JSONDecodeError, UnicodeError) as exc:\n        raise InvalidEnvelope(\"Body is not JSON\") from exc\n    if not isinstance(envelope, dict):\n        raise InvalidEnvelope(\"Envelope must be an object\")\n    if type(envelope.get(\"schema_version\")) is not int or envelope[\"schema_version\"] != 1:\n        raise InvalidEnvelope(\"Unsupported schema_version\")\n    for field in (\"event_id\", \"run_id\", \"source_snapshot_run_id\"):\n        if not isinstance(envelope.get(field), str) or not SAFE_ID.fullmatch(envelope[field]):\n            raise InvalidEnvelope(f\"Invalid {field}\")\n    if envelope.get(\"entity\") not in config.allowed_entities:\n        raise InvalidEnvelope(\"Unsupported entity\")\n    if envelope.get(\"source\") != \"inep_bronze_replay\" or envelope.get(\"simulation\") is not True:\n        raise InvalidEnvelope(\"Expected an explicitly simulated INEP Bronze replay\")\n    if not isinstance(envelope.get(\"payload\"), dict):\n        raise InvalidEnvelope(\"payload must be an object\")\n    stamp = envelope.get(\"event_time\")\n    if not isinstance(stamp, str) or not UTC_TIMESTAMP.fullmatch(stamp):\n        raise InvalidEnvelope(\"event_time must be an ISO UTC timestamp\")\n    try:\n        event_time = datetime.fromisoformat(stamp.replace(\"Z\", \"+00:00\"))\n    except ValueError as exc:\n        raise InvalidEnvelope(\"Invalid event_time\") from exc\n    if event_time.utcoffset() != timedelta(0):\n        raise InvalidEnvelope(\"event_time must use UTC\")\n    # Tamb?m valida n?meros aninhados que eventualmente excedam o JSON finito.\n    try:\n        canonical_json(envelope)\n    except (ValueError, TypeError, OverflowError) as exc:\n        raise InvalidEnvelope(\"Envelope is not finite JSON\") from exc\n    return envelope, event_time\n\n\ndef _code(exc):\n    return str(getattr(exc, \"response\", {}).get(\"Error\", {}).get(\"Code\", \"\"))\n\n\ndef _is_conflict(exc):\n    return _code(exc) in {\"PreconditionFailed\", \"ConditionalRequestConflict\", \"412\", \"409\"}\n\n\ndef _get_stored(s3, config, key, expected_hash):\n    result = s3.get_object(Bucket=config.bucket, Key=key)\n    try:\n        stored = json.loads(result[\"Body\"].read(), parse_constant=_reject_constant)\n        stored_hash = sha256(stored[\"event\"])\n        declared_hash = stored[\"ingestion\"][\"event_sha256\"]\n        if stored_hash != declared_hash:\n            raise StoredEventCorruption(\"Stored event hash mismatch\")\n        if stored_hash != expected_hash:\n            raise EventIdentityConflict(\"Event identity already contains another envelope\")\n    except (KeyError, json.JSONDecodeError, TypeError) as exc:\n        raise StoredEventCorruption(\"Invalid stored event\") from exc\n    return stored\n\n\ndef _put_once(s3, config, key, value):\n    s3.put_object(\n        Bucket=config.bucket, Key=key, Body=canonical_json(value) + b\"\\n\",\n        ContentType=\"application/json\", IfNoneMatch=\"*\",\n        Metadata={\"event-sha256\": value[\"ingestion\"][\"event_sha256\"]},\n    )\n\n\ndef stage_paths(envelope, config):\n    day = datetime.fromisoformat(envelope[\"event_time\"].replace(\"Z\", \"+00:00\")).date().isoformat()\n    suffix = f\"event_date={day}/run_id={envelope['run_id']}/event_id={envelope['event_id']}\"\n    return {\n        \"bronze_key\": f\"{config.prefix}/entity=alunos/{suffix}.json\",\n        \"silver_key\": f\"{config.silver_prefix}/entity=alunos/{suffix}.json.gz\",\n        \"gold_key\": f\"{config.gold_prefix}/contribuicoes/{suffix}.json.gz\",\n        \"receipt_key\": f\"{config.processed_prefix}/run_id={envelope['run_id']}/event_id={envelope['event_id']}.json\",\n    }\n\n\ndef transform_payload(payload):\n    \"\"\"Dom?nios 0/1 confirmados no dicion?rio do snapshot Silver de 26/10/2026.\n\n    N?o infere alfabetiza??o pela profici?ncia e n?o imputa pesos ausentes.\n    A taxa da amostra ? uma simula??o, sem compara??o com a taxa oficial.\n    \"\"\"\n    required = {\"ano\", \"id_municipio\", \"id_aluno\", \"id_escola\", \"serie\", \"rede\",\n                \"presenca\", \"preenchimento_caderno\", \"alfabetizado\", \"peso_aluno\"}\n    if not required.issubset(payload):\n        raise InvalidPayload(\"Missing source columns\")\n    year = payload[\"ano\"]\n    if type(year) is not int or not 2000 <= year <= 2100:\n        raise InvalidPayload(\"Invalid educational year\")\n    municipality = payload[\"id_municipio\"]\n    if not isinstance(municipality, str) or not re.fullmatch(r\"\\d{7}\", municipality) or municipality[:2] not in UF_BY_IBGE:\n        raise InvalidPayload(\"Municipality does not match an IBGE UF\")\n    for name in (\"id_aluno\", \"id_escola\"):\n        if not isinstance(payload[name], str) or not re.fullmatch(r\"\\d{1,20}\", payload[name]):\n            raise InvalidPayload(\"Invalid source identifier\")\n    if not isinstance(payload[\"rede\"], str) or payload[\"rede\"] not in {\"1\", \"2\", \"3\", \"4\"} or payload[\"serie\"] != \"2\":\n        raise InvalidPayload(\"Expected elementary network and second year cohort\")\n    for name in (\"presenca\", \"preenchimento_caderno\", \"alfabetizado\"):\n        if payload[name] is not None and (not isinstance(payload[name], str) or payload[name] not in {\"0\", \"1\"}):\n            raise InvalidPayload(\"Unknown dictionary category\")\n    present = {\"1\": True, \"0\": False}.get(payload[\"presenca\"])\n    filled = {\"1\": True, \"0\": False}.get(payload[\"preenchimento_caderno\"])\n    # SQL three-valued AND: false dominates null, as in the official Silver.\n    evaluated = False if present is False or filled is False else (True if present is True and filled is True else None)\n    if evaluated is None:\n        raise InvalidPayload(\"Unknown evaluation status\")\n    literate = {\"1\": True, \"0\": False}.get(payload[\"alfabetizado\"]) if evaluated else None\n    weight = payload[\"peso_aluno\"]\n    if evaluated:\n        try:\n            valid_weight = type(weight) in (int, float) and math.isfinite(weight) and weight > 0\n        except (OverflowError, TypeError, ValueError):\n            valid_weight = False\n        if literate is None or not valid_weight:\n            raise InvalidPayload(\"Evaluated pupil requires known literacy and positive finite weight\")\n    silver = dict(payload, sigla_uf=UF_BY_IBGE[municipality[:2]], presente=present,\n                  caderno_preenchido=filled, avaliado=evaluated, alfabetizado_avaliado=literate)\n    gold = {\"ano\": year, \"sigla_uf\": silver[\"sigla_uf\"], \"serie\": payload[\"serie\"], \"rede\": payload[\"rede\"],\n            \"eventos\": 1, \"alunos_avaliados\": int(evaluated), \"alunos_alfabetizados\": int(literate is True),\n            \"soma_peso_avaliados\": float(weight) if evaluated else 0.0,\n            \"soma_peso_alfabetizados\": float(weight) if literate is True else 0.0}\n    return silver, gold\n\n\ndef _persist_derived(s3, config, key, value, compressed=False, volatile=()):\n    raw = canonical_json(value) + b\"\\n\"\n    body = gzip.compress(raw, mtime=0) if compressed else raw\n    try:\n        s3.put_object(Bucket=config.bucket, Key=key, Body=body, IfNoneMatch=\"*\",\n                      ContentType=\"application/json\", **({\"ContentEncoding\": \"gzip\"} if compressed else {}))\n        return value, True\n    except Exception as exc:\n        if not _is_conflict(exc):\n            raise\n        raw = s3.get_object(Bucket=config.bucket, Key=key)[\"Body\"].read()\n        existing = json.loads(gzip.decompress(raw) if compressed else raw, parse_constant=_reject_constant)\n        # Dados determin?sticos devem coincidir integralmente. S? o hor?rio da\n        # primeira conclus?o varia numa corrida entre dois consumidores.\n        stable = lambda obj: {k: v for k, v in obj.items() if k not in volatile}\n        if canonical_json(stable(existing)) != canonical_json(stable(value)):\n            raise StoredEventCorruption(\"Derived object differs from deterministic projection\")\n        return existing, False\n\n\ndef project_analytics(s3, config, envelope, event_hash):\n    paths = stage_paths(envelope, config)\n    try:\n        silver, gold = transform_payload(envelope[\"payload\"])\n    except InvalidPayload:\n        # Persistir evid?ncia bloqueante sem body/identificadores pessoais.\n        failure = {\"schema_version\": 2, \"pipeline_version\": PIPELINE_VERSION, \"origin\": ORIGIN,\n                   \"simulation\": True, \"status\": \"QUALITY_REJECTED\", \"event_sha256\": event_hash,\n                   \"run_id\": envelope[\"run_id\"], \"event_id\": envelope[\"event_id\"],\n                   \"bronze_key\": paths[\"bronze_key\"], \"rule\": \"valid_analytical_payload\"}\n        key = paths[\"receipt_key\"].replace(\"/event_id=\", \"/rejected_event_id=\")\n        _persist_derived(s3, config, key, failure)\n        raise\n    provenance = {k: envelope[k] for k in (\"run_id\", \"event_id\", \"source_snapshot_run_id\", \"event_time\")}\n    provenance[\"bronze_key\"] = paths[\"bronze_key\"]\n    for layer, data, key in ((\"silver\", silver, paths[\"silver_key\"]), (\"gold_contribution\", gold, paths[\"gold_key\"])):\n        derived = {\"schema_version\": 2, \"pipeline_version\": PIPELINE_VERSION, \"layer\": layer,\n                   \"origin\": ORIGIN, \"simulation\": True, \"event_sha256\": event_hash,\n                   \"data_sha256\": sha256(data), \"provenance\": provenance, \"data\": data}\n        _persist_derived(s3, config, key, derived, compressed=True)\n    # Instante lido DEPOIS do PUT Gold: lat?ncia at? publica??o anal?tica real.\n    completed = utc_now()\n    emitted = datetime.fromisoformat(envelope[\"event_time\"].replace(\"Z\", \"+00:00\"))\n    receipt = {\"schema_version\": 2, \"pipeline_version\": PIPELINE_VERSION, \"status\": \"GOLD_READY\",\n               \"origin\": ORIGIN, \"simulation\": True, \"event_sha256\": event_hash,\n               **{k: envelope[k] for k in (\"run_id\", \"event_id\", \"source_snapshot_run_id\", \"event_time\")},\n               **{k: v for k, v in paths.items() if k != \"receipt_key\"},\n               \"silver_data_sha256\": sha256(silver), \"gold_data_sha256\": sha256(gold),\n               \"completed_at_utc\": iso_utc(completed),\n               \"end_to_end_latency_seconds\": max(0.0, (completed - emitted).total_seconds())}\n    saved, new = _persist_derived(s3, config, paths[\"receipt_key\"], receipt,\n                                 volatile=(\"completed_at_utc\", \"end_to_end_latency_seconds\"))\n    recorded_time = datetime.fromisoformat(saved[\"completed_at_utc\"].replace(\"Z\", \"+00:00\"))\n    if not math.isclose(saved[\"end_to_end_latency_seconds\"], max(0.0, (recorded_time-emitted).total_seconds()), abs_tol=0.000001):\n        raise StoredEventCorruption(\"Invalid persisted end-to-end latency\")\n    return saved, new\n\n\ndef process_record(record, context, config, s3):\n    envelope, event_time = parse_event(record[\"body\"], config)\n    run_id, event_id = envelope[\"run_id\"], envelope[\"event_id\"]\n    event_hash = sha256(envelope)\n    target_key = (\n        f\"{config.prefix}/entity={envelope['entity']}/event_date={event_time.date().isoformat()}\"\n        f\"/run_id={run_id}/event_id={event_id}.json\"\n    )\n    claim_key = f\"{config.idempotency_prefix}/run_id={run_id}/event_id={event_id}.json\"\n    received = utc_now()\n    if (event_time - received).total_seconds() > 5:\n        raise InvalidEnvelope(\"event_time is more than five seconds in the future\")\n    first_received = iso_utc(received)\n    stored = {\n        \"event\": envelope,\n        \"ingestion\": {\n            \"received_at_utc\": first_received,\n            \"claim_started_at_utc\": first_received,\n            \"sqs_message_id\": record[\"messageId\"],\n            \"lambda_request_id\": getattr(context, \"aws_request_id\", \"unknown\"),\n            \"event_sha256\": event_hash,\n            \"payload_sha256\": sha256(envelope[\"payload\"]),\n            \"target_key\": target_key,\n        },\n    }\n    try:\n        _put_once(s3, config, claim_key, stored)\n    except Exception as exc:\n        if not _is_conflict(exc):\n            raise\n        # S3 GET ? fortemente consistente. Em 409 sem objeto vis?vel, propagar\n        # a falha: a fila far? retry; nunca confirmar um evento que n?o foi salvo.\n        stored = _get_stored(s3, config, claim_key, event_hash)\n        if stored[\"ingestion\"].get(\"target_key\") != target_key:\n            raise StoredEventCorruption(\"Claim target path mismatch\")\n\n    try:\n        # Sempre tentar o PUT condicional, inclusive ao recuperar um claim.\n        # Sem s3:ListBucket, um GET de chave inexistente pode retornar 403 em\n        # vez de 404; assim a recupera??o n?o depende dessa permiss?o ampla.\n        _put_once(s3, config, target_key, stored)\n    except Exception as exc:\n        if not _is_conflict(exc):\n            raise\n        stored = _get_stored(s3, config, target_key, event_hash)\n    # Duplicata Bronze pode ter etapas anal?ticas faltantes: sempre completar.\n    receipt, projected = project_analytics(s3, config, envelope, event_hash)\n    stored = dict(stored, analytical_receipt=receipt)\n    return (\"ACCEPTED\" if projected else \"DUPLICATE\"), stored, (receipt[\"end_to_end_latency_seconds\"] if projected else None)\n\n\ndef _client():\n    global _S3\n    if _S3 is None:\n        import boto3\n        _S3 = boto3.client(\"s3\")\n    return _S3\n\n\ndef _emit_metrics(counts, latencies, invocation_id):\n    def emit(values, include_counts):\n        definitions = []\n        payload = {\"kind\": \"STREAMING_BATCH\" if include_counts else \"STREAMING_LATENCY\", \"Pipeline\": PIPELINE,\n                   \"pipeline_version\": PIPELINE_VERSION, \"latency_target\": \"gold_contribution\", \"invocation_id\": invocation_id}\n        if include_counts:\n            payload.update(counts)\n            definitions.extend({\"Name\": name, \"Unit\": \"Count\"} for name in counts)\n        if values:\n            payload[\"LatencySeconds\"] = [round(value, 6) for value in values]\n            definitions.append({\"Name\": \"LatencySeconds\", \"Unit\": \"Seconds\"})\n        payload[\"_aws\"] = {\n            \"Timestamp\": int(time.time() * 1000),\n            \"CloudWatchMetrics\": [{\"Namespace\": NAMESPACE, \"Dimensions\": [[\"Pipeline\"]], \"Metrics\": definitions}],\n        }\n        print(json.dumps(payload, ensure_ascii=False, separators=(\",\", \":\"), allow_nan=False))\n    emit(latencies[:100], True)\n    for index in range(100, len(latencies), 100):\n        emit(latencies[index:index + 100], False)\n\n\ndef lambda_handler(event, context):\n    records = event.get(\"Records\")\n    if not isinstance(records, list) or any(not isinstance(record, dict) or not isinstance(record.get(\"messageId\"), str) or not record[\"messageId\"] for record in records):\n        raise ValueError(\"Expected an SQS batch with message IDs\")\n    config, s3 = load_config(), _client()\n    failures, latencies = [], []\n    counts = {\"Received\": len(records), \"Accepted\": 0, \"Duplicate\": 0, \"Failed\": 0}\n    for record in records:\n        try:\n            status, stored, latency = process_record(record, context, config, s3)\n            counts[\"Accepted\" if status == \"ACCEPTED\" else \"Duplicate\"] += 1\n            if latency is not None:\n                latencies.append(latency)\n            print(json.dumps({\n                \"kind\": \"STREAMING_EVENT\", \"status\": status,\n                \"run_id\": stored[\"event\"][\"run_id\"], \"event_id\": stored[\"event\"][\"event_id\"],\n                \"sqs_message_id\": record[\"messageId\"], \"target_key\": stored[\"ingestion\"][\"target_key\"],\n                \"gold_key\": stored[\"analytical_receipt\"][\"gold_key\"], \"pipeline_version\": PIPELINE_VERSION,\n                \"gold_completed_at_utc\": stored[\"analytical_receipt\"][\"completed_at_utc\"],\n            }, separators=(\",\", \":\")))\n        except Exception as exc:\n            counts[\"Failed\"] += 1\n            failures.append({\"itemIdentifier\": record[\"messageId\"]})\n            # N?o registrar body, payload ou mensagens de erro de terceiros.\n            print(json.dumps({\n                \"kind\": \"STREAMING_EVENT\", \"status\": \"FAILED\",\n                \"sqs_message_id\": record[\"messageId\"], \"error_type\": type(exc).__name__,\n            }, separators=(\",\", \":\")))\n    _emit_metrics(counts, latencies, getattr(context, \"aws_request_id\", \"unknown\"))\n    return {\"batchItemFailures\": failures}\n"
+        },
+        "Environment": {
+          "Variables": {
+            "BUCKET": {
+              "Ref": "BucketName"
+            },
+            "PREFIX": "bronze/inep_streaming",
+            "IDEMPOTENCY_PREFIX": "auditoria/streaming/idempotency",
+            "ALLOWED_ENTITIES": "alunos",
+            "SILVER_PREFIX": "silver/inep_streaming",
+            "GOLD_PREFIX": "gold/inep_streaming",
+            "PROCESSED_PREFIX": "auditoria/streaming/processed"
+          }
+        },
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "FIAP-TC-Fase2"
+          }
+        ]
+      }
+    },
+    "QueueConsumerMapping": {
+      "Type": "AWS::Lambda::EventSourceMapping",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "ConsumerFunction"
+        },
+        "EventSourceArn": {
+          "Fn::GetAtt": [
+            "SourceQueue",
+            "Arn"
+          ]
+        },
+        "BatchSize": 5,
+        "MaximumBatchingWindowInSeconds": 0,
+        "FunctionResponseTypes": [
+          "ReportBatchItemFailures"
+        ],
+        "ScalingConfig": {
+          "MaximumConcurrency": 2
+        },
+        "Enabled": true
+      }
+    },
+    "DeadLetterAlarm": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Period": 60,
+        "Statistic": "Maximum",
+        "TreatMissingData": "notBreaching",
+        "AlarmName": "fiap-inep-streaming-dlq",
+        "AlarmDescription": "Mensagem na DLQ; revisar erros no CloudWatch e corrigir antes do redrive. Alerta visivel no console, sem e-mail configurado.",
+        "Namespace": "AWS/SQS",
+        "MetricName": "ApproximateNumberOfMessagesVisible",
+        "Dimensions": [
+          {
+            "Name": "QueueName",
+            "Value": "fiap-inep-streaming-dlq"
+          }
+        ],
+        "Threshold": 1,
+        "ActionsEnabled": true,
+        "AlarmActions": [
+          {
+            "Ref": "AlertTopicArn"
+          }
+        ],
+        "OKActions": [],
+        "InsufficientDataActions": []
+      }
+    },
+    "RejectedEventAlarm": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Period": 60,
+        "Statistic": "Sum",
+        "TreatMissingData": "notBreaching",
+        "AlarmName": "fiap-inep-streaming-rejected",
+        "AlarmDescription": "Evento rejeitado pelo consumidor; verificar logs e DLQ. Alerta visivel no console.",
+        "Namespace": "FIAP/Streaming",
+        "MetricName": "Failed",
+        "Dimensions": [
+          {
+            "Name": "Pipeline",
+            "Value": "fiap-inep-streaming"
+          }
+        ],
+        "Threshold": 1,
+        "ActionsEnabled": true,
+        "AlarmActions": [
+          {
+            "Ref": "AlertTopicArn"
+          }
+        ],
+        "OKActions": [],
+        "InsufficientDataActions": []
+      }
+    },
+    "QueueAgeAlarm": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Period": 60,
+        "Statistic": "Maximum",
+        "TreatMissingData": "notBreaching",
+        "AlarmName": "fiap-inep-streaming-age",
+        "AlarmDescription": "Atraso de processamento maior ou igual a 120 segundos; revisar Lambda e fila.",
+        "Namespace": "AWS/SQS",
+        "MetricName": "ApproximateAgeOfOldestMessage",
+        "Dimensions": [
+          {
+            "Name": "QueueName",
+            "Value": "fiap-inep-streaming"
+          }
+        ],
+        "Threshold": 120,
+        "ActionsEnabled": true,
+        "AlarmActions": [
+          {
+            "Ref": "AlertTopicArn"
+          }
+        ],
+        "OKActions": [],
+        "InsufficientDataActions": []
+      }
+    }
+  },
+  "Outputs": {
+    "QueueUrl": {
+      "Value": {
+        "Ref": "SourceQueue"
+      }
+    },
+    "QueueArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "SourceQueue",
+          "Arn"
+        ]
+      }
+    },
+    "DeadLetterQueueUrl": {
+      "Value": {
+        "Ref": "DeadLetterQueue"
+      }
+    },
+    "FunctionName": {
+      "Value": {
+        "Ref": "ConsumerFunction"
+      }
+    },
+    "FunctionArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "ConsumerFunction",
+          "Arn"
+        ]
+      }
+    },
+    "ExecutionRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "ConsumerRole",
+          "Arn"
+        ]
+      }
+    },
+    "EventSourceMappingUuid": {
+      "Value": {
+        "Ref": "QueueConsumerMapping"
+      }
+    },
+    "LogGroup": {
+      "Value": {
+        "Ref": "ConsumerLogs"
+      }
+    }
+  }
+}

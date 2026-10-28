@@ -1,0 +1,384 @@
+{
+  "schema_version": 1,
+  "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+  "source": {
+    "manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/manifest.json",
+    "snapshot_run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+    "source_table": "alunos",
+    "source_columns": [
+      "ano",
+      "id_municipio",
+      "id_escola",
+      "id_aluno",
+      "caderno",
+      "serie",
+      "rede",
+      "presenca",
+      "preenchimento_caderno",
+      "alfabetizado",
+      "proficiencia",
+      "peso_aluno"
+    ],
+    "source_target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/alunos/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/"
+  },
+  "unique_event_count": 30,
+  "duplicate_send_count": 5,
+  "interval_seconds": 1,
+  "started_at_utc": "2026-10-27T15:54:22.766631Z",
+  "send_results": [
+    {
+      "order": 1,
+      "kind": "NEW",
+      "event_id": "58f0e790-cd7b-5af1-8b4a-42e99ef7463f",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "e248e5d8-21ef-43e6-8af5-28461423aa00",
+      "sent_at_utc": "2026-10-27T15:54:22.766770Z",
+      "confirmed_at_utc": "2026-10-27T15:54:22.779726Z",
+      "body_sha256": "fdb3e42d721ee06f3e5be43cca5ac8cd825771367f5b3a6d4f4eabe88525a2ed"
+    },
+    {
+      "order": 2,
+      "kind": "NEW",
+      "event_id": "4bc9633d-4a97-5ea5-9d0e-c7ca1400741f",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "930589bd-e0f9-434a-ad1d-14627b043800",
+      "sent_at_utc": "2026-10-27T15:54:23.780016Z",
+      "confirmed_at_utc": "2026-10-27T15:54:23.786592Z",
+      "body_sha256": "655827f89895dceaa1a67af4f3635c1785a3e65550d31e9cc8b6d3515170169a"
+    },
+    {
+      "order": 3,
+      "kind": "NEW",
+      "event_id": "e1e9b5f9-d095-5adb-99fe-aa156b8d9c3e",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "a46902c3-3958-4a3d-8ebd-3f0d3914f714",
+      "sent_at_utc": "2026-10-27T15:54:24.786877Z",
+      "confirmed_at_utc": "2026-10-27T15:54:24.800446Z",
+      "body_sha256": "60a971fda28c63789d9acafffbd346887c0749325e957f579a638eaf0361d7f4"
+    },
+    {
+      "order": 4,
+      "kind": "NEW",
+      "event_id": "37204d53-0b19-5199-83d4-c43d50990b68",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "5102804e-4603-4fe5-9bd9-88c7f0e4f7f4",
+      "sent_at_utc": "2026-10-27T15:54:25.800725Z",
+      "confirmed_at_utc": "2026-10-27T15:54:25.808246Z",
+      "body_sha256": "fcdea7f1bffac32e07b1290e60c6ee0ec46b0fc26207c05b3b3081d91d749a46"
+    },
+    {
+      "order": 5,
+      "kind": "NEW",
+      "event_id": "ae602334-a088-5ab3-8471-1384c5397e17",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "7bc7348c-0bc5-48d0-b115-17cf38b25340",
+      "sent_at_utc": "2026-10-27T15:54:26.808537Z",
+      "confirmed_at_utc": "2026-10-27T15:54:26.816987Z",
+      "body_sha256": "938754b5b0ec73b106b983df9da29a428ca750ea1e04539284d16b9e04bf6fa3"
+    },
+    {
+      "order": 6,
+      "kind": "NEW",
+      "event_id": "541a2495-497c-5d68-86a7-35137d297d1e",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "883d6f85-d6dc-4dbc-9a75-075d6bf7e058",
+      "sent_at_utc": "2026-10-27T15:54:27.817284Z",
+      "confirmed_at_utc": "2026-10-27T15:54:27.824827Z",
+      "body_sha256": "e51ae93614f9284b7680610522e19aa9784f2e83868af1119e98cf76c3d71303"
+    },
+    {
+      "order": 7,
+      "kind": "NEW",
+      "event_id": "a641969a-591f-5d5a-8e81-b6e8dba8d09d",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "28f64b73-9628-48bc-a474-94e544e4463a",
+      "sent_at_utc": "2026-10-27T15:54:28.825113Z",
+      "confirmed_at_utc": "2026-10-27T15:54:28.831882Z",
+      "body_sha256": "44ffc9d075740ff9412f6ff703525437ecef52b51e6febd0d4378421dcd5596a"
+    },
+    {
+      "order": 8,
+      "kind": "NEW",
+      "event_id": "5e467034-47e3-5270-9c3d-48484bf37a0e",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "50af3161-4ed0-4c15-9670-379f84911028",
+      "sent_at_utc": "2026-10-27T15:54:29.832172Z",
+      "confirmed_at_utc": "2026-10-27T15:54:29.839159Z",
+      "body_sha256": "54e04b6c509692cca7054f31705b677730ca5df9fa65a7b16c5d53a5158c2444"
+    },
+    {
+      "order": 9,
+      "kind": "NEW",
+      "event_id": "a98315be-2fda-5e83-a3e1-a09f16e389b5",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "b7ab09b2-1ce3-4356-aa53-f312da495ea0",
+      "sent_at_utc": "2026-10-27T15:54:30.839445Z",
+      "confirmed_at_utc": "2026-10-27T15:54:30.845428Z",
+      "body_sha256": "f5a7c3ad1fb36530f027b61189218ecd83717ee43d313c02323e89663af1cd7e"
+    },
+    {
+      "order": 10,
+      "kind": "NEW",
+      "event_id": "2eb03a35-2250-5cc3-845a-2fdd583bf0e2",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "de0e38bb-bfd7-4c95-b958-766d4862e6c6",
+      "sent_at_utc": "2026-10-27T15:54:31.845724Z",
+      "confirmed_at_utc": "2026-10-27T15:54:31.851940Z",
+      "body_sha256": "9555e57db2d019f3eb339d40d88a4b32e1389bdab601f01450aa7f63bd0ffa9f"
+    },
+    {
+      "order": 11,
+      "kind": "NEW",
+      "event_id": "2a981705-d320-52f4-874c-3d46698481f8",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "88e88da9-798f-442f-ad17-aa7688328621",
+      "sent_at_utc": "2026-10-27T15:54:32.852230Z",
+      "confirmed_at_utc": "2026-10-27T15:54:32.859187Z",
+      "body_sha256": "c790e7c3549cc8d1849882ed56c3a402ad6d8fcba18aad076f80b855896ddd43"
+    },
+    {
+      "order": 12,
+      "kind": "NEW",
+      "event_id": "a52ad633-65c8-5865-8ecf-ba29a6aa3d54",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "67d966e5-297a-45d0-945d-5373016918ee",
+      "sent_at_utc": "2026-10-27T15:54:33.859463Z",
+      "confirmed_at_utc": "2026-10-27T15:54:33.865399Z",
+      "body_sha256": "842eacb1f0ce62b296646607b0fcbd7ef99e42c38ece98b03972a154447bfc96"
+    },
+    {
+      "order": 13,
+      "kind": "NEW",
+      "event_id": "a8cda8a1-d212-53bb-84d3-d6fa6f96fddd",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "da4b5e7f-8d7d-4002-ade1-feeec6104ab9",
+      "sent_at_utc": "2026-10-27T15:54:34.865684Z",
+      "confirmed_at_utc": "2026-10-27T15:54:34.871554Z",
+      "body_sha256": "55ea45e63b25b88a11a50aef6afd33d0ddf464e437c0540bc4edef950df6c1d2"
+    },
+    {
+      "order": 14,
+      "kind": "NEW",
+      "event_id": "e43d3311-3d6d-5d5b-b351-a4942770dce5",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "0d642a0e-1d71-45e6-947d-a59683539a17",
+      "sent_at_utc": "2026-10-27T15:54:35.871836Z",
+      "confirmed_at_utc": "2026-10-27T15:54:35.878670Z",
+      "body_sha256": "692bc0721b4732c1b082e8f0abb0c499c989c09b8e287511b46c5b5839ab1c19"
+    },
+    {
+      "order": 15,
+      "kind": "NEW",
+      "event_id": "d7e73af2-5a6b-52ee-8bb1-6c986be6b1e9",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "86dd7b9d-9c89-420d-9c03-dfd161185eef",
+      "sent_at_utc": "2026-10-27T15:54:36.878977Z",
+      "confirmed_at_utc": "2026-10-27T15:54:36.885235Z",
+      "body_sha256": "0cbb2d0154b74759495241ca47b3d0b092645bc4c6880befe321795965a6bc33"
+    },
+    {
+      "order": 16,
+      "kind": "NEW",
+      "event_id": "215ae617-9b73-5e02-a5f7-39735de8c7d4",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "580d356c-4b0d-438d-8b12-fd02c89bd393",
+      "sent_at_utc": "2026-10-27T15:54:37.885523Z",
+      "confirmed_at_utc": "2026-10-27T15:54:37.891904Z",
+      "body_sha256": "a32bcbb712bc71f5bb27128b49578438f95bb1f5e53f6c9386ade5a8c878a1c6"
+    },
+    {
+      "order": 17,
+      "kind": "NEW",
+      "event_id": "56e3bf93-36a4-5d28-920f-81397fc2a034",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "83e0eba6-74db-4a66-9162-5718cfffb7fc",
+      "sent_at_utc": "2026-10-27T15:54:38.892189Z",
+      "confirmed_at_utc": "2026-10-27T15:54:38.898470Z",
+      "body_sha256": "4e39588c4cef46a8a53e219f8d498f30336c4653b9fd5ed11d861497d81e7090"
+    },
+    {
+      "order": 18,
+      "kind": "NEW",
+      "event_id": "ed79eba8-ec1e-56b8-8da9-c2c90dfe675e",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "1ed24d70-8309-4294-aefc-cad7595cfce3",
+      "sent_at_utc": "2026-10-27T15:54:39.898755Z",
+      "confirmed_at_utc": "2026-10-27T15:54:39.905105Z",
+      "body_sha256": "d261b89336df98fe16464436956cd7c9e4abbf93c6082f5ebf7058965d097b2e"
+    },
+    {
+      "order": 19,
+      "kind": "NEW",
+      "event_id": "0e0d07d8-1c87-52e7-9d24-e8d096a6abea",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "12f6c5c4-2961-4e26-b482-ae1847b2a82a",
+      "sent_at_utc": "2026-10-27T15:54:40.905393Z",
+      "confirmed_at_utc": "2026-10-27T15:54:40.911436Z",
+      "body_sha256": "fe517af24f2485465596bf0f83138c0062196ffb02086e92628bb4326e674989"
+    },
+    {
+      "order": 20,
+      "kind": "NEW",
+      "event_id": "02ef11c4-14fb-549c-8572-6454f0736290",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "e35400ed-a657-4adf-93ec-5f1ca411edb4",
+      "sent_at_utc": "2026-10-27T15:54:41.911725Z",
+      "confirmed_at_utc": "2026-10-27T15:54:41.917465Z",
+      "body_sha256": "4ced348ca1fd6a14a730d5f3586b4829b8f6df7e8d65dba57eb9aef8292f7f65"
+    },
+    {
+      "order": 21,
+      "kind": "NEW",
+      "event_id": "558853c1-24fa-548b-bafa-b04793020524",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "1cde1d1a-9e46-4a98-b679-77b8bfafabcd",
+      "sent_at_utc": "2026-10-27T15:54:42.917744Z",
+      "confirmed_at_utc": "2026-10-27T15:54:42.923710Z",
+      "body_sha256": "810bf392b3fedca8b4e1fc137e96a5a082824beab984b1da9973cc045d75d0ea"
+    },
+    {
+      "order": 22,
+      "kind": "NEW",
+      "event_id": "610d64cf-a6ab-5425-829d-6f0f20903779",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "8b8c775d-e9d5-4d14-9b76-df7a616bff01",
+      "sent_at_utc": "2026-10-27T15:54:43.923995Z",
+      "confirmed_at_utc": "2026-10-27T15:54:43.930133Z",
+      "body_sha256": "eb65fc64475487c84c5e425a93c2348d4cf2894fb1a22f7896af9e17933ceb90"
+    },
+    {
+      "order": 23,
+      "kind": "NEW",
+      "event_id": "faaca1f9-93f6-54d0-962d-f3e2f0837680",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "a8a9d0e3-ce9b-46ad-9805-2a884b67386c",
+      "sent_at_utc": "2026-10-27T15:54:44.930432Z",
+      "confirmed_at_utc": "2026-10-27T15:54:44.936902Z",
+      "body_sha256": "187a338bf4da6631cc7026d6faeb0cfc240ff64c941f7bccccd6811b7acee9d1"
+    },
+    {
+      "order": 24,
+      "kind": "NEW",
+      "event_id": "49e33f3b-437a-5b0b-a72b-984a3403cc52",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "fa03e2f4-b16e-4c68-b913-c01d2c1f66ef",
+      "sent_at_utc": "2026-10-27T15:54:45.937184Z",
+      "confirmed_at_utc": "2026-10-27T15:54:45.943141Z",
+      "body_sha256": "52f6c66a87c1867c0d5b329123ac88afc499e08f12cc322520b15c4b7477100d"
+    },
+    {
+      "order": 25,
+      "kind": "NEW",
+      "event_id": "11549186-f29e-57a4-acb5-2fbab63d1fd5",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "b27edb45-126e-4c41-b1a7-9df45cf1477e",
+      "sent_at_utc": "2026-10-27T15:54:46.943426Z",
+      "confirmed_at_utc": "2026-10-27T15:54:46.949658Z",
+      "body_sha256": "2bfe1e72aee43f92ae48a7893cb16d78444f87a2e371e30121288a4b53923445"
+    },
+    {
+      "order": 26,
+      "kind": "NEW",
+      "event_id": "9c2c4be0-6bfd-5f96-88ac-9bdfd7f14bcf",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "b68f4aa0-b808-4ecc-9a54-dd07f53e2554",
+      "sent_at_utc": "2026-10-27T15:54:47.949945Z",
+      "confirmed_at_utc": "2026-10-27T15:54:47.956891Z",
+      "body_sha256": "42e041d72a3261719d84e9832e52092e60f79cd13324e14e37e84045fc410722"
+    },
+    {
+      "order": 27,
+      "kind": "NEW",
+      "event_id": "e443f265-f288-5b89-900c-85cdbdca397c",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "507b9af3-3323-45cd-b352-7701c4f47e62",
+      "sent_at_utc": "2026-10-27T15:54:48.957173Z",
+      "confirmed_at_utc": "2026-10-27T15:54:48.965743Z",
+      "body_sha256": "55032fa3bacfa641ef251ffec5aadd948ccf7d53bdc488885fe4969a3f469142"
+    },
+    {
+      "order": 28,
+      "kind": "NEW",
+      "event_id": "9012337e-7317-538e-9492-d789cfa33f29",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "fea66f4f-5e13-4cf0-a625-3ce147110e49",
+      "sent_at_utc": "2026-10-27T15:54:49.966029Z",
+      "confirmed_at_utc": "2026-10-27T15:54:49.972277Z",
+      "body_sha256": "8c647f7e83b555b80571c44dbbfa9e31a508f0edd4a6e3f31e6694b42c5af7ac"
+    },
+    {
+      "order": 29,
+      "kind": "NEW",
+      "event_id": "81cc0bc4-2721-542f-9a54-f49c54ccabb8",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "5335eab0-7bd5-48fd-8dc4-1b9f6605bae6",
+      "sent_at_utc": "2026-10-27T15:54:50.972568Z",
+      "confirmed_at_utc": "2026-10-27T15:54:50.978679Z",
+      "body_sha256": "886780e71a12fdeb4d3b34a36011d01752009d8f74630e69f6c397e4e2ebd0d1"
+    },
+    {
+      "order": 30,
+      "kind": "NEW",
+      "event_id": "d3227586-1dca-5c3b-bf34-cb3b0d730d3a",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "7c5432cc-2aa9-4507-9b81-f860ca3977ec",
+      "sent_at_utc": "2026-10-27T15:54:51.978990Z",
+      "confirmed_at_utc": "2026-10-27T15:54:51.985304Z",
+      "body_sha256": "d78b8ebca172041ff5999a303ebafbc6cb751bac784464d38eee41750c059b8b"
+    },
+    {
+      "order": 31,
+      "kind": "DUPLICATE",
+      "event_id": "58f0e790-cd7b-5af1-8b4a-42e99ef7463f",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "1f991475-9d92-4289-b7b1-c214e3fde355",
+      "sent_at_utc": "2026-10-27T15:54:52.985411Z",
+      "confirmed_at_utc": "2026-10-27T15:54:52.992056Z",
+      "body_sha256": "fdb3e42d721ee06f3e5be43cca5ac8cd825771367f5b3a6d4f4eabe88525a2ed"
+    },
+    {
+      "order": 32,
+      "kind": "DUPLICATE",
+      "event_id": "4bc9633d-4a97-5ea5-9d0e-c7ca1400741f",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "fc7e88f3-6db1-4857-bb43-a507df8a1c53",
+      "sent_at_utc": "2026-10-27T15:54:53.992159Z",
+      "confirmed_at_utc": "2026-10-27T15:54:53.999357Z",
+      "body_sha256": "655827f89895dceaa1a67af4f3635c1785a3e65550d31e9cc8b6d3515170169a"
+    },
+    {
+      "order": 33,
+      "kind": "DUPLICATE",
+      "event_id": "e1e9b5f9-d095-5adb-99fe-aa156b8d9c3e",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "09785f3e-86c6-4f15-9140-8c53c0ad76c4",
+      "sent_at_utc": "2026-10-27T15:54:54.999454Z",
+      "confirmed_at_utc": "2026-10-27T15:54:55.005506Z",
+      "body_sha256": "60a971fda28c63789d9acafffbd346887c0749325e957f579a638eaf0361d7f4"
+    },
+    {
+      "order": 34,
+      "kind": "DUPLICATE",
+      "event_id": "37204d53-0b19-5199-83d4-c43d50990b68",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "b9b5d48d-b6aa-4fdd-9a11-da5e2db4724a",
+      "sent_at_utc": "2026-10-27T15:54:56.005603Z",
+      "confirmed_at_utc": "2026-10-27T15:54:56.011596Z",
+      "body_sha256": "fcdea7f1bffac32e07b1290e60c6ee0ec46b0fc26207c05b3b3081d91d749a46"
+    },
+    {
+      "order": 35,
+      "kind": "DUPLICATE",
+      "event_id": "ae602334-a088-5ab3-8471-1384c5397e17",
+      "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+      "sqs_message_id": "78b7a3c0-0086-41f0-9f59-15b7ada0b029",
+      "sent_at_utc": "2026-10-27T15:54:57.011694Z",
+      "confirmed_at_utc": "2026-10-27T15:54:57.017711Z",
+      "body_sha256": "938754b5b0ec73b106b983df9da29a428ca750ea1e04539284d16b9e04bf6fa3"
+    }
+  ],
+  "simulation": true,
+  "status": "SUCCEEDED",
+  "confirmed_send_count": 35,
+  "finished_at_utc": "2026-10-27T15:54:57.017741Z"
+}

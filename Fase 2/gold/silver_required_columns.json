@@ -1,0 +1,85 @@
+{
+  "description": "Required Silver columns; no source reads or transformations were executed to generate this list",
+  "tables": {
+    "alunos": {
+      "ano": "numeric",
+      "rede": "string",
+      "serie": "string",
+      "id_municipio": "string",
+      "peso_aluno": "numeric",
+      "avaliado": "boolean",
+      "alfabetizado_avaliado": "boolean"
+    },
+    "municipio": {
+      "ano": "numeric",
+      "rede": "string",
+      "serie": "string",
+      "rede_descricao": "string",
+      "taxa_alfabetizacao": "numeric",
+      "id_municipio": "string",
+      "serie_descricao": "string",
+      "media_portugues": "numeric",
+      "proporcao_aluno_nivel_0": "numeric",
+      "proporcao_aluno_nivel_1": "numeric",
+      "proporcao_aluno_nivel_2": "numeric",
+      "proporcao_aluno_nivel_3": "numeric",
+      "proporcao_aluno_nivel_4": "numeric",
+      "proporcao_aluno_nivel_5": "numeric",
+      "proporcao_aluno_nivel_6": "numeric",
+      "proporcao_aluno_nivel_7": "numeric",
+      "proporcao_aluno_nivel_8": "numeric"
+    },
+    "uf": {
+      "ano": "numeric",
+      "rede": "string",
+      "serie": "string",
+      "rede_descricao": "string",
+      "taxa_alfabetizacao": "numeric",
+      "sigla_uf": "string"
+    },
+    "dicionario": {
+      "id_tabela": "string",
+      "nome_coluna": "string",
+      "chave": "string",
+      "valor": "string"
+    },
+    "meta_alfabetizacao_brasil": {
+      "ano": "numeric",
+      "rede_descricao": "string",
+      "taxa_alfabetizacao": "numeric",
+      "meta_alfabetizacao_2024": "numeric",
+      "meta_alfabetizacao_2025": "numeric",
+      "meta_alfabetizacao_2026": "numeric",
+      "meta_alfabetizacao_2027": "numeric",
+      "meta_alfabetizacao_2028": "numeric",
+      "meta_alfabetizacao_2029": "numeric",
+      "meta_alfabetizacao_2030": "numeric"
+    },
+    "meta_alfabetizacao_uf": {
+      "ano": "numeric",
+      "rede_descricao": "string",
+      "taxa_alfabetizacao": "numeric",
+      "meta_alfabetizacao_2024": "numeric",
+      "meta_alfabetizacao_2025": "numeric",
+      "meta_alfabetizacao_2026": "numeric",
+      "meta_alfabetizacao_2027": "numeric",
+      "meta_alfabetizacao_2028": "numeric",
+      "meta_alfabetizacao_2029": "numeric",
+      "meta_alfabetizacao_2030": "numeric",
+      "sigla_uf": "string"
+    },
+    "meta_alfabetizacao_municipio": {
+      "ano": "numeric",
+      "rede_descricao": "string",
+      "taxa_alfabetizacao": "numeric",
+      "meta_alfabetizacao_2024": "numeric",
+      "meta_alfabetizacao_2025": "numeric",
+      "meta_alfabetizacao_2026": "numeric",
+      "meta_alfabetizacao_2027": "numeric",
+      "meta_alfabetizacao_2028": "numeric",
+      "meta_alfabetizacao_2029": "numeric",
+      "meta_alfabetizacao_2030": "numeric",
+      "id_municipio": "string"
+    }
+  }
+}

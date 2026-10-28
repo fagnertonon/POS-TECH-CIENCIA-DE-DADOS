@@ -1,0 +1,32 @@
+{
+  "event": {
+    "schema_version": 1,
+    "event_id": "74e9defc-48d7-57ae-8d71-6b26ae121c32",
+    "run_id": "invalid_weight_489d809c1c474853",
+    "entity": "alunos",
+    "event_time": "2026-10-27T15:54:22.722324Z",
+    "source": "inep_bronze_replay",
+    "source_snapshot_run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+    "simulation": true,
+    "payload": {
+      "ano": 2024,
+      "id_municipio": "3301009",
+      "id_escola": "60023265",
+      "id_aluno": "33019350",
+      "caderno": "8",
+      "serie": "2",
+      "rede": "3",
+      "presenca": "1",
+      "preenchimento_caderno": "1",
+      "alfabetizado": "1",
+      "proficiencia": 634.49,
+      "peso_aluno": 0
+    }
+  },
+  "message_id": "5dcca064-4ab7-4b09-9f17-706f96d96e8d",
+  "expected_status": "QUALITY_REJECTED",
+  "expected_bronze_objects": 1,
+  "expected_silver_objects": 0,
+  "expected_gold_objects": 0,
+  "expected_dlq_after_max_receive_count": 5
+}

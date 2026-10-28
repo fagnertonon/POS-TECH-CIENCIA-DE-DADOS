@@ -1,0 +1,121 @@
+{
+  "status": "SUCCEEDED",
+  "verified_at_utc": "2026-10-27T19:47:24.514359+00:00",
+  "execution_metrics": {
+    "attempt_id": "91276d3a-5b02-4c65-a84b-b41cc6601499",
+    "audit_key": "auditoria/streaming/analitico/execucoes/attempt_id=91276d3a-5b02-4c65-a84b-b41cc6601499/metrics.json",
+    "duration_scope": "Validation through immutable publication and local analytical evidence; excludes metrics persistence",
+    "duration_seconds": 6.912393028000224,
+    "expected_events": 30,
+    "finalizer_version": "2.0.1",
+    "finished_at_utc": "2026-10-27T19:44:17.533445+00:00",
+    "input_event_objects": 30,
+    "manifest_key": "auditoria/streaming/analitico/runs/run_id=sim_gold_20261027T155422Z_a52da0a7/snapshot_id=364dc24b2ba6e750ef0103b8138a9750c9bb24e081b325234a42a509cd717c2b/manifest.json",
+    "origin": "simulacao_replay_inep",
+    "output_gold_groups": 19,
+    "output_parquet_bytes": {
+      "gold": 5763,
+      "silver": 12781
+    },
+    "output_silver_rows": 30,
+    "pipeline_version": "2.0.0",
+    "run_id": "sim_gold_20261027T155422Z_a52da0a7",
+    "schema": "fiap.finalizer.observability.v1",
+    "simulation": true,
+    "snapshot_id": "364dc24b2ba6e750ef0103b8138a9750c9bb24e081b325234a42a509cd717c2b",
+    "stages": [
+      {
+        "duration_seconds": 6.497476374999678,
+        "finished_at_utc": "2026-10-27T19:44:17.118560+00:00",
+        "stage": "validate_and_read",
+        "started_at_utc": "2026-10-27T19:44:10.621091+00:00",
+        "status": "SUCCEEDED"
+      },
+      {
+        "duration_seconds": 0.05384805900030187,
+        "finished_at_utc": "2026-10-27T19:44:17.172416+00:00",
+        "stage": "encode_parquet",
+        "started_at_utc": "2026-10-27T19:44:17.118578+00:00",
+        "status": "SUCCEEDED"
+      },
+      {
+        "duration_seconds": 0.16080857700035267,
+        "finished_at_utc": "2026-10-27T19:44:17.333233+00:00",
+        "stage": "publish_silver",
+        "started_at_utc": "2026-10-27T19:44:17.172435+00:00",
+        "status": "SUCCEEDED"
+      },
+      {
+        "duration_seconds": 0.10646739100047853,
+        "finished_at_utc": "2026-10-27T19:44:17.439754+00:00",
+        "stage": "publish_gold",
+        "started_at_utc": "2026-10-27T19:44:17.333295+00:00",
+        "status": "SUCCEEDED"
+      },
+      {
+        "duration_seconds": 0.09264236400031223,
+        "finished_at_utc": "2026-10-27T19:44:17.532495+00:00",
+        "stage": "publish_manifest",
+        "started_at_utc": "2026-10-27T19:44:17.439861+00:00",
+        "status": "SUCCEEDED"
+      }
+    ],
+    "started_at_utc": "2026-10-27T19:44:10.621050+00:00",
+    "status": "SUCCEEDED"
+  },
+  "execution_metrics_sha256": "6d9180bf1ccfc185b8311ae86797fe319aa5ebe79b0e4c4c4f2fa4ab1628416c",
+  "s3_audit_matches_local": true,
+  "analytical_bytes_unchanged": {
+    "gold": {
+      "expected_sha256": "d944f22223980db4950d868d262800764ffad7f8c37d85a52fd48039927d32e2",
+      "actual_sha256": "d944f22223980db4950d868d262800764ffad7f8c37d85a52fd48039927d32e2",
+      "unchanged": true
+    },
+    "silver": {
+      "expected_sha256": "6a677b0b0a626c5cb94c456febeda4df52010ca542545cb2bc1733a074847eb4",
+      "actual_sha256": "6a677b0b0a626c5cb94c456febeda4df52010ca542545cb2bc1733a074847eb4",
+      "unchanged": true
+    },
+    "manifest": {
+      "expected_sha256": "3ea1ad2b962623b437af2df3e711405fca06209d86d426ea9932bad8435a521f",
+      "actual_sha256": "3ea1ad2b962623b437af2df3e711405fca06209d86d426ea9932bad8435a521f",
+      "unchanged": true
+    }
+  },
+  "event_pattern_tests": [
+    {
+      "job": "fiap-bronze-inep-batch",
+      "state": "FAILED",
+      "expected": true,
+      "matched": true
+    },
+    {
+      "job": "fiap-gold-inep-batch",
+      "state": "TIMEOUT",
+      "expected": true,
+      "matched": true
+    },
+    {
+      "job": "fiap-silver-inep-batch",
+      "state": "SUCCEEDED",
+      "expected": false,
+      "matched": false
+    },
+    {
+      "job": "other-job",
+      "state": "FAILED",
+      "expected": false,
+      "matched": false
+    }
+  ],
+  "pattern_test_does_not_deliver_notifications": true,
+  "jobs_started": [],
+  "messages_sent": [],
+  "script_sha256": "be4489ad89b2ebd9b4e8dcfc9345d9bd97bbd8f025db9930d72862c5940d367b",
+  "api_calls": {
+    "sts": 1,
+    "s3_get": 4,
+    "events_test_pattern": 4
+  },
+  "verification_mutations": []
+}

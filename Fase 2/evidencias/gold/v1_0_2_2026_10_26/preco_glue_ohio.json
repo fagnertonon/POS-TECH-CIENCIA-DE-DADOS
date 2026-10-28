@@ -1,0 +1,21 @@
+{
+  "url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+  "publication_date": "2026-10-12T18:55:42Z",
+  "matches": [
+    {
+      "sku": "35EA4QMYDXPWWRHJ",
+      "unit": "DPU-Hour",
+      "usd": 0.44,
+      "attributes": {
+        "servicecode": "AWSGlue",
+        "location": "US East (Ohio)",
+        "locationType": "AWS Region",
+        "group": "ETL Job run",
+        "usagetype": "USE2-ETL-DPU-Hour",
+        "operation": "Jobrun",
+        "regionCode": "us-east-2",
+        "servicename": "AWS Glue"
+      }
+    }
+  ]
+}

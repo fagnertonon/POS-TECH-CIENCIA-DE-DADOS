@@ -1,0 +1,2412 @@
+[
+  {
+    "bucket": "fiap-tc-fase2-2026",
+    "objects": 303,
+    "bytes": 257651311,
+    "storage_class_bytes": {
+      "STANDARD": 257651311
+    },
+    "prefixes": {
+      "athena-results/": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "athena-results/Unsaved": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "auditoria/": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "auditoria/bronze": {
+        "objects": 12,
+        "bytes": 46195,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "auditoria/gold": {
+        "objects": 42,
+        "bytes": 344081,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "auditoria/silver": {
+        "objects": 10,
+        "bytes": 447666,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "auditoria/streaming": {
+        "objects": 35,
+        "bytes": 99347,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "bronze/": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "bronze/inep": {
+        "objects": 55,
+        "bytes": 186744593,
+        "parquet_objects": 51,
+        "parquet_bytes": 80210999
+      },
+      "bronze/inep_streaming": {
+        "objects": 30,
+        "bytes": 33759,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "gold/": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "gold/inep": {
+        "objects": 103,
+        "bytes": 8029402,
+        "parquet_objects": 103,
+        "parquet_bytes": 8029402
+      },
+      "silver/": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "silver/inep": {
+        "objects": 10,
+        "bytes": 61906268,
+        "parquet_objects": 10,
+        "parquet_bytes": 61906268
+      }
+    },
+    "versioning": {},
+    "lifecycle_rules": [],
+    "noncurrent_version_objects": 0,
+    "noncurrent_version_bytes": 0,
+    "multipart_uploads": 0,
+    "object_inventory": [
+      {
+        "Key": "athena-results/",
+        "Size": 0,
+        "LastModified": "2026-10-15 19:43:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "athena-results/Unsaved/2026/10/20/724a8094-f157-4413-871d-f9cb735d1821.txt",
+        "Size": 0,
+        "LastModified": "2026-10-20 18:02:11+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/",
+        "Size": 0,
+        "LastModified": "2026-10-15 19:43:06+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a/manifest.json",
+        "Size": 3861,
+        "LastModified": "2026-10-20 18:21:36+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a/start.json",
+        "Size": 698,
+        "LastModified": "2026-10-20 18:21:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a/tables/uf.json",
+        "Size": 2846,
+        "LastModified": "2026-10-20 18:21:36+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/manifest.json",
+        "Size": 20682,
+        "LastModified": "2026-10-20 18:25:17+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/start.json",
+        "Size": 857,
+        "LastModified": "2026-10-20 18:23:43+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/alunos.json",
+        "Size": 2387,
+        "LastModified": "2026-10-20 18:24:46+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/dicionario.json",
+        "Size": 1533,
+        "LastModified": "2026-10-20 18:25:17+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/meta_alfabetizacao_brasil.json",
+        "Size": 2408,
+        "LastModified": "2026-10-20 18:25:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/meta_alfabetizacao_municipio.json",
+        "Size": 2683,
+        "LastModified": "2026-10-20 18:25:12+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/meta_alfabetizacao_uf.json",
+        "Size": 2519,
+        "LastModified": "2026-10-20 18:25:08+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/municipio.json",
+        "Size": 2876,
+        "LastModified": "2026-10-20 18:24:54+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/uf.json",
+        "Size": 2845,
+        "LastModified": "2026-10-20 18:24:59+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_737aa335fc338309fb383cb2ac7874b3d1f05f609e607e4e64e40758d6c7576e/failed.json",
+        "Size": 18936,
+        "LastModified": "2026-10-22 14:06:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_737aa335fc338309fb383cb2ac7874b3d1f05f609e607e4e64e40758d6c7576e/quality/silver_inputs.json",
+        "Size": 5527,
+        "LastModified": "2026-10-22 14:05:52+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_737aa335fc338309fb383cb2ac7874b3d1f05f609e607e4e64e40758d6c7576e/start.json",
+        "Size": 493,
+        "LastModified": "2026-10-22 14:04:41+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/manifest.json",
+        "Size": 50002,
+        "LastModified": "2026-10-22 14:14:01+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/all_construction_joins.json",
+        "Size": 4387,
+        "LastModified": "2026-10-22 14:13:59+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/evolucao_temporal.json",
+        "Size": 1503,
+        "LastModified": "2026-10-22 14:13:47+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/features_alfabetizacao.json",
+        "Size": 1943,
+        "LastModified": "2026-10-22 14:13:59+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/indicador_municipio.json",
+        "Size": 2034,
+        "LastModified": "2026-10-22 14:13:39+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/resultado_vs_meta.json",
+        "Size": 2844,
+        "LastModified": "2026-10-22 14:13:44+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/silver_inputs.json",
+        "Size": 5527,
+        "LastModified": "2026-10-22 14:13:17+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/source_joins.json",
+        "Size": 2184,
+        "LastModified": "2026-10-22 14:13:28+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/validacao_cruzada_brasil.json",
+        "Size": 1958,
+        "LastModified": "2026-10-22 14:13:53+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/start.json",
+        "Size": 493,
+        "LastModified": "2026-10-22 14:12:31+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/manifest.json",
+        "Size": 66677,
+        "LastModified": "2026-10-26 12:38:30+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/all_construction_joins.json",
+        "Size": 4705,
+        "LastModified": "2026-10-26 12:38:28+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/coverage_spark_fixture.json",
+        "Size": 5923,
+        "LastModified": "2026-10-26 12:37:24+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/evolucao_temporal.json",
+        "Size": 1503,
+        "LastModified": "2026-10-26 12:38:13+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/features_alfabetizacao.json",
+        "Size": 1943,
+        "LastModified": "2026-10-26 12:38:28+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/indicador_municipio.json",
+        "Size": 2034,
+        "LastModified": "2026-10-26 12:38:06+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/resultado_vs_meta.json",
+        "Size": 2844,
+        "LastModified": "2026-10-26 12:38:10+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/silver_inputs.json",
+        "Size": 5810,
+        "LastModified": "2026-10-26 12:37:46+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/source_joins.json",
+        "Size": 2184,
+        "LastModified": "2026-10-26 12:37:56+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/validacao_cruzada_brasil.json",
+        "Size": 5870,
+        "LastModified": "2026-10-26 12:38:22+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/start.json",
+        "Size": 493,
+        "LastModified": "2026-10-26 12:36:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/failed.json",
+        "Size": 41512,
+        "LastModified": "2026-10-26 12:33:43+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/coverage_spark_fixture.json",
+        "Size": 1746,
+        "LastModified": "2026-10-26 12:32:40+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/evolucao_temporal.json",
+        "Size": 1503,
+        "LastModified": "2026-10-26 12:33:34+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/indicador_municipio.json",
+        "Size": 2034,
+        "LastModified": "2026-10-26 12:33:26+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/resultado_vs_meta.json",
+        "Size": 2844,
+        "LastModified": "2026-10-26 12:33:31+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/silver_inputs.json",
+        "Size": 5810,
+        "LastModified": "2026-10-26 12:33:06+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/source_joins.json",
+        "Size": 2184,
+        "LastModified": "2026-10-26 12:33:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/start.json",
+        "Size": 493,
+        "LastModified": "2026-10-26 12:31:53+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/manifest.json",
+        "Size": 60752,
+        "LastModified": "2026-10-27 00:44:24+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/all_construction_joins.json",
+        "Size": 4705,
+        "LastModified": "2026-10-27 00:44:21+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/evolucao_temporal.json",
+        "Size": 1503,
+        "LastModified": "2026-10-27 00:43:53+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/features_alfabetizacao.json",
+        "Size": 1943,
+        "LastModified": "2026-10-27 00:44:21+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/indicador_municipio.json",
+        "Size": 2034,
+        "LastModified": "2026-10-27 00:43:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/resultado_vs_meta.json",
+        "Size": 2844,
+        "LastModified": "2026-10-27 00:43:50+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/silver_inputs.json",
+        "Size": 5810,
+        "LastModified": "2026-10-27 00:43:22+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/source_joins.json",
+        "Size": 2184,
+        "LastModified": "2026-10-27 00:43:33+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/validacao_cruzada_brasil.json",
+        "Size": 5870,
+        "LastModified": "2026-10-27 00:44:15+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/start.json",
+        "Size": 493,
+        "LastModified": "2026-10-27 00:42:27+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+        "Size": 233884,
+        "LastModified": "2026-10-22 14:02:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/quality.json",
+        "Size": 94705,
+        "LastModified": "2026-10-22 14:02:14+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/start.json",
+        "Size": 1225,
+        "LastModified": "2026-10-22 13:58:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/tables/alunos.json",
+        "Size": 18982,
+        "LastModified": "2026-10-22 14:02:14+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/tables/dicionario.json",
+        "Size": 7076,
+        "LastModified": "2026-10-22 14:01:55+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/tables/meta_alfabetizacao_brasil.json",
+        "Size": 16421,
+        "LastModified": "2026-10-22 14:01:59+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/tables/meta_alfabetizacao_municipio.json",
+        "Size": 17380,
+        "LastModified": "2026-10-22 14:02:01+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/tables/meta_alfabetizacao_uf.json",
+        "Size": 16678,
+        "LastModified": "2026-10-22 14:02:00+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/tables/municipio.json",
+        "Size": 20936,
+        "LastModified": "2026-10-22 14:01:57+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/tables/uf.json",
+        "Size": 20379,
+        "LastModified": "2026-10-22 14:01:58+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=0825cc73-9d1e-54ae-b4bd-0944589c634e.json",
+        "Size": 1127,
+        "LastModified": "2026-10-20 18:41:15+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=0e9a13b9-5379-5e50-a5f0-160ab5985c92.json",
+        "Size": 1130,
+        "LastModified": "2026-10-20 18:41:21+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=1afe2990-9884-5398-af9b-e6e5564218ca.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:24+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=201f930e-9bc0-5027-914d-69ca10e5a3a2.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:18+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=2118dcfe-5846-5a83-a5ff-620db3b7235f.json",
+        "Size": 1123,
+        "LastModified": "2026-10-20 18:41:10+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=21d45cbd-5eff-50f0-ba2b-15ed6ab6e383.json",
+        "Size": 1121,
+        "LastModified": "2026-10-20 18:41:14+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3757f64a-f3d1-5985-af7e-09f5abc62cb6.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:30+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=37845ddc-d234-51d1-ad8c-5222e7c2a5d7.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:36+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=38694c89-ba97-5c69-92d6-c0eac0c8bc1c.json",
+        "Size": 1133,
+        "LastModified": "2026-10-20 18:41:27+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=39302578-f88d-5212-97b9-1c714d5de827.json",
+        "Size": 1133,
+        "LastModified": "2026-10-20 18:41:23+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=39e674a4-acfb-5ed8-9740-0be5e32689c0.json",
+        "Size": 1123,
+        "LastModified": "2026-10-20 18:41:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3acc6c21-5ce1-54c1-b74f-a8b8e74648db.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:28+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3b907ff0-2f14-5dba-b35d-112d18be075a.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:35+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=584d1819-f5d1-5d58-a4a6-6263edf3d136.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:31+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=587f5c71-d450-57a9-baf4-7826c9df0480.json",
+        "Size": 1130,
+        "LastModified": "2026-10-20 18:41:20+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=5bcec347-9a7a-5e3b-a020-41364e9fe75f.json",
+        "Size": 1130,
+        "LastModified": "2026-10-20 18:41:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=6cabad81-f46e-54a6-abcd-daf32f674847.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=74c880ae-aafd-521c-811b-4628642c4ebf.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:14+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=7c6a1bac-d193-5d4c-91f4-a9c4a7370c37.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=825320eb-a9c6-5079-b4a5-9f1850085e1b.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:15+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=98dd9848-138b-597d-9bd8-e8518cd3810f.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:34+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=af268086-77ac-5de3-91e7-1503dd988c04.json",
+        "Size": 1130,
+        "LastModified": "2026-10-20 18:41:14+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=b4aa2021-a387-5e5a-90a0-ac39d0faa3b5.json",
+        "Size": 1128,
+        "LastModified": "2026-10-20 18:41:19+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=c0def17e-5985-5105-9350-689a26e1c1a2.json",
+        "Size": 1127,
+        "LastModified": "2026-10-20 18:41:22+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=c6665752-83d5-50a0-bcd6-71e6f7fc4d1e.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:33+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=d86b80d7-b2df-594f-95fe-934745fa2794.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:13+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=e51b621c-f21d-55d0-be55-435b56f5307b.json",
+        "Size": 1127,
+        "LastModified": "2026-10-20 18:41:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f0dcd198-0683-5f3d-a169-d15cc24542f9.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:29+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f87e66e7-2adc-5a48-8b72-999543be3e71.json",
+        "Size": 1123,
+        "LastModified": "2026-10-20 18:41:26+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f999ea1a-c2c2-5a17-b097-73846ab94670.json",
+        "Size": 1128,
+        "LastModified": "2026-10-20 18:41:17+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/infra_state.json",
+        "Size": 1032,
+        "LastModified": "2026-10-20 18:47:18+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/invalid_message.json",
+        "Size": 715,
+        "LastModified": "2026-10-20 18:47:18+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/manifest.json",
+        "Size": 1305,
+        "LastModified": "2026-10-20 18:47:18+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/producer_report.json",
+        "Size": 16133,
+        "LastModified": "2026-10-20 18:47:18+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/streaming_report.json",
+        "Size": 46403,
+        "LastModified": "2026-10-20 18:47:18+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/",
+        "Size": 0,
+        "LastModified": "2026-10-15 19:42:15+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/",
+        "Size": 0,
+        "LastModified": "2026-10-19 15:22:44+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/alunos/",
+        "Size": 0,
+        "LastModified": "2026-10-19 15:22:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/alunos/ano=2023/",
+        "Size": 0,
+        "LastModified": "2026-10-19 15:24:22+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/alunos/ano=2023/bq-results-20261019-150917-1792423137158.csv",
+        "Size": 106533594,
+        "LastModified": "2026-10-19 15:25:30+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/alunos/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/part-00000-d2a29851-328e-44cc-affd-c08f3b2e68d5-c000.snappy.parquet",
+        "Size": 19815451,
+        "LastModified": "2026-10-20 18:24:35+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/alunos/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/part-00001-d2a29851-328e-44cc-affd-c08f3b2e68d5-c000.snappy.parquet",
+        "Size": 19769451,
+        "LastModified": "2026-10-20 18:24:35+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/alunos/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/part-00002-d2a29851-328e-44cc-affd-c08f3b2e68d5-c000.snappy.parquet",
+        "Size": 19840912,
+        "LastModified": "2026-10-20 18:24:35+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/alunos/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/part-00003-d2a29851-328e-44cc-affd-c08f3b2e68d5-c000.snappy.parquet",
+        "Size": 19807185,
+        "LastModified": "2026-10-20 18:24:35+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/dicionario/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/part-00000-fa59306e-69ad-4bf9-8c47-9f51b984565a-c000.snappy.parquet",
+        "Size": 3775,
+        "LastModified": "2026-10-20 18:25:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/meta_alfabetizacao_brasil/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/part-00000-40ce6255-69d2-4d0d-a64c-8c1f539b356a-c000.snappy.parquet",
+        "Size": 5634,
+        "LastModified": "2026-10-20 18:25:02+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/meta_alfabetizacao_municipio/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/part-00000-edaa1abb-222f-402e-bdf1-f7d8d2d9c232-c000.snappy.parquet",
+        "Size": 261324,
+        "LastModified": "2026-10-20 18:25:11+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/meta_alfabetizacao_uf/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/part-00000-c597cf64-f717-4a0f-a4ce-602f93b2e87d-c000.snappy.parquet",
+        "Size": 8403,
+        "LastModified": "2026-10-20 18:25:07+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/municipio/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/part-00000-1297f219-e7ce-4924-b390-b5b6cdde95aa-c000.snappy.parquet",
+        "Size": 541294,
+        "LastModified": "2026-10-20 18:24:53+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00000-snappy.parquet",
+        "Size": 3178,
+        "LastModified": "2026-10-20 17:46:41+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00001-snappy.parquet",
+        "Size": 3427,
+        "LastModified": "2026-10-20 17:46:41+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00002-snappy.parquet",
+        "Size": 3250,
+        "LastModified": "2026-10-20 17:46:41+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00003-snappy.parquet",
+        "Size": 3364,
+        "LastModified": "2026-10-20 17:46:41+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00004-snappy.parquet",
+        "Size": 2348,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00005-snappy.parquet",
+        "Size": 3441,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00006-snappy.parquet",
+        "Size": 3230,
+        "LastModified": "2026-10-20 17:46:44+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00007-snappy.parquet",
+        "Size": 3390,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00008-snappy.parquet",
+        "Size": 3353,
+        "LastModified": "2026-10-20 17:46:43+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00009-snappy.parquet",
+        "Size": 3281,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00010-snappy.parquet",
+        "Size": 3268,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00011-snappy.parquet",
+        "Size": 3612,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00012-snappy.parquet",
+        "Size": 3451,
+        "LastModified": "2026-10-20 17:46:44+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00013-snappy.parquet",
+        "Size": 3486,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00014-snappy.parquet",
+        "Size": 3489,
+        "LastModified": "2026-10-20 17:46:43+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00015-snappy.parquet",
+        "Size": 3179,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00016-snappy.parquet",
+        "Size": 3440,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00017-snappy.parquet",
+        "Size": 3501,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00018-snappy.parquet",
+        "Size": 3565,
+        "LastModified": "2026-10-20 17:46:44+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518390405-part-block-0-r-00019-snappy.parquet",
+        "Size": 3253,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00000-snappy.parquet",
+        "Size": 3178,
+        "LastModified": "2026-10-20 17:48:48+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00001-snappy.parquet",
+        "Size": 3427,
+        "LastModified": "2026-10-20 17:48:48+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00002-snappy.parquet",
+        "Size": 3250,
+        "LastModified": "2026-10-20 17:48:48+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00003-snappy.parquet",
+        "Size": 3364,
+        "LastModified": "2026-10-20 17:48:48+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00004-snappy.parquet",
+        "Size": 2348,
+        "LastModified": "2026-10-20 17:48:55+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00005-snappy.parquet",
+        "Size": 3441,
+        "LastModified": "2026-10-20 17:48:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00006-snappy.parquet",
+        "Size": 3230,
+        "LastModified": "2026-10-20 17:48:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00007-snappy.parquet",
+        "Size": 3390,
+        "LastModified": "2026-10-20 17:48:52+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00008-snappy.parquet",
+        "Size": 3353,
+        "LastModified": "2026-10-20 17:48:55+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00009-snappy.parquet",
+        "Size": 3281,
+        "LastModified": "2026-10-20 17:48:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00010-snappy.parquet",
+        "Size": 3268,
+        "LastModified": "2026-10-20 17:48:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00011-snappy.parquet",
+        "Size": 3612,
+        "LastModified": "2026-10-20 17:48:52+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00012-snappy.parquet",
+        "Size": 3451,
+        "LastModified": "2026-10-20 17:48:55+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00013-snappy.parquet",
+        "Size": 3486,
+        "LastModified": "2026-10-20 17:48:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00014-snappy.parquet",
+        "Size": 3489,
+        "LastModified": "2026-10-20 17:48:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00015-snappy.parquet",
+        "Size": 3179,
+        "LastModified": "2026-10-20 17:48:52+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00016-snappy.parquet",
+        "Size": 3440,
+        "LastModified": "2026-10-20 17:48:55+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00017-snappy.parquet",
+        "Size": 3501,
+        "LastModified": "2026-10-20 17:48:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00018-snappy.parquet",
+        "Size": 3565,
+        "LastModified": "2026-10-20 17:48:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=001/run-1792518520074-part-block-0-r-00019-snappy.parquet",
+        "Size": 3253,
+        "LastModified": "2026-10-20 17:48:52+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a/part-00000-682ba5b3-ea95-4318-b47a-d78a513b59a5-c000.snappy.parquet",
+        "Size": 12279,
+        "LastModified": "2026-10-20 18:21:33+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep/uf/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/part-00000-22225e45-8cfd-496c-8484-a870686b21d6-c000.snappy.parquet",
+        "Size": 12279,
+        "LastModified": "2026-10-20 18:24:58+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=0825cc73-9d1e-54ae-b4bd-0944589c634e.json",
+        "Size": 1127,
+        "LastModified": "2026-10-20 18:41:15+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=0e9a13b9-5379-5e50-a5f0-160ab5985c92.json",
+        "Size": 1130,
+        "LastModified": "2026-10-20 18:41:21+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=1afe2990-9884-5398-af9b-e6e5564218ca.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:25+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=201f930e-9bc0-5027-914d-69ca10e5a3a2.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:18+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=2118dcfe-5846-5a83-a5ff-620db3b7235f.json",
+        "Size": 1123,
+        "LastModified": "2026-10-20 18:41:11+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=21d45cbd-5eff-50f0-ba2b-15ed6ab6e383.json",
+        "Size": 1121,
+        "LastModified": "2026-10-20 18:41:14+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3757f64a-f3d1-5985-af7e-09f5abc62cb6.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:30+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=37845ddc-d234-51d1-ad8c-5222e7c2a5d7.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:36+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=38694c89-ba97-5c69-92d6-c0eac0c8bc1c.json",
+        "Size": 1133,
+        "LastModified": "2026-10-20 18:41:27+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=39302578-f88d-5212-97b9-1c714d5de827.json",
+        "Size": 1133,
+        "LastModified": "2026-10-20 18:41:24+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=39e674a4-acfb-5ed8-9740-0be5e32689c0.json",
+        "Size": 1123,
+        "LastModified": "2026-10-20 18:41:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3acc6c21-5ce1-54c1-b74f-a8b8e74648db.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:28+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3b907ff0-2f14-5dba-b35d-112d18be075a.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:35+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=584d1819-f5d1-5d58-a4a6-6263edf3d136.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:31+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=587f5c71-d450-57a9-baf4-7826c9df0480.json",
+        "Size": 1130,
+        "LastModified": "2026-10-20 18:41:20+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=5bcec347-9a7a-5e3b-a020-41364e9fe75f.json",
+        "Size": 1130,
+        "LastModified": "2026-10-20 18:41:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=6cabad81-f46e-54a6-abcd-daf32f674847.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=74c880ae-aafd-521c-811b-4628642c4ebf.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:14+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=7c6a1bac-d193-5d4c-91f4-a9c4a7370c37.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:16+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=825320eb-a9c6-5079-b4a5-9f1850085e1b.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:15+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=98dd9848-138b-597d-9bd8-e8518cd3810f.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:34+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=af268086-77ac-5de3-91e7-1503dd988c04.json",
+        "Size": 1130,
+        "LastModified": "2026-10-20 18:41:14+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=b4aa2021-a387-5e5a-90a0-ac39d0faa3b5.json",
+        "Size": 1128,
+        "LastModified": "2026-10-20 18:41:19+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=c0def17e-5985-5105-9350-689a26e1c1a2.json",
+        "Size": 1127,
+        "LastModified": "2026-10-20 18:41:23+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=c6665752-83d5-50a0-bcd6-71e6f7fc4d1e.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:33+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=d86b80d7-b2df-594f-95fe-934745fa2794.json",
+        "Size": 1122,
+        "LastModified": "2026-10-20 18:41:13+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=e51b621c-f21d-55d0-be55-435b56f5307b.json",
+        "Size": 1127,
+        "LastModified": "2026-10-20 18:41:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f0dcd198-0683-5f3d-a169-d15cc24542f9.json",
+        "Size": 1124,
+        "LastModified": "2026-10-20 18:41:29+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f87e66e7-2adc-5a48-8b72-999543be3e71.json",
+        "Size": 1123,
+        "LastModified": "2026-10-20 18:41:26+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f999ea1a-c2c2-5a17-b097-73846ab94670.json",
+        "Size": 1128,
+        "LastModified": "2026-10-20 18:41:17+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/",
+        "Size": 0,
+        "LastModified": "2026-10-15 19:42:33+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00000-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+        "Size": 3870,
+        "LastModified": "2026-10-22 14:13:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00001-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+        "Size": 3984,
+        "LastModified": "2026-10-22 14:13:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00002-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+        "Size": 3916,
+        "LastModified": "2026-10-22 14:13:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00003-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+        "Size": 3928,
+        "LastModified": "2026-10-22 14:13:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00004-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+        "Size": 4028,
+        "LastModified": "2026-10-22 14:13:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00005-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+        "Size": 3883,
+        "LastModified": "2026-10-22 14:13:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00006-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+        "Size": 4012,
+        "LastModified": "2026-10-22 14:13:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00007-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+        "Size": 3772,
+        "LastModified": "2026-10-22 14:13:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00000-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+        "Size": 3870,
+        "LastModified": "2026-10-26 12:38:11+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00001-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+        "Size": 3984,
+        "LastModified": "2026-10-26 12:38:11+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00002-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+        "Size": 3916,
+        "LastModified": "2026-10-26 12:38:11+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00003-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+        "Size": 3928,
+        "LastModified": "2026-10-26 12:38:11+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00004-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+        "Size": 4028,
+        "LastModified": "2026-10-26 12:38:12+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00005-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+        "Size": 3883,
+        "LastModified": "2026-10-26 12:38:12+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00006-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+        "Size": 4012,
+        "LastModified": "2026-10-26 12:38:12+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00007-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+        "Size": 3772,
+        "LastModified": "2026-10-26 12:38:12+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00000-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+        "Size": 3870,
+        "LastModified": "2026-10-26 12:33:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00001-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+        "Size": 3984,
+        "LastModified": "2026-10-26 12:33:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00002-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+        "Size": 3916,
+        "LastModified": "2026-10-26 12:33:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00003-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+        "Size": 3928,
+        "LastModified": "2026-10-26 12:33:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00004-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+        "Size": 4028,
+        "LastModified": "2026-10-26 12:33:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00005-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+        "Size": 3883,
+        "LastModified": "2026-10-26 12:33:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00006-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+        "Size": 4012,
+        "LastModified": "2026-10-26 12:33:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00007-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+        "Size": 3772,
+        "LastModified": "2026-10-26 12:33:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00000-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+        "Size": 3870,
+        "LastModified": "2026-10-27 00:43:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00001-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+        "Size": 3984,
+        "LastModified": "2026-10-27 00:43:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00002-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+        "Size": 3916,
+        "LastModified": "2026-10-27 00:43:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00003-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+        "Size": 3928,
+        "LastModified": "2026-10-27 00:43:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00004-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+        "Size": 4028,
+        "LastModified": "2026-10-27 00:43:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00005-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+        "Size": 3883,
+        "LastModified": "2026-10-27 00:43:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00006-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+        "Size": 4012,
+        "LastModified": "2026-10-27 00:43:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00007-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+        "Size": 3772,
+        "LastModified": "2026-10-27 00:43:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00000-78055f0c-4157-4eaa-a3c7-ebc4f8bc19a5-c000.snappy.parquet",
+        "Size": 99247,
+        "LastModified": "2026-10-22 14:13:57+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00001-78055f0c-4157-4eaa-a3c7-ebc4f8bc19a5-c000.snappy.parquet",
+        "Size": 90976,
+        "LastModified": "2026-10-22 14:13:57+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00002-78055f0c-4157-4eaa-a3c7-ebc4f8bc19a5-c000.snappy.parquet",
+        "Size": 51541,
+        "LastModified": "2026-10-22 14:13:57+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00003-78055f0c-4157-4eaa-a3c7-ebc4f8bc19a5-c000.snappy.parquet",
+        "Size": 101387,
+        "LastModified": "2026-10-22 14:13:57+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00004-78055f0c-4157-4eaa-a3c7-ebc4f8bc19a5-c000.snappy.parquet",
+        "Size": 51561,
+        "LastModified": "2026-10-22 14:13:57+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00000-8e8db473-64a7-41c8-b470-8bdd541aa5b0-c000.snappy.parquet",
+        "Size": 99247,
+        "LastModified": "2026-10-26 12:38:26+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00001-8e8db473-64a7-41c8-b470-8bdd541aa5b0-c000.snappy.parquet",
+        "Size": 90976,
+        "LastModified": "2026-10-26 12:38:26+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00002-8e8db473-64a7-41c8-b470-8bdd541aa5b0-c000.snappy.parquet",
+        "Size": 51541,
+        "LastModified": "2026-10-26 12:38:26+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00003-8e8db473-64a7-41c8-b470-8bdd541aa5b0-c000.snappy.parquet",
+        "Size": 101387,
+        "LastModified": "2026-10-26 12:38:26+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00004-8e8db473-64a7-41c8-b470-8bdd541aa5b0-c000.snappy.parquet",
+        "Size": 51561,
+        "LastModified": "2026-10-26 12:38:27+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00000-f1ca678d-12af-43bf-aa23-f6e9e852ee0c-c000.snappy.parquet",
+        "Size": 99247,
+        "LastModified": "2026-10-27 00:44:19+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00001-f1ca678d-12af-43bf-aa23-f6e9e852ee0c-c000.snappy.parquet",
+        "Size": 90976,
+        "LastModified": "2026-10-27 00:44:19+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00002-f1ca678d-12af-43bf-aa23-f6e9e852ee0c-c000.snappy.parquet",
+        "Size": 51541,
+        "LastModified": "2026-10-27 00:44:19+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00003-f1ca678d-12af-43bf-aa23-f6e9e852ee0c-c000.snappy.parquet",
+        "Size": 101387,
+        "LastModified": "2026-10-27 00:44:19+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00004-f1ca678d-12af-43bf-aa23-f6e9e852ee0c-c000.snappy.parquet",
+        "Size": 51561,
+        "LastModified": "2026-10-27 00:44:20+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00000-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+        "Size": 164727,
+        "LastModified": "2026-10-22 14:13:36+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00001-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+        "Size": 161703,
+        "LastModified": "2026-10-22 14:13:36+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00002-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+        "Size": 166953,
+        "LastModified": "2026-10-22 14:13:36+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00003-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+        "Size": 164318,
+        "LastModified": "2026-10-22 14:13:36+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00004-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+        "Size": 167346,
+        "LastModified": "2026-10-22 14:13:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00005-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+        "Size": 167089,
+        "LastModified": "2026-10-22 14:13:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00006-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+        "Size": 164460,
+        "LastModified": "2026-10-22 14:13:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00007-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+        "Size": 159707,
+        "LastModified": "2026-10-22 14:13:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00000-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+        "Size": 164727,
+        "LastModified": "2026-10-26 12:38:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00001-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+        "Size": 161703,
+        "LastModified": "2026-10-26 12:38:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00002-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+        "Size": 166953,
+        "LastModified": "2026-10-26 12:38:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00003-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+        "Size": 164318,
+        "LastModified": "2026-10-26 12:38:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00004-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+        "Size": 167346,
+        "LastModified": "2026-10-26 12:38:04+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00005-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+        "Size": 167089,
+        "LastModified": "2026-10-26 12:38:04+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00006-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+        "Size": 164460,
+        "LastModified": "2026-10-26 12:38:04+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00007-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+        "Size": 159707,
+        "LastModified": "2026-10-26 12:38:04+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00000-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+        "Size": 164727,
+        "LastModified": "2026-10-26 12:33:23+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00001-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+        "Size": 161703,
+        "LastModified": "2026-10-26 12:33:23+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00002-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+        "Size": 166953,
+        "LastModified": "2026-10-26 12:33:23+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00003-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+        "Size": 164318,
+        "LastModified": "2026-10-26 12:33:23+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00004-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+        "Size": 167346,
+        "LastModified": "2026-10-26 12:33:24+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00005-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+        "Size": 167089,
+        "LastModified": "2026-10-26 12:33:24+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00006-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+        "Size": 164460,
+        "LastModified": "2026-10-26 12:33:24+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00007-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+        "Size": 159707,
+        "LastModified": "2026-10-26 12:33:24+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00000-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+        "Size": 164727,
+        "LastModified": "2026-10-27 00:43:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00001-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+        "Size": 161703,
+        "LastModified": "2026-10-27 00:43:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00002-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+        "Size": 166953,
+        "LastModified": "2026-10-27 00:43:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00003-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+        "Size": 164318,
+        "LastModified": "2026-10-27 00:43:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00004-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+        "Size": 167346,
+        "LastModified": "2026-10-27 00:43:43+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00005-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+        "Size": 167089,
+        "LastModified": "2026-10-27 00:43:43+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00006-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+        "Size": 164460,
+        "LastModified": "2026-10-27 00:43:43+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00007-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+        "Size": 159707,
+        "LastModified": "2026-10-27 00:43:43+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00000-856f2fef-bfc7-439e-94b3-b82d1fb1b806-c000.snappy.parquet",
+        "Size": 332286,
+        "LastModified": "2026-10-22 14:13:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00001-856f2fef-bfc7-439e-94b3-b82d1fb1b806-c000.snappy.parquet",
+        "Size": 8629,
+        "LastModified": "2026-10-22 14:13:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00002-856f2fef-bfc7-439e-94b3-b82d1fb1b806-c000.snappy.parquet",
+        "Size": 6398,
+        "LastModified": "2026-10-22 14:13:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00000-3aaf7bcf-e21d-4fe8-9b2c-2d4aeb82216b-c000.snappy.parquet",
+        "Size": 332286,
+        "LastModified": "2026-10-26 12:38:08+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00001-3aaf7bcf-e21d-4fe8-9b2c-2d4aeb82216b-c000.snappy.parquet",
+        "Size": 8629,
+        "LastModified": "2026-10-26 12:38:08+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00002-3aaf7bcf-e21d-4fe8-9b2c-2d4aeb82216b-c000.snappy.parquet",
+        "Size": 6398,
+        "LastModified": "2026-10-26 12:38:08+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00000-cb855966-0e02-4847-81e3-de95e088189a-c000.snappy.parquet",
+        "Size": 332286,
+        "LastModified": "2026-10-26 12:33:29+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00001-cb855966-0e02-4847-81e3-de95e088189a-c000.snappy.parquet",
+        "Size": 8629,
+        "LastModified": "2026-10-26 12:33:29+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00002-cb855966-0e02-4847-81e3-de95e088189a-c000.snappy.parquet",
+        "Size": 6398,
+        "LastModified": "2026-10-26 12:33:29+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00000-8c913eed-aec5-40b2-96ae-63333266e9de-c000.snappy.parquet",
+        "Size": 332286,
+        "LastModified": "2026-10-27 00:43:48+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00001-8c913eed-aec5-40b2-96ae-63333266e9de-c000.snappy.parquet",
+        "Size": 8629,
+        "LastModified": "2026-10-27 00:43:48+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00002-8c913eed-aec5-40b2-96ae-63333266e9de-c000.snappy.parquet",
+        "Size": 6398,
+        "LastModified": "2026-10-27 00:43:48+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00000-03153761-9e60-43d0-adc6-150a1445fd33-c000.snappy.parquet",
+        "Size": 998,
+        "LastModified": "2026-10-22 14:13:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00001-03153761-9e60-43d0-adc6-150a1445fd33-c000.snappy.parquet",
+        "Size": 2308,
+        "LastModified": "2026-10-22 14:13:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00003-03153761-9e60-43d0-adc6-150a1445fd33-c000.snappy.parquet",
+        "Size": 2308,
+        "LastModified": "2026-10-22 14:13:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00000-8bba8105-785c-4e07-ba83-393e98a95f15-c000.snappy.parquet",
+        "Size": 2334,
+        "LastModified": "2026-10-26 12:38:20+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00001-8bba8105-785c-4e07-ba83-393e98a95f15-c000.snappy.parquet",
+        "Size": 8759,
+        "LastModified": "2026-10-26 12:38:20+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00003-8bba8105-785c-4e07-ba83-393e98a95f15-c000.snappy.parquet",
+        "Size": 8779,
+        "LastModified": "2026-10-26 12:38:20+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00000-48d7bc20-4a56-4b9f-af22-938586e07a4e-c000.snappy.parquet",
+        "Size": 2334,
+        "LastModified": "2026-10-26 12:33:41+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00001-48d7bc20-4a56-4b9f-af22-938586e07a4e-c000.snappy.parquet",
+        "Size": 8759,
+        "LastModified": "2026-10-26 12:33:41+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00003-48d7bc20-4a56-4b9f-af22-938586e07a4e-c000.snappy.parquet",
+        "Size": 8779,
+        "LastModified": "2026-10-26 12:33:41+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00000-995719e0-8c57-4eac-ad47-34319dee7831-c000.snappy.parquet",
+        "Size": 2334,
+        "LastModified": "2026-10-27 00:44:13+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00001-995719e0-8c57-4eac-ad47-34319dee7831-c000.snappy.parquet",
+        "Size": 8759,
+        "LastModified": "2026-10-27 00:44:13+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00003-995719e0-8c57-4eac-ad47-34319dee7831-c000.snappy.parquet",
+        "Size": 8779,
+        "LastModified": "2026-10-27 00:44:13+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/",
+        "Size": 0,
+        "LastModified": "2026-10-15 19:42:22+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/inep/alunos/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-edec8e7e-f2c2-4be7-8690-594ca07fa044-c000.snappy.parquet",
+        "Size": 15307702,
+        "LastModified": "2026-10-22 14:02:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/inep/alunos/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00001-edec8e7e-f2c2-4be7-8690-594ca07fa044-c000.snappy.parquet",
+        "Size": 15219327,
+        "LastModified": "2026-10-22 14:02:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/inep/alunos/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00002-edec8e7e-f2c2-4be7-8690-594ca07fa044-c000.snappy.parquet",
+        "Size": 15276937,
+        "LastModified": "2026-10-22 14:02:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/inep/alunos/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00003-edec8e7e-f2c2-4be7-8690-594ca07fa044-c000.snappy.parquet",
+        "Size": 15268597,
+        "LastModified": "2026-10-22 14:02:03+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/inep/dicionario/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-da121bc9-e9b9-4e57-9595-bc8d46415f4a-c000.snappy.parquet",
+        "Size": 5610,
+        "LastModified": "2026-10-22 14:01:54+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/inep/meta_alfabetizacao_brasil/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-c84e4902-b672-4703-bd16-d88eac49a803-c000.snappy.parquet",
+        "Size": 7771,
+        "LastModified": "2026-10-22 14:01:58+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/inep/meta_alfabetizacao_municipio/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-297cb327-e2cd-4dea-950d-a7ffd433b68b-c000.snappy.parquet",
+        "Size": 260710,
+        "LastModified": "2026-10-22 14:02:00+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/inep/meta_alfabetizacao_uf/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-1871ba19-c2b4-42eb-8378-2a21db7b3e5c-c000.snappy.parquet",
+        "Size": 10550,
+        "LastModified": "2026-10-22 14:01:59+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/inep/municipio/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-acda20ac-ca20-4d1a-9d81-ebce4ca02891-c000.snappy.parquet",
+        "Size": 533824,
+        "LastModified": "2026-10-22 14:01:55+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "silver/inep/uf/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-1a0d2593-b00e-46c7-96b7-e5a97bf6c05c-c000.snappy.parquet",
+        "Size": 15240,
+        "LastModified": "2026-10-22 14:01:57+00:00",
+        "StorageClass": "STANDARD"
+      }
+    ]
+  },
+  {
+    "bucket": "aws-glue-assets-637246457028-us-east-2",
+    "objects": 45,
+    "bytes": 15771028,
+    "storage_class_bytes": {
+      "STANDARD": 15771028
+    },
+    "prefixes": {
+      "notebooks/fiap-gold-inep-batch": {
+        "objects": 5,
+        "bytes": 307684,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "notebooks/fiap-silver-inep-batch": {
+        "objects": 2,
+        "bytes": 76055,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "scripts/fiap-bronze-inep-batch": {
+        "objects": 1,
+        "bytes": 13350,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "scripts/fiap-gold-inep-batch": {
+        "objects": 7,
+        "bytes": 210596,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "scripts/fiap-ingestao-bigquery-uf.py": {
+        "objects": 1,
+        "bytes": 1747,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "scripts/fiap-silver-inep-batch": {
+        "objects": 1,
+        "bytes": 29892,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/appstatus_spark-application-1792510576829": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/appstatus_spark-application-1792518373892": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/appstatus_spark-application-1792518373892.inprogress": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/appstatus_spark-application-1792518503859": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/appstatus_spark-application-1792518503859.inprogress": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/appstatus_spark-application-1792520465227": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/appstatus_spark-application-1792520465227.inprogress": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/appstatus_spark-application-1792520625181": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/appstatus_spark-application-1792520625181.inprogress": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/events_1_spark-application-1792510576829": {
+        "objects": 1,
+        "bytes": 130586,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/events_1_spark-application-1792518373892": {
+        "objects": 1,
+        "bytes": 356192,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/events_1_spark-application-1792518503859": {
+        "objects": 1,
+        "bytes": 356018,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/events_1_spark-application-1792520465227": {
+        "objects": 1,
+        "bytes": 949332,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/events_1_spark-application-1792520625181": {
+        "objects": 1,
+        "bytes": 5773724,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_24858295da466c0d29cf6b5956c454de1375ec5c1d724ae8a38a0b8cf7455d29_1": {
+        "objects": 1,
+        "bytes": 130586,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_24858295da466c0d29cf6b5956c454de1375ec5c1d724ae8a38a0b8cf7455d29_appstatus": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_37a2ce973a7401de6f00d01137360b86195df276ecd2189ab6abdb81d9a0ff57_1": {
+        "objects": 1,
+        "bytes": 356018,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_37a2ce973a7401de6f00d01137360b86195df276ecd2189ab6abdb81d9a0ff57_appstatus": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_37a2ce973a7401de6f00d01137360b86195df276ecd2189ab6abdb81d9a0ff57_appstatus.inprogress": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_89e5c2ce2458f8cd7414e35f27d325dae0650f7c45f0290e5323e9976d875c29_1": {
+        "objects": 1,
+        "bytes": 356192,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_89e5c2ce2458f8cd7414e35f27d325dae0650f7c45f0290e5323e9976d875c29_appstatus": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_89e5c2ce2458f8cd7414e35f27d325dae0650f7c45f0290e5323e9976d875c29_appstatus.inprogress": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a_1": {
+        "objects": 1,
+        "bytes": 949332,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a_appstatus": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a_appstatus.inprogress": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700_1": {
+        "objects": 1,
+        "bytes": 5773724,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700_appstatus": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      },
+      "sparkHistoryLogs/jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700_appstatus.inprogress": {
+        "objects": 1,
+        "bytes": 0,
+        "parquet_objects": 0,
+        "parquet_bytes": 0
+      }
+    },
+    "versioning": {},
+    "lifecycle_rules": [],
+    "noncurrent_version_objects": 0,
+    "noncurrent_version_bytes": 0,
+    "multipart_uploads": 0,
+    "object_inventory": [
+      {
+        "Key": "notebooks/fiap-gold-inep-batch/3cfa6fe66a1121e3cc6c98d2f286d6d7c149e6c47fe314c9e1ba73dae8ebcc5e/03_camada_gold_original.ipynb",
+        "Size": 36515,
+        "LastModified": "2026-10-22 13:59:01+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "notebooks/fiap-gold-inep-batch/62ddea5261809ab8cda664cd2db0e35b3949ed5bc891c1d8a1c1edb7a7df1808/03_camada_gold_glue.ipynb",
+        "Size": 74257,
+        "LastModified": "2026-10-26 12:35:40+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "notebooks/fiap-gold-inep-batch/69ec26ba4e8a936cac1f35c129581f630ac986ac541ada0d2ca395ec52bd7485/03_camada_gold_glue.ipynb",
+        "Size": 61107,
+        "LastModified": "2026-10-22 14:11:27+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "notebooks/fiap-gold-inep-batch/ccd295b917eba4db9e08d93d6e708ebcfad7bd429fe61f011f760bf39f7e241c/03_camada_gold_glue.ipynb",
+        "Size": 60686,
+        "LastModified": "2026-10-22 13:59:01+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "notebooks/fiap-gold-inep-batch/e84173ec3821ef2f791875f40cc74d1ca14774fb6c2f5742117d2371eaa2512d/03_camada_gold_glue.ipynb",
+        "Size": 75119,
+        "LastModified": "2026-10-26 12:31:19+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "notebooks/fiap-silver-inep-batch/b35ff679e645f633a6cc3ef6a9b4412b6e7a39d9d07f8786a41eeecf5e5e3214/02_camada_silver_glue.ipynb",
+        "Size": 45172,
+        "LastModified": "2026-10-22 13:57:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "notebooks/fiap-silver-inep-batch/f9f6b0be916b9eef1f8a8039f07268a20dba94f5f2689c8e7ca09f50b672269f/02_camada_silver_original.ipynb",
+        "Size": 30883,
+        "LastModified": "2026-10-22 13:57:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "scripts/fiap-bronze-inep-batch/41303fa81a007db33730bc0991f2f4480a6d38e6a489cfeaffe5854a796b1d24/bronze_glue.py",
+        "Size": 13350,
+        "LastModified": "2026-10-20 18:19:55+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "scripts/fiap-gold-inep-batch/063186d3eceea44fed6b5406eba0e14588c4bdc9f9119c8dd320b2d5223e39cb/gold_glue.py",
+        "Size": 46228,
+        "LastModified": "2026-10-22 13:59:01+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "scripts/fiap-gold-inep-batch/3bc498f022924739bfd3a892a00a000604088a8b9c1b0439d07f1b1dcabca642/gold_glue.py",
+        "Size": 46512,
+        "LastModified": "2026-10-22 14:11:26+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "scripts/fiap-gold-inep-batch/43ff8eb000efd0c946629f7683ce2fd9f712a829e40077c58c20702ed6912ae8/gold_glue.py",
+        "Size": 58261,
+        "LastModified": "2026-10-26 12:31:19+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "scripts/fiap-gold-inep-batch/a36f8f94b15a574c0c8d79631c00b7dd016526437ef5d55645df83b1249e0d7e/auto-upgrade/ja-d9171434-ba57-4e26-ace0-b7f3b1a4c5df/artifact/attempt_0/METADATA.json",
+        "Size": 1111,
+        "LastModified": "2026-10-27 11:40:14+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "scripts/fiap-gold-inep-batch/a36f8f94b15a574c0c8d79631c00b7dd016526437ef5d55645df83b1249e0d7e/auto-upgrade/ja-d9171434-ba57-4e26-ace0-b7f3b1a4c5df/artifact/attempt_0/job_config_modifications.json",
+        "Size": 17,
+        "LastModified": "2026-10-27 11:40:14+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "scripts/fiap-gold-inep-batch/a36f8f94b15a574c0c8d79631c00b7dd016526437ef5d55645df83b1249e0d7e/auto-upgrade/ja-d9171434-ba57-4e26-ace0-b7f3b1a4c5df/summary/summary.md",
+        "Size": 0,
+        "LastModified": "2026-10-27 11:40:00+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "scripts/fiap-gold-inep-batch/a36f8f94b15a574c0c8d79631c00b7dd016526437ef5d55645df83b1249e0d7e/gold_glue.py",
+        "Size": 58467,
+        "LastModified": "2026-10-26 12:35:40+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "scripts/fiap-ingestao-bigquery-uf.py",
+        "Size": 1747,
+        "LastModified": "2026-10-20 17:43:08+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "scripts/fiap-silver-inep-batch/020832c14c9ac4dc466120fe9fb9c15e29abed9bf603b828b2caf22356757030/silver_glue.py",
+        "Size": 29892,
+        "LastModified": "2026-10-22 13:56:07+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/appstatus_spark-application-1792510576829",
+        "Size": 0,
+        "LastModified": "2026-10-20 15:36:33+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/appstatus_spark-application-1792518373892",
+        "Size": 0,
+        "LastModified": "2026-10-20 17:46:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/appstatus_spark-application-1792518373892.inprogress",
+        "Size": 0,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/appstatus_spark-application-1792518503859",
+        "Size": 0,
+        "LastModified": "2026-10-20 17:48:56+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/appstatus_spark-application-1792518503859.inprogress",
+        "Size": 0,
+        "LastModified": "2026-10-20 17:48:52+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/appstatus_spark-application-1792520465227",
+        "Size": 0,
+        "LastModified": "2026-10-20 18:21:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/appstatus_spark-application-1792520465227.inprogress",
+        "Size": 0,
+        "LastModified": "2026-10-20 18:21:30+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/appstatus_spark-application-1792520625181",
+        "Size": 0,
+        "LastModified": "2026-10-20 18:25:18+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/appstatus_spark-application-1792520625181.inprogress",
+        "Size": 0,
+        "LastModified": "2026-10-20 18:25:09+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/events_1_spark-application-1792510576829",
+        "Size": 130586,
+        "LastModified": "2026-10-20 15:36:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/events_1_spark-application-1792518373892",
+        "Size": 356192,
+        "LastModified": "2026-10-20 17:46:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/events_1_spark-application-1792518503859",
+        "Size": 356018,
+        "LastModified": "2026-10-20 17:48:56+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/events_1_spark-application-1792520465227",
+        "Size": 949332,
+        "LastModified": "2026-10-20 18:21:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/events_1_spark-application-1792520625181",
+        "Size": 5773724,
+        "LastModified": "2026-10-20 18:25:17+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_24858295da466c0d29cf6b5956c454de1375ec5c1d724ae8a38a0b8cf7455d29_1",
+        "Size": 130586,
+        "LastModified": "2026-10-20 15:36:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_24858295da466c0d29cf6b5956c454de1375ec5c1d724ae8a38a0b8cf7455d29_appstatus",
+        "Size": 0,
+        "LastModified": "2026-10-20 15:36:32+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_37a2ce973a7401de6f00d01137360b86195df276ecd2189ab6abdb81d9a0ff57_1",
+        "Size": 356018,
+        "LastModified": "2026-10-20 17:48:56+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_37a2ce973a7401de6f00d01137360b86195df276ecd2189ab6abdb81d9a0ff57_appstatus",
+        "Size": 0,
+        "LastModified": "2026-10-20 17:48:56+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_37a2ce973a7401de6f00d01137360b86195df276ecd2189ab6abdb81d9a0ff57_appstatus.inprogress",
+        "Size": 0,
+        "LastModified": "2026-10-20 17:48:51+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_89e5c2ce2458f8cd7414e35f27d325dae0650f7c45f0290e5323e9976d875c29_1",
+        "Size": 356192,
+        "LastModified": "2026-10-20 17:46:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_89e5c2ce2458f8cd7414e35f27d325dae0650f7c45f0290e5323e9976d875c29_appstatus",
+        "Size": 0,
+        "LastModified": "2026-10-20 17:46:45+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_89e5c2ce2458f8cd7414e35f27d325dae0650f7c45f0290e5323e9976d875c29_appstatus.inprogress",
+        "Size": 0,
+        "LastModified": "2026-10-20 17:46:42+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a_1",
+        "Size": 949332,
+        "LastModified": "2026-10-20 18:21:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a_appstatus",
+        "Size": 0,
+        "LastModified": "2026-10-20 18:21:37+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a_appstatus.inprogress",
+        "Size": 0,
+        "LastModified": "2026-10-20 18:21:30+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700_1",
+        "Size": 5773724,
+        "LastModified": "2026-10-20 18:25:17+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700_appstatus",
+        "Size": 0,
+        "LastModified": "2026-10-20 18:25:18+00:00",
+        "StorageClass": "STANDARD"
+      },
+      {
+        "Key": "sparkHistoryLogs/jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700_appstatus.inprogress",
+        "Size": 0,
+        "LastModified": "2026-10-20 18:25:09+00:00",
+        "StorageClass": "STANDARD"
+      }
+    ]
+  }
+]

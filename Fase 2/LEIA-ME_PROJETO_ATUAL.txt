@@ -1,0 +1,60 @@
+PROJETO FIAP - TECH CHALLENGE FASE 2 - ESTADO EM 28/10/2026
+
+CONTEUDO
+Código Bronze/Silver/Gold e streaming, notebooks originais, testes, dependências,
+documentação, diagnósticos, relatórios, imagens, manifestos e evidências já coletadas.
+Inclui a migração CloudFormation concluída em 28/10 e seus templates efetivos.
+A pasta historico_embalagem/ guarda a embalagem revisada anterior, sem alterações.
+Os documentos históricos mantêm as datas e podem descrever etapas então pendentes.
+
+CONCLUIDO
+- Bronze: sete tabelas, 3.902.954 registros, histórico por execução e contagens iguais.
+- Silver: tratamento, dicionário, chaves e validações; Gold: cinco datasets/46.342 linhas.
+- Streaming como simulação separada: 30 eventos válidos, cinco reenvios e um inválido;
+  processamento até Gold, idempotência e DLQ demonstrados. Finalizador manual.
+- Qualidade bloqueante/informativa e falhas reais preservadas.
+- Observabilidade: métricas persistidas, latência medida e cinco alarmes; SNS com
+  assinatura confirmada e recebimento de teste confirmado pelo destinatário em 27/10.
+- Alertas adotados em CloudFormation em 28/10; evidência final de 10:22:42 Brasília.
+  Duas stacks IN_SYNC nos 13 recursos retornados (5 + 8). O serviço omitiu assinatura
+  e EventSourceMapping do drift; assinatura conferida separadamente. Lambda preservada.
+
+PENDENCIAS PARA A ENTREGA
+1. Parametrizar identificadores ainda fixos nos scripts de deploy/verificação.
+2. FinOps: recuperar quantidade faturável de egress GCP->AWS e incremento comprimido
+   dos logs a partir de registros existentes. Subtotal US$2,150746/30 dias é PARCIAL,
+   com 19 parcelas numéricas e duas não medidas. Quatro batches + quatro replays são
+   hipótese, não frequência imposta pelo enunciado nem agendamento instalado.
+3. Validar o projeto final em clone/ambiente limpos, seguindo só o README. Os 138 testes
+   anteriores passaram no ambiente existente; a migração possui sete testes próprios.
+   Esta embalagem não reexecutou testes de transformação nem fez um clone limpo.
+4. Atualizar o roteiro de apresentação com as etapas posteriores a 26/10. O vídeo de
+   até cinco minutos será feito pelo colega; inserir o link no README.
+5. Conferir acesso do avaliador ao repositório, links e realizar submissão pelo grupo.
+6. Contato Budget financeiro segue sem verificação comprovada, separado do SNS.
+
+ALTERACOES NESTA EMBALAGEM LOCAL
+- README e VERSOES refletem a migração concluída; originais preservados e diff incluído.
+- Corrigido o comentário de --apply: o script gera/registra o hash, mas não compara
+  automaticamente com um hash de aprovação anterior. A conferência é manual.
+- Adicionados templates aplicados, evidências e memória de retomada.
+- Manifesto de integridade regenerado; todos os arquivos anteriores preservados,
+  salvo README, VERSOES e manifesto atualizados (cópias originais incluídas).
+- Código de processamento e dados NÃO foram modificados. Não houve chamadas AWS/GCP,
+  e-mails, jobs, replays, extrações ou novos recursos na nuvem nesta consolidação.
+
+LIMITES
+US$140 é o teto TOTAL, não mensal. Saldo não foi consultado nesta embalagem.
+Não afirmar que o subtotal parcial garante o orçamento. GCP segue sem ativação de
+faturamento. Dashboard, modelo treinado e orquestração são evoluções, não requisitos
+pendentes desta fase. A divergência de 2023 permanece documentada, sem ajuste artificial.
+
+Este ZIP contém os dados e amostras presentes nos artefatos locais; NÃO é uma cópia
+integral do bucket S3 nem dos 3,9 milhões de registros. O conjunto integral continua
+nos caminhos S3 identificados pelos manifestos aprovados incluídos no projeto.
+Não rodar scripts de criação, migração ou replay apenas para abrir/estudar o pacote.
+
+COMO USAR
+Extraia o ZIP, abra LEIA-ME_PROJETO_ATUAL.txt e README.md na pasta do projeto.
+Consulte SHA256_Arquivos.json para verificar cada arquivo (exceto o próprio manifesto).
+Documentos anteriores e propostas preservadas não são comandos de uma nova implantação.

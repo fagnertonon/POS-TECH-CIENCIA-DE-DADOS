@@ -1,0 +1,17 @@
+{
+  "message_id": "622aaa22-577c-4b80-b56b-459454707967",
+  "sent_at_utc": "2026-10-20T18:41:06.006585Z",
+  "expected_failure": "InvalidEnvelope: payload must be an object",
+  "body_sha256": "f0670e7b907afb494ab9643722c854ccb60c7821ba9c32d28e15d28bf7a488de",
+  "event": {
+    "schema_version": 1,
+    "event_id": "a60140aa-d3e1-48a2-9a5f-13a8a0fab653",
+    "run_id": "invalid_b1465a04a7c245b88b56cab29772d0e4",
+    "entity": "alunos",
+    "event_time": "2026-10-20T18:41:06.006585Z",
+    "source": "inep_bronze_replay",
+    "simulation": true,
+    "source_snapshot_run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+    "payload": "INTENTIONALLY_INVALID_OBJECT_TYPE_FOR_DLQ_TEST"
+  }
+}

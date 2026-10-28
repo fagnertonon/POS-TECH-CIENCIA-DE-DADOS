@@ -1,0 +1,13 @@
+{
+  "routing_matches_baseline": true,
+  "confirmed_subscription_arn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais:a4d3b188-4e11-41f0-a76f-a7426f9dc0b9",
+  "alarm_names": [
+    "fiap-gold-inep-failure",
+    "fiap-inep-streaming-age",
+    "fiap-inep-streaming-dlq",
+    "fiap-inep-streaming-rejected",
+    "fiap-silver-inep-failure"
+  ],
+  "new_email": false,
+  "checked_at_utc": "2026-10-28T13:12:56.701865+00:00"
+}

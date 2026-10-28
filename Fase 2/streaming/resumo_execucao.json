@@ -1,0 +1,26 @@
+{
+  "status": "SUCCEEDED",
+  "run_id": "sim_20261020T184106Z_65ed95850eeb",
+  "counts": {
+    "Received": 40,
+    "Accepted": 30,
+    "Duplicate": 5,
+    "Failed": 5
+  },
+  "inventory": {
+    "unique_events_expected": 30,
+    "bronze_object_count": 30,
+    "claim_object_count": 30,
+    "bronze_bytes": 33759
+  },
+  "latency_seconds": {
+    "count": 30,
+    "min": 0.094581,
+    "max": 7.468449,
+    "mean": 0.9621719666666666,
+    "median": 0.1173205,
+    "p95_nearest_rank": 4.967374
+  },
+  "invalid_failures": 5,
+  "audit_manifest": "s3://fiap-tc-fase2-2026/auditoria/streaming/runs/run_id=sim_20261020T184106Z_65ed95850eeb/manifest.json"
+}

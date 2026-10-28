@@ -1,0 +1,20 @@
+{
+  "stack_id": "arn:aws:cloudformation:us-east-2:637246457028:stack/fiap-inep-streaming/31903fc0-ccb5-11f1-b6bf-02e1331493ff",
+  "stack_status": "UPDATE_COMPLETE",
+  "outputs": {
+    "FunctionName": "fiap-inep-streaming-consumer",
+    "FunctionArn": "arn:aws:lambda:us-east-2:637246457028:function:fiap-inep-streaming-consumer",
+    "ExecutionRoleArn": "arn:aws:iam::637246457028:role/fiap-lambda-inep-streaming",
+    "DeadLetterQueueUrl": "https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming-dlq",
+    "LogGroup": "/aws/lambda/fiap-inep-streaming-consumer",
+    "EventSourceMappingUuid": "6bad077d-e592-4109-a81c-edb62a53340e",
+    "QueueArn": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming",
+    "QueueUrl": "https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming"
+  },
+  "consumer_source_sha256": "68bc8b17c9064d8eb967ae71228799b6245d223037f2b85e706a9d0a6210c9ac",
+  "runtime": "python3.12",
+  "mapping_state": "Enabled",
+  "mapping_response_types": [
+    "ReportBatchItemFailures"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "BudgetName": "FIAP-Acompanhamento-Bruto-30USD",
+  "BudgetLimit": {
+    "Amount": "30.0",
+    "Unit": "USD"
+  },
+  "CostTypes": {
+    "IncludeTax": true,
+    "IncludeSubscription": true,
+    "UseBlended": false,
+    "IncludeRefund": false,
+    "IncludeCredit": false,
+    "IncludeUpfront": true,
+    "IncludeRecurring": true,
+    "IncludeOtherSubscription": true,
+    "IncludeSupport": true,
+    "IncludeDiscount": true,
+    "UseAmortized": false
+  },
+  "TimeUnit": "MONTHLY",
+  "TimePeriod": {
+    "Start": "2026-10-01 00:00:00+00:00",
+    "End": "2087-06-15 00:00:00+00:00"
+  },
+  "BudgetType": "COST",
+  "LastUpdatedTime": "2026-10-27 12:02:01.181000+00:00",
+  "HealthStatus": {
+    "Status": "HEALTHY",
+    "LastUpdatedTime": "2026-10-27 12:02:01.181000+00:00"
+  }
+}

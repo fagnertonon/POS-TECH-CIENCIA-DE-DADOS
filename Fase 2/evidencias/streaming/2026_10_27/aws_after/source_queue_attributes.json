@@ -1,0 +1,17 @@
+{
+  "Attributes": {
+    "QueueArn": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming",
+    "ApproximateNumberOfMessages": "0",
+    "ApproximateNumberOfMessagesNotVisible": "1",
+    "ApproximateNumberOfMessagesDelayed": "0",
+    "CreatedTimestamp": "1792521458",
+    "LastModifiedTimestamp": "1792521458",
+    "VisibilityTimeout": "60",
+    "MaximumMessageSize": "1048576",
+    "MessageRetentionPeriod": "345600",
+    "DelaySeconds": "0",
+    "RedrivePolicy": "{\"deadLetterTargetArn\":\"arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming-dlq\",\"maxReceiveCount\":5}",
+    "ReceiveMessageWaitTimeSeconds": "20",
+    "SqsManagedSseEnabled": "true"
+  }
+}

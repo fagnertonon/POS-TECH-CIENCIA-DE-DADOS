@@ -1,0 +1,322 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "FIAP Fase2 streaming Bronze: SQS/Lambda/S3, role restrita, DLQ e alarmes de console.",
+  "Parameters": {
+    "BucketName": {
+      "Type": "String",
+      "Default": "fiap-tc-fase2-2026"
+    }
+  },
+  "Resources": {
+    "DeadLetterQueue": {
+      "Type": "AWS::SQS::Queue",
+      "Properties": {
+        "QueueName": "fiap-inep-streaming-dlq",
+        "MessageRetentionPeriod": 1209600,
+        "SqsManagedSseEnabled": true,
+        "RedriveAllowPolicy": {
+          "redrivePermission": "byQueue",
+          "sourceQueueArns": [
+            {
+              "Fn::Sub": "arn:${AWS::Partition}:sqs:${AWS::Region}:${AWS::AccountId}:fiap-inep-streaming"
+            }
+          ]
+        },
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "FIAP-TC-Fase2"
+          }
+        ]
+      }
+    },
+    "SourceQueue": {
+      "Type": "AWS::SQS::Queue",
+      "Properties": {
+        "QueueName": "fiap-inep-streaming",
+        "VisibilityTimeout": 60,
+        "ReceiveMessageWaitTimeSeconds": 20,
+        "MessageRetentionPeriod": 345600,
+        "SqsManagedSseEnabled": true,
+        "RedrivePolicy": {
+          "deadLetterTargetArn": {
+            "Fn::GetAtt": [
+              "DeadLetterQueue",
+              "Arn"
+            ]
+          },
+          "maxReceiveCount": 5
+        },
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "FIAP-TC-Fase2"
+          }
+        ]
+      }
+    },
+    "ConsumerLogs": {
+      "Type": "AWS::Logs::LogGroup",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/fiap-inep-streaming-consumer",
+        "RetentionInDays": 14
+      }
+    },
+    "ConsumerRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "RoleName": "fiap-lambda-inep-streaming",
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "StreamingScopedAccess",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Sid": "PollOnlyTheStreamingQueue",
+                  "Effect": "Allow",
+                  "Action": [
+                    "sqs:ReceiveMessage",
+                    "sqs:DeleteMessage",
+                    "sqs:GetQueueAttributes"
+                  ],
+                  "Resource": {
+                    "Fn::GetAtt": [
+                      "SourceQueue",
+                      "Arn"
+                    ]
+                  }
+                },
+                {
+                  "Sid": "PersistOnlyStreamingObjects",
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/bronze/inep_streaming/*"
+                    },
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/auditoria/streaming/idempotency/*"
+                    }
+                  ]
+                },
+                {
+                  "Sid": "WriteOnlyTheConsumerLogs",
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": {
+                    "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/fiap-inep-streaming-consumer:*"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "FIAP-TC-Fase2"
+          }
+        ]
+      }
+    },
+    "ConsumerFunction": {
+      "Type": "AWS::Lambda::Function",
+      "DependsOn": "ConsumerLogs",
+      "Properties": {
+        "FunctionName": "fiap-inep-streaming-consumer",
+        "Runtime": "python3.12",
+        "Handler": "index.lambda_handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "ConsumerRole",
+            "Arn"
+          ]
+        },
+        "Timeout": 10,
+        "MemorySize": 256,
+        "ReservedConcurrentExecutions": 2,
+        "Description": "Replay controlado INEP: SQS para Bronze S3, idempotencia e falhas parciais.",
+        "Code": {
+          "ZipFile": "\"\"\"SQS -> Bronze JSON, com identidade (run_id,event_id) e resposta parcial.\n\nevent_time é o momento de emissão do replay simulado, não o ano educacional.\nCada evento produz um JSON na Bronze e um claim de idempotência na auditoria.\nO claim inclui o envelope integral para recuperar uma projeção interrompida.\nArquivos pequenos serão compactados na Silver; esta função preserva o evento.\n\"\"\"\nfrom __future__ import annotations\n\nfrom dataclasses import dataclass\nfrom datetime import datetime, timedelta, timezone\nimport hashlib\nimport json\nimport os\nimport re\nimport time\n\n\nALL_ENTITIES = frozenset({\n    \"alunos\", \"municipio\", \"uf\", \"meta_alfabetizacao_brasil\",\n    \"meta_alfabetizacao_uf\", \"meta_alfabetizacao_municipio\", \"dicionario\",\n})\nSAFE_ID = re.compile(r\"[A-Za-z0-9_-]{1,160}\\Z\")\nUTC_TIMESTAMP = re.compile(r\"\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,6})?(?:Z|\\+00:00)\\Z\")\nPIPELINE = \"fiap-inep-streaming\"\nNAMESPACE = \"FIAP/Streaming\"\n_S3 = None\n\n\nclass InvalidEnvelope(ValueError):\n    pass\n\n\nclass EventIdentityConflict(ValueError):\n    \"\"\"A identidade já está associada a outro envelope; nunca sobrescrever.\"\"\"\n\n\nclass StoredEventCorruption(ValueError):\n    pass\n\n\n@dataclass(frozen=True)\nclass Config:\n    bucket: str\n    prefix: str\n    idempotency_prefix: str\n    allowed_entities: frozenset[str]\n\n\ndef _prefix(value):\n    value = value.strip(\"/\")\n    if not value or any(part in {\"\", \".\", \"..\"} for part in value.split(\"/\")):\n        raise ValueError(\"Invalid S3 prefix\")\n    if not re.fullmatch(r\"[A-Za-z0-9_./=-]+\", value):\n        raise ValueError(\"Invalid S3 prefix\")\n    return value\n\n\ndef load_config():\n    bucket = os.environ.get(\"BUCKET\", \"fiap-tc-fase2-2026\")\n    if not re.fullmatch(r\"[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]\", bucket):\n        raise ValueError(\"Invalid BUCKET\")\n    prefix = _prefix(os.environ.get(\"PREFIX\", \"bronze/inep_streaming\"))\n    identity_prefix = _prefix(os.environ.get(\"IDEMPOTENCY_PREFIX\", \"auditoria/streaming/idempotency\"))\n    if prefix == identity_prefix or prefix.startswith(identity_prefix + \"/\") or identity_prefix.startswith(prefix + \"/\"):\n        raise ValueError(\"Bronze and idempotency prefixes must be separate\")\n    entities = frozenset(item.strip() for item in os.environ.get(\"ALLOWED_ENTITIES\", \"alunos\").split(\",\"))\n    if not entities or not entities.issubset(ALL_ENTITIES):\n        raise ValueError(\"Invalid ALLOWED_ENTITIES\")\n    return Config(bucket, prefix, identity_prefix, entities)\n\n\ndef utc_now():\n    return datetime.now(timezone.utc)\n\n\ndef iso_utc(value):\n    return value.isoformat(timespec=\"microseconds\").replace(\"+00:00\", \"Z\")\n\n\ndef canonical_json(value):\n    # allow_nan=False é essencial: NaN/Infinity não pertencem ao contrato JSON.\n    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(\",\", \":\"), allow_nan=False).encode(\"utf-8\")\n\n\ndef sha256(value):\n    return hashlib.sha256(canonical_json(value)).hexdigest()\n\n\ndef _reject_constant(_value):\n    raise InvalidEnvelope(\"Non-finite JSON number\")\n\n\ndef parse_event(body, config):\n    if not isinstance(body, str):\n        raise InvalidEnvelope(\"SQS body must be text\")\n    try:\n        envelope = json.loads(body, parse_constant=_reject_constant)\n    except (json.JSONDecodeError, UnicodeError) as exc:\n        raise InvalidEnvelope(\"Body is not JSON\") from exc\n    if not isinstance(envelope, dict):\n        raise InvalidEnvelope(\"Envelope must be an object\")\n    if type(envelope.get(\"schema_version\")) is not int or envelope[\"schema_version\"] != 1:\n        raise InvalidEnvelope(\"Unsupported schema_version\")\n    for field in (\"event_id\", \"run_id\", \"source_snapshot_run_id\"):\n        if not isinstance(envelope.get(field), str) or not SAFE_ID.fullmatch(envelope[field]):\n            raise InvalidEnvelope(f\"Invalid {field}\")\n    if envelope.get(\"entity\") not in config.allowed_entities:\n        raise InvalidEnvelope(\"Unsupported entity\")\n    if envelope.get(\"source\") != \"inep_bronze_replay\" or envelope.get(\"simulation\") is not True:\n        raise InvalidEnvelope(\"Expected an explicitly simulated INEP Bronze replay\")\n    if not isinstance(envelope.get(\"payload\"), dict):\n        raise InvalidEnvelope(\"payload must be an object\")\n    stamp = envelope.get(\"event_time\")\n    if not isinstance(stamp, str) or not UTC_TIMESTAMP.fullmatch(stamp):\n        raise InvalidEnvelope(\"event_time must be an ISO UTC timestamp\")\n    try:\n        event_time = datetime.fromisoformat(stamp.replace(\"Z\", \"+00:00\"))\n    except ValueError as exc:\n        raise InvalidEnvelope(\"Invalid event_time\") from exc\n    if event_time.utcoffset() != timedelta(0):\n        raise InvalidEnvelope(\"event_time must use UTC\")\n    # Também valida números aninhados que eventualmente excedam o JSON finito.\n    try:\n        canonical_json(envelope)\n    except (ValueError, TypeError, OverflowError) as exc:\n        raise InvalidEnvelope(\"Envelope is not finite JSON\") from exc\n    return envelope, event_time\n\n\ndef _code(exc):\n    return str(getattr(exc, \"response\", {}).get(\"Error\", {}).get(\"Code\", \"\"))\n\n\ndef _is_conflict(exc):\n    return _code(exc) in {\"PreconditionFailed\", \"ConditionalRequestConflict\", \"412\", \"409\"}\n\n\ndef _get_stored(s3, config, key, expected_hash):\n    result = s3.get_object(Bucket=config.bucket, Key=key)\n    try:\n        stored = json.loads(result[\"Body\"].read(), parse_constant=_reject_constant)\n        stored_hash = sha256(stored[\"event\"])\n        declared_hash = stored[\"ingestion\"][\"event_sha256\"]\n        if stored_hash != declared_hash:\n            raise StoredEventCorruption(\"Stored event hash mismatch\")\n        if stored_hash != expected_hash:\n            raise EventIdentityConflict(\"Event identity already contains another envelope\")\n    except (KeyError, json.JSONDecodeError, TypeError) as exc:\n        raise StoredEventCorruption(\"Invalid stored event\") from exc\n    return stored\n\n\ndef _put_once(s3, config, key, value):\n    s3.put_object(\n        Bucket=config.bucket, Key=key, Body=canonical_json(value) + b\"\\n\",\n        ContentType=\"application/json\", IfNoneMatch=\"*\",\n        Metadata={\"event-sha256\": value[\"ingestion\"][\"event_sha256\"]},\n    )\n\n\ndef process_record(record, context, config, s3):\n    envelope, event_time = parse_event(record[\"body\"], config)\n    run_id, event_id = envelope[\"run_id\"], envelope[\"event_id\"]\n    event_hash = sha256(envelope)\n    target_key = (\n        f\"{config.prefix}/entity={envelope['entity']}/event_date={event_time.date().isoformat()}\"\n        f\"/run_id={run_id}/event_id={event_id}.json\"\n    )\n    claim_key = f\"{config.idempotency_prefix}/run_id={run_id}/event_id={event_id}.json\"\n    first_received = iso_utc(utc_now())\n    stored = {\n        \"event\": envelope,\n        \"ingestion\": {\n            \"received_at_utc\": first_received,\n            \"claim_started_at_utc\": first_received,\n            \"sqs_message_id\": record[\"messageId\"],\n            \"lambda_request_id\": getattr(context, \"aws_request_id\", \"unknown\"),\n            \"event_sha256\": event_hash,\n            \"payload_sha256\": sha256(envelope[\"payload\"]),\n            \"target_key\": target_key,\n        },\n    }\n    try:\n        _put_once(s3, config, claim_key, stored)\n    except Exception as exc:\n        if not _is_conflict(exc):\n            raise\n        # S3 GET é fortemente consistente. Em 409 sem objeto visível, propagar\n        # a falha: a fila fará retry; nunca confirmar um evento que não foi salvo.\n        stored = _get_stored(s3, config, claim_key, event_hash)\n        if stored[\"ingestion\"].get(\"target_key\") != target_key:\n            raise StoredEventCorruption(\"Claim target path mismatch\")\n\n    try:\n        # Sempre tentar o PUT condicional, inclusive ao recuperar um claim.\n        # Sem s3:ListBucket, um GET de chave inexistente pode retornar 403 em\n        # vez de 404; assim a recuperação não depende dessa permissão ampla.\n        _put_once(s3, config, target_key, stored)\n    except Exception as exc:\n        if not _is_conflict(exc):\n            raise\n        existing = _get_stored(s3, config, target_key, event_hash)\n        return \"DUPLICATE\", existing, None\n    # Medir somente depois de o PUT Bronze retornar sucesso. Retries que\n    # recuperam um claim usam o horário desta projeção efetivamente concluída.\n    # Pequena diferença de relógio produtor/Lambda não gera latência negativa.\n    latency = max(0.0, (utc_now() - event_time).total_seconds())\n    return \"ACCEPTED\", stored, latency\n\n\ndef _client():\n    global _S3\n    if _S3 is None:\n        import boto3\n        _S3 = boto3.client(\"s3\")\n    return _S3\n\n\ndef _emit_metrics(counts, latencies, invocation_id):\n    def emit(values, include_counts):\n        definitions = []\n        payload = {\"kind\": \"STREAMING_BATCH\" if include_counts else \"STREAMING_LATENCY\", \"Pipeline\": PIPELINE, \"invocation_id\": invocation_id}\n        if include_counts:\n            payload.update(counts)\n            definitions.extend({\"Name\": name, \"Unit\": \"Count\"} for name in counts)\n        if values:\n            payload[\"LatencySeconds\"] = [round(value, 6) for value in values]\n            definitions.append({\"Name\": \"LatencySeconds\", \"Unit\": \"Seconds\"})\n        payload[\"_aws\"] = {\n            \"Timestamp\": int(time.time() * 1000),\n            \"CloudWatchMetrics\": [{\"Namespace\": NAMESPACE, \"Dimensions\": [[\"Pipeline\"]], \"Metrics\": definitions}],\n        }\n        print(json.dumps(payload, ensure_ascii=False, separators=(\",\", \":\"), allow_nan=False))\n    emit(latencies[:100], True)\n    for index in range(100, len(latencies), 100):\n        emit(latencies[index:index + 100], False)\n\n\ndef lambda_handler(event, context):\n    records = event.get(\"Records\")\n    if not isinstance(records, list) or any(not isinstance(record, dict) or not isinstance(record.get(\"messageId\"), str) or not record[\"messageId\"] for record in records):\n        raise ValueError(\"Expected an SQS batch with message IDs\")\n    config, s3 = load_config(), _client()\n    failures, latencies = [], []\n    counts = {\"Received\": len(records), \"Accepted\": 0, \"Duplicate\": 0, \"Failed\": 0}\n    for record in records:\n        try:\n            status, stored, latency = process_record(record, context, config, s3)\n            counts[\"Accepted\" if status == \"ACCEPTED\" else \"Duplicate\"] += 1\n            if latency is not None:\n                latencies.append(latency)\n            print(json.dumps({\n                \"kind\": \"STREAMING_EVENT\", \"status\": status,\n                \"run_id\": stored[\"event\"][\"run_id\"], \"event_id\": stored[\"event\"][\"event_id\"],\n                \"sqs_message_id\": record[\"messageId\"], \"target_key\": stored[\"ingestion\"][\"target_key\"],\n            }, separators=(\",\", \":\")))\n        except Exception as exc:\n            counts[\"Failed\"] += 1\n            failures.append({\"itemIdentifier\": record[\"messageId\"]})\n            # Não registrar body, payload ou mensagens de erro de terceiros.\n            print(json.dumps({\n                \"kind\": \"STREAMING_EVENT\", \"status\": \"FAILED\",\n                \"sqs_message_id\": record[\"messageId\"], \"error_type\": type(exc).__name__,\n            }, separators=(\",\", \":\")))\n    _emit_metrics(counts, latencies, getattr(context, \"aws_request_id\", \"unknown\"))\n    return {\"batchItemFailures\": failures}\n"
+        },
+        "Environment": {
+          "Variables": {
+            "BUCKET": {
+              "Ref": "BucketName"
+            },
+            "PREFIX": "bronze/inep_streaming",
+            "IDEMPOTENCY_PREFIX": "auditoria/streaming/idempotency",
+            "ALLOWED_ENTITIES": "alunos"
+          }
+        },
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "FIAP-TC-Fase2"
+          }
+        ]
+      }
+    },
+    "QueueConsumerMapping": {
+      "Type": "AWS::Lambda::EventSourceMapping",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "ConsumerFunction"
+        },
+        "EventSourceArn": {
+          "Fn::GetAtt": [
+            "SourceQueue",
+            "Arn"
+          ]
+        },
+        "BatchSize": 5,
+        "MaximumBatchingWindowInSeconds": 0,
+        "FunctionResponseTypes": [
+          "ReportBatchItemFailures"
+        ],
+        "ScalingConfig": {
+          "MaximumConcurrency": 2
+        },
+        "Enabled": true
+      }
+    },
+    "DeadLetterAlarm": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Period": 60,
+        "Statistic": "Maximum",
+        "TreatMissingData": "notBreaching",
+        "AlarmName": "fiap-inep-streaming-dlq",
+        "AlarmDescription": "Mensagem na DLQ; revisar erros no CloudWatch e corrigir antes do redrive. Alerta visivel no console, sem e-mail configurado.",
+        "Namespace": "AWS/SQS",
+        "MetricName": "ApproximateNumberOfMessagesVisible",
+        "Dimensions": [
+          {
+            "Name": "QueueName",
+            "Value": "fiap-inep-streaming-dlq"
+          }
+        ],
+        "Threshold": 1
+      }
+    },
+    "RejectedEventAlarm": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Period": 60,
+        "Statistic": "Sum",
+        "TreatMissingData": "notBreaching",
+        "AlarmName": "fiap-inep-streaming-rejected",
+        "AlarmDescription": "Evento rejeitado pelo consumidor; verificar logs e DLQ. Alerta visivel no console.",
+        "Namespace": "FIAP/Streaming",
+        "MetricName": "Failed",
+        "Dimensions": [
+          {
+            "Name": "Pipeline",
+            "Value": "fiap-inep-streaming"
+          }
+        ],
+        "Threshold": 1
+      }
+    },
+    "QueueAgeAlarm": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Period": 60,
+        "Statistic": "Maximum",
+        "TreatMissingData": "notBreaching",
+        "AlarmName": "fiap-inep-streaming-age",
+        "AlarmDescription": "Atraso de processamento maior ou igual a 120 segundos; revisar Lambda e fila.",
+        "Namespace": "AWS/SQS",
+        "MetricName": "ApproximateAgeOfOldestMessage",
+        "Dimensions": [
+          {
+            "Name": "QueueName",
+            "Value": "fiap-inep-streaming"
+          }
+        ],
+        "Threshold": 120
+      }
+    }
+  },
+  "Outputs": {
+    "QueueUrl": {
+      "Value": {
+        "Ref": "SourceQueue"
+      }
+    },
+    "QueueArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "SourceQueue",
+          "Arn"
+        ]
+      }
+    },
+    "DeadLetterQueueUrl": {
+      "Value": {
+        "Ref": "DeadLetterQueue"
+      }
+    },
+    "FunctionName": {
+      "Value": {
+        "Ref": "ConsumerFunction"
+      }
+    },
+    "FunctionArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "ConsumerFunction",
+          "Arn"
+        ]
+      }
+    },
+    "ExecutionRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "ConsumerRole",
+          "Arn"
+        ]
+      }
+    },
+    "EventSourceMappingUuid": {
+      "Value": {
+        "Ref": "QueueConsumerMapping"
+      }
+    },
+    "LogGroup": {
+      "Value": {
+        "Ref": "ConsumerLogs"
+      }
+    }
+  }
+}

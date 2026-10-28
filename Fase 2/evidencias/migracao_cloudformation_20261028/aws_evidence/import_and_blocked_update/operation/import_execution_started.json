@@ -1,0 +1,71 @@
+{
+  "requested_at_utc": "2026-10-28T13:11:42.211927+00:00",
+  "change_set_id": "arn:aws:cloudformation:us-east-2:637246457028:changeSet/fiap-alerts-import-20261028T131002Z/939f4840-1171-43fd-a669-e16549f0524d",
+  "changes": [
+    {
+      "Action": "Import",
+      "LogicalResourceId": "AlertSubscription",
+      "PhysicalResourceId": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais:a4d3b188-4e11-41f0-a76f-a7426f9dc0b9",
+      "ResourceType": "AWS::SNS::Subscription",
+      "Scope": [],
+      "Details": []
+    },
+    {
+      "Action": "Import",
+      "LogicalResourceId": "AlertTopicPolicy",
+      "PhysicalResourceId": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+      "ResourceType": "AWS::SNS::TopicInlinePolicy",
+      "Scope": [],
+      "Details": []
+    },
+    {
+      "Action": "Import",
+      "LogicalResourceId": "AlertTopic",
+      "PhysicalResourceId": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+      "ResourceType": "AWS::SNS::Topic",
+      "Scope": [],
+      "Details": []
+    },
+    {
+      "Action": "Import",
+      "LogicalResourceId": "BatchFailureRule",
+      "PhysicalResourceId": "arn:aws:events:us-east-2:637246457028:rule/fiap-inep-batch-failures",
+      "ResourceType": "AWS::Events::Rule",
+      "Scope": [],
+      "Details": []
+    },
+    {
+      "Action": "Import",
+      "LogicalResourceId": "GoldFailureAlarm",
+      "PhysicalResourceId": "fiap-gold-inep-failure",
+      "ResourceType": "AWS::CloudWatch::Alarm",
+      "Scope": [],
+      "Details": []
+    },
+    {
+      "Action": "Import",
+      "LogicalResourceId": "SilverFailureAlarm",
+      "PhysicalResourceId": "fiap-silver-inep-failure",
+      "ResourceType": "AWS::CloudWatch::Alarm",
+      "Scope": [],
+      "Details": []
+    }
+  ],
+  "response": {
+    "ResponseMetadata": {
+      "RequestId": "9ae74859-0781-45d6-9e9c-c35427e4bf11",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "x-amzn-requestid": "9ae74859-0781-45d6-9e9c-c35427e4bf11",
+        "strict-transport-security": "max-age=47304000; includeSubDomains",
+        "cache-control": "no-store, no-cache",
+        "date": "Wed, 28 Oct 2026 13:11:42 GMT",
+        "content-type": "text/xml",
+        "content-length": "250",
+        "connection": "keep-alive"
+      },
+      "RetryAttempts": 0
+    }
+  },
+  "emails_sent_by_script": 0
+}

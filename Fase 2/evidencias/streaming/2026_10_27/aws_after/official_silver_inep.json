@@ -1,0 +1,70 @@
+{
+  "bucket": "fiap-tc-fase2-2026",
+  "prefix": "silver/inep/",
+  "complete": true,
+  "object_count": 10,
+  "total_bytes": 61906268,
+  "sha256": "2ceb712953555c5d84444695fb91ac9bbf88f254c0fb56f7b7333313dc01e06d",
+  "objects": [
+    {
+      "key": "silver/inep/alunos/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-edec8e7e-f2c2-4be7-8690-594ca07fa044-c000.snappy.parquet",
+      "size": 15307702,
+      "etag": "\"13711ea87e5582ad85b860cb4a071bd4-1\"",
+      "last_modified": "2026-10-22T14:02:03Z"
+    },
+    {
+      "key": "silver/inep/alunos/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00001-edec8e7e-f2c2-4be7-8690-594ca07fa044-c000.snappy.parquet",
+      "size": 15219327,
+      "etag": "\"db5697a1f38c35dd14523f5e64f45f5f-1\"",
+      "last_modified": "2026-10-22T14:02:03Z"
+    },
+    {
+      "key": "silver/inep/alunos/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00002-edec8e7e-f2c2-4be7-8690-594ca07fa044-c000.snappy.parquet",
+      "size": 15276937,
+      "etag": "\"b3fc8e16e8b7e3e17fed5e7ee34ac09c-1\"",
+      "last_modified": "2026-10-22T14:02:03Z"
+    },
+    {
+      "key": "silver/inep/alunos/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00003-edec8e7e-f2c2-4be7-8690-594ca07fa044-c000.snappy.parquet",
+      "size": 15268597,
+      "etag": "\"b61d7e320d73e6a3c5d4222da05f683d-1\"",
+      "last_modified": "2026-10-22T14:02:03Z"
+    },
+    {
+      "key": "silver/inep/dicionario/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-da121bc9-e9b9-4e57-9595-bc8d46415f4a-c000.snappy.parquet",
+      "size": 5610,
+      "etag": "\"60ef659ce213d597c24d1d78d443e60a-1\"",
+      "last_modified": "2026-10-22T14:01:54Z"
+    },
+    {
+      "key": "silver/inep/meta_alfabetizacao_brasil/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-c84e4902-b672-4703-bd16-d88eac49a803-c000.snappy.parquet",
+      "size": 7771,
+      "etag": "\"5fe79aa48d73d5baf37b9bd74477ff88-1\"",
+      "last_modified": "2026-10-22T14:01:58Z"
+    },
+    {
+      "key": "silver/inep/meta_alfabetizacao_municipio/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-297cb327-e2cd-4dea-950d-a7ffd433b68b-c000.snappy.parquet",
+      "size": 260710,
+      "etag": "\"78ff76589341d80c6b41e3534758471b-1\"",
+      "last_modified": "2026-10-22T14:02:00Z"
+    },
+    {
+      "key": "silver/inep/meta_alfabetizacao_uf/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-1871ba19-c2b4-42eb-8378-2a21db7b3e5c-c000.snappy.parquet",
+      "size": 10550,
+      "etag": "\"486ea0a4e88edbaac5255cb0b8e21bea-1\"",
+      "last_modified": "2026-10-22T14:01:59Z"
+    },
+    {
+      "key": "silver/inep/municipio/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-acda20ac-ca20-4d1a-9d81-ebce4ca02891-c000.snappy.parquet",
+      "size": 533824,
+      "etag": "\"8f867e2318ce735d3839635d8ade7692-1\"",
+      "last_modified": "2026-10-22T14:01:55Z"
+    },
+    {
+      "key": "silver/inep/uf/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/part-00000-1a0d2593-b00e-46c7-96b7-e5a97bf6c05c-c000.snappy.parquet",
+      "size": 15240,
+      "etag": "\"eee6b6c796a6579a9576c98c60855118-1\"",
+      "last_modified": "2026-10-22T14:01:57Z"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "phase": "import",
+  "created_at_utc": "2026-10-28T13:10:02.758560+00:00",
+  "change_set_id": "arn:aws:cloudformation:us-east-2:637246457028:changeSet/fiap-alerts-import-20261028T131002Z/939f4840-1171-43fd-a669-e16549f0524d",
+  "stack_id": "arn:aws:cloudformation:us-east-2:637246457028:stack/fiap-inep-observabilidade/8167a580-d2d0-11f1-a5d4-0aaf591c50c1",
+  "reviewed_plan_sha256": "93fc6d0f75d25a77047cb6a757189348ea05515229b5ab6efe59d1f2dfafaa92",
+  "template_file": "import_template.json",
+  "template_sha256": "b232b5902789f4c0ce8adb918f9082dadb86ab1e9178fca23a4701a1d7e0b45b"
+}

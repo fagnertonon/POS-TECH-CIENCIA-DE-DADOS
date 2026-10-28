@@ -1,0 +1,153 @@
+{
+  "captured_at_utc": "2026-10-27T19:37:53.547319+00:00",
+  "mutations": [],
+  "calls": [
+    "sts:get_caller_identity",
+    "sns:list_topics",
+    "sns:list_subscriptions",
+    "cloudwatch:describe_alarms"
+  ],
+  "errors": [],
+  "account": "637246457028",
+  "topics": [],
+  "topics_complete": true,
+  "subscriptions_complete": false,
+  "subscriptions": [],
+  "alarms": [
+    {
+      "AlarmName": "fiap-gold-inep-failure",
+      "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-gold-inep-failure",
+      "AlarmDescription": "FIAP: falha do pipeline gold; alarme de console sem destinatarios externos.",
+      "ActionsEnabled": false,
+      "AlarmActions": [],
+      "OKActions": [],
+      "InsufficientDataActions": [],
+      "StateValue": "OK",
+      "Namespace": "FIAP/Medallion",
+      "MetricName": "Failed",
+      "Dimensions": [
+        {
+          "Name": "Layer",
+          "Value": "gold"
+        },
+        {
+          "Name": "JobName",
+          "Value": "fiap-gold-inep-batch"
+        }
+      ],
+      "Statistic": "Sum",
+      "Period": 60,
+      "EvaluationPeriods": 1,
+      "DatapointsToAlarm": 1,
+      "Threshold": 1.0,
+      "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "fiap-inep-streaming-age",
+      "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-age",
+      "AlarmDescription": "Atraso de processamento maior ou igual a 120 segundos; revisar Lambda e fila.",
+      "ActionsEnabled": true,
+      "AlarmActions": [],
+      "OKActions": [],
+      "InsufficientDataActions": [],
+      "StateValue": "OK",
+      "Namespace": "AWS/SQS",
+      "MetricName": "ApproximateAgeOfOldestMessage",
+      "Dimensions": [
+        {
+          "Name": "QueueName",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "Statistic": "Maximum",
+      "Period": 60,
+      "EvaluationPeriods": 1,
+      "DatapointsToAlarm": 1,
+      "Threshold": 120.0,
+      "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "fiap-inep-streaming-dlq",
+      "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-dlq",
+      "AlarmDescription": "Mensagem na DLQ; revisar erros no CloudWatch e corrigir antes do redrive. Alerta visivel no console, sem e-mail configurado.",
+      "ActionsEnabled": true,
+      "AlarmActions": [],
+      "OKActions": [],
+      "InsufficientDataActions": [],
+      "StateValue": "ALARM",
+      "Namespace": "AWS/SQS",
+      "MetricName": "ApproximateNumberOfMessagesVisible",
+      "Dimensions": [
+        {
+          "Name": "QueueName",
+          "Value": "fiap-inep-streaming-dlq"
+        }
+      ],
+      "Statistic": "Maximum",
+      "Period": 60,
+      "EvaluationPeriods": 1,
+      "DatapointsToAlarm": 1,
+      "Threshold": 1.0,
+      "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "fiap-inep-streaming-rejected",
+      "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-rejected",
+      "AlarmDescription": "Evento rejeitado pelo consumidor; verificar logs e DLQ. Alerta visivel no console.",
+      "ActionsEnabled": true,
+      "AlarmActions": [],
+      "OKActions": [],
+      "InsufficientDataActions": [],
+      "StateValue": "OK",
+      "Namespace": "FIAP/Streaming",
+      "MetricName": "Failed",
+      "Dimensions": [
+        {
+          "Name": "Pipeline",
+          "Value": "fiap-inep-streaming"
+        }
+      ],
+      "Statistic": "Sum",
+      "Period": 60,
+      "EvaluationPeriods": 1,
+      "DatapointsToAlarm": 1,
+      "Threshold": 1.0,
+      "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+      "TreatMissingData": "notBreaching"
+    },
+    {
+      "AlarmName": "fiap-silver-inep-failure",
+      "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-silver-inep-failure",
+      "AlarmDescription": "FIAP: falha do pipeline silver; alarme de console sem destinatarios externos.",
+      "ActionsEnabled": false,
+      "AlarmActions": [],
+      "OKActions": [],
+      "InsufficientDataActions": [],
+      "StateValue": "OK",
+      "Namespace": "FIAP/Medallion",
+      "MetricName": "Failed",
+      "Dimensions": [
+        {
+          "Name": "Layer",
+          "Value": "silver"
+        },
+        {
+          "Name": "JobName",
+          "Value": "fiap-silver-inep-batch"
+        }
+      ],
+      "Statistic": "Sum",
+      "Period": 60,
+      "EvaluationPeriods": 1,
+      "DatapointsToAlarm": 1,
+      "Threshold": 1.0,
+      "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+      "TreatMissingData": "notBreaching"
+    }
+  ],
+  "alarm_query_succeeded": true,
+  "collector_sha256": "8e7fc35d85797793b6a4df1e41a5856a2a1ebd08e41223c9f42ea56b97c2f9a3"
+}

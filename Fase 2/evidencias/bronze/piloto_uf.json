@@ -1,0 +1,75 @@
+{
+  "verified_at_utc": "2026-10-20T18:22:36.638871+00:00",
+  "region": "us-east-2",
+  "run_id": "jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a",
+  "ingestion_date": "2026-10-20",
+  "allow_subset": true,
+  "tables": [
+    {
+      "table": "uf",
+      "source_table": "basedosdados.br_inep_avaliacao_alfabetizacao.uf",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/uf/ingestion_date=2026-10-20/run_id=jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a/",
+      "run_id": "jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a",
+      "status": "SUCCEEDED",
+      "started_at_utc": "2026-10-20T18:21:09.216734Z",
+      "source_read_finished_at_utc": "2026-10-20T18:21:30.408735Z",
+      "write_finished_at_utc": "2026-10-20T18:21:33.643564Z",
+      "finished_at_utc": "2026-10-20T18:21:35.201881Z",
+      "duration_seconds": 25.985,
+      "source_count": 145,
+      "target_count": 145,
+      "counts_match": true,
+      "source_column_count": 15,
+      "target_column_count": 18,
+      "parquet_file_count": 1,
+      "parquet_bytes": 12279,
+      "object_count": 1,
+      "object_bytes": 12279,
+      "verified_s3_inventory": {
+        "parquet_file_count": 1,
+        "parquet_bytes": 12279,
+        "object_count": 1,
+        "object_bytes": 12279
+      }
+    }
+  ],
+  "errors": [],
+  "glue_job_run": {
+    "Id": "jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a",
+    "JobName": "fiap-bronze-inep-batch",
+    "JobRunState": "SUCCEEDED",
+    "StartedOn": "2026-10-20T18:20:01.153000+00:00",
+    "CompletedOn": "2026-10-20T18:21:47.413000+00:00",
+    "LastModifiedOn": "2026-10-20T18:21:47.413000+00:00",
+    "ExecutionTime": 98,
+    "WorkerType": "G.1X",
+    "NumberOfWorkers": 2,
+    "DPUSeconds": 196.0,
+    "MaxCapacity": 2.0,
+    "GlueVersion": "5.1",
+    "ExecutionClass": "STANDARD",
+    "Attempt": 0,
+    "Timeout": 30
+  },
+  "script_uri": "s3://aws-glue-assets-637246457028-us-east-2/scripts/fiap-bronze-inep-batch/41303fa81a007db33730bc0991f2f4480a6d38e6a489cfeaffe5854a796b1d24/bronze_glue.py",
+  "manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a/manifest.json",
+  "manifest": {
+    "all_counts_match": true,
+    "duration_seconds": 33.266,
+    "finished_at_utc": "2026-10-20T18:21:35.249826Z",
+    "ingestion_date": "2026-10-20",
+    "is_full_batch": false,
+    "job_name": "fiap-bronze-inep-batch",
+    "requested_tables": [
+      "uf"
+    ],
+    "run_id": "jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a",
+    "script_version": "1.0.0",
+    "started_at_utc": "2026-10-20T18:21:01.983561Z",
+    "status": "SUCCEEDED",
+    "total_source_rows": 145,
+    "total_target_rows": 145,
+    "validated_table_count": 1
+  },
+  "validation_status": "SUCCEEDED"
+}

@@ -1,0 +1,628 @@
+{
+  "bucket": "fiap-tc-fase2-2026",
+  "prefix": "gold/inep/",
+  "complete": true,
+  "object_count": 103,
+  "total_bytes": 8029402,
+  "sha256": "1f2ec605ed3fd9abb73306b69577fdc952ff19aa93e866d9b97020ca5be2922e",
+  "objects": [
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00000-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+      "size": 3870,
+      "etag": "\"195e9ba05aab6f8883218c1ffc9de70e-1\"",
+      "last_modified": "2026-10-22T14:13:45Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00001-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+      "size": 3984,
+      "etag": "\"5c5dd92390f2c95328fcbe67ffbcce5d-1\"",
+      "last_modified": "2026-10-22T14:13:45Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00002-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+      "size": 3916,
+      "etag": "\"6faeaaba80f4664dec206b06de4e70f7-1\"",
+      "last_modified": "2026-10-22T14:13:45Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00003-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+      "size": 3928,
+      "etag": "\"8b377f9955fdf27be6247fd5e6405ff8-1\"",
+      "last_modified": "2026-10-22T14:13:45Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00004-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+      "size": 4028,
+      "etag": "\"8f4052b0157e296cdd686b9df8d57bcd-1\"",
+      "last_modified": "2026-10-22T14:13:45Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00005-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+      "size": 3883,
+      "etag": "\"2aabf1c5f53023e4061e55a8c2fcbee9-1\"",
+      "last_modified": "2026-10-22T14:13:45Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00006-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+      "size": 4012,
+      "etag": "\"c36ffa67945161406498fd8e2f62c4e6-1\"",
+      "last_modified": "2026-10-22T14:13:45Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00007-d4dbd06c-f42b-4435-8531-f2223aa9bc58-c000.snappy.parquet",
+      "size": 3772,
+      "etag": "\"27a3d602df49be89ebcfc72d9e2509d6-1\"",
+      "last_modified": "2026-10-22T14:13:45Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00000-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+      "size": 3870,
+      "etag": "\"7db23313fbb60a9d5f088b0b3a6fc3ad-1\"",
+      "last_modified": "2026-10-26T12:38:11Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00001-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+      "size": 3984,
+      "etag": "\"08be2347e84b4442e3573f73bed4969f-1\"",
+      "last_modified": "2026-10-26T12:38:11Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00002-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+      "size": 3916,
+      "etag": "\"18c19e1df5a34c44313bf42b3c57e802-1\"",
+      "last_modified": "2026-10-26T12:38:11Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00003-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+      "size": 3928,
+      "etag": "\"ec9b4faccb3f4fe7bc49127d17dc96b5-1\"",
+      "last_modified": "2026-10-26T12:38:11Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00004-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+      "size": 4028,
+      "etag": "\"a1bd515e160f5aedbe3d219181983bbd-1\"",
+      "last_modified": "2026-10-26T12:38:12Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00005-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+      "size": 3883,
+      "etag": "\"95527b0916dfee867378bdd1bafa9dec-1\"",
+      "last_modified": "2026-10-26T12:38:12Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00006-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+      "size": 4012,
+      "etag": "\"8efe125fcc3d50b72b9380aed43b54b6-1\"",
+      "last_modified": "2026-10-26T12:38:12Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00007-fd1ef2ee-9957-49a4-a3f7-f306464353d9-c000.snappy.parquet",
+      "size": 3772,
+      "etag": "\"9a1978b1a00c781feca873b9daaac725-1\"",
+      "last_modified": "2026-10-26T12:38:12Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00000-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+      "size": 3870,
+      "etag": "\"7db23313fbb60a9d5f088b0b3a6fc3ad-1\"",
+      "last_modified": "2026-10-26T12:33:32Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00001-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+      "size": 3984,
+      "etag": "\"08be2347e84b4442e3573f73bed4969f-1\"",
+      "last_modified": "2026-10-26T12:33:32Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00002-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+      "size": 3916,
+      "etag": "\"18c19e1df5a34c44313bf42b3c57e802-1\"",
+      "last_modified": "2026-10-26T12:33:32Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00003-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+      "size": 3928,
+      "etag": "\"ec9b4faccb3f4fe7bc49127d17dc96b5-1\"",
+      "last_modified": "2026-10-26T12:33:32Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00004-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+      "size": 4028,
+      "etag": "\"a1bd515e160f5aedbe3d219181983bbd-1\"",
+      "last_modified": "2026-10-26T12:33:32Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00005-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+      "size": 3883,
+      "etag": "\"95527b0916dfee867378bdd1bafa9dec-1\"",
+      "last_modified": "2026-10-26T12:33:32Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00006-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+      "size": 4012,
+      "etag": "\"8efe125fcc3d50b72b9380aed43b54b6-1\"",
+      "last_modified": "2026-10-26T12:33:32Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00007-41121dbe-7c1f-4a1d-8cea-ec52829ca591-c000.snappy.parquet",
+      "size": 3772,
+      "etag": "\"9a1978b1a00c781feca873b9daaac725-1\"",
+      "last_modified": "2026-10-26T12:33:32Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00000-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+      "size": 3870,
+      "etag": "\"07fcb680341657072b12ee3c2ed6fac9-1\"",
+      "last_modified": "2026-10-27T00:43:51Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00001-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+      "size": 3984,
+      "etag": "\"a3a9a0e6694c8aaa209d6277d1a5d66d-1\"",
+      "last_modified": "2026-10-27T00:43:51Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00002-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+      "size": 3916,
+      "etag": "\"001d8422a0007a53ee262ba6e575bc25-1\"",
+      "last_modified": "2026-10-27T00:43:51Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00003-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+      "size": 3928,
+      "etag": "\"61e186395bca1886e31070d32f4b1809-1\"",
+      "last_modified": "2026-10-27T00:43:51Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00004-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+      "size": 4028,
+      "etag": "\"6da57cd296f83aa379b0e4823b8581ba-1\"",
+      "last_modified": "2026-10-27T00:43:51Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00005-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+      "size": 3883,
+      "etag": "\"662a7ea5b0d0c805b8345286be8cfedb-1\"",
+      "last_modified": "2026-10-27T00:43:51Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00006-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+      "size": 4012,
+      "etag": "\"1c8b46e8b5fa4c727d6fe494b7e46e08-1\"",
+      "last_modified": "2026-10-27T00:43:51Z"
+    },
+    {
+      "key": "gold/inep/evolucao_temporal/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00007-d0b8f66f-e163-40df-9551-fdb793d55e1d-c000.snappy.parquet",
+      "size": 3772,
+      "etag": "\"a017252c6cc8277c613ad8f10b684a05-1\"",
+      "last_modified": "2026-10-27T00:43:51Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00000-78055f0c-4157-4eaa-a3c7-ebc4f8bc19a5-c000.snappy.parquet",
+      "size": 99247,
+      "etag": "\"d7bebcf7243f8956745e110e3df2fa6d-1\"",
+      "last_modified": "2026-10-22T14:13:57Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00001-78055f0c-4157-4eaa-a3c7-ebc4f8bc19a5-c000.snappy.parquet",
+      "size": 90976,
+      "etag": "\"3f8fa4cfc70f5ba0ab709de4e4a0b641-1\"",
+      "last_modified": "2026-10-22T14:13:57Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00002-78055f0c-4157-4eaa-a3c7-ebc4f8bc19a5-c000.snappy.parquet",
+      "size": 51541,
+      "etag": "\"bb2653e2e00c51ab355420a1f0298206-1\"",
+      "last_modified": "2026-10-22T14:13:57Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00003-78055f0c-4157-4eaa-a3c7-ebc4f8bc19a5-c000.snappy.parquet",
+      "size": 101387,
+      "etag": "\"afa24ee2a9ee485d7850a9493171b863-1\"",
+      "last_modified": "2026-10-22T14:13:57Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00004-78055f0c-4157-4eaa-a3c7-ebc4f8bc19a5-c000.snappy.parquet",
+      "size": 51561,
+      "etag": "\"8dbe3791d8462b9df111a85fe9bffded-1\"",
+      "last_modified": "2026-10-22T14:13:57Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00000-8e8db473-64a7-41c8-b470-8bdd541aa5b0-c000.snappy.parquet",
+      "size": 99247,
+      "etag": "\"4cf0536059f5c9695cc87a15c79aaa6b-1\"",
+      "last_modified": "2026-10-26T12:38:26Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00001-8e8db473-64a7-41c8-b470-8bdd541aa5b0-c000.snappy.parquet",
+      "size": 90976,
+      "etag": "\"83f09d43d5747c66ae45260c2f261143-1\"",
+      "last_modified": "2026-10-26T12:38:26Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00002-8e8db473-64a7-41c8-b470-8bdd541aa5b0-c000.snappy.parquet",
+      "size": 51541,
+      "etag": "\"593ddf1127ae8332db1aa2716f6eefb6-1\"",
+      "last_modified": "2026-10-26T12:38:26Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00003-8e8db473-64a7-41c8-b470-8bdd541aa5b0-c000.snappy.parquet",
+      "size": 101387,
+      "etag": "\"1030195382559d062db6c16117ef4ce0-1\"",
+      "last_modified": "2026-10-26T12:38:26Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00004-8e8db473-64a7-41c8-b470-8bdd541aa5b0-c000.snappy.parquet",
+      "size": 51561,
+      "etag": "\"920289891eb0c39fead7c0ab5ab102cc-1\"",
+      "last_modified": "2026-10-26T12:38:27Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00000-f1ca678d-12af-43bf-aa23-f6e9e852ee0c-c000.snappy.parquet",
+      "size": 99247,
+      "etag": "\"e03a73f431b1366257e88fb5c3854766-1\"",
+      "last_modified": "2026-10-27T00:44:19Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00001-f1ca678d-12af-43bf-aa23-f6e9e852ee0c-c000.snappy.parquet",
+      "size": 90976,
+      "etag": "\"ad5ff4d4a2431a97115220ec11f099f9-1\"",
+      "last_modified": "2026-10-27T00:44:19Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00002-f1ca678d-12af-43bf-aa23-f6e9e852ee0c-c000.snappy.parquet",
+      "size": 51541,
+      "etag": "\"cad9c6e99e7056ec3cc38ece7779174a-1\"",
+      "last_modified": "2026-10-27T00:44:19Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00003-f1ca678d-12af-43bf-aa23-f6e9e852ee0c-c000.snappy.parquet",
+      "size": 101387,
+      "etag": "\"523bb01d4098ede253e9d7f0cec36f42-1\"",
+      "last_modified": "2026-10-27T00:44:19Z"
+    },
+    {
+      "key": "gold/inep/features_alfabetizacao/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00004-f1ca678d-12af-43bf-aa23-f6e9e852ee0c-c000.snappy.parquet",
+      "size": 51561,
+      "etag": "\"6f314eae09b9fdfa7ccf088edcc90b22-1\"",
+      "last_modified": "2026-10-27T00:44:20Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00000-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+      "size": 164727,
+      "etag": "\"5877fa90506d3cc9e12724effafcd913-1\"",
+      "last_modified": "2026-10-22T14:13:36Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00001-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+      "size": 161703,
+      "etag": "\"1a5823d4297f486ea6aff11a55bac232-1\"",
+      "last_modified": "2026-10-22T14:13:36Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00002-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+      "size": 166953,
+      "etag": "\"8e33f142c0d21124f284bb33b881c549-1\"",
+      "last_modified": "2026-10-22T14:13:36Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00003-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+      "size": 164318,
+      "etag": "\"084651ca146dc358a9fbd2ea8c74db1e-1\"",
+      "last_modified": "2026-10-22T14:13:36Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00004-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+      "size": 167346,
+      "etag": "\"d28e74ee7db93f911311aa5d11b3540f-1\"",
+      "last_modified": "2026-10-22T14:13:37Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00005-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+      "size": 167089,
+      "etag": "\"662b2889008bcfa1ca6200cba31b213e-1\"",
+      "last_modified": "2026-10-22T14:13:37Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00006-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+      "size": 164460,
+      "etag": "\"5e83243cdf51b6d32818666d4a379b5a-1\"",
+      "last_modified": "2026-10-22T14:13:37Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00007-dce7ecc8-54db-4e3b-91c8-b9607e55f269-c000.snappy.parquet",
+      "size": 159707,
+      "etag": "\"335780f2dc71df05377d1a7ab5495207-1\"",
+      "last_modified": "2026-10-22T14:13:37Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00000-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+      "size": 164727,
+      "etag": "\"f9d186193c587a9e6c79987ad9b4258f-1\"",
+      "last_modified": "2026-10-26T12:38:03Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00001-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+      "size": 161703,
+      "etag": "\"266bdf75e8aed51b5bf4b9078a37bad8-1\"",
+      "last_modified": "2026-10-26T12:38:03Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00002-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+      "size": 166953,
+      "etag": "\"34821c1acbece5726cc9bf9b2091d532-1\"",
+      "last_modified": "2026-10-26T12:38:03Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00003-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+      "size": 164318,
+      "etag": "\"4a61b05d338d5623f0f3295a305c7af2-1\"",
+      "last_modified": "2026-10-26T12:38:03Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00004-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+      "size": 167346,
+      "etag": "\"73020c0c6eeeb358cf03a8191a775be7-1\"",
+      "last_modified": "2026-10-26T12:38:04Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00005-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+      "size": 167089,
+      "etag": "\"c46274539c71e8224b2e4d9688198664-1\"",
+      "last_modified": "2026-10-26T12:38:04Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00006-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+      "size": 164460,
+      "etag": "\"0552268029553ca5b951319a589770c1-1\"",
+      "last_modified": "2026-10-26T12:38:04Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00007-26b7f5e9-f521-4a1b-996a-e0a83a6c50c5-c000.snappy.parquet",
+      "size": 159707,
+      "etag": "\"e9721ede1925b17f77ef09624b9724d3-1\"",
+      "last_modified": "2026-10-26T12:38:04Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00000-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+      "size": 164727,
+      "etag": "\"f9d186193c587a9e6c79987ad9b4258f-1\"",
+      "last_modified": "2026-10-26T12:33:23Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00001-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+      "size": 161703,
+      "etag": "\"266bdf75e8aed51b5bf4b9078a37bad8-1\"",
+      "last_modified": "2026-10-26T12:33:23Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00002-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+      "size": 166953,
+      "etag": "\"34821c1acbece5726cc9bf9b2091d532-1\"",
+      "last_modified": "2026-10-26T12:33:23Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00003-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+      "size": 164318,
+      "etag": "\"4a61b05d338d5623f0f3295a305c7af2-1\"",
+      "last_modified": "2026-10-26T12:33:23Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00004-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+      "size": 167346,
+      "etag": "\"73020c0c6eeeb358cf03a8191a775be7-1\"",
+      "last_modified": "2026-10-26T12:33:24Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00005-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+      "size": 167089,
+      "etag": "\"c46274539c71e8224b2e4d9688198664-1\"",
+      "last_modified": "2026-10-26T12:33:24Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00006-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+      "size": 164460,
+      "etag": "\"0552268029553ca5b951319a589770c1-1\"",
+      "last_modified": "2026-10-26T12:33:24Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00007-58a9c099-4741-4ebb-9d94-0dcba423cf07-c000.snappy.parquet",
+      "size": 159707,
+      "etag": "\"e9721ede1925b17f77ef09624b9724d3-1\"",
+      "last_modified": "2026-10-26T12:33:24Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00000-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+      "size": 164727,
+      "etag": "\"4399778814678869330a3011d795fe7b-1\"",
+      "last_modified": "2026-10-27T00:43:42Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00001-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+      "size": 161703,
+      "etag": "\"039a9d2cdb9e08b0df50d2add0c7d4da-1\"",
+      "last_modified": "2026-10-27T00:43:42Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00002-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+      "size": 166953,
+      "etag": "\"7bf4c12da18597baeccbfd9e9759bf7c-1\"",
+      "last_modified": "2026-10-27T00:43:42Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00003-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+      "size": 164318,
+      "etag": "\"a59a648f6c16f6cd885c29ea2afa4f09-1\"",
+      "last_modified": "2026-10-27T00:43:42Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00004-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+      "size": 167346,
+      "etag": "\"2ae7a51b3eec4fe24176c78cdc332067-1\"",
+      "last_modified": "2026-10-27T00:43:43Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00005-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+      "size": 167089,
+      "etag": "\"fe64d36528462ecc47fdc46d70b9820d-1\"",
+      "last_modified": "2026-10-27T00:43:43Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00006-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+      "size": 164460,
+      "etag": "\"439198bc442756f6a7ffa21d218edd87-1\"",
+      "last_modified": "2026-10-27T00:43:43Z"
+    },
+    {
+      "key": "gold/inep/indicador_municipio/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00007-68611da9-c712-49e8-82f2-49be4122aba8-c000.snappy.parquet",
+      "size": 159707,
+      "etag": "\"03334ed633f1a088b55aca0eecd830e8-1\"",
+      "last_modified": "2026-10-27T00:43:43Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00000-856f2fef-bfc7-439e-94b3-b82d1fb1b806-c000.snappy.parquet",
+      "size": 332286,
+      "etag": "\"7eace61350f47fc05067280757c7d873-1\"",
+      "last_modified": "2026-10-22T14:13:42Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00001-856f2fef-bfc7-439e-94b3-b82d1fb1b806-c000.snappy.parquet",
+      "size": 8629,
+      "etag": "\"f69a86f1adfc9860fca57f5046b8fc8f-1\"",
+      "last_modified": "2026-10-22T14:13:42Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00002-856f2fef-bfc7-439e-94b3-b82d1fb1b806-c000.snappy.parquet",
+      "size": 6398,
+      "etag": "\"c1676867e4f21d52aca133a2de462160-1\"",
+      "last_modified": "2026-10-22T14:13:42Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00000-3aaf7bcf-e21d-4fe8-9b2c-2d4aeb82216b-c000.snappy.parquet",
+      "size": 332286,
+      "etag": "\"af94c369f2c14db571dc153ee5ceabb2-1\"",
+      "last_modified": "2026-10-26T12:38:08Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00001-3aaf7bcf-e21d-4fe8-9b2c-2d4aeb82216b-c000.snappy.parquet",
+      "size": 8629,
+      "etag": "\"651e02d8d50969f16c069d373189d185-1\"",
+      "last_modified": "2026-10-26T12:38:08Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00002-3aaf7bcf-e21d-4fe8-9b2c-2d4aeb82216b-c000.snappy.parquet",
+      "size": 6398,
+      "etag": "\"92999e7a5e5446cd09c21a5d48f9975b-1\"",
+      "last_modified": "2026-10-26T12:38:08Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00000-cb855966-0e02-4847-81e3-de95e088189a-c000.snappy.parquet",
+      "size": 332286,
+      "etag": "\"af94c369f2c14db571dc153ee5ceabb2-1\"",
+      "last_modified": "2026-10-26T12:33:29Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00001-cb855966-0e02-4847-81e3-de95e088189a-c000.snappy.parquet",
+      "size": 8629,
+      "etag": "\"651e02d8d50969f16c069d373189d185-1\"",
+      "last_modified": "2026-10-26T12:33:29Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00002-cb855966-0e02-4847-81e3-de95e088189a-c000.snappy.parquet",
+      "size": 6398,
+      "etag": "\"92999e7a5e5446cd09c21a5d48f9975b-1\"",
+      "last_modified": "2026-10-26T12:33:29Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00000-8c913eed-aec5-40b2-96ae-63333266e9de-c000.snappy.parquet",
+      "size": 332286,
+      "etag": "\"f7560192d2bec9e7211f3e8cc532ef33-1\"",
+      "last_modified": "2026-10-27T00:43:48Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00001-8c913eed-aec5-40b2-96ae-63333266e9de-c000.snappy.parquet",
+      "size": 8629,
+      "etag": "\"7341a70eec32d957ca52cf6ac6d12f16-1\"",
+      "last_modified": "2026-10-27T00:43:48Z"
+    },
+    {
+      "key": "gold/inep/resultado_vs_meta/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00002-8c913eed-aec5-40b2-96ae-63333266e9de-c000.snappy.parquet",
+      "size": 6398,
+      "etag": "\"db0fae8b8752c051567120e60206f1f6-1\"",
+      "last_modified": "2026-10-27T00:43:48Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00000-03153761-9e60-43d0-adc6-150a1445fd33-c000.snappy.parquet",
+      "size": 998,
+      "etag": "\"922fbff98b763ad78ef9c115f7eefafd-1\"",
+      "last_modified": "2026-10-22T14:13:51Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00001-03153761-9e60-43d0-adc6-150a1445fd33-c000.snappy.parquet",
+      "size": 2308,
+      "etag": "\"306ce574d87cc741033d9900d518f297-1\"",
+      "last_modified": "2026-10-22T14:13:51Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/part-00003-03153761-9e60-43d0-adc6-150a1445fd33-c000.snappy.parquet",
+      "size": 2308,
+      "etag": "\"5751af41f8d22f214b5f15592ed5f5a1-1\"",
+      "last_modified": "2026-10-22T14:13:51Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00000-8bba8105-785c-4e07-ba83-393e98a95f15-c000.snappy.parquet",
+      "size": 2334,
+      "etag": "\"0bc141f4c9686a73ab516c092e056760-1\"",
+      "last_modified": "2026-10-26T12:38:20Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00001-8bba8105-785c-4e07-ba83-393e98a95f15-c000.snappy.parquet",
+      "size": 8759,
+      "etag": "\"caf611544acdeeb98094e99cdf33bdf6-1\"",
+      "last_modified": "2026-10-26T12:38:20Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/part-00003-8bba8105-785c-4e07-ba83-393e98a95f15-c000.snappy.parquet",
+      "size": 8779,
+      "etag": "\"f28e6d26f95d32f99617af76f6651bff-1\"",
+      "last_modified": "2026-10-26T12:38:20Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00000-48d7bc20-4a56-4b9f-af22-938586e07a4e-c000.snappy.parquet",
+      "size": 2334,
+      "etag": "\"0bc141f4c9686a73ab516c092e056760-1\"",
+      "last_modified": "2026-10-26T12:33:41Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00001-48d7bc20-4a56-4b9f-af22-938586e07a4e-c000.snappy.parquet",
+      "size": 8759,
+      "etag": "\"caf611544acdeeb98094e99cdf33bdf6-1\"",
+      "last_modified": "2026-10-26T12:33:41Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/part-00003-48d7bc20-4a56-4b9f-af22-938586e07a4e-c000.snappy.parquet",
+      "size": 8779,
+      "etag": "\"f28e6d26f95d32f99617af76f6651bff-1\"",
+      "last_modified": "2026-10-26T12:33:41Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00000-995719e0-8c57-4eac-ad47-34319dee7831-c000.snappy.parquet",
+      "size": 2334,
+      "etag": "\"0bc141f4c9686a73ab516c092e056760-1\"",
+      "last_modified": "2026-10-27T00:44:13Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00001-995719e0-8c57-4eac-ad47-34319dee7831-c000.snappy.parquet",
+      "size": 8759,
+      "etag": "\"927f47d06976155ba60a439b31701212-1\"",
+      "last_modified": "2026-10-27T00:44:13Z"
+    },
+    {
+      "key": "gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/part-00003-995719e0-8c57-4eac-ad47-34319dee7831-c000.snappy.parquet",
+      "size": 8779,
+      "etag": "\"e28617422c7c8a61f75ad51bd2812c5a-1\"",
+      "last_modified": "2026-10-27T00:44:13Z"
+    }
+  ]
+}

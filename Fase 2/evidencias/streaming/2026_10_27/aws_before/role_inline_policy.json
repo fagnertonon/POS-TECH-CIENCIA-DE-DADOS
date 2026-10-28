@@ -1,0 +1,40 @@
+{
+  "RoleName": "fiap-lambda-inep-streaming",
+  "PolicyName": "StreamingScopedAccess",
+  "PolicyDocument": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": [
+          "sqs:ReceiveMessage",
+          "sqs:DeleteMessage",
+          "sqs:GetQueueAttributes"
+        ],
+        "Resource": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming",
+        "Effect": "Allow",
+        "Sid": "PollOnlyTheStreamingQueue"
+      },
+      {
+        "Action": [
+          "s3:GetObject",
+          "s3:PutObject"
+        ],
+        "Resource": [
+          "arn:aws:s3:::fiap-tc-fase2-2026/bronze/inep_streaming/*",
+          "arn:aws:s3:::fiap-tc-fase2-2026/auditoria/streaming/idempotency/*"
+        ],
+        "Effect": "Allow",
+        "Sid": "PersistOnlyStreamingObjects"
+      },
+      {
+        "Action": [
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "arn:aws:logs:us-east-2:637246457028:log-group:/aws/lambda/fiap-inep-streaming-consumer:*",
+        "Effect": "Allow",
+        "Sid": "WriteOnlyTheConsumerLogs"
+      }
+    ]
+  }
+}

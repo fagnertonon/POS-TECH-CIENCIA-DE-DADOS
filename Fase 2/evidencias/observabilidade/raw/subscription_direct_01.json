@@ -1,0 +1,8 @@
+{
+  "SubscriptionArn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais:a4d3b188-4e11-41f0-a76f-a7426f9dc0b9",
+  "TopicArn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+  "Owner": "637246457028",
+  "PendingConfirmation": "false",
+  "ConfirmationWasAuthenticated": "false",
+  "request_id": "9ecd5637-0bfa-51b1-bf8d-356c0e22c952"
+}

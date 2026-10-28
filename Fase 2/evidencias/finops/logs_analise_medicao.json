@@ -1,0 +1,214 @@
+{
+  "as_of": "2026-10-27",
+  "project_total_ceiling_usd": 140,
+  "measurement_status": "Passive storage measurement completed; growth forecast remains pending.",
+  "capture_start_brazil": "2026-10-27T09:39:06.980020-03:00",
+  "capture_end_brazil": "2026-10-27T09:39:07.043459-03:00",
+  "comparison_elapsed_minutes_approx": 58.91333826666666,
+  "current_stored_bytes": 7417226,
+  "stock_delta_bytes": 0,
+  "rows": [
+    {
+      "log_group": "/aws-glue/job-upgrades/",
+      "baseline_stored_bytes": 0,
+      "current_stored_bytes": 0,
+      "delta_bytes": 0,
+      "baseline_retention_days": null,
+      "current_retention_days": null,
+      "retention_unchanged": true,
+      "same_creation_time": true
+    },
+    {
+      "log_group": "/aws-glue/jobs/error",
+      "baseline_stored_bytes": 6773941,
+      "current_stored_bytes": 6773941,
+      "delta_bytes": 0,
+      "baseline_retention_days": null,
+      "current_retention_days": null,
+      "retention_unchanged": true,
+      "same_creation_time": true
+    },
+    {
+      "log_group": "/aws-glue/jobs/logs-v2",
+      "baseline_stored_bytes": 0,
+      "current_stored_bytes": 0,
+      "delta_bytes": 0,
+      "baseline_retention_days": null,
+      "current_retention_days": null,
+      "retention_unchanged": true,
+      "same_creation_time": true
+    },
+    {
+      "log_group": "/aws-glue/jobs/output",
+      "baseline_stored_bytes": 49633,
+      "current_stored_bytes": 49633,
+      "delta_bytes": 0,
+      "baseline_retention_days": null,
+      "current_retention_days": null,
+      "retention_unchanged": true,
+      "same_creation_time": true
+    },
+    {
+      "log_group": "/aws-glue/sessions/error",
+      "baseline_stored_bytes": 448967,
+      "current_stored_bytes": 448967,
+      "delta_bytes": 0,
+      "baseline_retention_days": null,
+      "current_retention_days": null,
+      "retention_unchanged": true,
+      "same_creation_time": true
+    },
+    {
+      "log_group": "/aws-glue/sessions/output",
+      "baseline_stored_bytes": 128826,
+      "current_stored_bytes": 128826,
+      "delta_bytes": 0,
+      "baseline_retention_days": null,
+      "current_retention_days": null,
+      "retention_unchanged": true,
+      "same_creation_time": true
+    },
+    {
+      "log_group": "/aws/lambda/fiap-inep-streaming-consumer",
+      "baseline_stored_bytes": 15859,
+      "current_stored_bytes": 15859,
+      "delta_bytes": 0,
+      "baseline_retention_days": 14,
+      "current_retention_days": 14,
+      "retention_unchanged": true,
+      "same_creation_time": true
+    }
+  ],
+  "incoming_by_group": [
+    {
+      "log_group": "/aws-glue/job-upgrades/",
+      "reported_sample_bytes": 1364.0,
+      "fully_contained_sample_bytes": 0
+    },
+    {
+      "log_group": "/aws-glue/jobs/error",
+      "reported_sample_bytes": 1518856.0,
+      "fully_contained_sample_bytes": 0
+    },
+    {
+      "log_group": "/aws-glue/jobs/logs-v2",
+      "reported_sample_bytes": 0,
+      "fully_contained_sample_bytes": 0
+    },
+    {
+      "log_group": "/aws-glue/jobs/output",
+      "reported_sample_bytes": 7652.0,
+      "fully_contained_sample_bytes": 0
+    },
+    {
+      "log_group": "/aws-glue/sessions/error",
+      "reported_sample_bytes": 222168.0,
+      "fully_contained_sample_bytes": 222168.0
+    },
+    {
+      "log_group": "/aws-glue/sessions/output",
+      "reported_sample_bytes": 150524.0,
+      "fully_contained_sample_bytes": 150524.0
+    },
+    {
+      "log_group": "/aws/lambda/fiap-inep-streaming-consumer",
+      "reported_sample_bytes": 0,
+      "fully_contained_sample_bytes": 0
+    }
+  ],
+  "reported_sample_incoming_bytes": 1900564.0,
+  "fully_contained_sample_incoming_bytes": 372692.0,
+  "incoming_window_limit": "CloudWatch rounds StartTime down; first 11:40 bucket overlaps the approximate baseline. Fully contained buckets avoid that overlap. Sample updates can lag.",
+  "new_runs_observed": [
+    {
+      "job_name": "fiap-gold-inep-batch",
+      "Id": "jr_3d9822c2d39a42f3642dec71ce1fda85439f170bff20bb6cb69f618911130c81",
+      "JobRunState": "STOPPED",
+      "StartedOn": "2026-10-27 11:40:21.036000+00:00",
+      "CompletedOn": "2026-10-27 11:42:40.846000+00:00",
+      "ExecutionTime": 105,
+      "DPUSeconds": 211.0
+    }
+  ],
+  "new_sessions_observed": [
+    {
+      "Id": "glue-studio-datapreview-1b05fe0b-ff08-43ba-9258-0a38a7c2a679",
+      "Status": "TIMEOUT",
+      "CreatedOn": "2026-10-27 11:58:52.115000+00:00",
+      "CompletedOn": "2026-10-27 12:29:44.593000+00:00",
+      "ExecutionTime": 1847.958,
+      "DPUSeconds": 3695.916
+    }
+  ],
+  "compute_pricing_reference": {
+    "etl_dpu_seconds": "211.0",
+    "interactive_dpu_seconds": "3695.916",
+    "unit_price_usd_per_dpu_hour": "0.44",
+    "etl_reference_usd": "0.02578888888888888888888888889",
+    "interactive_reference_usd": "0.4517230666666666666666666665",
+    "total_reference_usd": "0.4775119555555555555555555554",
+    "source": "recent_glue_runs.json; recent_session_metadata.json; previously verified Ohio Glue tariff.",
+    "limit": "Approximate compute equivalent of observed events, not a new invoice or proof of already posted billing. Do not blindly add to recorded costs. No actor attributed."
+  },
+  "active_runs_in_returned_pages": 0,
+  "active_sessions_in_returned_page": 0,
+  "credits_displayed_usd": 136.59,
+  "credit_observation_utc": "2026-10-27T12:45:32.760Z",
+  "credit_source": "Fresh Free Tier console page; creditos_na_medicao.png",
+  "credit_limit": "Displayed balance may lag activity; not proof that observed extra compute is already reflected.",
+  "stored_bytes_historical_series_available": 0,
+  "retention_or_deletion_events_returned": 0,
+  "metadata_api_calls_excluding_sts": 25,
+  "api_breakdown": {
+    "logs.describe_log_groups": 1,
+    "cloudwatch.get_metric_statistics": 7,
+    "logs.describe_log_streams": 7,
+    "cloudwatch.list_metrics": 1,
+    "glue.get_job_runs": 4,
+    "glue.list_sessions": 1,
+    "cloudtrail.lookup_events": 4
+  },
+  "collector_sts_calls": 1,
+  "prior_separate_account_confirmation_sts_calls": 1,
+  "cost_explorer_calls_this_followup": 0,
+  "collector_aws_resource_changes": [],
+  "collector_starts_jobs_or_sessions": false,
+  "original_available_subtotal_usd_30d": "2.153727359314417228867142857",
+  "original_complete_total_usd_30d": null,
+  "remaining_quantity_gaps": [
+    "BigQuery Storage Read bytes",
+    "GCP egress bytes",
+    "Representative future compressed log storage growth"
+  ],
+  "budget_email_status_last_confirmed": "0/1 verified; Inactive. AWS IAM denied verification sending.",
+  "conclusion": "All seven reported stocks remained identical despite IncomingBytes and Glue activity. Reporting lag is a plausible explanation, not a measured compression ratio. This short, mixed workload window does not establish future storage growth per complete pipeline cycle.",
+  "next_measurement": "Capture again after stock updates; retain a clean before/after window around an already necessary complete cycle. Do not start jobs solely for this measurement, assume zero growth, enable billing or change retention.",
+  "official_sources": [
+    "https://www.repost.aws/knowledge-center/cloudwatch-log-group-size",
+    "https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutRetentionPolicy.html",
+    "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/cwl_intelligent_tier.html"
+  ],
+  "subsequent_passive_capture_T2": {
+    "source": "finops_logs_T2.json",
+    "sha256": "8100cb6f421d56a841cf64717f99a392d186b24003401c2b3b7461dd95c288b1",
+    "capture_start_utc": "2026-10-27T12:49:15.070973+00:00",
+    "capture_end_utc": "2026-10-27T12:49:15.155158+00:00",
+    "capture_end_brazil": "2026-10-27T09:49:15.155158-03:00",
+    "total_stored_bytes": 7417226,
+    "comparison": {
+      "baseline_file": "/home/cloudshell-user/finops_logs_20261027_02/estoque_T1.json",
+      "baseline_capture_end_utc": "2026-10-27 12:39:07.043459+00:00",
+      "elapsed_seconds": 608.111699,
+      "net_delta_bytes": 0,
+      "groups_added": [],
+      "groups_removed": [],
+      "retention_or_creation_changed": [],
+      "limitation": "Net stock change alone does not establish log generation per cycle. Check expiry/deletions, activity and reporting lag."
+    },
+    "additional_api_calls": {
+      "sts.get_caller_identity": 1,
+      "logs.describe_log_groups": 1
+    },
+    "conclusion": "Stock still unchanged after a further 608 seconds. This confirms the reported snapshot, not zero future generation."
+  }
+}

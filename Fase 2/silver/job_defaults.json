@@ -1,0 +1,10 @@
+{
+  "--BUCKET": "fiap-tc-fase2-2026",
+  "--PREFIX": "silver/inep",
+  "--AUDIT_PREFIX": "auditoria/silver",
+  "--BRONZE_MANIFEST_URI": "s3://fiap-tc-fase2-2026/auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/manifest.json",
+  "--LIMIAR_JOIN": "0.95",
+  "--ALUNOS_PARTITIONS": "4",
+  "--DATABASE_SILVER": "tech_challenge_fase2_silver",
+  "--REGISTER_CATALOG": "true"
+}

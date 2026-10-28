@@ -1,0 +1,159 @@
+{
+  "schema": "fiap.finops-two-remaining-measurements.v1",
+  "created_at_utc": "2026-10-27T19:02:11.149986+00:00",
+  "created_at_sao_paulo": "2026-10-27T16:02:11.281980-03:00",
+  "status": "EXISTING_RECORD_INVESTIGATION_COMPLETE_TWO_QUANTITIES_UNAVAILABLE",
+  "budget_total_usd": 140,
+  "horizon_days": 30,
+  "scenario_batches": 4,
+  "scenario_replays": 4,
+  "scenario_is_assumption_not_schedule_or_assignment_frequency": true,
+  "forecast": {
+    "source": "../finops_pendencias_20261027/modelo_finops.json",
+    "sha256": "97cc2f32069a916b479395c0c0026b6997335b12bd23e7f74e5a05478b38c26b",
+    "changed": false,
+    "available_partial_subtotal_usd": "2.150746423749768960700274291",
+    "complete_total_usd": null,
+    "numeric_cost_rows": 19,
+    "pending_cost_rows": [
+      "gcp_egress",
+      "logs_archive_growth"
+    ],
+    "budget_guaranteed": false,
+    "support_request_proxy_limitation": "Six-day support-request window did not include a representative Bronze/replay cycle."
+  },
+  "credits": {
+    "previous_snapshot_usd": 136.59,
+    "refreshed_this_investigation": false,
+    "previous_snapshot_utc": "2026-10-27T17:18:45.813843+00:00",
+    "note": "AWS credits are not cross-cloud cash. Do not subtract gross usage again from this displayed balance."
+  },
+  "required_cost_table": [
+    {
+      "service": "Transferência GCP para AWS",
+      "unit": "GiB de saída faturável",
+      "measured_quantity": null,
+      "unit_price_usd": 0.12,
+      "projected_monthly_usd": null,
+      "price_condition": "Reference general-network destination/range; no billable volume or matching SKU established.",
+      "source": "raw/gcp_egress_existing_records.json; analise_egress.json"
+    },
+    {
+      "service": "Crescimento comprimido dos logs",
+      "unit": "GB-mês de incremento",
+      "measured_quantity": null,
+      "unit_price_usd": 0.03,
+      "projected_monthly_usd": null,
+      "source": "raw/aws_archive_sources.json; raw/aws_data_exports_existing.json; analise_arquivo.json"
+    },
+    {
+      "service": "Estoque comprimido conhecido, já incluído no subtotal",
+      "unit": "GB-mês normalizado",
+      "measured_bytes": 7417226,
+      "measured_quantity": "0.00690783001482486724853515625",
+      "unit_price_usd": 0.03,
+      "projected_monthly_usd": "0.0002072349004447460174560546875",
+      "assumption": "Existing stock held for one normalized month; not per-cycle growth.",
+      "already_in_forecast": true,
+      "add_again": false,
+      "source": "raw/aws_archive_sources.json; ../finops_pendencias_20261027/modelo_finops.json"
+    }
+  ],
+  "gcp_findings": {
+    "observed_at_utc": "2026-10-27T18:43:34.314932+00:00",
+    "logical_collector_calls": 11,
+    "collector_errors": 0,
+    "billing_enabled_current": false,
+    "linked_billing_account_returned": null,
+    "visible_billing_accounts": 0,
+    "visible_datasets": 0,
+    "consumer_broad_audit_entries": 0,
+    "owner_private_log_access": false,
+    "owner_private_logs_read": false,
+    "billed_egress_bytes": null,
+    "scope_conclusion": "No billable egress quantity was located in the currently accessible records; this is not proof of zero consumption or absence of historical bills.",
+    "project_container_search_includes_all_buckets": true,
+    "default_view_did_not_hide_project_container_results": true
+  },
+  "aws_findings": {
+    "logical_archive_collector_calls": 6,
+    "logical_data_exports_collector_calls": 1,
+    "stock_capture_utc": "2026-10-27T18:48:31.029755Z",
+    "stock_capture_sao_paulo": "2026-10-27T15:48:31.029755-03:00",
+    "stock_compressed_bytes": 7417226,
+    "project_log_groups": 7,
+    "stock_changed_from_previous": false,
+    "cloudtrail_window": {
+      "start_inclusive_utc": "2026-10-20T00:00:00Z",
+      "end_inclusive_utc": "2026-10-27T18:48:29.617502Z"
+    },
+    "cloudtrail_counts": {
+      "DeleteLogGroup": 0,
+      "DeleteLogStream": 0,
+      "PutRetentionPolicy": 1,
+      "DeleteRetentionPolicy": 0
+    },
+    "retention_event_was_historical": "Lambda retention14 set on2026-10-20T18:37:43Z, not changed by this work.",
+    "legacy_cur_access": "AWS_ACCESS_DENIED",
+    "cur2_data_exports_access": "AWS_ACCESS_DENIED",
+    "report_existence": null,
+    "denial_is_chatgpt_auto_review": false,
+    "compressed_growth_per_cycle_bytes": null,
+    "scope_conclusion": "Stable compressed stock and complete management-event history do not provide a compressed byte increment per cycle. AccessDenied does not prove reports do not exist."
+  },
+  "scope": {
+    "new_data_extractions": false,
+    "new_sql_queries": false,
+    "new_glue_jobs": false,
+    "new_storage_read_sessions": false,
+    "billing_activated": false,
+    "apis_activated": false,
+    "iam_changed": false,
+    "new_export_created": false,
+    "email_sent": false,
+    "cost_explorer_called": false,
+    "credentials_exported": false,
+    "logical_collector_calls_total": 18,
+    "logical_calls_denied": 2
+  },
+  "next_required_existing_evidence": [
+    "For egress: existing billed network SKU quantities or audited serializedResponseBytes correlated to the original extraction, supplied by an authorized billing/data-source administrator.",
+    "For logs: existing archive usage records by resource and hour, plus retention/activity context that supports attributing an increment to the intended run.",
+    "Existing CUR/CUR2 metadata access is currently denied. An administrator may supply existing files/records; no new report, IAM change or billing activation was performed.",
+    "If those historical quantities were never recorded or cannot be supplied, keep both lines n.a. A new identical metric query cannot recreate the missing history."
+  ],
+  "evidence_files": {
+    "raw/gcp_egress_existing_records.json": {
+      "sha256": "4c8c8a4c563dbce1a6128c7888491f7607df588164209363ce33cbcef7e24e8e",
+      "bytes": 2849
+    },
+    "raw/aws_archive_sources.json": {
+      "sha256": "c340c053359f620172d281dc667917d96aeaf2c57e7389db4482bb2384d35caf",
+      "bytes": 8227
+    },
+    "raw/aws_data_exports_existing.json": {
+      "sha256": "c1802758d01d7f322eafaabff271a23061fa2f4fe83268c55abdbc7a22a185ef",
+      "bytes": 1007
+    },
+    "analise_egress.json": {
+      "sha256": "4cf8db339d8853e4288f8b99ff69b23bc00ac9489f706c300ea4dccdb5e30d94",
+      "bytes": 7655
+    },
+    "analise_arquivo.json": {
+      "sha256": "01442808ab804e337d6e263470a49c4099a6c03b70e085578cfb473f4f589b5d",
+      "bytes": 14159
+    }
+  },
+  "screenshots": [
+    "aws_resultado_console.png",
+    "gcp_resultado_console.png"
+  ],
+  "official_sources": [
+    "https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list",
+    "https://docs.cloud.google.com/logging/docs/logs-views",
+    "https://docs.cloud.google.com/billing/docs/how-to/cost-table",
+    "https://www.repost.aws/knowledge-center/cloudwatch-log-group-size",
+    "https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_DataExports_ListExports.html",
+    "https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_cur_DescribeReportDefinitions.html"
+  ]
+}

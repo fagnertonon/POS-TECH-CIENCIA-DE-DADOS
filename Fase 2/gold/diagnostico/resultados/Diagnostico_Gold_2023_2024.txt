@@ -1,0 +1,107 @@
+DIAGNÓSTICO GOLD - CONFERÊNCIA COM A FONTE OFICIAL DO INEP
+Data: 26/10/2026
+
+CONCLUSÃO
+A ausência de São Paulo nos microdados de alunos de 2023 é uma limitação
+comprovada da publicação oficial. O cálculo da Gold foi reproduzido diretamente
+dos CSVs originais do Inep. Para os agregados verificados, a ingestão e a Silver
+preservaram as contagens, os totais ponderados e as taxas da fonte.
+
+Isso identifica uma diferença de cobertura entre bases usadas na validação de
+2023. Não demonstra que a ausência de SP, isoladamente, explica os 1,5622 pontos
+percentuais da diferença nacional, nem encerra a análise metodológica de MS/SE.
+
+RESULTADOS
+2023: 1.747.439 registros de alunos; 1.502.809 avaliados nas redes públicas.
+      23 UFs com microdados; ausentes AC, DF, RR e SP.
+      Taxa ponderada recalculada: 57,4622%.
+      Indicador oficial usado na Gold: 55,9%.
+      Diferença: +1,5622 ponto percentual.
+2024: 2.120.560 registros de alunos, incluindo 25 da rede privada.
+      2.120.535 registros públicos; 1.851.828 avaliados públicos.
+      26 UFs com microdados; ausente RR.
+      Taxa ponderada pública: 59,1996%; oficial: 59,2%.
+      Diferença: -0,0004 ponto percentual.
+Total dos CSVs oficiais: 3.867.999 registros, igual ao manifesto Silver.
+
+As contagens por UF de registros, avaliados e alfabetizados, as somas dos pesos
+e as taxas arredondadas coincidiram com o JSON enviado nos dois anos.
+Esta conferência de agregados não é uma comparação de identidade linha a linha.
+
+PESOS, FLAGS E REDES
+No universo público analisado: zero pesos inválidos, zero divergências das flags
+em relação ao dicionário e zero alfabetização nula entre os avaliados.
+Não existem linhas nativas de rede 5 nesses recortes. Portanto, a hipótese de
+duplicação por misturar uma rede 5 nativa com o agregado de 2+3 não ocorreu.
+
+COMPROVAÇÃO DOCUMENTAL
+O LeiaMe_Microdados_AEEB_2023.pdf, página 17, informa expressamente que TS_ALUNO
+foi gerada sem São Paulo e poderá ser complementada em uma retificação futura.
+O TS_ESTADO.csv oficial de 2023 tem 24 UFs, incluindo SP; TS_ALUNO tem 23.
+
+O LeiaMe_Microdados_AEEB_2024.pdf, páginas 21 e 22, informa que Roraima não
+realizou a avaliação de 2024 e que RR e DF não enviaram resultados por UF.
+O resultado da rede estadual do DF está em TS_MUNICIPIO. Assim, o aviso do DF
+na conferência não demonstra falha na ingestão do arquivo TS_ESTADO.
+
+DIVERGÊNCIAS ESTADUAIS DE 2023 QUE DEVEM CONTINUAR VISÍVEIS
+MS: recalculada 47,7649%; referência UF 47,45%; diferença +0,3149 p.p.
+SE: recalculada 31,0381%; referência UF 31,30%; diferença -0,2619 p.p.
+Os números exatos exportados estão em Conclusoes_Diagnostico.json.
+Essas divergências são reproduzidas diretamente da fonte de alunos; a causa
+metodológica ou de revisão da publicação ainda não está demonstrada.
+
+CORREÇÃO RECOMENDADA PARA A PRÓXIMA VERSÃO DA GOLD (AINDA NÃO APLICADA)
+1. Preservar taxa oficial, taxa recalculada, diferença e tolerância de 0,1 p.p.
+2. Acrescentar quantidade de UFs, UFs presentes/ausentes, status de
+   comparabilidade e nota da fonte à validação nacional.
+3. Registrar 2023 como COBERTURA_DIFERENTE_COMPROVADA. Seu resultado numérico
+   continua fora da tolerância; essa condição não deve ser convertida em passe.
+4. Em 2024, registrar a aderência numérica ao valor oficial no universo
+   disponível, sem afirmar cobertura de 27 UFs ou identidade de metodologia.
+5. Manter MS e SE em 2023 como divergências da fonte a estudar, sem substituir
+   seus valores, fabricar pesos, ampliar tolerância ou ocultar a ocorrência.
+6. Versionar as evidências e a justificativa no relatório/README do projeto.
+7. Uma alteração de esquema/código deve ser testada e publicada em nova
+   execução e novo histórico. Um novo processamento não acrescentará SP a uma
+   fonte que continua sem seus microdados; não há motivo para repetir a Bronze
+   apenas para tentar fazer o valor nacional coincidir.
+
+COMO FOI FEITO
+- Lido o JSON enviado, relativo aos snapshots exatos de Silver e Gold.
+- Baixados os ZIPs públicos de 2023 e 2024 do Inep, em ambiente local.
+- Lido TS_ALUNO.csv em lotes de 100.000 registros, sem exportar identificadores.
+- Selecionadas série 2 e redes 2/3, com presença e prova preenchida iguais a 1.
+- Recalculada a taxa: 100 * soma(peso dos alfabetizados) / soma(peso avaliados).
+- Comparados os agregados por UF com o JSON da Silver.
+- Lido TS_ESTADO.csv para conferir as diferenças de cobertura entre tabelas.
+- Lidas e conferidas as páginas relevantes dos documentos técnicos oficiais.
+- Preservados os hashes SHA-256 dos ZIPs e do JSON para rastreabilidade.
+
+REPRODUÇÃO LOCAL (POWERSHELL, SEM CONEXÃO COM AWS)
+Instale requirements_analise_local.txt em um ambiente Python local e coloque
+os dois ZIPs oficiais em uma pasta fontes. Execute na pasta deste pacote:
+
+python analisar_cobertura_fonte.py --audit conferencia_pesos_silver.json --source-dir fontes --output nova_comparacao.json
+
+O script recusa sobrescrever um resultado anterior. O JSON da comparação
+incluído contém os caminhos do computador que realizou esta auditoria; eles
+servem como registro de origem e não são pré-requisitos para outro computador.
+
+FONTES E EVIDÊNCIAS
+Página oficial 2023:
+https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/avaliacao-da-alfabetizacao/resultados/2023
+Página oficial 2024:
+https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/avaliacao-da-alfabetizacao/resultados/2024
+ZIP 2023:
+https://download.inep.gov.br/dados_abertos/microdados_avaliacao_da_alfabetizacao_2023.zip
+ZIP 2024:
+https://download.inep.gov.br/dados_abertos/microdados_avaliacao_da_alfabetizacao_2024.zip
+
+Os ZIPs oficiais não foram incorporados ao pacote, para mantê-lo pequeno.
+Os dois Leia-Me foram extraídos sem alteração dos ZIPs e estão incluídos.
+
+ESCOPO E CUSTO DESTA ETAPA
+Nenhum job Glue iniciado. Nenhuma consulta BigQuery realizada. Nenhum objeto
+AWS alterado. Foram usados arquivos locais e downloads públicos do Inep.
+O código Gold implantado e os relatórios anteriores não foram sobrescritos.

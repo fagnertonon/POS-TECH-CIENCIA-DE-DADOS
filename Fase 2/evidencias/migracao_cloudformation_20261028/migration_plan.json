@@ -1,0 +1,88 @@
+{
+  "schema": "fiap.cfn-alert-migration.v1",
+  "account": "637246457028",
+  "region": "us-east-2",
+  "before_snapshot_sha256": "110b78a9fd1f0520f879642b0764e5d6a083b151633968da6dfe54a4b8c7e8bf",
+  "import_stack": "fiap-inep-observabilidade",
+  "streaming_stack": "fiap-inep-streaming",
+  "import_existing_resources": [
+    {
+      "ResourceType": "AWS::SNS::Topic",
+      "LogicalResourceId": "AlertTopic",
+      "ResourceIdentifier": {
+        "TopicArn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais"
+      }
+    },
+    {
+      "ResourceType": "AWS::SNS::Subscription",
+      "LogicalResourceId": "AlertSubscription",
+      "ResourceIdentifier": {
+        "Arn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais:a4d3b188-4e11-41f0-a76f-a7426f9dc0b9"
+      }
+    },
+    {
+      "ResourceType": "AWS::SNS::TopicInlinePolicy",
+      "LogicalResourceId": "AlertTopicPolicy",
+      "ResourceIdentifier": {
+        "TopicArn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais"
+      }
+    },
+    {
+      "ResourceType": "AWS::Events::Rule",
+      "LogicalResourceId": "BatchFailureRule",
+      "ResourceIdentifier": {
+        "Arn": "arn:aws:events:us-east-2:637246457028:rule/fiap-inep-batch-failures"
+      }
+    },
+    {
+      "ResourceType": "AWS::CloudWatch::Alarm",
+      "LogicalResourceId": "SilverFailureAlarm",
+      "ResourceIdentifier": {
+        "AlarmName": "fiap-silver-inep-failure"
+      }
+    },
+    {
+      "ResourceType": "AWS::CloudWatch::Alarm",
+      "LogicalResourceId": "GoldFailureAlarm",
+      "ResourceIdentifier": {
+        "AlarmName": "fiap-gold-inep-failure"
+      }
+    }
+  ],
+  "streaming_modified_logical_ids": [
+    "DeadLetterAlarm",
+    "RejectedEventAlarm",
+    "QueueAgeAlarm"
+  ],
+  "new_operational_resources": [],
+  "delete_or_replace_resources": [],
+  "new_subscriptions": [],
+  "new_emails": [],
+  "iam_changes": [],
+  "job_runs": [],
+  "replays": [],
+  "project_total_ceiling_usd": 140,
+  "template_hashes": {
+    "import_template.json": "b232b5902789f4c0ce8adb918f9082dadb86ab1e9178fca23a4701a1d7e0b45b",
+    "resources_to_import.json": "deab5314ede4cae49cbc481648840daf998118b845e4c7c5c7417f622ba1d879",
+    "streaming_update_template.json": "25881ea4ccbd2e2d0ccf728c4fd584c907c64eee86718abcee9390945d4a5563",
+    "lambda_source_identity.json": "76db2b563ab6ae8a40b12719447b54e2d7d0df3332aaecdd95813047c6753244"
+  },
+  "subscription_preserved_arn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais:a4d3b188-4e11-41f0-a76f-a7426f9dc0b9",
+  "approved_scope": "Human explicitly requested migration of existing alerts to CloudFormation.",
+  "status": "LOCAL_PLAN_READY_FOR_NATIVE_CHANGE_SET_REVIEW",
+  "revision": 3,
+  "native_validation_repair": "Remove Outputs from IMPORT template; AWS rejected adding Outputs before any execution. Same six existing resources, unchanged migration scope.",
+  "lambda_source_reconciliation": {
+    "source_sha256": "a41f53b8ac337c198fb0c8ad955eeb35184bbf1857ffca3a02c9a998b39a9ee7",
+    "installed_code_zip_sha256_base64": "ZlKsp6oUtqxAFOYudrhcxgFuDAETZFMiVjXdk+yxAoo=",
+    "historical_running_source_exact_match": true,
+    "source_reference_run": "sim_gold_20261027T155422Z_a52da0a7",
+    "live_zip_hash_matches_historical_verified_zip": true,
+    "api_export_source_sha256": "50d5dfe342e2e10c779cd5f47d884bbb32ce6bd9b47f91f5ea5b1d5146919a7d",
+    "api_export_matches_ascii_replacement_only": true,
+    "native_change_set_must_still_exclude_ConsumerFunction": true,
+    "reason": "GetTemplate export replaces non-ASCII characters with question marks. Reuse the proven installed source to avoid a Lambda Code change. Never permit a native ConsumerFunction modification."
+  },
+  "native_update_repair": "Native update that included ConsumerFunction Code was blocked and not executed. Restore exact previously verified source; native change set must contain only three alarm modifications."
+}

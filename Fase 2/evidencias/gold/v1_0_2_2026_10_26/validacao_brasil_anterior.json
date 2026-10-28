@@ -1,0 +1,22 @@
+[
+  {
+    "ano": 2023,
+    "serie": "2",
+    "rede": "5",
+    "alunos_avaliados": 1502809,
+    "taxa_alfabetizacao_calculada": 57.4622,
+    "taxa_oficial_publicada": 55.9,
+    "diferenca_pp": 1.5622,
+    "dentro_tolerancia": false
+  },
+  {
+    "ano": 2024,
+    "serie": "2",
+    "rede": "5",
+    "alunos_avaliados": 1851828,
+    "taxa_alfabetizacao_calculada": 59.1996,
+    "taxa_oficial_publicada": 59.2,
+    "diferenca_pp": -0.0004,
+    "dentro_tolerancia": true
+  }
+]

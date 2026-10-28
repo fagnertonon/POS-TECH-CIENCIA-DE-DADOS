@@ -1,0 +1,82 @@
+{
+  "bucket": "fiap-tc-fase2-2026",
+  "prefix": "auditoria/bronze/",
+  "complete": true,
+  "object_count": 12,
+  "total_bytes": 46195,
+  "sha256": "549c4dd47b500104bd06542bbb3a474c79f4471685f76ff95b2d32453c0124d2",
+  "objects": [
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a/manifest.json",
+      "size": 3861,
+      "etag": "\"d74142ca7d17cad5d9e793d1bb0373de\"",
+      "last_modified": "2026-10-20T18:21:36Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a/start.json",
+      "size": 698,
+      "etag": "\"8d9ca8aafc387f557cf5431a5f51ba3d\"",
+      "last_modified": "2026-10-20T18:21:03Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_9404029562645113adbcf690415694fbf7f7d4b64e357b8e196f0a5c21a6564a/tables/uf.json",
+      "size": 2846,
+      "etag": "\"b0f85275cdc6e3480c3ac3a786d79e57\"",
+      "last_modified": "2026-10-20T18:21:36Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/manifest.json",
+      "size": 20682,
+      "etag": "\"06f2ca1efbc0c3b39a6907b9560ab4d7\"",
+      "last_modified": "2026-10-20T18:25:17Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/start.json",
+      "size": 857,
+      "etag": "\"5337be8e9440569329d120423dd09310\"",
+      "last_modified": "2026-10-20T18:23:43Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/alunos.json",
+      "size": 2387,
+      "etag": "\"b61d67e5bb9addd962b8ba9d2902b46d\"",
+      "last_modified": "2026-10-20T18:24:46Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/dicionario.json",
+      "size": 1533,
+      "etag": "\"891a04c555b09620d4b04aaa1ffbaec5\"",
+      "last_modified": "2026-10-20T18:25:17Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/meta_alfabetizacao_brasil.json",
+      "size": 2408,
+      "etag": "\"9379bf7136d568189c885936d7a3d8bb\"",
+      "last_modified": "2026-10-20T18:25:03Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/meta_alfabetizacao_municipio.json",
+      "size": 2683,
+      "etag": "\"2eb008adca0a1c49b2692203dde11b25\"",
+      "last_modified": "2026-10-20T18:25:12Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/meta_alfabetizacao_uf.json",
+      "size": 2519,
+      "etag": "\"df02c755b3858b7272fa93c9010314c2\"",
+      "last_modified": "2026-10-20T18:25:08Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/municipio.json",
+      "size": 2876,
+      "etag": "\"c004b0fbfe506b3b673edd2babefd616\"",
+      "last_modified": "2026-10-20T18:24:54Z"
+    },
+    {
+      "key": "auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/tables/uf.json",
+      "size": 2845,
+      "etag": "\"052ca66b5705ec95d4dcf0140bc56419\"",
+      "last_modified": "2026-10-20T18:24:59Z"
+    }
+  ]
+}

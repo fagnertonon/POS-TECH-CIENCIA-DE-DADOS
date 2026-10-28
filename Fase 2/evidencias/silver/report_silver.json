@@ -1,0 +1,5498 @@
+{
+  "observed_at_utc": "2026-10-22T14:03:02.595929Z",
+  "account": "637246457028",
+  "region": "us-east-2",
+  "layer": "silver",
+  "run_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+  "job_name": "fiap-silver-inep-batch",
+  "glue_job_run": {
+    "Id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+    "JobName": "fiap-silver-inep-batch",
+    "JobRunState": "SUCCEEDED",
+    "StartedOn": "2026-10-22T13:58:01.325000+00:00",
+    "CompletedOn": "2026-10-22T14:02:27.352000+00:00",
+    "LastModifiedOn": "2026-10-22T14:02:27.352000+00:00",
+    "ExecutionTime": 258,
+    "DPUSeconds": 517.0,
+    "WorkerType": "G.1X",
+    "NumberOfWorkers": 2,
+    "MaxCapacity": 2.0,
+    "Timeout": 15,
+    "GlueVersion": "5.1",
+    "Attempt": 0,
+    "LogGroupName": "/aws-glue/jobs",
+    "allocated_worker_seconds_estimate": 516,
+    "allocated_worker_seconds_note": "ExecutionTime x NumberOfWorkers; nao e fatura nem preco",
+    "source_and_mode_parameters": {}
+  },
+  "parquet_footer_verification_requested": true,
+  "status": "SUCCEEDED",
+  "published": true,
+  "errors": [],
+  "pending": [],
+  "tables": [
+    {
+      "table": "dicionario",
+      "target_uri": "s3://fiap-tc-fase2-2026/silver/inep/dicionario/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "source_count": 27,
+      "deduplicated_count": 27,
+      "target_count": 27,
+      "errors": [],
+      "parquet_file_count": 1,
+      "parquet_bytes": 5610,
+      "object_count": 1,
+      "object_bytes": 5610,
+      "audit_table_status": "SUCCEEDED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "id_tabela",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "nome_coluna",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "chave",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "cobertura_temporal",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "valor",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_ingestao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_ingestao",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "tabela_origem",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_processamento_silver",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_processamento_silver",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "bronze_run_id",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": null,
+      "transform_duration_seconds": 22.55,
+      "write_readback_duration_seconds": 1.879,
+      "independent_footer_rows": 27,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    },
+    {
+      "table": "municipio",
+      "target_uri": "s3://fiap-tc-fase2-2026/silver/inep/municipio/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "source_count": 23995,
+      "deduplicated_count": 23995,
+      "target_count": 23995,
+      "errors": [],
+      "parquet_file_count": 1,
+      "parquet_bytes": 533824,
+      "object_count": 1,
+      "object_bytes": 533824,
+      "audit_table_status": "SUCCEEDED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "id_municipio",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "media_portugues",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_0",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_1",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_2",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_3",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_4",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_5",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_6",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_7",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_8",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "id_ingestao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_ingestao",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "tabela_origem",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_processamento_silver",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_processamento_silver",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "bronze_run_id",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": null,
+      "transform_duration_seconds": 10.732,
+      "write_readback_duration_seconds": 1.718,
+      "independent_footer_rows": 23995,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    },
+    {
+      "table": "uf",
+      "target_uri": "s3://fiap-tc-fase2-2026/silver/inep/uf/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "source_count": 145,
+      "deduplicated_count": 145,
+      "target_count": 145,
+      "errors": [],
+      "parquet_file_count": 1,
+      "parquet_bytes": 15240,
+      "object_count": 1,
+      "object_bytes": 15240,
+      "audit_table_status": "SUCCEEDED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "sigla_uf",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "media_portugues",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_0",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_1",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_2",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_3",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_4",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_5",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_6",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_7",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_8",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "id_ingestao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_ingestao",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "tabela_origem",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_processamento_silver",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_processamento_silver",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "bronze_run_id",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": null,
+      "transform_duration_seconds": 5.724,
+      "write_readback_duration_seconds": 1.215,
+      "independent_footer_rows": 145,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    },
+    {
+      "table": "meta_alfabetizacao_brasil",
+      "target_uri": "s3://fiap-tc-fase2-2026/silver/inep/meta_alfabetizacao_brasil/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "source_count": 3,
+      "deduplicated_count": 3,
+      "target_count": 3,
+      "errors": [],
+      "parquet_file_count": 1,
+      "parquet_bytes": 7771,
+      "object_count": 1,
+      "object_bytes": 7771,
+      "audit_table_status": "SUCCEEDED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2024",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2025",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2026",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2027",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2028",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2029",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2030",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "percentual_participacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "id_ingestao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_ingestao",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "tabela_origem",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_processamento_silver",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_processamento_silver",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "bronze_run_id",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": null,
+      "transform_duration_seconds": 2.526,
+      "write_readback_duration_seconds": 0.992,
+      "independent_footer_rows": 3,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    },
+    {
+      "table": "meta_alfabetizacao_uf",
+      "target_uri": "s3://fiap-tc-fase2-2026/silver/inep/meta_alfabetizacao_uf/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "source_count": 81,
+      "deduplicated_count": 81,
+      "target_count": 81,
+      "errors": [],
+      "parquet_file_count": 1,
+      "parquet_bytes": 10550,
+      "object_count": 1,
+      "object_bytes": 10550,
+      "audit_table_status": "SUCCEEDED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "sigla_uf",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2024",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2025",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2026",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2027",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2028",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2029",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2030",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "percentual_participacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "id_ingestao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_ingestao",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "tabela_origem",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_processamento_silver",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_processamento_silver",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "bronze_run_id",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": null,
+      "transform_duration_seconds": 2.585,
+      "write_readback_duration_seconds": 0.956,
+      "independent_footer_rows": 81,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    },
+    {
+      "table": "meta_alfabetizacao_municipio",
+      "target_uri": "s3://fiap-tc-fase2-2026/silver/inep/meta_alfabetizacao_municipio/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "source_count": 10704,
+      "deduplicated_count": 10704,
+      "target_count": 10704,
+      "errors": [],
+      "parquet_file_count": 1,
+      "parquet_bytes": 260710,
+      "object_count": 1,
+      "object_bytes": 260710,
+      "audit_table_status": "SUCCEEDED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "id_municipio",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2024",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2025",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2026",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2027",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2028",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2029",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2030",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "nivel_alfabetizacao",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "percentual_participacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "id_ingestao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_ingestao",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "tabela_origem",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_processamento_silver",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_processamento_silver",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "bronze_run_id",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": null,
+      "transform_duration_seconds": 3.102,
+      "write_readback_duration_seconds": 1.245,
+      "independent_footer_rows": 10704,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    },
+    {
+      "table": "alunos",
+      "target_uri": "s3://fiap-tc-fase2-2026/silver/inep/alunos/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "source_count": 3867999,
+      "deduplicated_count": 3867999,
+      "target_count": 3867999,
+      "errors": [],
+      "parquet_file_count": 4,
+      "parquet_bytes": 61072563,
+      "object_count": 4,
+      "object_bytes": 61072563,
+      "audit_table_status": "SUCCEEDED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "id_municipio",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_escola",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_aluno",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "caderno",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "presenca",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "preenchimento_caderno",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "alfabetizado",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "proficiencia",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "peso_aluno",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "id_ingestao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_ingestao",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "tabela_origem",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "presenca_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "preenchimento_caderno_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "alfabetizado_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "presente",
+            "nullable": true,
+            "type": "boolean"
+          },
+          {
+            "metadata": {},
+            "name": "caderno_preenchido",
+            "nullable": true,
+            "type": "boolean"
+          },
+          {
+            "metadata": {},
+            "name": "avaliado",
+            "nullable": true,
+            "type": "boolean"
+          },
+          {
+            "metadata": {},
+            "name": "alfabetizado_avaliado",
+            "nullable": true,
+            "type": "boolean"
+          },
+          {
+            "metadata": {},
+            "name": "id_processamento_silver",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "data_processamento_silver",
+            "nullable": true,
+            "type": "timestamp"
+          },
+          {
+            "metadata": {},
+            "name": "bronze_run_id",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": null,
+      "transform_duration_seconds": 140.48,
+      "write_readback_duration_seconds": 13.06,
+      "independent_footer_rows": 3867999,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    }
+  ],
+  "quality_scope": "Regras Spark persistidas no manifesto; observador nao recalcula valores das linhas",
+  "audit_uris": {
+    "manifest.json": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+    "start.json": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/start.json"
+  },
+  "publication_manifest_present": true,
+  "manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+  "manifest_sha256": "a3492216b59dc5aa8d4eeb840a14c34b6451757783c7270bf4d5f898cd5c955f",
+  "manifest_status": "SUCCEEDED",
+  "duration_seconds": 218.953,
+  "started_at_utc": "2026-10-22T13:58:36.514415Z",
+  "finished_at_utc": "2026-10-22T14:02:15.467602Z",
+  "source_manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/manifest.json",
+  "catalog_registered": true,
+  "quality": [
+    {
+      "entity": "dicionario",
+      "rule": "bronze_manifest_count",
+      "type": "blocking",
+      "measured": 27,
+      "limit": 27,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "normalized_source:nonempty",
+      "type": "blocking",
+      "measured": 27,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "normalized_source:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "dictionary_conflicting_values",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "dictionary_null_value",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "deduplicated:nonempty",
+      "type": "blocking",
+      "measured": 27,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "deduplicated:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "deduplicated:key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "duplicates_removed",
+      "type": "informational",
+      "measured": 0,
+      "limit": null,
+      "passed": true,
+      "detail": "Ultima data_ingestao, desempate por SHA256 de toda a linha normalizada"
+    },
+    {
+      "entity": "dicionario",
+      "rule": "transformed:nonempty",
+      "type": "blocking",
+      "measured": 27,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "transformed:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "transformation_preserves_deduplicated_count",
+      "type": "blocking",
+      "measured": 27,
+      "limit": 27,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "invalid_ano",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "invalid_municipio",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "bronze_manifest_count",
+      "type": "blocking",
+      "measured": 23995,
+      "limit": 23995,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:nonempty",
+      "type": "blocking",
+      "measured": 23995,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_0",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_1",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_2",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_3",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_4",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_5",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_6",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_7",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_8",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:nonempty",
+      "type": "blocking",
+      "measured": 23995,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_0",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_1",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_2",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_3",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_4",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_5",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_6",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_7",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_8",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "deduplicated:key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "duplicates_removed",
+      "type": "informational",
+      "measured": 0,
+      "limit": null,
+      "passed": true,
+      "detail": "Ultima data_ingestao, desempate por SHA256 de toda a linha normalizada"
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:rede:lookup_nonempty",
+      "type": "blocking",
+      "measured": 7,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:rede:right_key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:rede:left_cardinality",
+      "type": "blocking",
+      "measured": 23995,
+      "limit": 23995,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:rede:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "23995/23995 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 23995,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:rede:unmapped_nonnull",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:serie:lookup_nonempty",
+      "type": "blocking",
+      "measured": 1,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:serie:right_key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:serie:left_cardinality",
+      "type": "blocking",
+      "measured": 23995,
+      "limit": 23995,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:serie:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "23995/23995 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 23995,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:serie:unmapped_nonnull",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:nonempty",
+      "type": "blocking",
+      "measured": 23995,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_0",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_1",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_2",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_3",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_4",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_5",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_6",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_7",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_8",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "transformation_preserves_deduplicated_count",
+      "type": "blocking",
+      "measured": 23995,
+      "limit": 23995,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "invalid_ano",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "invalid_uf",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "bronze_manifest_count",
+      "type": "blocking",
+      "measured": 145,
+      "limit": 145,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:nonempty",
+      "type": "blocking",
+      "measured": 145,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_0",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_1",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_2",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_3",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_4",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_5",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_6",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_7",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "normalized_source:bad_rate__proporcao_aluno_nivel_8",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:nonempty",
+      "type": "blocking",
+      "measured": 145,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_0",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_1",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_2",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_3",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_4",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_5",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_6",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_7",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:bad_rate__proporcao_aluno_nivel_8",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "deduplicated:key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "duplicates_removed",
+      "type": "informational",
+      "measured": 0,
+      "limit": null,
+      "passed": true,
+      "detail": "Ultima data_ingestao, desempate por SHA256 de toda a linha normalizada"
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:rede:lookup_nonempty",
+      "type": "blocking",
+      "measured": 7,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:rede:right_key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:rede:left_cardinality",
+      "type": "blocking",
+      "measured": 145,
+      "limit": 145,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:rede:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "145/145 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 145,
+      "eligible_rows": 145
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:rede:unmapped_nonnull",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:serie:lookup_nonempty",
+      "type": "blocking",
+      "measured": 1,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:serie:right_key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:serie:left_cardinality",
+      "type": "blocking",
+      "measured": 145,
+      "limit": 145,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:serie:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "145/145 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 145,
+      "eligible_rows": 145
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:serie:unmapped_nonnull",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:nonempty",
+      "type": "blocking",
+      "measured": 145,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_0",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_1",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_2",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_3",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_4",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_5",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_6",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_7",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformed:bad_rate__proporcao_aluno_nivel_8",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "transformation_preserves_deduplicated_count",
+      "type": "blocking",
+      "measured": 145,
+      "limit": 145,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "invalid_ano",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "bronze_manifest_count",
+      "type": "blocking",
+      "measured": 3,
+      "limit": 3,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "normalized_source:nonempty",
+      "type": "blocking",
+      "measured": 3,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "normalized_source:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "normalized_source:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:nonempty",
+      "type": "blocking",
+      "measured": 3,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "deduplicated:key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "duplicates_removed",
+      "type": "informational",
+      "measured": 0,
+      "limit": null,
+      "passed": true,
+      "detail": "Ultima data_ingestao, desempate por SHA256 de toda a linha normalizada"
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformed:nonempty",
+      "type": "blocking",
+      "measured": 3,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformed:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformed:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "transformation_preserves_deduplicated_count",
+      "type": "blocking",
+      "measured": 3,
+      "limit": 3,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "invalid_ano",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "invalid_uf",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "bronze_manifest_count",
+      "type": "blocking",
+      "measured": 81,
+      "limit": 81,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "normalized_source:nonempty",
+      "type": "blocking",
+      "measured": 81,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "normalized_source:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "normalized_source:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:nonempty",
+      "type": "blocking",
+      "measured": 81,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "deduplicated:key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "duplicates_removed",
+      "type": "informational",
+      "measured": 0,
+      "limit": null,
+      "passed": true,
+      "detail": "Ultima data_ingestao, desempate por SHA256 de toda a linha normalizada"
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformed:nonempty",
+      "type": "blocking",
+      "measured": 81,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformed:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformed:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "transformation_preserves_deduplicated_count",
+      "type": "blocking",
+      "measured": 81,
+      "limit": 81,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "invalid_ano",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "invalid_municipio",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "bronze_manifest_count",
+      "type": "blocking",
+      "measured": 10704,
+      "limit": 10704,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "normalized_source:nonempty",
+      "type": "blocking",
+      "measured": 10704,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "normalized_source:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "normalized_source:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "normalized_source:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:nonempty",
+      "type": "blocking",
+      "measured": 10704,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "deduplicated:key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "duplicates_removed",
+      "type": "informational",
+      "measured": 0,
+      "limit": null,
+      "passed": true,
+      "detail": "Ultima data_ingestao, desempate por SHA256 de toda a linha normalizada"
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformed:nonempty",
+      "type": "blocking",
+      "measured": 10704,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformed:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformed:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformed:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "transformation_preserves_deduplicated_count",
+      "type": "blocking",
+      "measured": 10704,
+      "limit": 10704,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "invalid_ano",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "invalid_municipio",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "bronze_manifest_count",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 3867999,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "normalized_source:nonempty",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "normalized_source:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "normalized_source:null_municipio",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "deduplicated:nonempty",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "deduplicated:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "deduplicated:null_municipio",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "deduplicated:key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "duplicates_removed",
+      "type": "informational",
+      "measured": 0,
+      "limit": null,
+      "passed": true,
+      "detail": "Ultima data_ingestao, desempate por SHA256 de toda a linha normalizada"
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:rede:lookup_nonempty",
+      "type": "blocking",
+      "measured": 4,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:rede:right_key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:rede:left_cardinality",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 3867999,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:rede:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "3867999/3867999 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 3867999,
+      "eligible_rows": 3867999
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:rede:unmapped_nonnull",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:serie:lookup_nonempty",
+      "type": "blocking",
+      "measured": 1,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:serie:right_key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:serie:left_cardinality",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 3867999,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:serie:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "3867999/3867999 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 3867999,
+      "eligible_rows": 3867999
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:serie:unmapped_nonnull",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:presenca:lookup_nonempty",
+      "type": "blocking",
+      "measured": 2,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:presenca:right_key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:presenca:left_cardinality",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 3867999,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:presenca:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "3867999/3867999 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 3867999,
+      "eligible_rows": 3867999
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:presenca:unmapped_nonnull",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:preenchimento_caderno:lookup_nonempty",
+      "type": "blocking",
+      "measured": 2,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:preenchimento_caderno:right_key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:preenchimento_caderno:left_cardinality",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 3867999,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:preenchimento_caderno:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "3867999/3867999 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 3867999,
+      "eligible_rows": 3867999
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:preenchimento_caderno:unmapped_nonnull",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:alfabetizado:lookup_nonempty",
+      "type": "blocking",
+      "measured": 2,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:alfabetizado:right_key_unique",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:alfabetizado:left_cardinality",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 3867999,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:alfabetizado:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "3867999/3867999 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 3867999,
+      "eligible_rows": 3867999
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:alfabetizado:unmapped_nonnull",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "boolean_domain:presenca",
+      "type": "blocking",
+      "measured": [
+        "Ausente",
+        "Presente"
+      ],
+      "limit": [
+        "Ausente",
+        "Presente"
+      ],
+      "passed": true,
+      "detail": "Nao converte categoria desconhecida ou nula em falso"
+    },
+    {
+      "entity": "alunos",
+      "rule": "boolean_domain:preenchimento_caderno",
+      "type": "blocking",
+      "measured": [
+        "Prova não preenchida",
+        "Prova preenchida"
+      ],
+      "limit": [
+        "Prova não preenchida",
+        "Prova preenchida"
+      ],
+      "passed": true,
+      "detail": "Nao converte categoria desconhecida ou nula em falso"
+    },
+    {
+      "entity": "alunos",
+      "rule": "boolean_domain:alfabetizado",
+      "type": "blocking",
+      "measured": [
+        "Não",
+        "Sim"
+      ],
+      "limit": [
+        "Não",
+        "Sim"
+      ],
+      "passed": true,
+      "detail": "Nao converte categoria desconhecida ou nula em falso"
+    },
+    {
+      "entity": "alunos",
+      "rule": "unknown_evaluation",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "unknown_evaluated_alf",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "invalid_evaluated_weight",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "evaluated_rows",
+      "type": "blocking",
+      "measured": 3354661,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "transformed:nonempty",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "transformed:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "transformed:null_municipio",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "transformation_preserves_deduplicated_count",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 3867999,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "readback:nonempty",
+      "type": "blocking",
+      "measured": 27,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "readback:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "readback_count_matches",
+      "type": "blocking",
+      "measured": 27,
+      "limit": 27,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "readback_schema_matches",
+      "type": "blocking",
+      "measured": [
+        [
+          "id_tabela",
+          "string"
+        ],
+        [
+          "nome_coluna",
+          "string"
+        ],
+        [
+          "chave",
+          "string"
+        ],
+        [
+          "cobertura_temporal",
+          "string"
+        ],
+        [
+          "valor",
+          "string"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "limit": [
+        [
+          "id_tabela",
+          "string"
+        ],
+        [
+          "nome_coluna",
+          "string"
+        ],
+        [
+          "chave",
+          "string"
+        ],
+        [
+          "cobertura_temporal",
+          "string"
+        ],
+        [
+          "valor",
+          "string"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "dicionario",
+      "rule": "parquet_files_nonempty",
+      "type": "blocking",
+      "measured": 1,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:nonempty",
+      "type": "blocking",
+      "measured": 23995,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_0",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_1",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_2",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_3",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_4",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_5",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_6",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_7",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_8",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback_count_matches",
+      "type": "blocking",
+      "measured": 23995,
+      "limit": 23995,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "readback_schema_matches",
+      "type": "blocking",
+      "measured": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "id_municipio",
+          "string"
+        ],
+        [
+          "serie",
+          "string"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "taxa_alfabetizacao",
+          "double"
+        ],
+        [
+          "media_portugues",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_0",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_1",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_2",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_3",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_4",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_5",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_6",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_7",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_8",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "serie_descricao",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "limit": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "id_municipio",
+          "string"
+        ],
+        [
+          "serie",
+          "string"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "taxa_alfabetizacao",
+          "double"
+        ],
+        [
+          "media_portugues",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_0",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_1",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_2",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_3",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_4",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_5",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_6",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_7",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_8",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "serie_descricao",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "municipio",
+      "rule": "parquet_files_nonempty",
+      "type": "blocking",
+      "measured": 1,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:nonempty",
+      "type": "blocking",
+      "measured": 145,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_0",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_1",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_2",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_3",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_4",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_5",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_6",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_7",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback:bad_rate__proporcao_aluno_nivel_8",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback_count_matches",
+      "type": "blocking",
+      "measured": 145,
+      "limit": 145,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "readback_schema_matches",
+      "type": "blocking",
+      "measured": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "sigla_uf",
+          "string"
+        ],
+        [
+          "serie",
+          "string"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "taxa_alfabetizacao",
+          "double"
+        ],
+        [
+          "media_portugues",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_0",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_1",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_2",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_3",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_4",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_5",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_6",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_7",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_8",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "serie_descricao",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "limit": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "sigla_uf",
+          "string"
+        ],
+        [
+          "serie",
+          "string"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "taxa_alfabetizacao",
+          "double"
+        ],
+        [
+          "media_portugues",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_0",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_1",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_2",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_3",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_4",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_5",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_6",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_7",
+          "double"
+        ],
+        [
+          "proporcao_aluno_nivel_8",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "serie_descricao",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "uf",
+      "rule": "parquet_files_nonempty",
+      "type": "blocking",
+      "measured": 1,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback:nonempty",
+      "type": "blocking",
+      "measured": 3,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback_count_matches",
+      "type": "blocking",
+      "measured": 3,
+      "limit": 3,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "readback_schema_matches",
+      "type": "blocking",
+      "measured": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "taxa_alfabetizacao",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2024",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2025",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2026",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2027",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2028",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2029",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2030",
+          "double"
+        ],
+        [
+          "percentual_participacao",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "limit": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "taxa_alfabetizacao",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2024",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2025",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2026",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2027",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2028",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2029",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2030",
+          "double"
+        ],
+        [
+          "percentual_participacao",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_brasil",
+      "rule": "parquet_files_nonempty",
+      "type": "blocking",
+      "measured": 1,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback:nonempty",
+      "type": "blocking",
+      "measured": 81,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback_count_matches",
+      "type": "blocking",
+      "measured": 81,
+      "limit": 81,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "readback_schema_matches",
+      "type": "blocking",
+      "measured": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "sigla_uf",
+          "string"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "taxa_alfabetizacao",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2024",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2025",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2026",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2027",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2028",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2029",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2030",
+          "double"
+        ],
+        [
+          "percentual_participacao",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "limit": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "sigla_uf",
+          "string"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "taxa_alfabetizacao",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2024",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2025",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2026",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2027",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2028",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2029",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2030",
+          "double"
+        ],
+        [
+          "percentual_participacao",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_uf",
+      "rule": "parquet_files_nonempty",
+      "type": "blocking",
+      "measured": 1,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback:nonempty",
+      "type": "blocking",
+      "measured": 10704,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback:bad_rate__taxa_alfabetizacao",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2024",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2025",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2026",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2027",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2028",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2029",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback:bad_rate__meta_alfabetizacao_2030",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback_count_matches",
+      "type": "blocking",
+      "measured": 10704,
+      "limit": 10704,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "readback_schema_matches",
+      "type": "blocking",
+      "measured": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "id_municipio",
+          "string"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "taxa_alfabetizacao",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2024",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2025",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2026",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2027",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2028",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2029",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2030",
+          "double"
+        ],
+        [
+          "nivel_alfabetizacao",
+          "bigint"
+        ],
+        [
+          "percentual_participacao",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "limit": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "id_municipio",
+          "string"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "taxa_alfabetizacao",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2024",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2025",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2026",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2027",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2028",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2029",
+          "double"
+        ],
+        [
+          "meta_alfabetizacao_2030",
+          "double"
+        ],
+        [
+          "nivel_alfabetizacao",
+          "bigint"
+        ],
+        [
+          "percentual_participacao",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "meta_alfabetizacao_municipio",
+      "rule": "parquet_files_nonempty",
+      "type": "blocking",
+      "measured": 1,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "readback:nonempty",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "readback:null_keys",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "readback:null_municipio",
+      "type": "blocking",
+      "measured": 0,
+      "limit": 0,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "readback_count_matches",
+      "type": "blocking",
+      "measured": 3867999,
+      "limit": 3867999,
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "readback_schema_matches",
+      "type": "blocking",
+      "measured": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "id_municipio",
+          "string"
+        ],
+        [
+          "id_escola",
+          "string"
+        ],
+        [
+          "id_aluno",
+          "string"
+        ],
+        [
+          "caderno",
+          "string"
+        ],
+        [
+          "serie",
+          "string"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "presenca",
+          "string"
+        ],
+        [
+          "preenchimento_caderno",
+          "string"
+        ],
+        [
+          "alfabetizado",
+          "string"
+        ],
+        [
+          "proficiencia",
+          "double"
+        ],
+        [
+          "peso_aluno",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "serie_descricao",
+          "string"
+        ],
+        [
+          "presenca_descricao",
+          "string"
+        ],
+        [
+          "preenchimento_caderno_descricao",
+          "string"
+        ],
+        [
+          "alfabetizado_descricao",
+          "string"
+        ],
+        [
+          "presente",
+          "boolean"
+        ],
+        [
+          "caderno_preenchido",
+          "boolean"
+        ],
+        [
+          "avaliado",
+          "boolean"
+        ],
+        [
+          "alfabetizado_avaliado",
+          "boolean"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "limit": [
+        [
+          "ano",
+          "int"
+        ],
+        [
+          "id_municipio",
+          "string"
+        ],
+        [
+          "id_escola",
+          "string"
+        ],
+        [
+          "id_aluno",
+          "string"
+        ],
+        [
+          "caderno",
+          "string"
+        ],
+        [
+          "serie",
+          "string"
+        ],
+        [
+          "rede",
+          "string"
+        ],
+        [
+          "presenca",
+          "string"
+        ],
+        [
+          "preenchimento_caderno",
+          "string"
+        ],
+        [
+          "alfabetizado",
+          "string"
+        ],
+        [
+          "proficiencia",
+          "double"
+        ],
+        [
+          "peso_aluno",
+          "double"
+        ],
+        [
+          "id_ingestao",
+          "string"
+        ],
+        [
+          "data_ingestao",
+          "timestamp"
+        ],
+        [
+          "tabela_origem",
+          "string"
+        ],
+        [
+          "rede_descricao",
+          "string"
+        ],
+        [
+          "serie_descricao",
+          "string"
+        ],
+        [
+          "presenca_descricao",
+          "string"
+        ],
+        [
+          "preenchimento_caderno_descricao",
+          "string"
+        ],
+        [
+          "alfabetizado_descricao",
+          "string"
+        ],
+        [
+          "presente",
+          "boolean"
+        ],
+        [
+          "caderno_preenchido",
+          "boolean"
+        ],
+        [
+          "avaliado",
+          "boolean"
+        ],
+        [
+          "alfabetizado_avaliado",
+          "boolean"
+        ],
+        [
+          "id_processamento_silver",
+          "string"
+        ],
+        [
+          "data_processamento_silver",
+          "timestamp"
+        ],
+        [
+          "bronze_run_id",
+          "string"
+        ]
+      ],
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "entity": "alunos",
+      "rule": "parquet_files_nonempty",
+      "type": "blocking",
+      "measured": 4,
+      "limit": 1,
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "joins": [
+    {
+      "entity": "municipio",
+      "rule": "decode:rede:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "23995/23995 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 23995,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "municipio",
+      "rule": "decode:serie:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "23995/23995 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 23995,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:rede:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "145/145 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 145,
+      "eligible_rows": 145
+    },
+    {
+      "entity": "uf",
+      "rule": "decode:serie:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "145/145 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 145,
+      "eligible_rows": 145
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:rede:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "3867999/3867999 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 3867999,
+      "eligible_rows": 3867999
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:serie:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "3867999/3867999 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 3867999,
+      "eligible_rows": 3867999
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:presenca:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "3867999/3867999 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 3867999,
+      "eligible_rows": 3867999
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:preenchimento_caderno:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "3867999/3867999 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 3867999,
+      "eligible_rows": 3867999
+    },
+    {
+      "entity": "alunos",
+      "rule": "decode:alfabetizado:match_rate",
+      "type": "blocking",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "3867999/3867999 codigos nao nulos; nulos de origem preservados",
+      "matched_rows": 3867999,
+      "eligible_rows": 3867999
+    }
+  ],
+  "total_output_rows": 3902954,
+  "total_parquet_files": 10,
+  "total_parquet_bytes": 61906268,
+  "verification_status": "SUCCEEDED"
+}

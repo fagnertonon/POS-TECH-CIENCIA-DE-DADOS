@@ -1,0 +1,132 @@
+FINOPS FIAP — FECHAMENTO DE 27/10/2026
+
+OBJETIVO E ORÇAMENTO
+
+Tabela conforme a Fase 2: Serviço, Unidade, Quantidade medida, Preço unitário e
+Custo mensal projetado. O teto é US$140 para todo o projeto, sem renovação mensal.
+Consumo bruto no Cost Explorer: US$3,4142741034, da conta AWS inteira, em outubro
+até a consulta de 27/10, excluindo créditos. Billing é estimado e pode ter atraso.
+O console exibia US$136,59 de créditos e 172 dias. Créditos AWS não cobrem GCP.
+
+COMO LER A PROJEÇÃO
+
+A planilha contém as abas Projecao e Medicoes. O cenário ajustável usa quatro
+ciclos completos de validação e quatro replays em 30 dias. Essa frequência é uma
+hipótese do grupo; o enunciado não a impõe. Batch por nova publicação, sem agenda.
+
+Subtotal das parcelas calculáveis: US$2,1537273593 por 30 dias, equivalente a preços
+pagos antes de créditos/franquias, nas condições e no volume medidos. O total
+completo permanece n.a. por três parcelas sem quantidade medida: Storage Read e
+egress GCP; crescimento futuro do armazenamento comprimido de logs. Ausência de
+medição não significa custo zero. Esse subtotal não garante o custo integral.
+
+Data Catalog usa tarifas equivalentes acima da franquia; o uso atual está na faixa
+gratuita. Lambda, SQS e CloudWatch também tiveram benefícios no extrato atual.
+
+MEDIÇÕES E PREMISSAS
+
+- Glue: Bronze 293, Silver 517 e Gold 306 DPU-segundos por execução de referência.
+  DPU-segundos / 3.600 x US$0,44 x ciclos = custo ETL. A Gold de 27/10 00:41 UTC
+  validou cinco conjuntos e 46.342 linhas, sem fixture de cobertura.
+- S3: 273.422.339 bytes em 348 objetos de dois buckets, com assets e histórico.
+  Dados e auditorias das referências: 144.656.163 bytes adicionais por ciclo.
+  Estoque médio mensal = estoque inicial + incremento x ciclos / 2, pressupondo
+  execuções distribuídas uniformemente e preservação dos snapshots.
+- Lambda: 39 REPORTs únicos, 9.663 ms faturados a 256 MB = 2,41575 GB-segundos.
+  Não substituir BilledDuration pela latência Duration no cálculo.
+- SQS: 59.306 requests no extrato. Média de 8.636,5 leituras vazias/dia em seis dias
+  completos ociosos. Consumidor segue habilitado; ausência de produtor não zera polling.
+- CloudWatch: 307 métrica-horas Glue nas referências e 7 métrica-horas FIAP por
+  ensaio. Projeção: 314 x ciclos / 720 x US$0,30. Cinco alarmes Standard medidos.
+- Logs: 18.979.873 bytes ingeridos em sete dias e estoque comprimido de 7.417.226
+  bytes. O crescimento comprimido futuro não foi inferido da ingestão. O ritmo
+  histórico inclui logs de previews; é uma hipótese conservadora de apoio.
+- Um segredo foi contado, sem ler/exportar seu valor.
+- Requests auxiliares S3/SQS/Secrets usam billing MTD e uma janela operacional
+  assumida de sete dias. Não são requests medidos isoladamente por ciclo; incluem
+  exploração e apoio. Essas linhas não mudam com o campo de ciclos.
+
+Fontes, unidades, períodos e limites por linha estão na aba Medicoes e no modelo
+JSON. Não houve rateio da conta por tags. As quantidades não são medição de quatro
+ciclos: são referências observadas multiplicadas pelas hipóteses declaradas.
+
+GOOGLE CLOUD
+
+No projeto fiap1-512214, bq show (metadados) confirmou a região US do dataset
+basedosdados:br_inep_avaliacao_alfabetizacao. O consumidor tem billingEnabled=false
+e nenhuma conta de faturamento vinculada. A busca ReadRows/CreateReadSession de
+20/10 até a coleta de 27/10 retornou zero logs. Isso não comprova consumo zero;
+logs podem pertencer ao proprietário das tabelas.
+
+Monitoring response_sizes e request_count retornaram HTTP 403 exigindo faturamento.
+O painel da API mostrou 24 CreateReadSession e 16 ReadRows em 30 dias: contagens
+não são bytes cobrados. Não foram ativados billing, trial ou APIs, nem iniciados
+queries, sessões de leitura ou extração de tabelas.
+O conector usa sourceType=table; não foi acrescentado preço SQL sem evidência.
+O tamanho dos Parquets não foi usado como egress GCP. Para fechar essas parcelas,
+obter billing/logs autorizados com bytes, origem, destino e SKU aplicável.
+
+ALTERAÇÕES APLICADAS
+
+fiap-ingestao-bigquery-uf: de 10 workers G.1X/480 minutos para 2 G.1X/30 minutos;
+zero retries e concorrência 1 preservados. Exposição de computação ao atingir
+timeout: US$35,20 antes e US$0,44 depois. Isso não é economia realizada ou trava
+da conta. Configuração anterior/posterior em controls/. Nenhum job foi iniciado.
+
+FIAP-Acompanhamento-Bruto-30USD: budget mensal de US$30, excluindo créditos/refunds;
+avisos ACTUAL GREATER_THAN de US$15/24/30, no mesmo e-mail já cadastrado. Essa reserva
+de acompanhamento não é a estimativa nem renova o teto total. Sem ações automáticas.
+O usuário autorizou o destinatário. API confirmou budget e limiares; console mostrou
+0/1 contato verificado, Inactive. A tentativa de envio de verificação foi negada
+pelo IAM. Não há confirmação de envio ou funcionamento dos avisos por e-mail.
+O console informou as ações notifications-contacts:CreateEmailContact,
+notifications-contacts:SendActivationCode e notifications-contacts:ListEmailContacts.
+
+Um administrador deve abrir os detalhes do budget, concluir a verificação do
+contato existente e confirmar o estado ativo. O destinatário precisa completar
+a verificação recebida. Não foram ampliadas permissões IAM. Até isso ocorrer,
+acompanhar o consumo diretamente no console. O orçamento anterior foi preservado.
+
+BOAS PRÁTICAS E PRÓXIMAS AÇÕES
+
+Os dados já usam Parquet/compressão e organização por execução, com manifestos e
+validações. Consultar apenas colunas/partições necessárias. Não há benchmark de
+redução de bytes por filtro na origem; demonstrar antes de alegar economia.
+As seis sessões interativas históricas consumiram US$2,75513128, cerca de 83% do
+Glue observado. Apresentar manifestos e resultados existentes; Data Preview abre
+computação interativa. Não há sessões ou runs ativos na coleta.
+
+Concluir contato financeiro; fechar bytes GCP; realizar segunda medição comparável
+do estoque comprimido dos logs. Decidir retenção/lifecycle preservando evidências.
+Nada foi apagado. Não foram modificados código do pipeline, catálogo ou histórico.
+
+COMANDOS E REPRODUÇÃO
+
+Scripts executados no CloudShell com sessões autenticadas, sem exportar credenciais.
+Não reaplicar alterações só para estudar. Diretórios de coleta são exclusivos.
+Nova coleta gera chamadas de API. A consulta Cost Explorer teve uma página;
+tarifa de referência US$0,01 por chamada, fora da projeção recorrente.
+
+python3 collect_finops_aws.py --output-dir /home/cloudshell-user/finops_20261027_01 --include-cost-explorer
+python3 finops_controls_aws.py --output-dir /home/cloudshell-user/finops_controls_20261027_01 --apply-legacy-limit
+python3 finops_metric_hours.py
+python3 configure_finops_budget.py
+python3 collect_finops_gcp.py
+
+Exemplos somente de leitura, sem iniciar processamento:
+aws glue get-job --job-name fiap-ingestao-bigquery-uf --region us-east-2
+gcloud billing projects describe fiap1-512214 --format='json(projectId,billingEnabled)'
+bq --quiet --project_id=fiap1-512214 show --format=prettyjson basedosdados:br_inep_avaliacao_alfabetizacao
+
+ARQUIVOS
+
+FinOps_FIAP.pdf e .xlsx: relatório e cálculos.
+modelo_finops.json: entradas, premissas e referência aritmética independente.
+tarifas_oficiais.json e Notas_Tarifas.txt: fontes, SKUs e condições das tarifas.
+aws/, controls/, budget/, gcp/: evidências, estados e limitações.
+ZIPs originais/GZIP GCP: exportações intactas conferidas por SHA256.
+budget/verification_console.json: estado do contato observado no console.
+scripts/: código de coleta, alteração e geração dos documentos.
+Screenshots: créditos, limite do job, budget e verificações GCP.
+Historico/: revisões/propostas anteriores, sem substituir o estado final.
+SHA256_Entrega.json: hashes dos arquivos incluídos, exceto o próprio manifesto.

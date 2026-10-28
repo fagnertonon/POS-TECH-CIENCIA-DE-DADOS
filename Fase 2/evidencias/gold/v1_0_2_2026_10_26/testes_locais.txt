@@ -1,0 +1,29 @@
+test_2023_missing_sp_reports_source_coverage_without_changing_rates (test_gold_coverage.CoverageMetadataTests.test_2023_missing_sp_reports_source_coverage_without_changing_rates) ... ok
+test_2023_new_snapshot_with_sp_does_not_keep_missing_sp_exception (test_gold_coverage.CoverageMetadataTests.test_2023_new_snapshot_with_sp_does_not_keep_missing_sp_exception) ... ok
+test_2024_df_in_students_without_state_result_is_separate_coverage (test_gold_coverage.CoverageMetadataTests.test_2024_df_in_students_without_state_result_is_separate_coverage) ... ok
+test_ibge_geographic_reference_has_all_27_distinct_states (test_gold_coverage.CoverageMetadataTests.test_ibge_geographic_reference_has_all_27_distinct_states) ... ok
+test_lists_are_unique_sorted_and_inputs_remain_unchanged (test_gold_coverage.CoverageMetadataTests.test_lists_are_unique_sorted_and_inputs_remain_unchanged) ... ok
+test_matching_all_27_states_does_not_prove_methodological_equivalence (test_gold_coverage.CoverageMetadataTests.test_matching_all_27_states_does_not_prove_methodological_equivalence) ... ok
+test_missing_state_reference_takes_precedence_over_different_sets (test_gold_coverage.CoverageMetadataTests.test_missing_state_reference_takes_precedence_over_different_sets) ... ok
+test_unknown_state_is_rejected_in_either_source (test_gold_coverage.CoverageMetadataTests.test_unknown_state_is_rejected_in_either_source) ... ok
+test_bronze_fallback_is_rejected (test_gold_preflight.PreflightTests.test_bronze_fallback_is_rejected) ... ok
+test_duplicate_or_missing_table_is_rejected (test_gold_preflight.PreflightTests.test_duplicate_or_missing_table_is_rejected) ... ok
+test_emf_logging_failure_does_not_mask_job_failure (test_gold_preflight.PreflightTests.test_emf_logging_failure_does_not_mask_job_failure) ... ok
+test_emf_outcome (test_gold_preflight.PreflightTests.test_emf_outcome) ... ok
+test_empty_eligible_join_is_explicit_na (test_gold_preflight.PreflightTests.test_empty_eligible_join_is_explicit_na) ... ok
+test_exact_successful_snapshot (test_gold_preflight.PreflightTests.test_exact_successful_snapshot) ... ok
+test_failed_silver_is_rejected (test_gold_preflight.PreflightTests.test_failed_silver_is_rejected) ... ok
+test_failed_table_count_validation_is_rejected (test_gold_preflight.PreflightTests.test_failed_table_count_validation_is_rejected) ... ok
+test_incomplete_batch_is_rejected (test_gold_preflight.PreflightTests.test_incomplete_batch_is_rejected) ... ok
+test_low_eligible_match_rate_still_blocks (test_gold_preflight.PreflightTests.test_low_eligible_match_rate_still_blocks) ... ok
+test_missing_evaluated_column_is_rejected (test_gold_preflight.PreflightTests.test_missing_evaluated_column_is_rejected) ... ok
+test_missing_manifest_blocks_without_aws_request (test_gold_preflight.PreflightTests.test_missing_manifest_blocks_without_aws_request) ... ok
+test_mixed_snapshots_are_rejected (test_gold_preflight.PreflightTests.test_mixed_snapshots_are_rejected) ... ok
+test_parameter_safety (test_gold_preflight.PreflightTests.test_parameter_safety) ... ok
+test_unversioned_history_root_is_rejected (test_gold_preflight.PreflightTests.test_unversioned_history_root_is_rejected) ... ok
+test_wrong_boolean_type_is_rejected (test_gold_preflight.PreflightTests.test_wrong_boolean_type_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.049s
+
+OK

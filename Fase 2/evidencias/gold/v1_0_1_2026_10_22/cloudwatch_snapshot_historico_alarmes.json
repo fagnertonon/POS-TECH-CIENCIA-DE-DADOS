@@ -1,0 +1,245 @@
+{
+  "observed_at_utc": "2026-10-22T14:15:48.367683+00:00",
+  "window_start_utc": "2026-10-22T13:15:48.367683+00:00",
+  "alarms": {
+    "status": "OBSERVED",
+    "data": [
+      {
+        "AlarmName": "fiap-gold-inep-failure",
+        "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-gold-inep-failure",
+        "AlarmDescription": "FIAP: falha do pipeline gold; alarme de console sem destinatarios externos.",
+        "AlarmConfigurationUpdatedTimestamp": "2026-10-22T13:58:29.833000+00:00",
+        "ActionsEnabled": false,
+        "OKActions": [],
+        "AlarmActions": [],
+        "InsufficientDataActions": [],
+        "StateValue": "OK",
+        "StateReason": "Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].",
+        "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-10-22T14:13:56.012+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-22T14:12:00.000+0000\"}]}",
+        "StateUpdatedTimestamp": "2026-10-22T14:13:56.014000+00:00",
+        "MetricName": "Failed",
+        "Namespace": "FIAP/Medallion",
+        "Statistic": "Sum",
+        "Dimensions": [
+          {
+            "Name": "Layer",
+            "Value": "gold"
+          },
+          {
+            "Name": "JobName",
+            "Value": "fiap-gold-inep-batch"
+          }
+        ],
+        "Period": 60,
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Threshold": 1.0,
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "TreatMissingData": "notBreaching",
+        "StateTransitionedTimestamp": "2026-10-22T14:13:56.014000+00:00"
+      },
+      {
+        "AlarmName": "fiap-silver-inep-failure",
+        "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-silver-inep-failure",
+        "AlarmDescription": "FIAP: falha do pipeline silver; alarme de console sem destinatarios externos.",
+        "AlarmConfigurationUpdatedTimestamp": "2026-10-22T13:58:29.760000+00:00",
+        "ActionsEnabled": false,
+        "OKActions": [],
+        "AlarmActions": [],
+        "InsufficientDataActions": [],
+        "StateValue": "OK",
+        "StateReason": "Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].",
+        "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-10-22T13:59:34.572+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-22T13:58:00.000+0000\"}]}",
+        "StateUpdatedTimestamp": "2026-10-22T13:59:34.573000+00:00",
+        "MetricName": "Failed",
+        "Namespace": "FIAP/Medallion",
+        "Statistic": "Sum",
+        "Dimensions": [
+          {
+            "Name": "Layer",
+            "Value": "silver"
+          },
+          {
+            "Name": "JobName",
+            "Value": "fiap-silver-inep-batch"
+          }
+        ],
+        "Period": 60,
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Threshold": 1.0,
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "TreatMissingData": "notBreaching",
+        "StateTransitionedTimestamp": "2026-10-22T13:59:34.573000+00:00"
+      }
+    ]
+  },
+  "alarm_histories": {
+    "fiap-gold-inep-failure": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "AlarmName": "fiap-gold-inep-failure",
+          "AlarmType": "MetricAlarm",
+          "Timestamp": "2026-10-22T14:13:56.014000+00:00",
+          "HistoryItemType": "StateUpdate",
+          "HistorySummary": "Alarm updated from ALARM to OK",
+          "HistoryData": "{\"version\":\"1.0\",\"oldState\":{\"stateValue\":\"ALARM\",\"stateReason\":\"Threshold Crossed: 1 out of the last 1 datapoints [1.0 (22/10/26 14:06:00)] was greater than or equal to the threshold (1.0) (minimum 1 datapoint for OK -> ALARM transition).\",\"stateReasonData\":{\"version\":\"1.0\",\"queryDate\":\"2026-10-22T14:07:56.013+0000\",\"startDate\":\"2026-10-22T14:06:00.000+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[1.0],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-22T14:06:00.000+0000\",\"sampleCount\":1.0,\"value\":1.0}]}},\"newState\":{\"stateValue\":\"OK\",\"stateReason\":\"Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].\",\"stateReasonData\":{\"version\":\"1.0\",\"queryDate\":\"2026-10-22T14:13:56.012+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-22T14:12:00.000+0000\"}]}}}"
+        },
+        {
+          "AlarmName": "fiap-gold-inep-failure",
+          "AlarmType": "MetricAlarm",
+          "Timestamp": "2026-10-22T14:07:56.015000+00:00",
+          "HistoryItemType": "StateUpdate",
+          "HistorySummary": "Alarm updated from OK to ALARM",
+          "HistoryData": "{\"version\":\"1.0\",\"oldState\":{\"stateValue\":\"OK\",\"stateReason\":\"Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].\",\"stateReasonData\":{\"version\":\"1.0\",\"queryDate\":\"2026-10-22T13:59:56.013+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-22T13:58:00.000+0000\"}]}},\"newState\":{\"stateValue\":\"ALARM\",\"stateReason\":\"Threshold Crossed: 1 out of the last 1 datapoints [1.0 (22/10/26 14:06:00)] was greater than or equal to the threshold (1.0) (minimum 1 datapoint for OK -> ALARM transition).\",\"stateReasonData\":{\"version\":\"1.0\",\"queryDate\":\"2026-10-22T14:07:56.013+0000\",\"startDate\":\"2026-10-22T14:06:00.000+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[1.0],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-22T14:06:00.000+0000\",\"sampleCount\":1.0,\"value\":1.0}]}}}"
+        },
+        {
+          "AlarmName": "fiap-gold-inep-failure",
+          "AlarmType": "MetricAlarm",
+          "Timestamp": "2026-10-22T13:59:56.015000+00:00",
+          "HistoryItemType": "StateUpdate",
+          "HistorySummary": "Alarm updated from INSUFFICIENT_DATA to OK",
+          "HistoryData": "{\"version\":\"1.0\",\"oldState\":{\"stateValue\":\"INSUFFICIENT_DATA\",\"stateReason\":\"Unchecked: Initial alarm creation\"},\"newState\":{\"stateValue\":\"OK\",\"stateReason\":\"Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].\",\"stateReasonData\":{\"version\":\"1.0\",\"queryDate\":\"2026-10-22T13:59:56.013+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-22T13:58:00.000+0000\"}]}}}"
+        },
+        {
+          "AlarmName": "fiap-gold-inep-failure",
+          "AlarmType": "MetricAlarm",
+          "Timestamp": "2026-10-22T13:58:29.835000+00:00",
+          "HistoryItemType": "ConfigurationUpdate",
+          "HistorySummary": "Alarm \"fiap-gold-inep-failure\" created",
+          "HistoryData": "{\"version\":\"1.0\",\"type\":\"Create\",\"createdAlarm\":{\"alarmName\":\"fiap-gold-inep-failure\",\"alarmDescription\":\"FIAP: falha do pipeline gold; alarme de console sem destinatarios externos.\",\"alarmArn\":\"arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-gold-inep-failure\",\"alarmConfigurationUpdatedTimestamp\":\"2026-10-22T13:58:29.833+0000\",\"namespace\":\"FIAP/Medallion\",\"metricName\":\"Failed\",\"extendedStatistic\":\"SUM\",\"period\":60,\"dimensions\":[{\"value\":\"fiap-gold-inep-batch\",\"name\":\"JobName\"},{\"value\":\"gold\",\"name\":\"Layer\"}],\"threshold\":1.0,\"comparisonOperator\":\"GreaterThanOrEqualToThreshold\",\"evaluationPeriods\":1,\"datapointsToAlarm\":1,\"treatMissingData\":\"notBreaching\",\"stateValue\":\"INSUFFICIENT_DATA\",\"stateUpdatedTimestamp\":\"2026-10-22T13:58:29.833+0000\",\"actionsEnabled\":false,\"alarmActions\":[],\"insufficientDataActions\":[],\"okactions\":[]}}"
+        }
+      ]
+    },
+    "fiap-silver-inep-failure": {
+      "status": "OBSERVED",
+      "data": [
+        {
+          "AlarmName": "fiap-silver-inep-failure",
+          "AlarmType": "MetricAlarm",
+          "Timestamp": "2026-10-22T13:59:34.573000+00:00",
+          "HistoryItemType": "StateUpdate",
+          "HistorySummary": "Alarm updated from INSUFFICIENT_DATA to OK",
+          "HistoryData": "{\"version\":\"1.0\",\"oldState\":{\"stateValue\":\"INSUFFICIENT_DATA\",\"stateReason\":\"Unchecked: Initial alarm creation\"},\"newState\":{\"stateValue\":\"OK\",\"stateReason\":\"Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].\",\"stateReasonData\":{\"version\":\"1.0\",\"queryDate\":\"2026-10-22T13:59:34.572+0000\",\"statistic\":\"Sum\",\"period\":60,\"recentDatapoints\":[],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-22T13:58:00.000+0000\"}]}}}"
+        },
+        {
+          "AlarmName": "fiap-silver-inep-failure",
+          "AlarmType": "MetricAlarm",
+          "Timestamp": "2026-10-22T13:58:29.761000+00:00",
+          "HistoryItemType": "ConfigurationUpdate",
+          "HistorySummary": "Alarm \"fiap-silver-inep-failure\" created",
+          "HistoryData": "{\"version\":\"1.0\",\"type\":\"Create\",\"createdAlarm\":{\"alarmName\":\"fiap-silver-inep-failure\",\"alarmDescription\":\"FIAP: falha do pipeline silver; alarme de console sem destinatarios externos.\",\"alarmArn\":\"arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-silver-inep-failure\",\"alarmConfigurationUpdatedTimestamp\":\"2026-10-22T13:58:29.760+0000\",\"namespace\":\"FIAP/Medallion\",\"metricName\":\"Failed\",\"extendedStatistic\":\"SUM\",\"period\":60,\"dimensions\":[{\"value\":\"fiap-silver-inep-batch\",\"name\":\"JobName\"},{\"value\":\"silver\",\"name\":\"Layer\"}],\"threshold\":1.0,\"comparisonOperator\":\"GreaterThanOrEqualToThreshold\",\"evaluationPeriods\":1,\"datapointsToAlarm\":1,\"treatMissingData\":\"notBreaching\",\"stateValue\":\"INSUFFICIENT_DATA\",\"stateUpdatedTimestamp\":\"2026-10-22T13:58:29.760+0000\",\"actionsEnabled\":false,\"alarmActions\":[],\"insufficientDataActions\":[],\"okactions\":[]}}"
+        }
+      ]
+    }
+  },
+  "failed_metrics": {
+    "silver": {
+      "query": {
+        "Namespace": "FIAP/Medallion",
+        "MetricName": "Failed",
+        "Dimensions": [
+          {
+            "Name": "Layer",
+            "Value": "silver"
+          },
+          {
+            "Name": "JobName",
+            "Value": "fiap-silver-inep-batch"
+          }
+        ],
+        "StartTime": "2026-10-22T13:15:48.367683+00:00",
+        "EndTime": "2026-10-22T14:15:48.367683+00:00",
+        "Period": 60,
+        "Statistics": [
+          "Sum",
+          "SampleCount",
+          "Maximum"
+        ],
+        "Unit": "Count"
+      },
+      "status": "OBSERVED",
+      "data": {
+        "Label": "Failed",
+        "Datapoints": [
+          {
+            "Timestamp": "2026-10-22T14:02:00+00:00",
+            "SampleCount": 1.0,
+            "Sum": 0.0,
+            "Maximum": 0.0,
+            "Unit": "Count"
+          }
+        ],
+        "ResponseMetadata": {
+          "RequestId": "fc9d1505-7710-4400-a751-bb3a00445c98",
+          "HTTPStatusCode": 200,
+          "HTTPHeaders": {
+            "x-amzn-requestid": "fc9d1505-7710-4400-a751-bb3a00445c98",
+            "content-type": "application/x-amz-json-1.0",
+            "content-length": "117",
+            "date": "Thu, 22 Oct 2026 14:15:48 GMT"
+          },
+          "RetryAttempts": 0
+        }
+      }
+    },
+    "gold": {
+      "query": {
+        "Namespace": "FIAP/Medallion",
+        "MetricName": "Failed",
+        "Dimensions": [
+          {
+            "Name": "Layer",
+            "Value": "gold"
+          },
+          {
+            "Name": "JobName",
+            "Value": "fiap-gold-inep-batch"
+          }
+        ],
+        "StartTime": "2026-10-22T13:15:48.367683+00:00",
+        "EndTime": "2026-10-22T14:15:48.367683+00:00",
+        "Period": 60,
+        "Statistics": [
+          "Sum",
+          "SampleCount",
+          "Maximum"
+        ],
+        "Unit": "Count"
+      },
+      "status": "OBSERVED",
+      "data": {
+        "Label": "Failed",
+        "Datapoints": [
+          {
+            "Timestamp": "2026-10-22T14:14:00+00:00",
+            "SampleCount": 1.0,
+            "Sum": 0.0,
+            "Maximum": 0.0,
+            "Unit": "Count"
+          },
+          {
+            "Timestamp": "2026-10-22T14:06:00+00:00",
+            "SampleCount": 1.0,
+            "Sum": 1.0,
+            "Maximum": 1.0,
+            "Unit": "Count"
+          }
+        ],
+        "ResponseMetadata": {
+          "RequestId": "feb69ae1-6f1c-40e8-bbc3-2a871abd6533",
+          "HTTPStatusCode": 200,
+          "HTTPHeaders": {
+            "x-amzn-requestid": "feb69ae1-6f1c-40e8-bbc3-2a871abd6533",
+            "content-type": "application/x-amz-json-1.0",
+            "content-length": "201",
+            "date": "Thu, 22 Oct 2026 14:15:48 GMT"
+          },
+          "RetryAttempts": 0
+        }
+      }
+    }
+  },
+  "note": "CloudWatch may lag; missing datapoints are not proof that an execution did not fail."
+}

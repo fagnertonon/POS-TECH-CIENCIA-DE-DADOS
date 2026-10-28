@@ -1,0 +1,29 @@
+{
+  "observed_at_utc": "2026-10-27 11:46:59.964013+00:00",
+  "job_name": "fiap-ingestao-bigquery-uf",
+  "applied": true,
+  "before": {
+    "NumberOfWorkers": 10,
+    "WorkerType": "G.1X",
+    "Timeout": 480,
+    "MaxRetries": 0,
+    "ExecutionProperty": {
+      "MaxConcurrentRuns": 1
+    }
+  },
+  "starts_job": false,
+  "iam_changes": false,
+  "deletes_data": false,
+  "sends_notifications": false,
+  "after": {
+    "NumberOfWorkers": 2,
+    "WorkerType": "G.1X",
+    "Timeout": 30,
+    "MaxRetries": 0,
+    "ExecutionProperty": {
+      "MaxConcurrentRuns": 1
+    }
+  },
+  "max_compute_at_timeout_before_usd": 35.2,
+  "max_compute_at_timeout_after_usd": 0.44
+}

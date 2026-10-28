@@ -1,0 +1,280 @@
+{
+  "bucket": "fiap-tc-fase2-2026",
+  "prefix": "auditoria/gold/",
+  "complete": true,
+  "object_count": 45,
+  "total_bytes": 352568,
+  "sha256": "7f730dc7224810e489eba5983b9f0e366896b987d653badadc59b429cf7feb09",
+  "objects": [
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_737aa335fc338309fb383cb2ac7874b3d1f05f609e607e4e64e40758d6c7576e/failed.json",
+      "size": 18936,
+      "etag": "\"26ac4f07ca0dce95aff27669ecd0ebc3\"",
+      "last_modified": "2026-10-22T14:06:03Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_737aa335fc338309fb383cb2ac7874b3d1f05f609e607e4e64e40758d6c7576e/quality/silver_inputs.json",
+      "size": 5527,
+      "etag": "\"b114f98571f3278821a357948c52817a\"",
+      "last_modified": "2026-10-22T14:05:52Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_737aa335fc338309fb383cb2ac7874b3d1f05f609e607e4e64e40758d6c7576e/start.json",
+      "size": 493,
+      "etag": "\"1326f2b5594d4af6050bdff1158ff30a\"",
+      "last_modified": "2026-10-22T14:04:41Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/manifest.json",
+      "size": 50002,
+      "etag": "\"8ecd17a5ed0134067d0964337d3c2b0f\"",
+      "last_modified": "2026-10-22T14:14:01Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/all_construction_joins.json",
+      "size": 4387,
+      "etag": "\"4b422777988b8387ee60717808728b37\"",
+      "last_modified": "2026-10-22T14:13:59Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/evolucao_temporal.json",
+      "size": 1503,
+      "etag": "\"679f05bf31913a484858e7a764375608\"",
+      "last_modified": "2026-10-22T14:13:47Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/features_alfabetizacao.json",
+      "size": 1943,
+      "etag": "\"4bc3f628fa18706a960e97dde04cd678\"",
+      "last_modified": "2026-10-22T14:13:59Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/indicador_municipio.json",
+      "size": 2034,
+      "etag": "\"ee2af1f2de8eb6067b9d5fe49c4549a6\"",
+      "last_modified": "2026-10-22T14:13:39Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/resultado_vs_meta.json",
+      "size": 2844,
+      "etag": "\"35d58c808c2591f10262c879a050458d\"",
+      "last_modified": "2026-10-22T14:13:44Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/silver_inputs.json",
+      "size": 5527,
+      "etag": "\"171b952e87f63b661c04fa40df5562fb\"",
+      "last_modified": "2026-10-22T14:13:17Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/source_joins.json",
+      "size": 2184,
+      "etag": "\"e7ea18fcfc3785b34aba500fd55b039e\"",
+      "last_modified": "2026-10-22T14:13:28Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/quality/validacao_cruzada_brasil.json",
+      "size": 1958,
+      "etag": "\"0b43f139ff6dbce34c8e074018b1f99b\"",
+      "last_modified": "2026-10-22T14:13:53Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/start.json",
+      "size": 493,
+      "etag": "\"d61b1f112e828dfca37c5db5d1d705ff\"",
+      "last_modified": "2026-10-22T14:12:31Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/manifest.json",
+      "size": 66677,
+      "etag": "\"1a11f71ce00c2a7877f2b8e381662bba\"",
+      "last_modified": "2026-10-26T12:38:30Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/all_construction_joins.json",
+      "size": 4705,
+      "etag": "\"468b4e603d03b4d40e0161f119210be1\"",
+      "last_modified": "2026-10-26T12:38:28Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/coverage_spark_fixture.json",
+      "size": 5923,
+      "etag": "\"f768f2defa81c23000b2809de15d7356\"",
+      "last_modified": "2026-10-26T12:37:24Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/evolucao_temporal.json",
+      "size": 1503,
+      "etag": "\"66a90e3be564be64307366c75e43a53e\"",
+      "last_modified": "2026-10-26T12:38:13Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/features_alfabetizacao.json",
+      "size": 1943,
+      "etag": "\"8b4a0786816c47d2de697c5d8f96bfd2\"",
+      "last_modified": "2026-10-26T12:38:28Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/indicador_municipio.json",
+      "size": 2034,
+      "etag": "\"0c294da898e73a4a4358e0439e41f75a\"",
+      "last_modified": "2026-10-26T12:38:06Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/resultado_vs_meta.json",
+      "size": 2844,
+      "etag": "\"ac5ff2dec862ae316b9fd2298587279d\"",
+      "last_modified": "2026-10-26T12:38:10Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/silver_inputs.json",
+      "size": 5810,
+      "etag": "\"cc6947cdc5602b49f233a019bff6b292\"",
+      "last_modified": "2026-10-26T12:37:46Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/source_joins.json",
+      "size": 2184,
+      "etag": "\"bb9c0fd9d302cf45954fde7e7da6105f\"",
+      "last_modified": "2026-10-26T12:37:56Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/quality/validacao_cruzada_brasil.json",
+      "size": 5870,
+      "etag": "\"354780abe4cae8ed469e2677a9de52ee\"",
+      "last_modified": "2026-10-26T12:38:22Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29/start.json",
+      "size": 493,
+      "etag": "\"f1d13cbea79cf244b6b25b9a502025f1\"",
+      "last_modified": "2026-10-26T12:36:16Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/failed.json",
+      "size": 41512,
+      "etag": "\"6c6aeb43aa65d2c26be1352ae6fc4cdc\"",
+      "last_modified": "2026-10-26T12:33:43Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/coverage_spark_fixture.json",
+      "size": 1746,
+      "etag": "\"09d41f7e297cd2c33e23c3e9ec2d1998\"",
+      "last_modified": "2026-10-26T12:32:40Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/evolucao_temporal.json",
+      "size": 1503,
+      "etag": "\"59046acf235064c3c69d598118598db2\"",
+      "last_modified": "2026-10-26T12:33:34Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/indicador_municipio.json",
+      "size": 2034,
+      "etag": "\"c8d368ed97d4e5fae2050d61509de46f\"",
+      "last_modified": "2026-10-26T12:33:26Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/resultado_vs_meta.json",
+      "size": 2844,
+      "etag": "\"8fd242eb0c6076cb0054110fc3ed8e23\"",
+      "last_modified": "2026-10-26T12:33:31Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/silver_inputs.json",
+      "size": 5810,
+      "etag": "\"204a7ddf36bed988739e06e428ed3141\"",
+      "last_modified": "2026-10-26T12:33:06Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/quality/source_joins.json",
+      "size": 2184,
+      "etag": "\"79cbdcefb440395f3b312f31ab208ff6\"",
+      "last_modified": "2026-10-26T12:33:16Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-26/run_id=jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29/start.json",
+      "size": 493,
+      "etag": "\"09afa1ecc7540fbe3d38b79199f9eefe\"",
+      "last_modified": "2026-10-26T12:31:53Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/manifest.json",
+      "size": 60752,
+      "etag": "\"12bf192070c3c1cd459bb43f3f5313de\"",
+      "last_modified": "2026-10-27T00:44:24Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/all_construction_joins.json",
+      "size": 4705,
+      "etag": "\"6a81f1a95add6cd2608bd19574172f90\"",
+      "last_modified": "2026-10-27T00:44:21Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/evolucao_temporal.json",
+      "size": 1503,
+      "etag": "\"cfe071053a0e32f38788ddf656f54c09\"",
+      "last_modified": "2026-10-27T00:43:53Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/features_alfabetizacao.json",
+      "size": 1943,
+      "etag": "\"3c622fa2c12c46b0c0aac9bd2e00ac49\"",
+      "last_modified": "2026-10-27T00:44:21Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/indicador_municipio.json",
+      "size": 2034,
+      "etag": "\"dfdc13951cbcf2237b43cb3f73dd8c92\"",
+      "last_modified": "2026-10-27T00:43:45Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/resultado_vs_meta.json",
+      "size": 2844,
+      "etag": "\"9d5351c7342704891f0ba91a21cac449\"",
+      "last_modified": "2026-10-27T00:43:50Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/silver_inputs.json",
+      "size": 5810,
+      "etag": "\"63ab89613200ba303a1d4cee96e3c354\"",
+      "last_modified": "2026-10-27T00:43:22Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/source_joins.json",
+      "size": 2184,
+      "etag": "\"5a569ef92d78f0c24faa2d1cb3f47231\"",
+      "last_modified": "2026-10-27T00:43:33Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/quality/validacao_cruzada_brasil.json",
+      "size": 5870,
+      "etag": "\"51730fbf7c8af37f5a8e600e4cda43d6\"",
+      "last_modified": "2026-10-27T00:44:15Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe/start.json",
+      "size": 493,
+      "etag": "\"7559bb4c2a3c1ceaebbd10246af9df78\"",
+      "last_modified": "2026-10-27T00:42:27Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_3d9822c2d39a42f3642dec71ce1fda85439f170bff20bb6cb69f618911130c81/quality/silver_inputs.json",
+      "size": 5810,
+      "etag": "\"7b3aa3110f3a9f3d07d2f7b83f1d6f53\"",
+      "last_modified": "2026-10-27T11:42:20Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_3d9822c2d39a42f3642dec71ce1fda85439f170bff20bb6cb69f618911130c81/quality/source_joins.json",
+      "size": 2184,
+      "etag": "\"57b5cd6d69d1b4311fa3a6b7e994f74f\"",
+      "last_modified": "2026-10-27T11:42:32Z"
+    },
+    {
+      "key": "auditoria/gold/ingestion_date=2026-10-27/run_id=jr_3d9822c2d39a42f3642dec71ce1fda85439f170bff20bb6cb69f618911130c81/start.json",
+      "size": 493,
+      "etag": "\"ef208e68b75ef84c3f702ee88e5178bc\"",
+      "last_modified": "2026-10-27T11:41:23Z"
+    }
+  ]
+}

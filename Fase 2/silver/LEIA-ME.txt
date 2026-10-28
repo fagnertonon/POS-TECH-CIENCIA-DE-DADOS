@@ -1,0 +1,65 @@
+CAMADA SILVER - ADAPTACAO PARA AWS GLUE 5.1
+
+Origem: 02_camada_silver.ipynb recebido do colega.
+Copia intacta: 02_camada_silver_original.ipynb.
+O original contem saidas Databricks. Elas nao sao evidencias de execucao AWS.
+
+Entrada: um manifesto Bronze completo aprovado e seus sete target_uri.
+Parametro: --BRONZE_MANIFEST_URI. Nao une todos os run_id nem acessa BigQuery.
+Padrao: lote validado de 20/10/2026, run_id
+jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700.
+O contrato real da Bronze usa table_metrics, nao tables.
+
+Saidas Snappy Parquet:
+s3://fiap-tc-fase2-2026/silver/inep/<tabela>/process_date=<UTC>/run_id=<JOB_RUN_ID>/
+Publicacao do conjunto: manifesto SUCCEEDED em auditoria/silver, com is_full_batch=true,
+tables=[{table,target_uri,source_count,deduplicated_count,target_count,schema,quality,...}].
+Gold deve ler somente esse manifesto e seus sete caminhos exatos.
+Nunca usar tentativa sem manifesto aprovado. Escritas no S3 nao sao transacao multi-tabela.
+
+Parametros do job:
+--JOB_NAME (fornecido pelo Glue)
+--JOB_RUN_ID (fornecido pelo Glue; notebook cria id proprio)
+--BRONZE_MANIFEST_URI <URI do manifesto Bronze aprovado>
+--BUCKET fiap-tc-fase2-2026
+--PREFIX silver/inep
+--AUDIT_PREFIX auditoria/silver
+--LIMIAR_JOIN 0.95
+--ALUNOS_PARTITIONS 4
+--DATABASE_SILVER tech_challenge_fase2_silver
+--REGISTER_CATALOG true
+
+Execucao recomendada: Spark Glue 5.1, Python 3, 2 workers G.1X,
+timeout 15 minutos, retries=0, maxConcurrentRuns=1, bookmarks desabilitados.
+Nao exige conexao BigQuery, crawler nem sessao interativa permanente.
+Nao ha agendamento. Respeita o teto autorizado do projeto de US$ 140.
+
+Tratamentos e qualidade:
+- Strings trim, vazio vira null; municipio numerico de 1..7 digitos e nao zero,
+  padronizado em 7 digitos antes da deduplicacao. UF uppercase e 2 letras.
+- Chaves conforme notebook original; null-chave bloqueia. Deduplicacao deterministica:
+  ultima data_ingestao, desempate SHA256 da linha normalizada. Quantidades auditadas.
+- Dicionario com significados conflitantes para a mesma chave bloqueia.
+- Traducao de rede/serie em municipio, UF e alunos; flags adicionais em alunos.
+  Toda traducao exige lookup nao vazio/direita unica, preserva cardinalidade esquerda,
+  mede match-rate e bloqueia qualquer codigo nao nulo sem descricao.
+- Dominio booleano deve ser o confirmado no dicionario: Presente/Ausente;
+  Prova preenchida/Prova nao preenchida (com acentos na fonte); Sim/Nao.
+  Nulos nao viram false. Avaliados precisam de alf conhecido e peso positivo finito.
+- Taxas, metas e proporcoes nao nulas em [0,100]; nulos preservados.
+- Todas as sete transformacoes/regras antecedem escrita Silver.
+  Apos gravar, rele cada entidade e compara contagem, schema e inventario Parquet.
+- Auditoria: start.json, tables/*.json, quality.json e manifest.json final;
+  failure.json persiste falhas e a excecao e propagada, terminando Glue como FAILED.
+
+Catalog:
+Opcional, apos todas as sete saidas terem passado. Atualiza tabelas somente com
+ownership fiap_pipeline=inep-silver e recusa sobrescrever outra tabela preexistente.
+Sete atualizacoes de metadados nao sao atomicas; Gold nao depende desses ponteiros.
+O manifesto final e a fronteira de publicacao do conjunto. Use REGISTER_CATALOG=false
+se a role nao possui permissoes de Catalog; isso nao muda os dados nem a qualidade.
+
+Validacao local: AST/compilacao do Python e teste do contrato com manifesto Bronze real,
+incluindo rejeicao de piloto, mistura de execucoes, falha, duplicata e contagem divergente.
+Nao equivale a executar Spark na AWS. Evidencia AWS so existe apos estado Glue SUCCEEDED
+e manifesto auditado. Notebook adaptado tem outputs vazios intencionalmente.

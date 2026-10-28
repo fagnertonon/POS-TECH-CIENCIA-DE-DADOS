@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-27T15:56:40.218088Z",
+  "account": "637246457028",
+  "region": "us-east-2",
+  "bucket": "fiap-tc-fase2-2026",
+  "stack_name": "fiap-inep-streaming",
+  "read_only": true,
+  "starts_compute": false,
+  "checks": {
+    "stack_ready": {
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    "stack_account_region": {
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    "function_name": {
+      "actual": "fiap-inep-streaming-consumer",
+      "expected": "fiap-inep-streaming-consumer",
+      "passed": true
+    },
+    "lambda_FunctionName": {
+      "actual": "fiap-inep-streaming-consumer",
+      "expected": "fiap-inep-streaming-consumer",
+      "passed": true
+    },
+    "lambda_Runtime": {
+      "actual": "python3.12",
+      "expected": "python3.12",
+      "passed": true
+    },
+    "lambda_Timeout": {
+      "actual": 10,
+      "expected": 10,
+      "passed": true
+    },
+    "lambda_MemorySize": {
+      "actual": 256,
+      "expected": 256,
+      "passed": true
+    },
+    "lambda_State": {
+      "actual": "Active",
+      "expected": "Active",
+      "passed": true
+    },
+    "lambda_LastUpdateStatus": {
+      "actual": "Successful",
+      "expected": "Successful",
+      "passed": true
+    },
+    "lambda_role": {
+      "actual": "arn:aws:iam::637246457028:role/fiap-lambda-inep-streaming",
+      "expected": "arn:aws:iam::637246457028:role/fiap-lambda-inep-streaming",
+      "passed": true
+    },
+    "reserved_concurrency": {
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    "mapping_State": {
+      "actual": "Enabled",
+      "expected": "Enabled",
+      "passed": true
+    },
+    "mapping_BatchSize": {
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    "mapping_MaximumBatchingWindowInSeconds": {
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    "mapping_concurrency": {
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    "partial_batch_failures": {
+      "actual": [
+        "ReportBatchItemFailures"
+      ],
+      "expected": [
+        "ReportBatchItemFailures"
+      ],
+      "passed": true
+    },
+    "mapping_queue": {
+      "actual": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming",
+      "expected": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming",
+      "passed": true
+    },
+    "inline_policy_name": {
+      "actual": "StreamingScopedAccess",
+      "expected": "StreamingScopedAccess",
+      "passed": true
+    },
+    "source_queue_url": {
+      "actual": "https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming",
+      "expected": "https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming",
+      "passed": true
+    },
+    "source_VisibilityTimeout": {
+      "actual": "60",
+      "expected": "60",
+      "passed": true
+    },
+    "source_MessageRetentionPeriod": {
+      "actual": "345600",
+      "expected": "345600",
+      "passed": true
+    },
+    "source_ReceiveMessageWaitTimeSeconds": {
+      "actual": "20",
+      "expected": "20",
+      "passed": true
+    },
+    "source_max_receive_count": {
+      "actual": 5,
+      "expected": 5,
+      "passed": true
+    },
+    "source_dlq_arn": {
+      "actual": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming-dlq",
+      "expected": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming-dlq",
+      "passed": true
+    },
+    "dlq_queue_url": {
+      "actual": "https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming-dlq",
+      "expected": "https://sqs.us-east-2.amazonaws.com/637246457028/fiap-inep-streaming-dlq",
+      "passed": true
+    },
+    "dlq_retention": {
+      "actual": "1209600",
+      "expected": "1209600",
+      "passed": true
+    }
+  },
+  "errors": [],
+  "resources": {
+    "stack": {
+      "file": "stack.json",
+      "sha256": "b2dbb0b4bc39ae915668d1f492257d91ff65c2d9c5ede325292352160b30667f"
+    },
+    "stack_template": {
+      "file": "stack_template.json",
+      "sha256": "d254b767d070cb7d5c31e6ff59d5bb3525fbb7231988d160d3d78b780256e3cb"
+    },
+    "lambda_configuration": {
+      "file": "lambda_configuration.json",
+      "sha256": "fdf880da0a662992cb9a808af1f9a88c46bd3f3cc4917ee48cb5bda0a5febfb7"
+    },
+    "lambda_concurrency": {
+      "file": "lambda_concurrency.json",
+      "sha256": "6129831134dc6912db2ed089f04f4e6c1510eadca01ba793d959b9130658128a"
+    },
+    "event_source_mapping": {
+      "file": "event_source_mapping.json",
+      "sha256": "6c5bbb3040f75a6c0c1c1b8e984d3adbe29be9fcdee74ee99515e8ea1d1ee3d4"
+    },
+    "role_inline_policy": {
+      "file": "role_inline_policy.json",
+      "sha256": "11c8a707e75240c50c7ecb2d682a427888e956bd2a59f61fe9e78298de88030c"
+    },
+    "source_queue_attributes": {
+      "file": "source_queue_attributes.json",
+      "sha256": "ebd48847264b4bc613c52e262d663f1a6c592fcd748fd88942fbf6630e9b11ab"
+    },
+    "dlq_queue_attributes": {
+      "file": "dlq_queue_attributes.json",
+      "sha256": "48c22550dcf72c81c5c0ba1e90a1fda74e49ae47aff9dd2bf0242397b3f1cabe"
+    },
+    "official_bronze_inep": {
+      "file": "official_bronze_inep.json",
+      "sha256": "53bfbbc61966d640011f0725f28ce57f829d25bb841855d5c3c6cd6e2213bd15"
+    },
+    "official_silver_inep": {
+      "file": "official_silver_inep.json",
+      "sha256": "f28bc0b7e91267d72ea1a4297eda0dbdbd6d08bb0f0c6ad903cd5bda0fe423f3"
+    },
+    "official_gold_inep": {
+      "file": "official_gold_inep.json",
+      "sha256": "09ab899deb57130ca23e922c8419af7585c8edf6dabdf0027e325ca03f545e15"
+    },
+    "official_auditoria_bronze": {
+      "file": "official_auditoria_bronze.json",
+      "sha256": "7c8e85358b9c102d3c6f70e7e0b44a9a16ab3f750915702ee5a268d332f7c702"
+    },
+    "official_auditoria_silver": {
+      "file": "official_auditoria_silver.json",
+      "sha256": "9df9c43e9684c8fb5beefb77b18017ff01407886f665e01f678400c993d14d12"
+    },
+    "official_auditoria_gold": {
+      "file": "official_auditoria_gold.json",
+      "sha256": "06436b534ccdf903adbc4fc4346568c9d094392d8f669da1a3020cb6d067a2e0"
+    }
+  },
+  "official_inventory": {
+    "bronze/inep/": {
+      "object_count": 55,
+      "total_bytes": 186744593,
+      "sha256": "8a47059fbb2617182f13875166cc8d632ee884a09d9912a9a76c73c6dcb28bea",
+      "complete": true,
+      "file": "official_bronze_inep.json"
+    },
+    "silver/inep/": {
+      "object_count": 10,
+      "total_bytes": 61906268,
+      "sha256": "2ceb712953555c5d84444695fb91ac9bbf88f254c0fb56f7b7333313dc01e06d",
+      "complete": true,
+      "file": "official_silver_inep.json"
+    },
+    "gold/inep/": {
+      "object_count": 103,
+      "total_bytes": 8029402,
+      "sha256": "1f2ec605ed3fd9abb73306b69577fdc952ff19aa93e866d9b97020ca5be2922e",
+      "complete": true,
+      "file": "official_gold_inep.json"
+    },
+    "auditoria/bronze/": {
+      "object_count": 12,
+      "total_bytes": 46195,
+      "sha256": "549c4dd47b500104bd06542bbb3a474c79f4471685f76ff95b2d32453c0124d2",
+      "complete": true,
+      "file": "official_auditoria_bronze.json"
+    },
+    "auditoria/silver/": {
+      "object_count": 10,
+      "total_bytes": 447666,
+      "sha256": "e41465277e86cdefcf63d6eae96743f4c94910bafb74f9fe2bf8d316fdcfe37f",
+      "complete": true,
+      "file": "official_auditoria_silver.json"
+    },
+    "auditoria/gold/": {
+      "object_count": 45,
+      "total_bytes": 352568,
+      "sha256": "7f730dc7224810e489eba5983b9f0e366896b987d653badadc59b429cf7feb09",
+      "complete": true,
+      "file": "official_auditoria_gold.json"
+    }
+  },
+  "deployed_inline_source_sha256": "50d5dfe342e2e10c779cd5f47d884bbb32ce6bd9b47f91f5ea5b1d5146919a7d",
+  "finished_at_utc": "2026-10-27T15:56:40.894678Z",
+  "validation_status": "SUCCEEDED"
+}

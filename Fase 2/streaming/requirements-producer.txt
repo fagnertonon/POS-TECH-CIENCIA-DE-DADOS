@@ -1,0 +1,5 @@
+# Python >=3.11. Pins conferidos no PyPI oficial em 20/10/2026.
+# https://pypi.org/project/pyarrow/26.0.0/
+# https://pypi.org/project/boto3/1.43.115/
+pyarrow==26.0.0
+boto3==1.43.115

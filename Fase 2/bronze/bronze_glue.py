@@ -1,0 +1,300 @@
+"""AWS Glue 5.1: BigQuery -> S3 Bronze, com snapshots e contagens auditáveis.
+
+Consumidores devem selecionar UM manifesto SUCCEEDED, com is_full_batch=true
+quando precisarem das sete entidades, e ler apenas os caminhos nele publicados.
+Nunca fazer união indiscriminada de todos os diretórios históricos da Bronze.
+Não há remoção, sobrescrita de dados nem deduplicação dos dados brutos.
+"""
+
+from __future__ import annotations
+
+import argparse
+from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
+import json
+import logging
+import re
+import sys
+import time
+import uuid
+
+
+SCRIPT_VERSION = "1.0.0"
+TABLES = (
+    "alunos",
+    "municipio",
+    "uf",
+    "meta_alfabetizacao_brasil",
+    "meta_alfabetizacao_uf",
+    "meta_alfabetizacao_municipio",
+    "dicionario",
+)
+METADATA_COLUMNS = {"id_ingestao", "data_ingestao", "tabela_origem"}
+LOG = logging.getLogger("bronze_inep")
+
+
+@dataclass(frozen=True)
+class Config:
+    job_name: str
+    run_id: str
+    bucket: str
+    prefix: str
+    audit_prefix: str
+    connection_name: str
+    parent_project: str
+    source_dataset: str
+    tables: tuple[str, ...]
+    allow_empty: bool
+    alunos_partitions: int
+    small_table_partitions: int
+
+
+def parse_bool(value: str) -> bool:
+    if value.lower() in {"true", "1"}:
+        return True
+    if value.lower() in {"false", "0"}:
+        return False
+    raise ValueError("ALLOW_EMPTY deve ser true ou false")
+
+
+def clean_prefix(value: str) -> str:
+    value = value.strip("/")
+    if not value or any(p in {"", ".", ".."} for p in value.split("/")):
+        raise ValueError("Prefixo S3 vazio ou inválido")
+    if not re.fullmatch(r"[A-Za-z0-9_./=-]+", value):
+        raise ValueError("Prefixo S3 contém caracteres não permitidos")
+    return value
+
+
+def parse_config(argv: list[str]) -> Config:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--JOB_NAME", required=True)
+    parser.add_argument("--JOB_RUN_ID", default="")
+    parser.add_argument("--BUCKET", default="fiap-tc-fase2-2026")
+    parser.add_argument("--PREFIX", default="bronze/inep")
+    parser.add_argument("--AUDIT_PREFIX", default="auditoria/bronze")
+    parser.add_argument("--CONNECTION_NAME", default="Bigquery connection")
+    parser.add_argument("--PARENT_PROJECT", default="fiap1-512214")
+    parser.add_argument("--SOURCE_DATASET", default="basedosdados.br_inep_avaliacao_alfabetizacao")
+    parser.add_argument("--TABLES", default=",".join(TABLES))
+    parser.add_argument("--ALLOW_EMPTY", default="false")
+    parser.add_argument("--ALUNOS_PARTITIONS", type=int, default=4)
+    parser.add_argument("--SMALL_TABLE_PARTITIONS", type=int, default=1)
+    # Glue também fornece opções internas como --TempDir e --job-language.
+    args, _glue_options = parser.parse_known_args(argv)
+    tables = tuple(t.strip() for t in args.TABLES.split(","))
+    if not tables or len(tables) != len(set(tables)) or not set(tables).issubset(TABLES):
+        raise ValueError("TABLES deve conter nomes únicos da lista de sete tabelas")
+    if not re.fullmatch(r"[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]", args.BUCKET):
+        raise ValueError("BUCKET inválido")
+    if not re.fullmatch(r"[a-z][a-z0-9-]{4,61}[a-z0-9]\.[A-Za-z_][A-Za-z0-9_]*", args.SOURCE_DATASET):
+        raise ValueError("SOURCE_DATASET deve ter formato projeto.dataset")
+    if not re.fullmatch(r"[a-z][a-z0-9-]{4,61}[a-z0-9]", args.PARENT_PROJECT):
+        raise ValueError("PARENT_PROJECT inválido")
+    if not args.JOB_NAME.strip() or not args.CONNECTION_NAME.strip():
+        raise ValueError("JOB_NAME e CONNECTION_NAME são obrigatórios")
+    run_id = args.JOB_RUN_ID or ("brz_" + uuid.uuid4().hex)
+    if not re.fullmatch(r"[A-Za-z0-9_-]{1,160}", run_id):
+        raise ValueError("JOB_RUN_ID inválido para o caminho S3")
+    if not 1 <= args.ALUNOS_PARTITIONS <= 32 or not 1 <= args.SMALL_TABLE_PARTITIONS <= 8:
+        raise ValueError("Quantidade de partições fora do limite permitido")
+    prefix = clean_prefix(args.PREFIX)
+    audit_prefix = clean_prefix(args.AUDIT_PREFIX)
+    if prefix == audit_prefix or prefix.startswith(audit_prefix + "/") or audit_prefix.startswith(prefix + "/"):
+        raise ValueError("PREFIX e AUDIT_PREFIX devem ser diretórios separados")
+    return Config(
+        job_name=args.JOB_NAME,
+        run_id=run_id,
+        bucket=args.BUCKET,
+        prefix=prefix,
+        audit_prefix=audit_prefix,
+        connection_name=args.CONNECTION_NAME,
+        parent_project=args.PARENT_PROJECT,
+        source_dataset=args.SOURCE_DATASET,
+        tables=tables,
+        allow_empty=parse_bool(args.ALLOW_EMPTY),
+        alunos_partitions=args.ALUNOS_PARTITIONS,
+        small_table_partitions=args.SMALL_TABLE_PARTITIONS,
+    )
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def iso_utc(value: datetime) -> str:
+    return value.isoformat(timespec="microseconds").replace("+00:00", "Z")
+
+
+def put_json(s3, bucket: str, key: str, payload: dict, *, claim: bool = False) -> None:
+    options = {"IfNoneMatch": "*"} if claim else {}
+    s3.put_object(
+        Bucket=bucket,
+        Key=key,
+        Body=(json.dumps(payload, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode("utf-8"),
+        ContentType="application/json; charset=utf-8",
+        **options,
+    )
+
+
+def object_metrics(s3, bucket: str, prefix: str) -> dict:
+    metrics = {"parquet_file_count": 0, "parquet_bytes": 0, "object_count": 0, "object_bytes": 0}
+    for page in s3.get_paginator("list_objects_v2").paginate(Bucket=bucket, Prefix=prefix):
+        for obj in page.get("Contents", []):
+            metrics["object_count"] += 1
+            metrics["object_bytes"] += obj["Size"]
+            if obj["Key"].endswith(".parquet"):
+                metrics["parquet_file_count"] += 1
+                metrics["parquet_bytes"] += obj["Size"]
+    return metrics
+
+
+def ingest_table(config, table, started_at, ingestion_date, audit_key, glue_context, spark, s3):
+    from pyspark import StorageLevel
+    from pyspark.sql import functions as F
+
+    stage_start = time.perf_counter()
+    source_name = f"{config.source_dataset}.{table}"
+    target_key = f"{config.prefix}/{table}/ingestion_date={ingestion_date}/run_id={config.run_id}/"
+    target_uri = f"s3://{config.bucket}/{target_key}"
+    metrics = {
+        "table": table,
+        "source_table": source_name,
+        "target_uri": target_uri,
+        "run_id": config.run_id,
+        "started_at_utc": iso_utc(utc_now()),
+        "status": "RUNNING",
+    }
+    source = None
+    try:
+        if s3.list_objects_v2(Bucket=config.bucket, Prefix=target_key, MaxKeys=1).get("KeyCount", 0):
+            raise FileExistsError(f"Destino já existe: {target_uri}")
+        frame = glue_context.create_dynamic_frame.from_options(
+            connection_type="bigquery",
+            connection_options={
+                "connectionName": config.connection_name,
+                "parentProject": config.parent_project,
+                "sourceType": "table",
+                "table": source_name,
+            },
+            transformation_ctx=f"source_{table}",
+        )
+        source = frame.toDF().persist(StorageLevel.MEMORY_AND_DISK)
+        collisions = METADATA_COLUMNS.intersection(name.lower() for name in source.columns)
+        if collisions:
+            raise ValueError(f"Colunas de origem conflitam com metadados: {sorted(collisions)}")
+        metrics["source_schema"] = json.loads(source.schema.json())
+        metrics["source_column_count"] = len(source.columns)
+        metrics["source_count"] = source.count()
+        metrics["source_read_finished_at_utc"] = iso_utc(utc_now())
+        if metrics["source_count"] == 0 and not config.allow_empty:
+            raise ValueError(f"Regra bloqueante: origem vazia para {table}")
+
+        enriched = (
+            source.withColumn("id_ingestao", F.lit(config.run_id))
+            .withColumn("data_ingestao", F.lit(started_at.strftime("%Y-%m-%d %H:%M:%S.%f")).cast("timestamp"))
+            .withColumn("tabela_origem", F.lit(source_name))
+        )
+        partitions = config.alunos_partitions if table == "alunos" else config.small_table_partitions
+        enriched.coalesce(partitions).write.mode("errorifexists").option("compression", "snappy").parquet(target_uri)
+        metrics["write_finished_at_utc"] = iso_utc(utc_now())
+        # Nova leitura do S3; não é uma segunda contagem do DataFrame em cache.
+        written = spark.read.parquet(target_uri)
+        metrics["target_count"] = written.count()
+        metrics["target_column_count"] = len(written.columns)
+        metrics["counts_match"] = metrics["source_count"] == metrics["target_count"]
+        if not metrics["counts_match"]:
+            raise ValueError(f"Regra bloqueante: contagens divergentes para {table}")
+        if metrics["target_column_count"] != metrics["source_column_count"] + len(METADATA_COLUMNS):
+            raise ValueError(f"Regra bloqueante: quantidade de colunas divergente para {table}")
+        metrics.update(object_metrics(s3, config.bucket, target_key))
+        if metrics["source_count"] and not metrics["parquet_file_count"]:
+            raise ValueError(f"Regra bloqueante: nenhum arquivo Parquet para {table}")
+        metrics["status"] = "SUCCEEDED"
+    except Exception as exc:
+        metrics["status"] = "FAILED"
+        metrics["error_type"] = type(exc).__name__
+        raise
+    finally:
+        metrics["finished_at_utc"] = iso_utc(utc_now())
+        metrics["duration_seconds"] = round(time.perf_counter() - stage_start, 3)
+        if source is not None:
+            source.unpersist()
+        put_json(s3, config.bucket, f"{audit_key}/tables/{table}.json", metrics)
+        LOG.info("BRONZE_TABLE %s", json.dumps({k: v for k, v in metrics.items() if k != "source_schema"}, ensure_ascii=False))
+    return metrics
+
+
+def main(argv=None):
+    import boto3
+    from awsglue.context import GlueContext
+    from awsglue.job import Job
+    from pyspark.context import SparkContext
+
+    config = parse_config(sys.argv[1:] if argv is None else argv)
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    started_at = utc_now()
+    ingestion_date = started_at.date().isoformat()
+    run_start = time.perf_counter()
+    audit_key = f"{config.audit_prefix}/ingestion_date={ingestion_date}/run_id={config.run_id}"
+    s3 = boto3.client("s3")
+    # A criação condicional impede duas tentativas de reutilizarem o mesmo run_id.
+    # Se ela falhar, não tocar nos dados ou nos manifestos da rodada anterior.
+    put_json(s3, config.bucket, f"{audit_key}/start.json", {
+        "run_id": config.run_id,
+        "started_at_utc": iso_utc(started_at),
+        "script_version": SCRIPT_VERSION,
+        "configuration": asdict(config),
+    }, claim=True)
+    manifest = {
+        "script_version": SCRIPT_VERSION,
+        "job_name": config.job_name,
+        "run_id": config.run_id,
+        "started_at_utc": iso_utc(started_at),
+        "ingestion_date": ingestion_date,
+        "requested_tables": list(config.tables),
+        "is_full_batch": set(config.tables) == set(TABLES),
+        "table_metrics": [],
+    }
+    try:
+        glue_context = GlueContext(SparkContext.getOrCreate())
+        spark = glue_context.spark_session
+        spark.conf.set("spark.sql.session.timeZone", "UTC")
+        job = Job(glue_context)
+        job.init(config.job_name, {"JOB_NAME": config.job_name})
+        for table in config.tables:
+            manifest["table_metrics"].append(ingest_table(
+                config, table, started_at, ingestion_date, audit_key, glue_context, spark, s3,
+            ))
+        job.commit()
+        manifest["status"] = "SUCCEEDED"
+        manifest["validated_table_count"] = len(manifest["table_metrics"])
+        manifest["all_counts_match"] = all(item["counts_match"] for item in manifest["table_metrics"])
+    except Exception as exc:
+        manifest["status"] = "FAILED"
+        manifest["error_type"] = type(exc).__name__
+        manifest["finished_at_utc"] = iso_utc(utc_now())
+        manifest["duration_seconds"] = round(time.perf_counter() - run_start, 3)
+        try:
+            put_json(s3, config.bucket, f"{audit_key}/manifest.json", manifest)
+        except Exception:
+            LOG.exception("Não foi possível persistir o manifesto de falha")
+        raise  # Glue deve falhar; nunca mascarar uma regra bloqueante.
+    # Publicação é o último passo. Até este arquivo existir com SUCCEEDED,
+    # qualquer Parquet desta rodada é um snapshot incompleto/não publicado.
+    manifest["finished_at_utc"] = iso_utc(utc_now())
+    manifest["duration_seconds"] = round(time.perf_counter() - run_start, 3)
+    manifest["total_source_rows"] = sum(item["source_count"] for item in manifest["table_metrics"])
+    manifest["total_target_rows"] = sum(item["target_count"] for item in manifest["table_metrics"])
+    put_json(s3, config.bucket, f"{audit_key}/manifest.json", manifest)
+    LOG.info("BRONZE_RUN_SUCCEEDED %s", json.dumps({
+        "run_id": config.run_id,
+        "validated_table_count": manifest["validated_table_count"],
+        "manifest_uri": f"s3://{config.bucket}/{audit_key}/manifest.json",
+        "duration_seconds": manifest["duration_seconds"],
+    }))
+    return manifest
+
+
+if __name__ == "__main__":
+    main()

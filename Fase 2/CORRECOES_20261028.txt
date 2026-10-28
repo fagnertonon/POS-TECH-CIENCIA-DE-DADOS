@@ -1,0 +1,82 @@
+CORRECOES LOCAIS DA ENTREGA - 28/10/2026
+
+RESULTADO
+Foram corrigidos os oito pontos do parecer sobre files.zip. A estrutura recebida
+foi mantida. Esta entrega atualiza documentacao e propostas nao implantadas de IaC;
+nao modifica os scripts de processamento que produziram as evidencias historicas.
+
+1. PUBLICACAO E CATALOGO
+README e VERSOES distinguem execucao versionada de transacao atomica. O conjunto
+Gold so e aprovado por manifesto SUCCEEDED. Entrada de catalogo exige conferir
+fiap_commit_manifest e correspondencia ao dataset/run. Arquivos staged podem
+existir quando nao ha manifesto aprovado; nada foi apagado para esconder falhas.
+
+2. ALERTAS E TEMPOS
+Foram removidas as promessas de entrega <1s e aviso garantido em ate um minuto.
+Permanecem os periodos de 60s, limiar de 120s, a acao SNS Succeeded, a entrega na
+janela e a confirmacao humana. A metrica por minuto nao e timestamp individual
+de chegada. Tambem nao foi atribuida uma causa exclusiva a cauda da latencia.
+
+3. BUDGET FINANCEIRO
+Budget configurado com limiares US$15/24/30. Ultimo contato financeiro observado:
+0/1 verified; Inactive. Entrega ainda nao comprovada. SNS operacional confirmado
+e um canal separado. Nenhuma nova verificacao ou notificacao foi enviada.
+
+4. PROPOSTAS DE CLOUDFORMATION
+observabilidade_stack.json preserva integralmente o escopo da politica SNS,
+inclusive a declaracao padrao do proprietario. O target OperationalSNS mantem
+o InputTransformer e RetryPolicy de 3 tentativas/3600s observados. Os alarmes batch
+preservam metricas, dimensoes, limites, DatapointsToAlarm e comportamento de dados
+ausentes. Todos os seis recursos da proposta possuem politicas Retain.
+O novo build_proposed_alarm_actions.py gera somente uma proposta local em arquivo
+novo, sem sobrescrever o template historico. Codigo Lambda, role, filas e limites
+de computacao permanecem inalterados. PLANO_RECONCILIACAO.md distingue importacao
+de recursos externos e atualizacao dos alarmes ja pertencentes a stack streaming.
+Suporte de importacao, identificadores, drift e change set nao foram conferidos
+na AWS. Templates continuam PROPOSTOS / NAO IMPLANTADOS; nao ha migracao executada.
+
+5. REPRODUCAO
+O README separa estudo offline, implantacao inicial, atualizacao de versao e
+consulta de ambiente existente. Nao encadeia criacao da stack atual com upgrade
+identico sem mudancas. Publicadores nao sao confundidos com inicio de jobs.
+O atualizador historico de role/funcao permanece restrito; nao aplica alarmes.
+
+6. DIVERGENCIA NACIONAL
+2023 continua +1,5622 p.p. Foram identificadas diferencas de cobertura, sem
+decompor quantitativamente suas causas nem comprovar equivalencia metodologica.
+Nao se atribuiu toda a diferenca a SP; MS e SE continuam sem explicacao definitiva.
+
+7. VERSOES E DURACOES
+Erro tuple/isin de 26/10: jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29.
+jr_737aa335... refere-se a falha de join de 22/10.
+Bronze: 146s de execucao Glue / 293 DPU-segundos; 94,407s internos do manifesto.
+Essas duracoes nao foram igualadas nem usadas como substitutas indiscriminadas.
+
+8. VOLUME BRONZE E FINOPS
+Saida Parquet Bronze medida: 80.065.708 bytes, soma de table_metrics[].parquet_bytes
+das sete tabelas do manifesto aprovado. Nao e o estoque de todas as camadas do
+lake nem mede bytes de entrada, BigQuery ou egress faturavel. O modelo financeiro
+e as planilhas foram preservados, sem preencher n.a. com zero e sem novas tarifas.
+Subtotal parcial de referencia: US$2,150746424/30d; duas parcelas continuam n.a.
+US$140 permanece o teto TOTAL, sem renovacao mensal ou garantia de custo completo.
+
+VALIDACAO
+138 testes locais aprovados: 7 Silver, 24 Gold, 96 streaming, 5 notificacoes e
+6 verificacoes das propostas IaC contra o gerador e as evidencias.
+Ambiente existente: Python 3.13.14, boto3 1.43.115, PyArrow 26.0.0.
+Nao houve instalacao de pacotes, API CloudFormation, AWS/GCP, novas extracoes,
+jobs, replay, envio de e-mail ou ativacao de faturamento nesta correcao.
+Ver validacao_local.json, integridade_preservacao.json e SHA256_Arquivos.json.
+
+PRESERVACAO
+Todos os arquivos originais de dados, evidencias, imagens, Parquet, notebooks,
+scripts de processamento, template historico e modelo FinOps sao mantidos byte a
+byte. As versoes anteriores dos cinco arquivos alterados ficam no pacote externo,
+em originais_antes_da_correcao/. ALTERACOES.diff registra o diff completo.
+As evidencias e os relatorios historicos nao foram reescritos para aparentar
+novas medicoes ou implantacoes. O ZIP original de Downloads nao foi alterado.
+
+PENDENCIAS REAIS
+Egress GCP e incremento comprimido por ciclo continuam sem quantidade recuperada.
+Contato de faturamento e adocao IaC ainda nao foram concluidos na nuvem.
+Video/link de apresentacao continua com o colega responsavel.

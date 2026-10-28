@@ -1,0 +1,12 @@
+{
+  "--S3_BUCKET": "fiap-tc-fase2-2026",
+  "--GOLD_PREFIX": "gold/inep",
+  "--AUDIT_PREFIX": "auditoria/gold",
+  "--DATABASE_SILVER": "tech_challenge_fase2_silver",
+  "--DATABASE_GOLD": "tech_challenge_fase2_gold",
+  "--SILVER_MANIFEST_URI": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+  "--LIMIAR_JOIN": "0.95",
+  "--TOLERANCIA_PP": "0.1",
+  "--REGISTER_CATALOG": "true",
+  "--DEMO_FAILURE": "false"
+}

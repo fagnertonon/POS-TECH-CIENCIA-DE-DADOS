@@ -1,0 +1,21 @@
+{
+  "status": "SUCCEEDED",
+  "manifest_sha256": "c322ff4a5271488ca19e1e55a6d4185938bc2d412d33a625244887bf433e73e4",
+  "evidence_files_verified": 14,
+  "files": [
+    "after",
+    "approved_plan",
+    "before",
+    "deployment",
+    "exercise",
+    "finalization",
+    "invalid_fixture",
+    "negative",
+    "official_preservation",
+    "positive",
+    "producer",
+    "runtime",
+    "snapshot_manifest",
+    "source_diagnostic"
+  ]
+}

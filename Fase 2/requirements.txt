@@ -1,0 +1,6 @@
+# Dependencias locais (producer de streaming, finalizador, verificadores e testes offline).
+# Os jobs Glue 5.1 (Spark 3.5 / Python 3) e o Lambda (Python 3.12) usam o runtime gerenciado da AWS;
+# nenhum pacote extra e instalado neles.
+boto3==1.43.115
+pyarrow==26.0.0
+pandas==3.0.1

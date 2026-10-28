@@ -1,0 +1,706 @@
+{
+  "all_counts_match": true,
+  "duration_seconds": 94.407,
+  "finished_at_utc": "2026-10-20T18:25:16.042758Z",
+  "ingestion_date": "2026-10-20",
+  "is_full_batch": true,
+  "job_name": "fiap-bronze-inep-batch",
+  "requested_tables": [
+    "alunos",
+    "municipio",
+    "uf",
+    "meta_alfabetizacao_brasil",
+    "meta_alfabetizacao_uf",
+    "meta_alfabetizacao_municipio",
+    "dicionario"
+  ],
+  "run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+  "script_version": "1.0.0",
+  "started_at_utc": "2026-10-20T18:23:41.636064Z",
+  "status": "SUCCEEDED",
+  "table_metrics": [
+    {
+      "counts_match": true,
+      "duration_seconds": 56.545,
+      "finished_at_utc": "2026-10-20T18:24:45.967756Z",
+      "object_bytes": 79232999,
+      "object_count": 4,
+      "parquet_bytes": 79232999,
+      "parquet_file_count": 4,
+      "run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+      "source_column_count": 12,
+      "source_count": 3867999,
+      "source_read_finished_at_utc": "2026-10-20T18:24:33.231746Z",
+      "source_schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "id_municipio",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_escola",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "id_aluno",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "caderno",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "presenca",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "preenchimento_caderno",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "alfabetizado",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "proficiencia",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "peso_aluno",
+            "nullable": true,
+            "type": "double"
+          }
+        ],
+        "type": "struct"
+      },
+      "source_table": "basedosdados.br_inep_avaliacao_alfabetizacao.alunos",
+      "started_at_utc": "2026-10-20T18:23:49.422360Z",
+      "status": "SUCCEEDED",
+      "table": "alunos",
+      "target_column_count": 15,
+      "target_count": 3867999,
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/alunos/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/",
+      "write_finished_at_utc": "2026-10-20T18:24:44.363980Z"
+    },
+    {
+      "counts_match": true,
+      "duration_seconds": 7.429,
+      "finished_at_utc": "2026-10-20T18:24:53.464073Z",
+      "object_bytes": 541294,
+      "object_count": 1,
+      "parquet_bytes": 541294,
+      "parquet_file_count": 1,
+      "run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+      "source_column_count": 15,
+      "source_count": 23995,
+      "source_read_finished_at_utc": "2026-10-20T18:24:51.891112Z",
+      "source_schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "id_municipio",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "media_portugues",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_0",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_1",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_2",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_3",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_4",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_5",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_6",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_7",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_8",
+            "nullable": true,
+            "type": "double"
+          }
+        ],
+        "type": "struct"
+      },
+      "source_table": "basedosdados.br_inep_avaliacao_alfabetizacao.municipio",
+      "started_at_utc": "2026-10-20T18:24:46.035162Z",
+      "status": "SUCCEEDED",
+      "table": "municipio",
+      "target_column_count": 18,
+      "target_count": 23995,
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/municipio/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/",
+      "write_finished_at_utc": "2026-10-20T18:24:52.796649Z"
+    },
+    {
+      "counts_match": true,
+      "duration_seconds": 5.017,
+      "finished_at_utc": "2026-10-20T18:24:58.519872Z",
+      "object_bytes": 12279,
+      "object_count": 1,
+      "parquet_bytes": 12279,
+      "parquet_file_count": 1,
+      "run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+      "source_column_count": 15,
+      "source_count": 145,
+      "source_read_finished_at_utc": "2026-10-20T18:24:57.181006Z",
+      "source_schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "sigla_uf",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "media_portugues",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_0",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_1",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_2",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_3",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_4",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_5",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_6",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_7",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_8",
+            "nullable": true,
+            "type": "double"
+          }
+        ],
+        "type": "struct"
+      },
+      "source_table": "basedosdados.br_inep_avaliacao_alfabetizacao.uf",
+      "started_at_utc": "2026-10-20T18:24:53.503006Z",
+      "status": "SUCCEEDED",
+      "table": "uf",
+      "target_column_count": 18,
+      "target_count": 145,
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/uf/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/",
+      "write_finished_at_utc": "2026-10-20T18:24:57.908766Z"
+    },
+    {
+      "counts_match": true,
+      "duration_seconds": 4.32,
+      "finished_at_utc": "2026-10-20T18:25:02.874621Z",
+      "object_bytes": 5634,
+      "object_count": 1,
+      "parquet_bytes": 5634,
+      "parquet_file_count": 1,
+      "run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+      "source_column_count": 11,
+      "source_count": 3,
+      "source_read_finished_at_utc": "2026-10-20T18:25:01.540600Z",
+      "source_schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2024",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2025",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2026",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2027",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2028",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2029",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2030",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "percentual_participacao",
+            "nullable": true,
+            "type": "double"
+          }
+        ],
+        "type": "struct"
+      },
+      "source_table": "basedosdados.br_inep_avaliacao_alfabetizacao.meta_alfabetizacao_brasil",
+      "started_at_utc": "2026-10-20T18:24:58.554772Z",
+      "status": "SUCCEEDED",
+      "table": "meta_alfabetizacao_brasil",
+      "target_column_count": 14,
+      "target_count": 3,
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/meta_alfabetizacao_brasil/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/",
+      "write_finished_at_utc": "2026-10-20T18:25:02.246621Z"
+    },
+    {
+      "counts_match": true,
+      "duration_seconds": 4.093,
+      "finished_at_utc": "2026-10-20T18:25:07.004175Z",
+      "object_bytes": 8403,
+      "object_count": 1,
+      "parquet_bytes": 8403,
+      "parquet_file_count": 1,
+      "run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+      "source_column_count": 12,
+      "source_count": 81,
+      "source_read_finished_at_utc": "2026-10-20T18:25:05.705516Z",
+      "source_schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "sigla_uf",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2024",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2025",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2026",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2027",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2028",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2029",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2030",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "percentual_participacao",
+            "nullable": true,
+            "type": "double"
+          }
+        ],
+        "type": "struct"
+      },
+      "source_table": "basedosdados.br_inep_avaliacao_alfabetizacao.meta_alfabetizacao_uf",
+      "started_at_utc": "2026-10-20T18:25:02.911486Z",
+      "status": "SUCCEEDED",
+      "table": "meta_alfabetizacao_uf",
+      "target_column_count": 15,
+      "target_count": 81,
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/meta_alfabetizacao_uf/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/",
+      "write_finished_at_utc": "2026-10-20T18:25:06.446248Z"
+    },
+    {
+      "counts_match": true,
+      "duration_seconds": 4.412,
+      "finished_at_utc": "2026-10-20T18:25:11.454932Z",
+      "object_bytes": 261324,
+      "object_count": 1,
+      "parquet_bytes": 261324,
+      "parquet_file_count": 1,
+      "run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+      "source_column_count": 13,
+      "source_count": 10704,
+      "source_read_finished_at_utc": "2026-10-20T18:25:10.044493Z",
+      "source_schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "id_municipio",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2024",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2025",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2026",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2027",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2028",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2029",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2030",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "nivel_alfabetizacao",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "percentual_participacao",
+            "nullable": true,
+            "type": "double"
+          }
+        ],
+        "type": "struct"
+      },
+      "source_table": "basedosdados.br_inep_avaliacao_alfabetizacao.meta_alfabetizacao_municipio",
+      "started_at_utc": "2026-10-20T18:25:07.042558Z",
+      "status": "SUCCEEDED",
+      "table": "meta_alfabetizacao_municipio",
+      "target_column_count": 16,
+      "target_count": 10704,
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/meta_alfabetizacao_municipio/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/",
+      "write_finished_at_utc": "2026-10-20T18:25:10.780284Z"
+    },
+    {
+      "counts_match": true,
+      "duration_seconds": 4.517,
+      "finished_at_utc": "2026-10-20T18:25:16.009815Z",
+      "object_bytes": 3775,
+      "object_count": 1,
+      "parquet_bytes": 3775,
+      "parquet_file_count": 1,
+      "run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+      "source_column_count": 5,
+      "source_count": 27,
+      "source_read_finished_at_utc": "2026-10-20T18:25:14.930370Z",
+      "source_schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "id_tabela",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "nome_coluna",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "chave",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "cobertura_temporal",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "valor",
+            "nullable": true,
+            "type": "string"
+          }
+        ],
+        "type": "struct"
+      },
+      "source_table": "basedosdados.br_inep_avaliacao_alfabetizacao.dicionario",
+      "started_at_utc": "2026-10-20T18:25:11.493179Z",
+      "status": "SUCCEEDED",
+      "table": "dicionario",
+      "target_column_count": 8,
+      "target_count": 27,
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/dicionario/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/",
+      "write_finished_at_utc": "2026-10-20T18:25:15.485153Z"
+    }
+  ],
+  "total_source_rows": 3902954,
+  "total_target_rows": 3902954,
+  "validated_table_count": 7
+}

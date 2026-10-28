@@ -1,0 +1,240 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "FIAP: importacao de recursos operacionais existentes; preservar assinatura e configuracao, sem criar alertas adicionais.",
+  "Resources": {
+    "AlertTopic": {
+      "Type": "AWS::SNS::Topic",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "TopicName": "fiap-inep-alertas-operacionais",
+        "Tags": [
+          {
+            "Key": "Project",
+            "Value": "FIAP-TC-Fase2"
+          }
+        ]
+      }
+    },
+    "AlertSubscription": {
+      "Type": "AWS::SNS::Subscription",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "TopicArn": {
+          "Ref": "AlertTopic"
+        },
+        "Protocol": "email",
+        "Endpoint": "r***@fiap.com.br"
+      }
+    },
+    "AlertTopicPolicy": {
+      "Type": "AWS::SNS::TopicInlinePolicy",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "TopicArn": {
+          "Ref": "AlertTopic"
+        },
+        "PolicyDocument": {
+          "Version": "2008-10-17",
+          "Id": "__default_policy_ID",
+          "Statement": [
+            {
+              "Sid": "__default_statement_ID",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": "*"
+              },
+              "Action": [
+                "SNS:GetTopicAttributes",
+                "SNS:SetTopicAttributes",
+                "SNS:AddPermission",
+                "SNS:RemovePermission",
+                "SNS:DeleteTopic",
+                "SNS:Subscribe",
+                "SNS:ListSubscriptionsByTopic",
+                "SNS:Publish"
+              ],
+              "Resource": {
+                "Ref": "AlertTopic"
+              },
+              "Condition": {
+                "StringEquals": {
+                  "AWS:SourceOwner": "637246457028"
+                }
+              }
+            },
+            {
+              "Sid": "OnlyProjectCloudWatchAlarms",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "cloudwatch.amazonaws.com"
+              },
+              "Action": "sns:Publish",
+              "Resource": {
+                "Ref": "AlertTopic"
+              },
+              "Condition": {
+                "StringEquals": {
+                  "aws:SourceAccount": "637246457028"
+                },
+                "ArnEquals": {
+                  "aws:SourceArn": [
+                    "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-gold-inep-failure",
+                    "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-silver-inep-failure",
+                    "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-dlq",
+                    "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-rejected",
+                    "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-age"
+                  ]
+                }
+              }
+            },
+            {
+              "Sid": "OnlyEventBridgeFromThisAccount",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "events.amazonaws.com"
+              },
+              "Action": "sns:Publish",
+              "Resource": {
+                "Ref": "AlertTopic"
+              },
+              "Condition": {
+                "StringEquals": {
+                  "aws:SourceAccount": "637246457028"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "BatchFailureRule": {
+      "Type": "AWS::Events::Rule",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "Name": "fiap-inep-batch-failures",
+        "Description": "FIAP: operational failures of the three batch jobs; no schedule",
+        "State": "ENABLED",
+        "EventBusName": "default",
+        "EventPattern": {
+          "source": [
+            "aws.glue"
+          ],
+          "detail-type": [
+            "Glue Job State Change"
+          ],
+          "detail": {
+            "jobName": [
+              "fiap-bronze-inep-batch",
+              "fiap-silver-inep-batch",
+              "fiap-gold-inep-batch"
+            ],
+            "state": [
+              "FAILED",
+              "TIMEOUT",
+              "STOPPED",
+              "ERROR",
+              "EXPIRED"
+            ]
+          }
+        },
+        "Targets": [
+          {
+            "Id": "OperationalSNS",
+            "Arn": {
+              "Ref": "AlertTopic"
+            },
+            "InputTransformer": {
+              "InputPathsMap": {
+                "job": "$.detail.jobName",
+                "run": "$.detail.jobRunId",
+                "state": "$.detail.state",
+                "time": "$.time"
+              },
+              "InputTemplate": "{\"kind\":\"FIAP_BATCH_FAILURE\",\"job\":<job>,\"run_id\":<run>,\"status\":<state>,\"occurred_at\":<time>,\"action\":\"Inspect job logs and persistent quality report before retry\"}"
+            },
+            "RetryPolicy": {
+              "MaximumRetryAttempts": 3,
+              "MaximumEventAgeInSeconds": 3600
+            }
+          }
+        ]
+      }
+    },
+    "SilverFailureAlarm": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "AlarmName": "fiap-silver-inep-failure",
+        "AlarmDescription": "FIAP: falha do pipeline silver; alarme de console sem destinatarios externos.",
+        "ActionsEnabled": true,
+        "OKActions": [],
+        "AlarmActions": [
+          {
+            "Ref": "AlertTopic"
+          }
+        ],
+        "InsufficientDataActions": [],
+        "MetricName": "Failed",
+        "Namespace": "FIAP/Medallion",
+        "Statistic": "Sum",
+        "Dimensions": [
+          {
+            "Name": "Layer",
+            "Value": "silver"
+          },
+          {
+            "Name": "JobName",
+            "Value": "fiap-silver-inep-batch"
+          }
+        ],
+        "Period": 60,
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Threshold": 1.0,
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "TreatMissingData": "notBreaching"
+      }
+    },
+    "GoldFailureAlarm": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "DeletionPolicy": "Retain",
+      "UpdateReplacePolicy": "Retain",
+      "Properties": {
+        "AlarmName": "fiap-gold-inep-failure",
+        "AlarmDescription": "FIAP: falha do pipeline gold; alarme de console sem destinatarios externos.",
+        "ActionsEnabled": true,
+        "OKActions": [],
+        "AlarmActions": [
+          {
+            "Ref": "AlertTopic"
+          }
+        ],
+        "InsufficientDataActions": [],
+        "MetricName": "Failed",
+        "Namespace": "FIAP/Medallion",
+        "Statistic": "Sum",
+        "Dimensions": [
+          {
+            "Name": "Layer",
+            "Value": "gold"
+          },
+          {
+            "Name": "JobName",
+            "Value": "fiap-gold-inep-batch"
+          }
+        ],
+        "Period": 60,
+        "EvaluationPeriods": 1,
+        "DatapointsToAlarm": 1,
+        "Threshold": 1.0,
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+        "TreatMissingData": "notBreaching"
+      }
+    }
+  }
+}

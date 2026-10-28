@@ -1,0 +1,1108 @@
+{
+  "verified_at_utc": "2026-10-20T18:46:42.211340+00:00",
+  "region": "us-east-2",
+  "function_name": "fiap-inep-streaming-consumer",
+  "errors": [],
+  "pending": [],
+  "events": [
+    {
+      "event_id": "2118dcfe-5846-5a83-a5ff-620db3b7235f",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=2118dcfe-5846-5a83-a5ff-620db3b7235f.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=2118dcfe-5846-5a83-a5ff-620db3b7235f.json",
+      "event_sha256": "52f7255a76724d80b2c891ee3a720bb875047d5566d26b41a575b0fdc6806981",
+      "payload_sha256": "cf5b5b741f6d2c9bb2f7e9657c2178efe0bc52f9187e96e23b2cb326d0c1b8b4",
+      "event_time": "2026-10-20T18:41:06.698716Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:11+00:00",
+      "s3_latency_seconds_raw": 4.301284,
+      "s3_latency_seconds_clamped": 4.301284,
+      "bytes": 1123,
+      "claim_verified": true
+    },
+    {
+      "event_id": "39e674a4-acfb-5ed8-9740-0be5e32689c0",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=39e674a4-acfb-5ed8-9740-0be5e32689c0.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=39e674a4-acfb-5ed8-9740-0be5e32689c0.json",
+      "event_sha256": "67b82b8502b89287a399abea6b6d4e2745f27415714db57ef46b36537a6e5471",
+      "payload_sha256": "72d33eee96a2f198588b386484d6771157394f68ab3fcafa6f1d65af84531b7d",
+      "event_time": "2026-10-20T18:41:07.758026Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:16+00:00",
+      "s3_latency_seconds_raw": 8.241974,
+      "s3_latency_seconds_clamped": 8.241974,
+      "bytes": 1123,
+      "claim_verified": true
+    },
+    {
+      "event_id": "af268086-77ac-5de3-91e7-1503dd988c04",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=af268086-77ac-5de3-91e7-1503dd988c04.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=af268086-77ac-5de3-91e7-1503dd988c04.json",
+      "event_sha256": "5e9f76ae451175f45ac5850e1a3ef0d29749210e831a1985ab64bf90a29544c2",
+      "payload_sha256": "51dac46b1073ae750051dd5dcc5a9a7e298655edab6322a02659ddc94eee4825",
+      "event_time": "2026-10-20T18:41:08.770031Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:14+00:00",
+      "s3_latency_seconds_raw": 5.229969,
+      "s3_latency_seconds_clamped": 5.229969,
+      "bytes": 1130,
+      "claim_verified": true
+    },
+    {
+      "event_id": "21d45cbd-5eff-50f0-ba2b-15ed6ab6e383",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=21d45cbd-5eff-50f0-ba2b-15ed6ab6e383.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=21d45cbd-5eff-50f0-ba2b-15ed6ab6e383.json",
+      "event_sha256": "b965867e3c6c5902c1e5d243543b876c0dfd6d23f1b450b9eeb3b171970ba02b",
+      "payload_sha256": "5d1af132329265463ae71829e2b878be746b54469ebccc764909f980f54cbac9",
+      "event_time": "2026-10-20T18:41:09.789618Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:14+00:00",
+      "s3_latency_seconds_raw": 4.210382,
+      "s3_latency_seconds_clamped": 4.210382,
+      "bytes": 1121,
+      "claim_verified": true
+    },
+    {
+      "event_id": "825320eb-a9c6-5079-b4a5-9f1850085e1b",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=825320eb-a9c6-5079-b4a5-9f1850085e1b.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=825320eb-a9c6-5079-b4a5-9f1850085e1b.json",
+      "event_sha256": "e0669c7193de31934df65ddf6309b463404ee42443804b43f79620454f1c0e0a",
+      "payload_sha256": "d38b8d90157cd66147efa4fe35b01ea194fcea6be16268843dff6ba9b89b387f",
+      "event_time": "2026-10-20T18:41:10.803029Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:15+00:00",
+      "s3_latency_seconds_raw": 4.196971,
+      "s3_latency_seconds_clamped": 4.196971,
+      "bytes": 1122,
+      "claim_verified": true
+    },
+    {
+      "event_id": "d86b80d7-b2df-594f-95fe-934745fa2794",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=d86b80d7-b2df-594f-95fe-934745fa2794.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=d86b80d7-b2df-594f-95fe-934745fa2794.json",
+      "event_sha256": "bd09678e8ced6e225212c7e37929b47fa7041b95c2e6a5edab7573f5d0c3d9ce",
+      "payload_sha256": "a2b8cdea5d8ea645e525fbc8e0074f543a145fce1845be43fc7d83c57cf1476e",
+      "event_time": "2026-10-20T18:41:11.814972Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:13+00:00",
+      "s3_latency_seconds_raw": 1.185028,
+      "s3_latency_seconds_clamped": 1.185028,
+      "bytes": 1122,
+      "claim_verified": true
+    },
+    {
+      "event_id": "74c880ae-aafd-521c-811b-4628642c4ebf",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=74c880ae-aafd-521c-811b-4628642c4ebf.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=74c880ae-aafd-521c-811b-4628642c4ebf.json",
+      "event_sha256": "49c8c687a1ebd0bd766bb1d539c7518543e5d511ed77c91a253a8f29b84369be",
+      "payload_sha256": "8ba4d40702de5b6e81571300981b93bed0d495fd19a8a690ce07da379a43f043",
+      "event_time": "2026-10-20T18:41:12.825148Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:14+00:00",
+      "s3_latency_seconds_raw": 1.174852,
+      "s3_latency_seconds_clamped": 1.174852,
+      "bytes": 1124,
+      "claim_verified": true
+    },
+    {
+      "event_id": "0825cc73-9d1e-54ae-b4bd-0944589c634e",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=0825cc73-9d1e-54ae-b4bd-0944589c634e.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=0825cc73-9d1e-54ae-b4bd-0944589c634e.json",
+      "event_sha256": "9364839cdfa44445f319584890ea723c02ffc49df99ec1370950b764bcc1b824",
+      "payload_sha256": "865cb437755d68c53c88c8e924d984ac23a379fb292ff163b513f68be92f821f",
+      "event_time": "2026-10-20T18:41:13.837585Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:15+00:00",
+      "s3_latency_seconds_raw": 1.162415,
+      "s3_latency_seconds_clamped": 1.162415,
+      "bytes": 1127,
+      "claim_verified": true
+    },
+    {
+      "event_id": "7c6a1bac-d193-5d4c-91f4-a9c4a7370c37",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=7c6a1bac-d193-5d4c-91f4-a9c4a7370c37.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=7c6a1bac-d193-5d4c-91f4-a9c4a7370c37.json",
+      "event_sha256": "5edb729c4c4bf4f755e3e024d944f578fae45f527f6eddead6b70612d494c96d",
+      "payload_sha256": "00512743b978cadd110082c0e7abb3c07f3176e5e02c5e870cd1ebca0080f3ac",
+      "event_time": "2026-10-20T18:41:14.848091Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:16+00:00",
+      "s3_latency_seconds_raw": 1.151909,
+      "s3_latency_seconds_clamped": 1.151909,
+      "bytes": 1124,
+      "claim_verified": true
+    },
+    {
+      "event_id": "6cabad81-f46e-54a6-abcd-daf32f674847",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=6cabad81-f46e-54a6-abcd-daf32f674847.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=6cabad81-f46e-54a6-abcd-daf32f674847.json",
+      "event_sha256": "5035105ce02efa8a66bc6f3ccf1848a7403b5abe0163a7b65e4cd7c9d3535ca6",
+      "payload_sha256": "6d7bf7624d091685b2edec8da0b2d6e3ee1c47096e38c9333f69bf914aed5881",
+      "event_time": "2026-10-20T18:41:15.863558Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:16+00:00",
+      "s3_latency_seconds_raw": 0.136442,
+      "s3_latency_seconds_clamped": 0.136442,
+      "bytes": 1124,
+      "claim_verified": true
+    },
+    {
+      "event_id": "f999ea1a-c2c2-5a17-b097-73846ab94670",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f999ea1a-c2c2-5a17-b097-73846ab94670.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f999ea1a-c2c2-5a17-b097-73846ab94670.json",
+      "event_sha256": "d01499daaf349c6612cc20909db926a76916cb5115a13a0cbe3bdc4b31458133",
+      "payload_sha256": "dbd9b63a422909913b7ff62b26fcf8466a1694167ced23635eeec875ae384a34",
+      "event_time": "2026-10-20T18:41:16.872909Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:17+00:00",
+      "s3_latency_seconds_raw": 0.127091,
+      "s3_latency_seconds_clamped": 0.127091,
+      "bytes": 1128,
+      "claim_verified": true
+    },
+    {
+      "event_id": "201f930e-9bc0-5027-914d-69ca10e5a3a2",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=201f930e-9bc0-5027-914d-69ca10e5a3a2.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=201f930e-9bc0-5027-914d-69ca10e5a3a2.json",
+      "event_sha256": "9650e1cf565525185d3762db9c5329d73a22d69c39165abb3d06c326a4300879",
+      "payload_sha256": "4046cb7535158b8cf0ca02eb24e235692a7d865a5a1340e488d941a745557328",
+      "event_time": "2026-10-20T18:41:17.884010Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:18+00:00",
+      "s3_latency_seconds_raw": 0.11599,
+      "s3_latency_seconds_clamped": 0.11599,
+      "bytes": 1122,
+      "claim_verified": true
+    },
+    {
+      "event_id": "b4aa2021-a387-5e5a-90a0-ac39d0faa3b5",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=b4aa2021-a387-5e5a-90a0-ac39d0faa3b5.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=b4aa2021-a387-5e5a-90a0-ac39d0faa3b5.json",
+      "event_sha256": "11214abb6f90b5849428e0e9b669a096e30f2860a361379dafaa188ca85d50cd",
+      "payload_sha256": "11c2179d81a9ebd82acd1814f1bec8f6a85ddac53343c3d8562ebe86e9585b87",
+      "event_time": "2026-10-20T18:41:18.893633Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:19+00:00",
+      "s3_latency_seconds_raw": 0.106367,
+      "s3_latency_seconds_clamped": 0.106367,
+      "bytes": 1128,
+      "claim_verified": true
+    },
+    {
+      "event_id": "587f5c71-d450-57a9-baf4-7826c9df0480",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=587f5c71-d450-57a9-baf4-7826c9df0480.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=587f5c71-d450-57a9-baf4-7826c9df0480.json",
+      "event_sha256": "78a0555fa1408054f9940f0fd2f05785e1ccd2ebdbfa16fe2e630a400958a678",
+      "payload_sha256": "f34007df76657328c16124d435996ea78eedf377b36acbef7ef195c741abeda6",
+      "event_time": "2026-10-20T18:41:19.903176Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:20+00:00",
+      "s3_latency_seconds_raw": 0.096824,
+      "s3_latency_seconds_clamped": 0.096824,
+      "bytes": 1130,
+      "claim_verified": true
+    },
+    {
+      "event_id": "0e9a13b9-5379-5e50-a5f0-160ab5985c92",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=0e9a13b9-5379-5e50-a5f0-160ab5985c92.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=0e9a13b9-5379-5e50-a5f0-160ab5985c92.json",
+      "event_sha256": "a8593d3aa883faf48d7c4c8eeceaa2e0fad3b9a7576ea68d06ad80337e49bd5e",
+      "payload_sha256": "a3426c6126d900c63ac0b5811748325e5afd9b843248208fe6a9a85bb525f7ad",
+      "event_time": "2026-10-20T18:41:20.912944Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:21+00:00",
+      "s3_latency_seconds_raw": 0.087056,
+      "s3_latency_seconds_clamped": 0.087056,
+      "bytes": 1130,
+      "claim_verified": true
+    },
+    {
+      "event_id": "c0def17e-5985-5105-9350-689a26e1c1a2",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=c0def17e-5985-5105-9350-689a26e1c1a2.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=c0def17e-5985-5105-9350-689a26e1c1a2.json",
+      "event_sha256": "80f5555c69792730fb214b67a9d99990e15203348ebc0af42ff1cd786ef26213",
+      "payload_sha256": "21de6ff5e1f5f73217bbd2853c6b6f78be1d01087aa5785a7ce22107b2de433b",
+      "event_time": "2026-10-20T18:41:21.925080Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:23+00:00",
+      "s3_latency_seconds_raw": 1.07492,
+      "s3_latency_seconds_clamped": 1.07492,
+      "bytes": 1127,
+      "claim_verified": true
+    },
+    {
+      "event_id": "39302578-f88d-5212-97b9-1c714d5de827",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=39302578-f88d-5212-97b9-1c714d5de827.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=39302578-f88d-5212-97b9-1c714d5de827.json",
+      "event_sha256": "a513f2d28442c1d6ec4e6db2ca5c72266104b88e03f06d7f3bdfd6ce2824909c",
+      "payload_sha256": "8b6a280c75fe9aab59f850855ceb04e26ffe30fc5440164e836cc5a89d021c35",
+      "event_time": "2026-10-20T18:41:22.937528Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:24+00:00",
+      "s3_latency_seconds_raw": 1.062472,
+      "s3_latency_seconds_clamped": 1.062472,
+      "bytes": 1133,
+      "claim_verified": true
+    },
+    {
+      "event_id": "1afe2990-9884-5398-af9b-e6e5564218ca",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=1afe2990-9884-5398-af9b-e6e5564218ca.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=1afe2990-9884-5398-af9b-e6e5564218ca.json",
+      "event_sha256": "fce9e53ed3d48c59ae2d0aec0bee1f510e4e3c729b28e7234fe1fab3f3fcade9",
+      "payload_sha256": "38e232c8f42dd5f6b6d0b02e785afc6dd2d1b9f57826d7feddf61e53373e7080",
+      "event_time": "2026-10-20T18:41:23.951040Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:25+00:00",
+      "s3_latency_seconds_raw": 1.04896,
+      "s3_latency_seconds_clamped": 1.04896,
+      "bytes": 1124,
+      "claim_verified": true
+    },
+    {
+      "event_id": "f87e66e7-2adc-5a48-8b72-999543be3e71",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f87e66e7-2adc-5a48-8b72-999543be3e71.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f87e66e7-2adc-5a48-8b72-999543be3e71.json",
+      "event_sha256": "1cdaf7e9a468ceeb22ab6fe3ee1d65b3c01791b998f57434238dabdaa243018e",
+      "payload_sha256": "00f65eec32920f1a16ec8b771278cad53fc6d51479e9b2b9f552d12c1124cb10",
+      "event_time": "2026-10-20T18:41:24.961048Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:26+00:00",
+      "s3_latency_seconds_raw": 1.038952,
+      "s3_latency_seconds_clamped": 1.038952,
+      "bytes": 1123,
+      "claim_verified": true
+    },
+    {
+      "event_id": "38694c89-ba97-5c69-92d6-c0eac0c8bc1c",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=38694c89-ba97-5c69-92d6-c0eac0c8bc1c.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=38694c89-ba97-5c69-92d6-c0eac0c8bc1c.json",
+      "event_sha256": "e66b9adbd584aa0151ce2f78d0c8bccf2fe8a9f8da39bbe3b80c7a5ba62a9637",
+      "payload_sha256": "f2f99bcc672daa9c39ec2745a45c7d64b7195f4248cad3d67b91a0c7626b2563",
+      "event_time": "2026-10-20T18:41:25.973759Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:27+00:00",
+      "s3_latency_seconds_raw": 1.026241,
+      "s3_latency_seconds_clamped": 1.026241,
+      "bytes": 1133,
+      "claim_verified": true
+    },
+    {
+      "event_id": "3acc6c21-5ce1-54c1-b74f-a8b8e74648db",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3acc6c21-5ce1-54c1-b74f-a8b8e74648db.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3acc6c21-5ce1-54c1-b74f-a8b8e74648db.json",
+      "event_sha256": "bc2a27bba455555aca570e8363fb4281372de0647c9ed26e0241818e3b34c31a",
+      "payload_sha256": "7edac99176c64ca7cc4e905d26167ea21d801149479770a98512af5b93400da7",
+      "event_time": "2026-10-20T18:41:26.983869Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:28+00:00",
+      "s3_latency_seconds_raw": 1.016131,
+      "s3_latency_seconds_clamped": 1.016131,
+      "bytes": 1122,
+      "claim_verified": true
+    },
+    {
+      "event_id": "f0dcd198-0683-5f3d-a169-d15cc24542f9",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f0dcd198-0683-5f3d-a169-d15cc24542f9.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=f0dcd198-0683-5f3d-a169-d15cc24542f9.json",
+      "event_sha256": "506cb5da1fe39f1b4c01ef66c6693ff4eeefb9e4554a66281f2847f2627651bc",
+      "payload_sha256": "656e631cfe2d96882dd9c6f2bfd78969890b9ac574b8280adc7ba9ed92061eca",
+      "event_time": "2026-10-20T18:41:27.993944Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:29+00:00",
+      "s3_latency_seconds_raw": 1.006056,
+      "s3_latency_seconds_clamped": 1.006056,
+      "bytes": 1124,
+      "claim_verified": true
+    },
+    {
+      "event_id": "3757f64a-f3d1-5985-af7e-09f5abc62cb6",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3757f64a-f3d1-5985-af7e-09f5abc62cb6.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3757f64a-f3d1-5985-af7e-09f5abc62cb6.json",
+      "event_sha256": "6d526e27a4da9cd327f8b18a711a474389eadf572c40dad6f9380b52d783176d",
+      "payload_sha256": "23fb68cfde78483c84923cf7f1ee0af1d5260878129aa106ae5d923d3f57fb07",
+      "event_time": "2026-10-20T18:41:29.003642Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:30+00:00",
+      "s3_latency_seconds_raw": 0.996358,
+      "s3_latency_seconds_clamped": 0.996358,
+      "bytes": 1124,
+      "claim_verified": true
+    },
+    {
+      "event_id": "584d1819-f5d1-5d58-a4a6-6263edf3d136",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=584d1819-f5d1-5d58-a4a6-6263edf3d136.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=584d1819-f5d1-5d58-a4a6-6263edf3d136.json",
+      "event_sha256": "f039ab5a1a80a7465b1a7df4d837b827601878f551e1577e09879bc98b28d62b",
+      "payload_sha256": "f451c13d4a78d1d0f615975bb0c38cc98e4a670c0cb56ad798f0e488b2112e57",
+      "event_time": "2026-10-20T18:41:30.012096Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:31+00:00",
+      "s3_latency_seconds_raw": 0.987904,
+      "s3_latency_seconds_clamped": 0.987904,
+      "bytes": 1122,
+      "claim_verified": true
+    },
+    {
+      "event_id": "e51b621c-f21d-55d0-be55-435b56f5307b",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=e51b621c-f21d-55d0-be55-435b56f5307b.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=e51b621c-f21d-55d0-be55-435b56f5307b.json",
+      "event_sha256": "62b30627117c2353d7943e41d3bf628d78e7c864cb0e4df954db40ed1014e7d2",
+      "payload_sha256": "b285035341f481f8fee61e9322e623182fdb9f52c6040c296dbd98866d3fc194",
+      "event_time": "2026-10-20T18:41:31.023090Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:32+00:00",
+      "s3_latency_seconds_raw": 0.97691,
+      "s3_latency_seconds_clamped": 0.97691,
+      "bytes": 1127,
+      "claim_verified": true
+    },
+    {
+      "event_id": "c6665752-83d5-50a0-bcd6-71e6f7fc4d1e",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=c6665752-83d5-50a0-bcd6-71e6f7fc4d1e.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=c6665752-83d5-50a0-bcd6-71e6f7fc4d1e.json",
+      "event_sha256": "fc84b7a5edbedc88bcd95042e9542dbcf449cb27fd3df226b8474402ec63f768",
+      "payload_sha256": "de8dfd63aa7d843508b7f5d8e3d200e2ff57152f7fbf6694dd81ea00820aaeb4",
+      "event_time": "2026-10-20T18:41:32.034230Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:33+00:00",
+      "s3_latency_seconds_raw": 0.96577,
+      "s3_latency_seconds_clamped": 0.96577,
+      "bytes": 1124,
+      "claim_verified": true
+    },
+    {
+      "event_id": "98dd9848-138b-597d-9bd8-e8518cd3810f",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=98dd9848-138b-597d-9bd8-e8518cd3810f.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=98dd9848-138b-597d-9bd8-e8518cd3810f.json",
+      "event_sha256": "73a6068f120432c7584f7805e9ca46c5f4a917378c78f7ccc2023e2ddc65c9f3",
+      "payload_sha256": "43e288bea348cb2b4146b888dc1faf43f7c40df3fdb158d1c7afc719fe3f180d",
+      "event_time": "2026-10-20T18:41:33.043950Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:34+00:00",
+      "s3_latency_seconds_raw": 0.95605,
+      "s3_latency_seconds_clamped": 0.95605,
+      "bytes": 1122,
+      "claim_verified": true
+    },
+    {
+      "event_id": "3b907ff0-2f14-5dba-b35d-112d18be075a",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3b907ff0-2f14-5dba-b35d-112d18be075a.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=3b907ff0-2f14-5dba-b35d-112d18be075a.json",
+      "event_sha256": "be5887b615c854ed8cfa175af35f3b9df5054e807e2c4f26e7163aaba745acc8",
+      "payload_sha256": "93c9b54fdd82eb44b131b8229856c6e3d417b7a0e283ccc4a4add36919ac18ab",
+      "event_time": "2026-10-20T18:41:34.052766Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:35+00:00",
+      "s3_latency_seconds_raw": 0.947234,
+      "s3_latency_seconds_clamped": 0.947234,
+      "bytes": 1122,
+      "claim_verified": true
+    },
+    {
+      "event_id": "37845ddc-d234-51d1-ad8c-5222e7c2a5d7",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=37845ddc-d234-51d1-ad8c-5222e7c2a5d7.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=37845ddc-d234-51d1-ad8c-5222e7c2a5d7.json",
+      "event_sha256": "262f31ab0899b31044298ca7839c9f3a1ec1c593f9fba221905241a3e731f5ca",
+      "payload_sha256": "a00d6254b3389bfed65c10ab2e48933d69bc164129793497f61c9c1adc76802c",
+      "event_time": "2026-10-20T18:41:35.063244Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:36+00:00",
+      "s3_latency_seconds_raw": 0.936756,
+      "s3_latency_seconds_clamped": 0.936756,
+      "bytes": 1124,
+      "claim_verified": true
+    },
+    {
+      "event_id": "5bcec347-9a7a-5e3b-a020-41364e9fe75f",
+      "target_uri": "s3://fiap-tc-fase2-2026/bronze/inep_streaming/entity=alunos/event_date=2026-10-20/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=5bcec347-9a7a-5e3b-a020-41364e9fe75f.json",
+      "claim_uri": "s3://fiap-tc-fase2-2026/auditoria/streaming/idempotency/run_id=sim_20261020T184106Z_65ed95850eeb/event_id=5bcec347-9a7a-5e3b-a020-41364e9fe75f.json",
+      "event_sha256": "02dd7dd4fb2829a59be8b55ccbaff1bd9372488d4e256b588223c2cb1f58c398",
+      "payload_sha256": "0a94369a284376f9a8e3418c061b19d6c0de37e524c117bf8d53c3b8c58d0eff",
+      "event_time": "2026-10-20T18:41:36.112705Z",
+      "bronze_verified": true,
+      "s3_last_modified_utc": "2026-10-20T18:41:37+00:00",
+      "s3_latency_seconds_raw": 0.887295,
+      "s3_latency_seconds_clamped": 0.887295,
+      "bytes": 1130,
+      "claim_verified": true
+    }
+  ],
+  "run_id": "sim_20261020T184106Z_65ed95850eeb",
+  "producer": {
+    "status": "SUCCEEDED",
+    "run_id": "sim_20261020T184106Z_65ed95850eeb",
+    "started_at_utc": "2026-10-20T18:41:06.236479Z",
+    "finished_at_utc": "2026-10-20T18:41:41.172302Z",
+    "unique_event_count": 30,
+    "duplicate_send_count": 5,
+    "confirmed_send_count": 35,
+    "interval_seconds": 1.0,
+    "source": {
+      "manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/bronze/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/manifest.json",
+      "snapshot_run_id": "jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+      "source_table": "alunos",
+      "source_columns": [
+        "ano",
+        "id_municipio",
+        "id_escola",
+        "id_aluno",
+        "caderno",
+        "serie",
+        "rede",
+        "presenca",
+        "preenchimento_caderno",
+        "alfabetizado",
+        "proficiencia",
+        "peso_aluno"
+      ],
+      "source_target_uri": "s3://fiap-tc-fase2-2026/bronze/inep/alunos/ingestion_date=2026-10-20/run_id=jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700/"
+    }
+  },
+  "s3_inventory": {
+    "unique_events_expected": 30,
+    "bronze_object_count": 30,
+    "claim_object_count": 30,
+    "bronze_bytes": 33759
+  },
+  "s3_latency_seconds": {
+    "raw": {
+      "count": 30,
+      "min": 0.087056,
+      "max": 8.241974,
+      "mean": 1.5484187666666667,
+      "median": 1.0110934999999999,
+      "p95_nearest_rank": 5.229969
+    },
+    "clamped": {
+      "count": 30,
+      "min": 0.087056,
+      "max": 8.241974,
+      "mean": 1.5484187666666667,
+      "median": 1.0110934999999999,
+      "p95_nearest_rank": 5.229969
+    },
+    "limitation": "S3 LastModified has second resolution; raw values may be slightly negative. EMF latency is measured by Lambda only after the Bronze PUT succeeds."
+  },
+  "queue_attributes": {
+    "ApproximateNumberOfMessages": "0",
+    "ApproximateNumberOfMessagesNotVisible": "0",
+    "ApproximateNumberOfMessagesDelayed": "0"
+  },
+  "dlq_attributes_before_inspection": {
+    "ApproximateNumberOfMessages": "1",
+    "ApproximateNumberOfMessagesNotVisible": "0",
+    "ApproximateNumberOfMessagesDelayed": "0"
+  },
+  "dlq_evidence": {
+    "expected_message_id": "622aaa22-577c-4b80-b56b-459454707967",
+    "matched": {
+      "message_id": "622aaa22-577c-4b80-b56b-459454707967",
+      "attributes": {
+        "SenderId": "AROAZIXWZITCOVE3WO55C:54b8b4c8-7091-7004-2dc6-85e9f92c8f1d",
+        "ApproximateFirstReceiveTimestamp": "1792521666055",
+        "ApproximateReceiveCount": "6",
+        "SentTimestamp": "1792521666045",
+        "DeadLetterQueueSourceArn": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming"
+      },
+      "body_sha256": "f0670e7b907afb494ab9643722c854ccb60c7821ba9c32d28e15d28bf7a488de",
+      "body_bytes": 385,
+      "contract_invalid": true,
+      "validation_error_type": "InvalidEnvelope"
+    },
+    "messages_inspected": [
+      {
+        "message_id": "622aaa22-577c-4b80-b56b-459454707967",
+        "attributes": {
+          "SenderId": "AROAZIXWZITCOVE3WO55C:54b8b4c8-7091-7004-2dc6-85e9f92c8f1d",
+          "ApproximateFirstReceiveTimestamp": "1792521666055",
+          "ApproximateReceiveCount": "6",
+          "SentTimestamp": "1792521666045",
+          "DeadLetterQueueSourceArn": "arn:aws:sqs:us-east-2:637246457028:fiap-inep-streaming"
+        },
+        "body_sha256": "f0670e7b907afb494ab9643722c854ccb60c7821ba9c32d28e15d28bf7a488de",
+        "body_bytes": 385,
+        "contract_invalid": true,
+        "validation_error_type": "InvalidEnvelope"
+      }
+    ],
+    "deleted_messages": 0,
+    "visibility_restored": 1
+  },
+  "lambda_configuration": {
+    "FunctionName": "fiap-inep-streaming-consumer",
+    "FunctionArn": "arn:aws:lambda:us-east-2:637246457028:function:fiap-inep-streaming-consumer",
+    "Runtime": "python3.12",
+    "Role": "arn:aws:iam::637246457028:role/fiap-lambda-inep-streaming",
+    "Handler": "index.lambda_handler",
+    "Timeout": 10,
+    "MemorySize": 256,
+    "CodeSha256": "GGgpzd2WgakGtqs8BmZi1IcioZQjv4VIPY5020+f6uw=",
+    "LastModified": "2026-10-20T18:40:27.000+0000",
+    "State": "Active",
+    "LastUpdateStatus": "Successful"
+  },
+  "observability": {
+    "window_start_utc": "2026-10-20T18:41:06.236479+00:00",
+    "window_end_utc": "2026-10-20T18:46:44.575138+00:00",
+    "event_logs_scope": "exact run_id; invalid failures matched by SQS message ID",
+    "emf_and_cloudwatch_scope": "function and time window, not exclusively run_id",
+    "event_status_counts": {
+      "ACCEPTED": 30,
+      "DUPLICATE": 5,
+      "FAILED": 0
+    },
+    "invalid_message_failures": [
+      {
+        "status": "FAILED",
+        "sqs_message_id": "622aaa22-577c-4b80-b56b-459454707967",
+        "error_type": "InvalidEnvelope"
+      },
+      {
+        "status": "FAILED",
+        "sqs_message_id": "622aaa22-577c-4b80-b56b-459454707967",
+        "error_type": "InvalidEnvelope"
+      },
+      {
+        "status": "FAILED",
+        "sqs_message_id": "622aaa22-577c-4b80-b56b-459454707967",
+        "error_type": "InvalidEnvelope"
+      },
+      {
+        "status": "FAILED",
+        "sqs_message_id": "622aaa22-577c-4b80-b56b-459454707967",
+        "error_type": "InvalidEnvelope"
+      },
+      {
+        "status": "FAILED",
+        "sqs_message_id": "622aaa22-577c-4b80-b56b-459454707967",
+        "error_type": "InvalidEnvelope"
+      }
+    ],
+    "runtime_errors": [],
+    "emf_batches": [
+      {
+        "invocation_id": "72b02dd7-a869-56cd-b0cd-4e861f90fbc3",
+        "Received": 1,
+        "Accepted": 0,
+        "Duplicate": 0,
+        "Failed": 1
+      },
+      {
+        "invocation_id": "863bb26f-a95a-52d9-9475-d13e1ea39572",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "bb1f721d-19be-5827-ae0d-114ca1b64529",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "9d0c92ce-52c3-54f9-8f2e-f19feacac352",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "c5b9d673-da35-5d32-8a31-b522623c503c",
+        "Received": 2,
+        "Accepted": 2,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "3fb6ce78-5f32-55ea-9cd6-ad29e73868e4",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "66bf6872-3f68-514c-8f55-0b238762bc42",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "80777e52-3fe7-56ff-8ad0-1d0387ec6bf1",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "93de744f-3980-5736-bd7c-171e818b809d",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "5af89210-f2e9-519c-a782-f1414ae2d029",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "b06a1d68-f009-5f60-97c0-7e394805eed5",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "15efe83d-2d83-5b55-9da2-8b6c958ecae0",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "3b236b1d-2164-5f2c-94ea-084c99686887",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "b33cbec3-c157-5b23-9064-dd927959ba96",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "9e4cc98a-132a-5113-97e9-aadbab3a30a6",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "d5d97e25-7886-55b9-9e6f-1d74c089e212",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "fca45dd4-3503-515c-b4e4-3e858d1290e9",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "e2865cf4-1aa8-514f-b2ac-3fa5a2bb40fa",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "03c922ac-edd3-554e-9dfd-41fd55c734fb",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "55bd77a1-fb94-58f1-aaed-14f043818944",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "158fa617-f15c-5128-b477-c546494a409d",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "c1147273-e763-5135-9584-11225f71f69e",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "aa2a06f6-8c3c-5aab-aa7b-65a7342b5b1e",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "d0d9d4d0-7358-5fc4-933c-b781cb413e71",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "bb2f95c3-fc59-5bdf-9a7d-f69244414c74",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "b8148ac7-4de6-5221-a5f7-e996f5fc7394",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "106ae136-ec50-5b7a-a185-8267544c0f8a",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "14e26435-ffab-50ab-a71d-076447b76482",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "598e9877-18db-5962-9cb8-fb26a0c7d8d7",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "229e7ea8-6e0d-5ec3-be42-1df9d6165968",
+        "Received": 1,
+        "Accepted": 1,
+        "Duplicate": 0,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "61dfb222-f6e6-503a-a6bf-d1734ef85413",
+        "Received": 1,
+        "Accepted": 0,
+        "Duplicate": 1,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "3224fe37-3bea-5fa8-a313-9d6683f51e1d",
+        "Received": 1,
+        "Accepted": 0,
+        "Duplicate": 1,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "15b2bba3-d89a-5dd6-ae24-d8f260bbb9ff",
+        "Received": 1,
+        "Accepted": 0,
+        "Duplicate": 1,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "1702d4fb-2a02-5112-a571-b7aa9222a6b9",
+        "Received": 1,
+        "Accepted": 0,
+        "Duplicate": 1,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "4699c505-9b2a-5d77-b14a-a6542337a987",
+        "Received": 1,
+        "Accepted": 0,
+        "Duplicate": 1,
+        "Failed": 0
+      },
+      {
+        "invocation_id": "ae0a7ca3-df1c-5709-9ae2-1ff2672480a2",
+        "Received": 1,
+        "Accepted": 0,
+        "Duplicate": 0,
+        "Failed": 1
+      },
+      {
+        "invocation_id": "a7639399-1320-5c4e-a8ce-f0c8ab4cc5c5",
+        "Received": 1,
+        "Accepted": 0,
+        "Duplicate": 0,
+        "Failed": 1
+      },
+      {
+        "invocation_id": "471d4462-00b5-5704-9349-2733b81b06b1",
+        "Received": 1,
+        "Accepted": 0,
+        "Duplicate": 0,
+        "Failed": 1
+      },
+      {
+        "invocation_id": "4f7361f5-a509-5c4e-8261-02a41dd778be",
+        "Received": 1,
+        "Accepted": 0,
+        "Duplicate": 0,
+        "Failed": 1
+      }
+    ],
+    "emf_latency_seconds": {
+      "count": 30,
+      "min": 0.094581,
+      "max": 7.468449,
+      "mean": 0.9621719666666666,
+      "median": 0.1173205,
+      "p95_nearest_rank": 4.967374
+    },
+    "cloudwatch_metric_datapoints": {
+      "Received": [
+        {
+          "Timestamp": "2026-10-20T18:41:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 1.0285714285714285,
+          "Sum": 36.0,
+          "Minimum": 1.0,
+          "Maximum": 2.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:42:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:43:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:44:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:45:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        }
+      ],
+      "Accepted": [
+        {
+          "Timestamp": "2026-10-20T18:41:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 0.8571428571428571,
+          "Sum": 30.0,
+          "Minimum": 0.0,
+          "Maximum": 2.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:42:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:43:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:44:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:45:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        }
+      ],
+      "Duplicate": [
+        {
+          "Timestamp": "2026-10-20T18:41:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 0.14285714285714285,
+          "Sum": 5.0,
+          "Minimum": 0.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:42:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:43:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:44:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:45:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 0.0,
+          "Sum": 0.0,
+          "Minimum": 0.0,
+          "Maximum": 0.0,
+          "Unit": "Count"
+        }
+      ],
+      "Failed": [
+        {
+          "Timestamp": "2026-10-20T18:41:00+00:00",
+          "SampleCount": 35.0,
+          "Average": 0.02857142857142857,
+          "Sum": 1.0,
+          "Minimum": 0.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:42:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:43:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:44:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        },
+        {
+          "Timestamp": "2026-10-20T18:45:00+00:00",
+          "SampleCount": 1.0,
+          "Average": 1.0,
+          "Sum": 1.0,
+          "Minimum": 1.0,
+          "Maximum": 1.0,
+          "Unit": "Count"
+        }
+      ],
+      "LatencySeconds": [
+        {
+          "Timestamp": "2026-10-20T18:41:00+00:00",
+          "SampleCount": 30.0,
+          "Average": 0.9621719666666666,
+          "Sum": 28.865159,
+          "Minimum": 0.094581,
+          "Maximum": 7.468449,
+          "Unit": "Seconds"
+        }
+      ]
+    },
+    "alarms": [
+      {
+        "AlarmName": "fiap-inep-streaming-age",
+        "StateValue": "OK",
+        "StateReason": "Threshold Crossed: 1 out of the last 1 datapoints [28.0 (20/10/26 18:44:00)] was not greater than or equal to the threshold (120.0) (minimum 1 datapoint for ALARM -> OK transition).",
+        "ActionsEnabled": true,
+        "AlarmActions": [],
+        "Namespace": "AWS/SQS",
+        "MetricName": "ApproximateAgeOfOldestMessage",
+        "Period": 60,
+        "EvaluationPeriods": 1,
+        "Threshold": 120.0,
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold"
+      },
+      {
+        "AlarmName": "fiap-inep-streaming-dlq",
+        "StateValue": "OK",
+        "StateReason": "Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].",
+        "ActionsEnabled": true,
+        "AlarmActions": [],
+        "Namespace": "AWS/SQS",
+        "MetricName": "ApproximateNumberOfMessagesVisible",
+        "Period": 60,
+        "EvaluationPeriods": 1,
+        "Threshold": 1.0,
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold"
+      },
+      {
+        "AlarmName": "fiap-inep-streaming-rejected",
+        "StateValue": "ALARM",
+        "StateReason": "Threshold Crossed: 1 out of the last 1 datapoints [1.0 (20/10/26 18:41:00)] was greater than or equal to the threshold (1.0) (minimum 1 datapoint for OK -> ALARM transition).",
+        "ActionsEnabled": true,
+        "AlarmActions": [],
+        "Namespace": "FIAP/Streaming",
+        "MetricName": "Failed",
+        "Period": 60,
+        "EvaluationPeriods": 1,
+        "Threshold": 1.0,
+        "ComparisonOperator": "GreaterThanOrEqualToThreshold"
+      }
+    ]
+  },
+  "validation_status": "SUCCEEDED"
+}

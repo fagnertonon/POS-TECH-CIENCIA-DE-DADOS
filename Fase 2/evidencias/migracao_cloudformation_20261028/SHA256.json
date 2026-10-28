@@ -1,0 +1,302 @@
+{
+  "Contexto_Retomada_FIAP_20261028_Migracao.txt": {
+    "bytes": 2743,
+    "sha256": "1d3359aa13cc2d43440d7b358b295350209d02fae7c8e8e36f84d03b6d4e6f5f"
+  },
+  "LEIA-ME_Migracao.txt": {
+    "bytes": 6824,
+    "sha256": "249a10a21c0eb2270e2af9cfb043d6b7efd65191c803b005b000a3efad1dac90"
+  },
+  "attempt_01/import_template.json": {
+    "bytes": 7724,
+    "sha256": "4fa0a9b9a98e919b6ec4991127690ab3e3405fd49e369b859feda22c8081afaf"
+  },
+  "attempt_01/migrate_existing_alerts.py": {
+    "bytes": 12686,
+    "sha256": "06f1580329504031fddad80174443b0da1bac65fd84cb4a12722ab97c2ed128b"
+  },
+  "attempt_01/migration_bundle.zip": {
+    "bytes": 29752,
+    "sha256": "8e333d7ad6aea04dbf2fc8c0ea891f894bcfe55174ade2fc7af5a13edc3d6224"
+  },
+  "attempt_01/migration_plan.json": {
+    "bytes": 2614,
+    "sha256": "1fc1cca8adb76d7634dfa19775b52361596dfc4d7a729b792e0a21a837db3b8a"
+  },
+  "attempt_01/native_validation_error.json": {
+    "bytes": 428,
+    "sha256": "965e83418292f646aa9ab2c4352a2f3a5725cca660f1ddecb9efee00fccb9d43"
+  },
+  "attempt_01/resources_to_import.json": {
+    "bytes": 1260,
+    "sha256": "deab5314ede4cae49cbc481648840daf998118b845e4c7c5c7417f622ba1d879"
+  },
+  "attempt_01/streaming_update_template.json": {
+    "bytes": 32227,
+    "sha256": "8610749d53d5aa891aee201e877e717da1f0f8b6f0c83152085bf32f9189d76f"
+  },
+  "attempt_02/import_template.json": {
+    "bytes": 7338,
+    "sha256": "b232b5902789f4c0ce8adb918f9082dadb86ab1e9178fca23a4701a1d7e0b45b"
+  },
+  "attempt_02/migrate_existing_alerts.py": {
+    "bytes": 12860,
+    "sha256": "9cbd63b7f9b480b6fe8d81bdae2b74630fccd69da60c7859375a5673aa59eeef"
+  },
+  "attempt_02/migration_bundle.zip": {
+    "bytes": 29815,
+    "sha256": "0235bc37063847dcb4d4c3a663418a897a49d8d4c7ca69fee4a1bd22a0d3130a"
+  },
+  "attempt_02/migration_plan.json": {
+    "bytes": 2807,
+    "sha256": "93fc6d0f75d25a77047cb6a757189348ea05515229b5ab6efe59d1f2dfafaa92"
+  },
+  "attempt_02/resources_to_import.json": {
+    "bytes": 1260,
+    "sha256": "deab5314ede4cae49cbc481648840daf998118b845e4c7c5c7417f622ba1d879"
+  },
+  "attempt_02/streaming_update_template.json": {
+    "bytes": 32227,
+    "sha256": "8610749d53d5aa891aee201e877e717da1f0f8b6f0c83152085bf32f9189d76f"
+  },
+  "attempt_02/verify_migration.py": {
+    "bytes": 6021,
+    "sha256": "192cd883961e5ce02ecba4397fbbfb95176a67435f692de74e21846f6da19266"
+  },
+  "aws_evidence/applied_update/before.json": {
+    "bytes": 61778,
+    "sha256": "110b78a9fd1f0520f879642b0764e5d6a083b151633968da6dfe54a4b8c7e8bf"
+  },
+  "aws_evidence/applied_update/import_template.json": {
+    "bytes": 7338,
+    "sha256": "b232b5902789f4c0ce8adb918f9082dadb86ab1e9178fca23a4701a1d7e0b45b"
+  },
+  "aws_evidence/applied_update/lambda_source_identity.json": {
+    "bytes": 765,
+    "sha256": "76db2b563ab6ae8a40b12719447b54e2d7d0df3332aaecdd95813047c6753244"
+  },
+  "aws_evidence/applied_update/migrate_existing_alerts.py": {
+    "bytes": 12860,
+    "sha256": "2451c350fee22d0ecb82c6b59e163472b3bfdc39c16e6a09987c4b1df53957fe"
+  },
+  "aws_evidence/applied_update/migration_plan.json": {
+    "bytes": 3944,
+    "sha256": "8098aa82131a3e21b39b7d6b5d5a29e8afc0c96d961aab7caa115e95497d57fd"
+  },
+  "aws_evidence/applied_update/operation/drift_requests.json": {
+    "bytes": 1253,
+    "sha256": "719dad35c6c402dc113650f72ee767be50cc109a94b4e319cd6db20649d1ef0c"
+  },
+  "aws_evidence/applied_update/operation/migration_verified.json": {
+    "bytes": 83903,
+    "sha256": "81642adaec7bde71bad7c1544ffb61594456fd3e0f701ad12728ac7f6233725c"
+  },
+  "aws_evidence/applied_update/operation/status_132034198377.json": {
+    "bytes": 133085,
+    "sha256": "f80656828d706a7ebcfe760b059c9e21a03347dad9a9326bb045efc139940fcd"
+  },
+  "aws_evidence/applied_update/operation/update_change_set.json": {
+    "bytes": 593,
+    "sha256": "c4634e2462febf34041cb857dbe754832cf61e362361405d8940216c9fbf33f8"
+  },
+  "aws_evidence/applied_update/operation/update_execution_started.json": {
+    "bytes": 5657,
+    "sha256": "d25feac1908143080ef65f702e297eed63333c0f863af08da5c008d981c872e0"
+  },
+  "aws_evidence/applied_update/operation/update_native_review.json": {
+    "bytes": 7052,
+    "sha256": "1a478388837594050815ebb66a048a5e4331ba7e2e8e84a5fdd2fa043425ba7b"
+  },
+  "aws_evidence/applied_update/operation/update_pre_execute_routing.json": {
+    "bytes": 438,
+    "sha256": "7a8c614ade499ac8b202883a819f18719beddd71ec5dde5fbd74cb1078cdd014"
+  },
+  "aws_evidence/applied_update/operation/update_routing_guard.json": {
+    "bytes": 438,
+    "sha256": "b6b22ff0774a5fe34cb2627c1d715ec68bcf7507b6002237cbb5e6dba47e6b2f"
+  },
+  "aws_evidence/applied_update/operation/update_template_validation.json": {
+    "bytes": 1147,
+    "sha256": "9aaeb5efb8e610a91da92a412f43ef5f0c384eceb43689793b4ffd38d69269a1"
+  },
+  "aws_evidence/applied_update/resources_to_import.json": {
+    "bytes": 1260,
+    "sha256": "deab5314ede4cae49cbc481648840daf998118b845e4c7c5c7417f622ba1d879"
+  },
+  "aws_evidence/applied_update/streaming_update_template.json": {
+    "bytes": 32283,
+    "sha256": "25881ea4ccbd2e2d0ccf728c4fd584c907c64eee86718abcee9390945d4a5563"
+  },
+  "aws_evidence/applied_update/verify_migration.py": {
+    "bytes": 6972,
+    "sha256": "d562c2988e8b3b50aaf69300179ec16733fe5b7ff83f5e3c4333dc07d8296c0b"
+  },
+  "aws_evidence/applied_update/verify_migration_v2.py": {
+    "bytes": 7240,
+    "sha256": "52e389ee454b9ecdc5bf121a62d00a022fced828a60622d6c4e08b717a4c996e"
+  },
+  "aws_evidence/attempt_01_remote/before.json": {
+    "bytes": 61778,
+    "sha256": "110b78a9fd1f0520f879642b0764e5d6a083b151633968da6dfe54a4b8c7e8bf"
+  },
+  "aws_evidence/attempt_01_remote/import_template.json": {
+    "bytes": 7724,
+    "sha256": "4fa0a9b9a98e919b6ec4991127690ab3e3405fd49e369b859feda22c8081afaf"
+  },
+  "aws_evidence/attempt_01_remote/migrate_existing_alerts.py": {
+    "bytes": 12686,
+    "sha256": "06f1580329504031fddad80174443b0da1bac65fd84cb4a12722ab97c2ed128b"
+  },
+  "aws_evidence/attempt_01_remote/migration_plan.json": {
+    "bytes": 2614,
+    "sha256": "1fc1cca8adb76d7634dfa19775b52361596dfc4d7a729b792e0a21a837db3b8a"
+  },
+  "aws_evidence/attempt_01_remote/operation/import_routing_guard.json": {
+    "bytes": 438,
+    "sha256": "9cbf6158d2eb217373d911e4941832f23198438608f4acde75f3a4e1dd792baf"
+  },
+  "aws_evidence/attempt_01_remote/operation/import_template_validation.json": {
+    "bytes": 658,
+    "sha256": "47378a37331a0888e82f7d29c7395de8e139aa29464c8532e95cfcedac306051"
+  },
+  "aws_evidence/attempt_01_remote/resources_to_import.json": {
+    "bytes": 1260,
+    "sha256": "deab5314ede4cae49cbc481648840daf998118b845e4c7c5c7417f622ba1d879"
+  },
+  "aws_evidence/attempt_01_remote/streaming_update_template.json": {
+    "bytes": 32227,
+    "sha256": "8610749d53d5aa891aee201e877e717da1f0f8b6f0c83152085bf32f9189d76f"
+  },
+  "aws_evidence/import_and_blocked_update/before.json": {
+    "bytes": 61778,
+    "sha256": "110b78a9fd1f0520f879642b0764e5d6a083b151633968da6dfe54a4b8c7e8bf"
+  },
+  "aws_evidence/import_and_blocked_update/import_template.json": {
+    "bytes": 7338,
+    "sha256": "b232b5902789f4c0ce8adb918f9082dadb86ab1e9178fca23a4701a1d7e0b45b"
+  },
+  "aws_evidence/import_and_blocked_update/migrate_existing_alerts.py": {
+    "bytes": 12860,
+    "sha256": "9cbd63b7f9b480b6fe8d81bdae2b74630fccd69da60c7859375a5673aa59eeef"
+  },
+  "aws_evidence/import_and_blocked_update/migration_plan.json": {
+    "bytes": 2807,
+    "sha256": "93fc6d0f75d25a77047cb6a757189348ea05515229b5ab6efe59d1f2dfafaa92"
+  },
+  "aws_evidence/import_and_blocked_update/operation/import_change_set.json": {
+    "bytes": 589,
+    "sha256": "d94cd25a5c50a74899aea43aaf42b212135427a9a6b577844feb8b5127fe24a5"
+  },
+  "aws_evidence/import_and_blocked_update/operation/import_execution_started.json": {
+    "bytes": 2368,
+    "sha256": "76de5351fc318b3baa4fcd7eeed4c19742b4014141b55c1fe493354319336b02"
+  },
+  "aws_evidence/import_and_blocked_update/operation/import_native_review.json": {
+    "bytes": 3491,
+    "sha256": "0a636e18e2845acfda0197f56573ef9a67bff1e4389eb0fd3e56a336e5332729"
+  },
+  "aws_evidence/import_and_blocked_update/operation/import_pre_execute_routing.json": {
+    "bytes": 438,
+    "sha256": "672f7852057722bac0480ba59b5010e990ea9e156ce63558ed6ac14fb7364d05"
+  },
+  "aws_evidence/import_and_blocked_update/operation/import_routing_guard.json": {
+    "bytes": 438,
+    "sha256": "13f5dd2c8703d4487470c0c0f8d0614d02c41e086c6a340290469ccdcadb3970"
+  },
+  "aws_evidence/import_and_blocked_update/operation/import_template_validation.json": {
+    "bytes": 658,
+    "sha256": "dec71fbdff353e019d1c4808e21c56adc7469b1aa1b05fbcf5ea76bf6e9b2560"
+  },
+  "aws_evidence/import_and_blocked_update/operation/status_131239558846.json": {
+    "bytes": 171862,
+    "sha256": "7ede550b2782cae262b9bb532e3cb8991e2a37157dac9f297f3dd3178936fbe8"
+  },
+  "aws_evidence/import_and_blocked_update/operation/update_change_set.json": {
+    "bytes": 593,
+    "sha256": "451aa0359f4895ba8876f8d40814908a7660fd6b79093932f1e18797999e1ee2"
+  },
+  "aws_evidence/import_and_blocked_update/operation/update_routing_guard.json": {
+    "bytes": 438,
+    "sha256": "d51affe1a32880d656270d712b5002557c5f2bd052df99a94d852ce954da7a21"
+  },
+  "aws_evidence/import_and_blocked_update/operation/update_template_validation.json": {
+    "bytes": 1147,
+    "sha256": "431f6fa03fad4850500acc9fa74a7f55995f5a76c4cea4e65bab04c580f8a8cd"
+  },
+  "aws_evidence/import_and_blocked_update/operation/update_unexpected_review.json": {
+    "bytes": 7691,
+    "sha256": "f85d4d16ae87c52da7f39366001352cba63e68ff3d44dac69686ef26593d1eaa"
+  },
+  "aws_evidence/import_and_blocked_update/resources_to_import.json": {
+    "bytes": 1260,
+    "sha256": "deab5314ede4cae49cbc481648840daf998118b845e4c7c5c7417f622ba1d879"
+  },
+  "aws_evidence/import_and_blocked_update/streaming_update_template.json": {
+    "bytes": 32227,
+    "sha256": "8610749d53d5aa891aee201e877e717da1f0f8b6f0c83152085bf32f9189d76f"
+  },
+  "aws_evidence/import_and_blocked_update/verify_migration.py": {
+    "bytes": 6021,
+    "sha256": "192cd883961e5ce02ecba4397fbbfb95176a67435f692de74e21846f6da19266"
+  },
+  "aws_evidence_original.zip": {
+    "bytes": 155783,
+    "sha256": "2cff0e1ba14d0277b44831711c472eb496e31818d526c6f2f80ce7b96c4b7d00"
+  },
+  "before.json": {
+    "bytes": 61778,
+    "sha256": "110b78a9fd1f0520f879642b0764e5d6a083b151633968da6dfe54a4b8c7e8bf"
+  },
+  "build_migration_plan.py": {
+    "bytes": 8062,
+    "sha256": "324f31d0b93cece18fb7a0307cff1e1156c3a8a96558f5064826e45262cbdb5d"
+  },
+  "collect_migration_state.py": {
+    "bytes": 6368,
+    "sha256": "aeffd8d6f339c1532926c6d013873f8eec43990e36f8291e5f9340eb59803c3f"
+  },
+  "import_template.json": {
+    "bytes": 7338,
+    "sha256": "b232b5902789f4c0ce8adb918f9082dadb86ab1e9178fca23a4701a1d7e0b45b"
+  },
+  "lambda_source_identity.json": {
+    "bytes": 765,
+    "sha256": "76db2b563ab6ae8a40b12719447b54e2d7d0df3332aaecdd95813047c6753244"
+  },
+  "local_validation.json": {
+    "bytes": 694,
+    "sha256": "067a6944060ba5a2fa5fba4540305fbd2e58eab633cdec31c867c279419ccf19"
+  },
+  "migracao_verificada.png": {
+    "bytes": 62983,
+    "sha256": "1dcfd1a69530f584e8295d4cb63a9065d1fce4d8b89a06b3af55ddb42c5f7119"
+  },
+  "migrate_existing_alerts.py": {
+    "bytes": 12860,
+    "sha256": "2451c350fee22d0ecb82c6b59e163472b3bfdc39c16e6a09987c4b1df53957fe"
+  },
+  "migration_bundle.zip": {
+    "bytes": 33607,
+    "sha256": "99213e243133bf59ac36269026ecfbde3de52964f76bfd35c8649d1ec09f2d32"
+  },
+  "migration_plan.json": {
+    "bytes": 3944,
+    "sha256": "8098aa82131a3e21b39b7d6b5d5a29e8afc0c96d961aab7caa115e95497d57fd"
+  },
+  "resources_to_import.json": {
+    "bytes": 1260,
+    "sha256": "deab5314ede4cae49cbc481648840daf998118b845e4c7c5c7417f622ba1d879"
+  },
+  "streaming_update_template.json": {
+    "bytes": 32283,
+    "sha256": "25881ea4ccbd2e2d0ccf728c4fd584c907c64eee86718abcee9390945d4a5563"
+  },
+  "test_migration_guards.py": {
+    "bytes": 6328,
+    "sha256": "7c5ad8a13fa849e7d9c502f54bf33e8baf78d55d735838f0fb047998e0b9c993"
+  },
+  "verify_migration.py": {
+    "bytes": 7240,
+    "sha256": "52e389ee454b9ecdc5bf121a62d00a022fced828a60622d6c4e08b717a4c996e"
+  }
+}

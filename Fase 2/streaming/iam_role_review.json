@@ -1,0 +1,82 @@
+{
+  "RoleName": "fiap-lambda-inep-streaming",
+  "AssumeRolePolicyDocument": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "lambda.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
+      }
+    ]
+  },
+  "Policies": [
+    {
+      "PolicyName": "StreamingScopedAccess",
+      "PolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "PollOnlyTheStreamingQueue",
+            "Effect": "Allow",
+            "Action": [
+              "sqs:ReceiveMessage",
+              "sqs:DeleteMessage",
+              "sqs:GetQueueAttributes"
+            ],
+            "Resource": {
+              "Fn::GetAtt": [
+                "SourceQueue",
+                "Arn"
+              ]
+            }
+          },
+          {
+            "Sid": "PersistOnlyStreamingObjects",
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject",
+              "s3:PutObject"
+            ],
+            "Resource": [
+              {
+                "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/bronze/inep_streaming/*"
+              },
+              {
+                "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/silver/inep_streaming/entity=alunos/*"
+              },
+              {
+                "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/gold/inep_streaming/contribuicoes/*"
+              },
+              {
+                "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/auditoria/streaming/idempotency/*"
+              },
+              {
+                "Fn::Sub": "arn:${AWS::Partition}:s3:::${BucketName}/auditoria/streaming/processed/*"
+              }
+            ]
+          },
+          {
+            "Sid": "WriteOnlyTheConsumerLogs",
+            "Effect": "Allow",
+            "Action": [
+              "logs:CreateLogStream",
+              "logs:PutLogEvents"
+            ],
+            "Resource": {
+              "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/fiap-inep-streaming-consumer:*"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "Tags": [
+    {
+      "Key": "Project",
+      "Value": "FIAP-TC-Fase2"
+    }
+  ]
+}

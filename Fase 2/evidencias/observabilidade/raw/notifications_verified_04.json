@@ -1,0 +1,157 @@
+{
+  "status": "ROUTING_VERIFIED",
+  "captured_at_utc": "2026-10-27T20:03:48.977641+00:00",
+  "plan_sha256": "9fb8dd2a8b65b6b55d3144f9cddecc822232eca221bed20a209b687fe84304d9",
+  "alarms": [
+    {
+      "AlarmName": "fiap-gold-inep-failure",
+      "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-gold-inep-failure",
+      "ActionsEnabled": true,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais"
+      ],
+      "StateValue": "OK"
+    },
+    {
+      "AlarmName": "fiap-inep-streaming-age",
+      "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-age",
+      "ActionsEnabled": true,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais"
+      ],
+      "StateValue": "OK"
+    },
+    {
+      "AlarmName": "fiap-inep-streaming-dlq",
+      "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-dlq",
+      "ActionsEnabled": true,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais"
+      ],
+      "StateValue": "ALARM"
+    },
+    {
+      "AlarmName": "fiap-inep-streaming-rejected",
+      "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-rejected",
+      "ActionsEnabled": true,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais"
+      ],
+      "StateValue": "OK"
+    },
+    {
+      "AlarmName": "fiap-silver-inep-failure",
+      "AlarmArn": "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-silver-inep-failure",
+      "ActionsEnabled": true,
+      "AlarmActions": [
+        "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais"
+      ],
+      "StateValue": "OK"
+    }
+  ],
+  "topic_arn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+  "topic_owner": "637246457028",
+  "subscriptions": [
+    {
+      "protocol": "email",
+      "endpoint_masked": "r***@fiap.com.br",
+      "endpoint_sha256": "48c4f6955cf77e73245356ebd7ef01bbcc41bc35cd7d809f36779d3884561fb4",
+      "subscription_arn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais:a4d3b188-4e11-41f0-a76f-a7426f9dc0b9",
+      "confirmed": true
+    }
+  ],
+  "all_subscriptions_confirmed": true,
+  "topic_policy": {
+    "Version": "2008-10-17",
+    "Id": "__default_policy_ID",
+    "Statement": [
+      {
+        "Sid": "__default_statement_ID",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "*"
+        },
+        "Action": [
+          "SNS:GetTopicAttributes",
+          "SNS:SetTopicAttributes",
+          "SNS:AddPermission",
+          "SNS:RemovePermission",
+          "SNS:DeleteTopic",
+          "SNS:Subscribe",
+          "SNS:ListSubscriptionsByTopic",
+          "SNS:Publish"
+        ],
+        "Resource": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+        "Condition": {
+          "StringEquals": {
+            "AWS:SourceOwner": "637246457028"
+          }
+        }
+      },
+      {
+        "Sid": "OnlyProjectCloudWatchAlarms",
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "cloudwatch.amazonaws.com"
+        },
+        "Action": "sns:Publish",
+        "Resource": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+        "Condition": {
+          "StringEquals": {
+            "aws:SourceAccount": "637246457028"
+          },
+          "ArnEquals": {
+            "aws:SourceArn": [
+              "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-gold-inep-failure",
+              "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-silver-inep-failure",
+              "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-dlq",
+              "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-rejected",
+              "arn:aws:cloudwatch:us-east-2:637246457028:alarm:fiap-inep-streaming-age"
+            ]
+          }
+        }
+      },
+      {
+        "Sid": "OnlyEventBridgeFromThisAccount",
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "events.amazonaws.com"
+        },
+        "Action": "sns:Publish",
+        "Resource": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+        "Condition": {
+          "StringEquals": {
+            "aws:SourceAccount": "637246457028"
+          }
+        }
+      }
+    ]
+  },
+  "rule": {
+    "Name": "fiap-inep-batch-failures",
+    "Arn": "arn:aws:events:us-east-2:637246457028:rule/fiap-inep-batch-failures",
+    "State": "ENABLED",
+    "EventPattern": "{\"source\": [\"aws.glue\"], \"detail-type\": [\"Glue Job State Change\"], \"detail\": {\"jobName\": [\"fiap-bronze-inep-batch\", \"fiap-silver-inep-batch\", \"fiap-gold-inep-batch\"], \"state\": [\"FAILED\", \"TIMEOUT\", \"STOPPED\", \"ERROR\", \"EXPIRED\"]}}"
+  },
+  "targets": [
+    {
+      "Id": "OperationalSNS",
+      "Arn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+      "InputTransformer": {
+        "InputPathsMap": {
+          "job": "$.detail.jobName",
+          "run": "$.detail.jobRunId",
+          "state": "$.detail.state",
+          "time": "$.time"
+        },
+        "InputTemplate": "{\"kind\":\"FIAP_BATCH_FAILURE\",\"job\":<job>,\"run_id\":<run>,\"status\":<state>,\"occurred_at\":<time>,\"action\":\"Inspect job logs and persistent quality report before retry\"}"
+      },
+      "RetryPolicy": {
+        "MaximumRetryAttempts": 3,
+        "MaximumEventAgeInSeconds": 3600
+      }
+    }
+  ],
+  "verification_mutations": [],
+  "emails_sent_by_verifier": 0
+}

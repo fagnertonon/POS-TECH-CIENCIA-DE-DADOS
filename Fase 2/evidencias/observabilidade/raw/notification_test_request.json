@@ -1,0 +1,14 @@
+{
+  "kind": "IDENTIFIED_NOTIFICATION_ROUTE_TEST",
+  "alarm_name": "fiap-inep-streaming-rejected",
+  "started_at_utc": "2026-10-27T20:03:54.209372+00:00",
+  "previous_state": "OK",
+  "topic_arn": "arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais",
+  "recipient_sha256": "48c4f6955cf77e73245356ebd7ef01bbcc41bc35cd7d809f36779d3884561fb4",
+  "reason": "TESTE AUTORIZADO FIAP observabilidade 20261027. Somente rota de notificacao; nao representa nova falha de dados.",
+  "jobs_started": [],
+  "events_replayed": 0,
+  "status": "TEST_REQUEST_ACCEPTED_AWAITING_RECEIPT",
+  "request_id": "308d6cd0-40c0-4b95-9024-5647c1f8fa7a",
+  "requested_at_utc": "2026-10-27T20:03:54.250797+00:00"
+}

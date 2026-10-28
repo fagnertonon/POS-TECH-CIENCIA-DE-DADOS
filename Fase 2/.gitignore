@@ -1,0 +1,31 @@
+# ambiente
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+.env
+*.pem
+*.key
+# credenciais e configuracao local nunca versionadas
+credentials*
+*.credentials.json
+service-account*.json
+# saidas temporarias
+tmp/
+*.log
+
+# embalagens anteriores do pacote; conteudo ja migrado para esta pasta
+Rascunho/
+
+# Registros de sessao com assistente de IA: instrucoes para retomar a conversa
+# e a compilacao da conversa. Nao sao documentacao do projeto e citam e-mails
+# institucionais (RM) dos integrantes. Ficam no disco, fora do repositorio.
+docs/contexto_historico/
+docs/relatorios/historico/Compilado_Conversa_FIAP.pdf
+
+# Pacotes .zip cujo conteudo inteiro ja esta na arvore, byte a byte (conferido
+# por SHA256 em 28/10/2026). Repetiam 64 arquivos e o e-mail do destinatario SNS.
+evidencias/migracao_cloudformation_20261028/aws_evidence_original.zip
+evidencias/migracao_cloudformation_20261028/migration_bundle.zip
+evidencias/migracao_cloudformation_20261028/attempt_01/migration_bundle.zip
+evidencias/migracao_cloudformation_20261028/attempt_02/migration_bundle.zip

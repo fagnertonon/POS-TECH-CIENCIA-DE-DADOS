@@ -1,0 +1,217 @@
+CONTEXTO E ROTEIRO DE APRESENTAÇÃO — TECH CHALLENGE FASE 2
+Projeto: pipeline híbrido de alfabetização | Equipe Try Catch Finally
+Versão do roteiro: 26/10/2026 | Duração máxima planejada: 5 minutos
+
+ORIENTAÇÃO PARA QUEM VAI GRAVAR
+
+Este material é editável e pode ser encaminhado pelo responsável ao colega que
+fará a apresentação. Não é necessário ler as orientações ou os caminhos dos
+arquivos em voz alta. Os blocos "Fala sugerida" formam a apresentação; os blocos
+"Exibir" indicam as evidências que podem acompanhar a fala.
+
+Prepare as telas e os arquivos antes de começar. Use as evidências existentes:
+mostrar uma execução concluída não exige iniciar outro job. Faça um ensaio com
+cronômetro e preserve o encerramento antes de completar cinco minutos.
+
+CONTEXTO DO TRABALHO
+
+A Fase 2 pede um pipeline híbrido, organização em Bronze/Silver/Gold, qualidade
+com regras bloqueantes e informativas, observabilidade, execução real em nuvem,
+FinOps e reprodutibilidade. O acesso pelo BigQuery é aceito pelo enunciado. A
+origem do projeto é o dataset público de avaliação da alfabetização do Inep,
+disponibilizado pela Base dos Dados.
+
+O batch produz os indicadores oficiais tratados. O streaming é uma simulação
+controlada, separada desses indicadores. A Gold prepara features para uso na
+Fase 3; nenhum modelo de machine learning foi treinado nesta entrega.
+
+ROTEIRO CRONOMETRADO
+
+00:00–00:25 | 25 segundos | Problema e objetivo
+
+Fala sugerida:
+"Nosso projeto organiza dados públicos de alfabetização para analisar resultados,
+metas e evolução. Construímos na AWS um pipeline híbrido com processamento em
+lote e uma demonstração de streaming. O objetivo é entregar dados analíticos com
+histórico, rastreabilidade e validações, inclusive quando a própria fonte apresenta
+lacunas ou diferenças entre seus recortes."
+
+Exibir:
+Uma abertura com nome da equipe e o desenho da arquitetura. Na ausência de uma
+figura, usar duas linhas claras:
+Batch: BigQuery → Glue/Bronze S3 → Glue/Silver S3 → Glue/Gold S3.
+Streaming simulado: produtor → SQS → Lambda → Bronze S3, com DLQ.
+
+00:25–01:00 | 35 segundos | Decisões de arquitetura
+
+Fala sugerida:
+"A ingestão batch usa o BigQuery como origem e o S3 como armazenamento. O Glue
+processa as camadas. A Bronze preserva os dados recebidos; a Silver normaliza
+tipos, chaves e códigos, trata ausências e verifica consistência; a Gold monta
+os indicadores. Reutilizamos snapshots aprovados para evitar extrair novamente
+a fonte a cada transformação. O streaming demonstra ingestão de eventos e não
+é apresentado como um fluxo ao vivo do Inep."
+
+Exibir:
+O desenho da arquitetura e, em seguida, a estrutura bronze/inep, silver/inep e
+gold/inep no S3. Identificar separadamente bronze/inep_streaming.
+
+01:00–01:40 | 40 segundos | Dados e camadas Bronze/Silver
+
+Fala sugerida:
+"O lote validado contém sete tabelas: alunos, municípios, UFs, metas Brasil,
+metas por UF, metas por município e dicionário. São 3.902.954 registros no total.
+Cada execução recebe um identificador próprio e as contagens são conferidas
+após a gravação no S3. A Silver usa o dicionário para interpretar códigos e
+preserva a diferença entre informação ausente e valor zero. Ter dados no
+BigQuery não elimina a necessidade dessas verificações."
+
+Exibir:
+Manifesto Bronze ou relatório de contagens; depois, uma evidência Silver de
+contagens e qualidade. Explicar que são execuções históricas aprovadas de
+20/10 e 22/10/2026, respectivamente.
+
+01:40–02:35 | 55 segundos | Gold e investigação da diferença nacional
+
+Fala sugerida:
+"A Gold entrega cinco datasets e 46.342 linhas: indicador municipal, resultado
+contra meta, evolução temporal, validação nacional e features. Na versão 1.0.2,
+acrescentamos cobertura por UF e notas de comparabilidade. Em 2023, a taxa
+recalculada é 57,4622%, contra 55,9% oficial. Há alunos elegíveis de 23 UFs e o
+Inep documenta a ausência dos microdados de São Paulo. Isso não explica,
+comprovadamente, toda a diferença. Em 2024 são 26 UFs e a taxa recalculada fica
+dentro da tolerância de 0,1 ponto percentual. Preservamos os números e a
+divergência, em vez de forçar concordância."
+
+Exibir:
+A execução Gold SUCCEEDED de 26/10/2026 e as duas linhas nacionais. Mostrar
+quantidade_ufs_microdados, diferenca_pp, dentro_tolerancia e
+status_comparabilidade. Os dois anos têm COBERTURA_DIFERENTE_ENTRE_BASES; a
+concordância numérica de 2024 não equivale à comprovação de mesma metodologia.
+
+02:35–03:15 | 40 segundos | Streaming e entrega confiável
+
+Fala sugerida:
+"No streaming, eventos simulados entram em uma fila SQS e uma Lambda grava os
+dados na Bronze. Identificadores de evento e gravações condicionais evitam
+duplicação; mensagens com falha podem ser reenviadas e as inválidas chegam à
+fila de erros. O teste confirmou 30 eventos novos, duplicatas reconhecidas e
+um evento inválido encaminhado à DLQ. A latência foi medida entre a emissão e
+a conclusão da gravação, com média de aproximadamente 0,96 segundo nesse teste."
+
+Exibir:
+Relatório do teste de 20/10/2026, contagens de aceitos/duplicados, evidência da
+DLQ e métricas de latência. A evidência é histórica: não afirmar que a mensagem
+inválida permanece hoje na fila, pois a retenção é de 14 dias.
+
+03:15–04:05 | 50 segundos | Qualidade, histórico e execução real
+
+Fala sugerida:
+"As regras bloqueantes interrompem a publicação quando há erro de integridade
+ou correspondência insuficiente nos joins. As informativas mantêm diagnósticos
+visíveis. Guardamos evidências de falhas reais e de execuções aprovadas. Na
+atualização, 24 testes locais passaram e uma fixture Spark verificou filtros,
+cálculo e metadados antes dos dados reais. As cinco saídas foram relidas e
+conferidas. Os consumidores usam somente os caminhos de um manifesto final
+SUCCEEDED. Arquivos de uma tentativa falha podem existir no S3, mas não formam
+uma publicação aprovada."
+
+Exibir:
+Uma tentativa FAILED, a execução final SUCCEEDED, os registros de qualidade e
+o manifesto final. Se citar a fixture: são seis regras bloqueantes e quatro
+registros informativos; os dados sintéticos não foram gravados na Gold.
+Mostrar a diferença entre caminhos de execuções anteriores e da execução atual.
+
+04:05–04:50 | 45 segundos | FinOps e situação do orçamento
+
+Fala sugerida:
+"Controlamos o processamento com dois workers por job, timeouts e zero
+retentativas automáticas, além de Parquet comprimido e reutilização da Silver.
+As duas execuções da atualização Gold representam cerca de oito centavos de
+dólar estimados em Glue. O FinOps ainda é parcial: faltam custos consolidados
+de outros serviços e da transferência entre nuvens. Hoje o console mostrou
+137,17 dólares em créditos e 173 dias restantes. O orçamento de um dólar tem
+aviso em um centavo, mas o aviso aparece inativo, com nenhum destinatário
+verificado. Não o tratamos como proteção operacional nem como trava de gasto."
+
+Exibir:
+Evidência dos 645 DPU-segundos da atualização e a fórmula
+645 / 3.600 × US$ 0,44 = US$ 0,07883, somente Glue, antes de créditos.
+Exibir a captura de créditos de 26/10/2026 e o registro do AWS Budget
+MyZero-Spend: valor US$ 1,00, alerta US$ 0,01, status Inactive e 0/1 destinatários
+verificados. Ao mostrar a tela, enquadrar apenas os valores e o status; não é
+necessário apresentar o endereço do destinatário.
+
+04:50–05:00 | 10 segundos | Encerramento
+
+Fala sugerida:
+"Entregamos um pipeline executado em nuvem, com dados rastreáveis e limitações
+documentadas. A base analítica fica preparada para a próxima fase."
+
+MAPA DAS EVIDÊNCIAS
+
+Os caminhos abaixo são relativos à pasta deste trabalho. Quando usar um ZIP,
+considere a pasta em que ele foi extraído como raiz do respectivo pacote.
+
+1. Pacote completo anterior, com a arquitetura e o histórico batch/streaming:
+   outputs/relatorio_completo/pacote/
+   Principais arquivos dentro desse pacote:
+   - Relatorio_Completo_Tech_Challenge_AWS.pdf
+   - manifesto_bronze.json
+   - relatorio_bronze.json
+   - continuacao/evidence/source/report_silver.json
+   - streaming/evidence/streaming_report.json
+   - streaming/evidence/audit_manifest.json
+   - Projecao_Custos_30_Dias.json
+   O pacote é uma captura anterior à atualização Gold de 26/10. Seu saldo e sua
+   projeção não substituem as consultas atuais.
+
+2. Pacote da atualização Gold de 26/10/2026:
+   outputs/atualizacao_gold_2026_10_26/
+   Principais arquivos dentro desse pacote:
+   - Resumo_Atualizacao_Gold_AWS.pdf
+   - evidencias/aws/evidence_final/resumo_atualizacao.json
+   - evidencias/aws/evidence_final/manifest_final.json
+   - evidencias/aws/evidence_final/validacao_brasil_final.json
+   - evidencias/aws/evidence_final/verificacao_parquet.json
+   - evidencias/aws/evidence_final/run_final.json
+   - evidencias/aws/evidence_final/failed_attempt1.json
+   - diagnostico/Conclusoes_Diagnostico.json
+
+3. Identificador da execução Gold aprovada de 26/10:
+   Job: fiap-gold-inep-batch | Região: us-east-2
+   Run: jr_2f49f1ef178c48d81fd1f61569da095c16d1e58d8f7a15ce11ae9c4f6b84cc29
+   São 174 segundos de ExecutionTime e 349 DPU-segundos informados pela API.
+   Somando a tentativa falha da mesma atualização: 645 DPU-segundos.
+
+4. Registros FinOps desta consulta:
+   Consultar os TXT/JSON e capturas fornecidos junto a este roteiro para os
+   créditos e a situação do orçamento de 26/10/2026. Estes valores são uma
+   observação datada, sujeitos ao atraso de contabilização. Os créditos não
+   são uma confirmação de custo mensal futuro ou de que o limite de US$ 140
+   seja imposto automaticamente por um serviço.
+
+LIMITES QUE DEVEM PERMANECER CLAROS NA APRESENTAÇÃO
+
+* A Gold não recebeu substituição de valores para eliminar a diferença de 2023.
+  A ausência de SP é comprovada na publicação consultada, mas não foi provada
+  como explicação exclusiva de toda a diferença. Também existem diferenças
+  por UF em MS e SE que continuam documentadas.
+* Cobertura de UFs não mede participação integral de alunos ou escolas. A tabela
+  uf não define, sozinha, o universo do indicador Brasil.
+* O streaming é simulado e permanece separado dos indicadores oficiais Gold.
+* As features foram preparadas; não houve treinamento ou validação de um modelo
+  preditivo nesta entrega.
+* Histórico por execução e manifesto final não constituem transação atômica
+  entre as cinco tabelas. O contrato de consumo exige manifesto SUCCEEDED.
+* O custo de US$ 0,07883 é uma estimativa de processamento Glue da atualização,
+  não a fatura da arquitetura. Não inclui S3, CloudWatch, Lambda, SQS, segredo,
+  nem eventuais custos de leitura e transferência no Google Cloud.
+* Há projeções mensais anteriores, mas o FinOps consolidado ainda está parcial.
+  O orçamento com aviso Inactive e destinatário não verificado não comprova que
+  alguém receberá notificação. Orçamento e alarmes não são travas automáticas.
+* As telas históricas comprovam o teste da data indicada. Não devem ser narradas
+  como estado atual de filas, alarmes, retenção, sessões ou saldo da conta.
+
+O roteiro cobre a apresentação. Repositório reproduzível, README/arquitetura e
+FinOps consolidado precisam acompanhar a entrega técnica conforme o enunciado.

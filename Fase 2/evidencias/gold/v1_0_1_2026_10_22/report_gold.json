@@ -1,0 +1,1632 @@
+{
+  "observed_at_utc": "2026-10-22T14:14:56.372447Z",
+  "account": "637246457028",
+  "region": "us-east-2",
+  "layer": "gold",
+  "run_id": "jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd",
+  "job_name": "fiap-gold-inep-batch",
+  "glue_job_run": {
+    "Id": "jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd",
+    "JobName": "fiap-gold-inep-batch",
+    "JobRunState": "SUCCEEDED",
+    "StartedOn": "2026-10-22T14:11:50.014000+00:00",
+    "CompletedOn": "2026-10-22T14:14:12.502000+00:00",
+    "LastModifiedOn": "2026-10-22T14:14:12.502000+00:00",
+    "ExecutionTime": 136,
+    "DPUSeconds": 272.0,
+    "WorkerType": "G.1X",
+    "NumberOfWorkers": 2,
+    "MaxCapacity": 2.0,
+    "Timeout": 15,
+    "GlueVersion": "5.1",
+    "Attempt": 0,
+    "LogGroupName": "/aws-glue/jobs",
+    "allocated_worker_seconds_estimate": 272,
+    "allocated_worker_seconds_note": "ExecutionTime x NumberOfWorkers; nao e fatura nem preco",
+    "source_and_mode_parameters": {}
+  },
+  "parquet_footer_verification_requested": true,
+  "status": "SUCCEEDED",
+  "published": true,
+  "errors": [],
+  "pending": [],
+  "tables": [
+    {
+      "table": "indicador_municipio",
+      "target_uri": "s3://fiap-tc-fase2-2026/gold/inep/indicador_municipio/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/",
+      "source_count": 23995,
+      "deduplicated_count": null,
+      "target_count": 23995,
+      "errors": [],
+      "parquet_file_count": 8,
+      "parquet_bytes": 1316303,
+      "object_count": 8,
+      "object_bytes": 1316303,
+      "audit_table_status": "VALIDATED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "id_municipio",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao_oficial",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao_calculada",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "diferenca_pp",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "dentro_tolerancia",
+            "nullable": true,
+            "type": "boolean"
+          },
+          {
+            "metadata": {},
+            "name": "alunos_avaliados",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "soma_peso_avaliados",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "media_portugues_oficial",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_0",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_1",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_2",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_3",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_4",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_5",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_6",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_7",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "proporcao_aluno_nivel_8",
+            "nullable": true,
+            "type": "double"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": 8.472,
+      "transform_duration_seconds": null,
+      "write_readback_duration_seconds": null,
+      "independent_footer_rows": 23995,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    },
+    {
+      "table": "resultado_vs_meta",
+      "target_uri": "s3://fiap-tc-fase2-2026/gold/inep/resultado_vs_meta/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/",
+      "source_count": 10948,
+      "deduplicated_count": null,
+      "target_count": 10948,
+      "errors": [],
+      "parquet_file_count": 3,
+      "parquet_bytes": 347313,
+      "object_count": 3,
+      "object_bytes": 347313,
+      "audit_table_status": "VALIDATED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "nivel",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "id_municipio",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "sigla_uf",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2024",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2025",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2026",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2027",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2028",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2029",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_2030",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_ano",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "status_meta",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "meta_disponivel",
+            "nullable": true,
+            "type": "boolean"
+          },
+          {
+            "metadata": {},
+            "name": "resultado_disponivel",
+            "nullable": true,
+            "type": "boolean"
+          },
+          {
+            "metadata": {},
+            "name": "distancia_ate_meta_pp",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "distancia_ate_meta_2030_pp",
+            "nullable": true,
+            "type": "double"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": 3.255,
+      "transform_duration_seconds": null,
+      "write_readback_duration_seconds": null,
+      "independent_footer_rows": 10948,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    },
+    {
+      "table": "evolucao_temporal",
+      "target_uri": "s3://fiap-tc-fase2-2026/gold/inep/evolucao_temporal/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/",
+      "source_count": 52,
+      "deduplicated_count": null,
+      "target_count": 52,
+      "errors": [],
+      "parquet_file_count": 8,
+      "parquet_bytes": 31393,
+      "object_count": 8,
+      "object_bytes": 31393,
+      "audit_table_status": "VALIDATED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "nivel",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "sigla_uf",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_alfabetizacao_ano",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "status_meta",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "distancia_ate_meta_pp",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "variacao_pp_ano_anterior",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "pontos_na_serie",
+            "nullable": true,
+            "type": "long"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": 2.789,
+      "transform_duration_seconds": null,
+      "write_readback_duration_seconds": null,
+      "independent_footer_rows": 52,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    },
+    {
+      "table": "validacao_cruzada_brasil",
+      "target_uri": "s3://fiap-tc-fase2-2026/gold/inep/validacao_cruzada_brasil/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/",
+      "source_count": 2,
+      "deduplicated_count": null,
+      "target_count": 2,
+      "errors": [],
+      "parquet_file_count": 3,
+      "parquet_bytes": 5614,
+      "object_count": 3,
+      "object_bytes": 5614,
+      "audit_table_status": "VALIDATED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "alunos_avaliados",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_alfabetizacao_calculada",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_oficial_publicada",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "diferenca_pp",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "dentro_tolerancia",
+            "nullable": true,
+            "type": "boolean"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": 3.12,
+      "transform_duration_seconds": null,
+      "write_readback_duration_seconds": null,
+      "independent_footer_rows": 2,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    },
+    {
+      "table": "features_alfabetizacao",
+      "target_uri": "s3://fiap-tc-fase2-2026/gold/inep/features_alfabetizacao/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/",
+      "source_count": 11345,
+      "deduplicated_count": null,
+      "target_count": 11345,
+      "errors": [],
+      "parquet_file_count": 5,
+      "parquet_bytes": 394712,
+      "object_count": 5,
+      "object_bytes": 394712,
+      "audit_table_status": "VALIDATED",
+      "schema": {
+        "fields": [
+          {
+            "metadata": {},
+            "name": "ano_features",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "id_municipio",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "serie",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "rede_descricao",
+            "nullable": true,
+            "type": "string"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_t",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "taxa_calculada_t",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "media_portugues_t",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "alunos_avaliados_t",
+            "nullable": true,
+            "type": "long"
+          },
+          {
+            "metadata": {},
+            "name": "ano_alvo",
+            "nullable": true,
+            "type": "integer"
+          },
+          {
+            "metadata": {},
+            "name": "alvo_taxa_alfabetizacao",
+            "nullable": true,
+            "type": "double"
+          },
+          {
+            "metadata": {},
+            "name": "meta_ano_alvo",
+            "nullable": true,
+            "type": "double"
+          }
+        ],
+        "type": "struct"
+      },
+      "duration_seconds": 2.664,
+      "transform_duration_seconds": null,
+      "write_readback_duration_seconds": null,
+      "independent_footer_rows": 11345,
+      "footer_rows_match": true,
+      "validation_status": "SUCCEEDED"
+    }
+  ],
+  "quality_scope": "Regras Spark persistidas no manifesto; observador nao recalcula valores das linhas",
+  "audit_uris": {
+    "manifest.json": "s3://fiap-tc-fase2-2026/auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/manifest.json",
+    "start.json": "s3://fiap-tc-fase2-2026/auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/start.json"
+  },
+  "publication_manifest_present": true,
+  "manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/gold/ingestion_date=2026-10-22/run_id=jr_74dca58f19d0bd28dd27bba71b3c1a0bc420e55ec2dab74fb047e23b1901d4cd/manifest.json",
+  "manifest_sha256": "9091d56dc044b1459cd839dcc2f075045c4633b62b4373f9bb1ac7353e9974aa",
+  "manifest_status": "SUCCEEDED",
+  "duration_seconds": 89.983,
+  "started_at_utc": "2026-10-22T14:12:30.596261Z",
+  "finished_at_utc": "2026-10-22T14:14:00.579215Z",
+  "source_manifest_uri": null,
+  "catalog_registered": true,
+  "source_manifest_uris": [
+    "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json"
+  ],
+  "source_silver_run_ids": [
+    "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288"
+  ],
+  "source_row_counts": {
+    "alunos": 3867999,
+    "dicionario": 27,
+    "meta_alfabetizacao_brasil": 3,
+    "meta_alfabetizacao_municipio": 10704,
+    "meta_alfabetizacao_uf": 81,
+    "municipio": 23995,
+    "uf": 145
+  },
+  "training_feature_columns": [
+    "serie",
+    "rede",
+    "taxa_t",
+    "taxa_calculada_t",
+    "media_portugues_t",
+    "alunos_avaliados_t"
+  ],
+  "target_column": "alvo_taxa_alfabetizacao",
+  "quality": [
+    {
+      "entity": "all_construction_joins",
+      "rule": "cobertura_total:consistencia_resultado_x_meta:meta_municipio x municipio",
+      "type": "informativa",
+      "measured": 0.44400916857678685,
+      "limit": null,
+      "passed": true,
+      "detail": "10654 of 23995; all left rows including intentionally ineligible cohorts",
+      "matched_rows": 10654,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:consistencia_resultado_x_meta:meta_municipio x municipio",
+      "type": "bloqueante",
+      "measured": 0.9777900146842878,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "10654 of 10896; join=inner; keys=['ano', 'id_municipio', 'rede']; measured before join; Published official second-year results whose year/network pair exists in meta references; no geography-based eligibility filter",
+      "applicable": true,
+      "matched_rows": 10654,
+      "eligible_rows": 10896
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "cobertura_total:consistencia_resultado_x_meta:meta_uf x uf",
+      "type": "informativa",
+      "measured": 0.33793103448275863,
+      "limit": null,
+      "passed": true,
+      "detail": "49 of 145; all left rows including intentionally ineligible cohorts",
+      "matched_rows": 49,
+      "eligible_rows": 145
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:consistencia_resultado_x_meta:meta_uf x uf",
+      "type": "bloqueante",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "49 of 49; join=inner; keys=['ano', 'sigla_uf', 'rede']; measured before join; Published official second-year results whose year/network pair exists in meta references; no geography-based eligibility filter",
+      "applicable": true,
+      "matched_rows": 49,
+      "eligible_rows": 49
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:indicador_municipio",
+      "type": "bloqueante",
+      "measured": 0.9665763700770994,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "23193 of 23995; join=left; keys=['ano', 'id_municipio', 'serie', 'rede']; measured before join; Universe: all left rows",
+      "applicable": true,
+      "matched_rows": 23193,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:resultado_municipio_meta",
+      "type": "bloqueante",
+      "measured": 0.9777900146842878,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "10654 of 10896; join=left; keys=['ano', 'id_municipio', 'rede']; measured before join; Universe: all left rows",
+      "applicable": true,
+      "matched_rows": 10654,
+      "eligible_rows": 10896
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:resultado_uf_meta",
+      "type": "bloqueante",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "49 of 49; join=left; keys=['ano', 'sigla_uf', 'rede']; measured before join; Universe: all left rows",
+      "applicable": true,
+      "matched_rows": 49,
+      "eligible_rows": 49
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:validacao_brasil_oficial",
+      "type": "bloqueante",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "2 of 2; join=left; keys=['ano', 'rede']; measured before join; Universe: all left rows",
+      "applicable": true,
+      "matched_rows": 2,
+      "eligible_rows": 2
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "cobertura_total:features_t_para_t_mais_1",
+      "type": "informativa",
+      "measured": 0.4728068347572411,
+      "limit": null,
+      "passed": true,
+      "detail": "11345 of 23995; all left rows including intentionally ineligible cohorts",
+      "matched_rows": 11345,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:features_t_para_t_mais_1",
+      "type": "bloqueante",
+      "measured": 0.9825062786871048,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "11345 of 11547; join=inner; keys=['ano_features', 'id_municipio', 'serie', 'rede']; measured before join; Universe: all left rows",
+      "applicable": true,
+      "matched_rows": 11345,
+      "eligible_rows": 11547
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "cobertura_total:features_meta_contextual",
+      "type": "informativa",
+      "measured": 0.46734244160423094,
+      "limit": null,
+      "passed": true,
+      "detail": "5302 of 11345; all left rows including intentionally ineligible cohorts",
+      "matched_rows": 5302,
+      "eligible_rows": 11345
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:features_meta_contextual",
+      "type": "bloqueante",
+      "measured": 0.9825796886582654,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "5302 of 5396; join=left; keys=['ano_features', 'id_municipio', 'rede']; measured before join; Network 3 and feature year present in municipal meta; no geography-based eligibility filter",
+      "applicable": true,
+      "matched_rows": 5302,
+      "eligible_rows": 5396
+    },
+    {
+      "entity": "evolucao_temporal",
+      "rule": "linhas_maior_que_zero",
+      "type": "bloqueante",
+      "measured": 52.0,
+      "limit": 1.0,
+      "passed": true,
+      "detail": "Rows in staged table"
+    },
+    {
+      "entity": "evolucao_temporal",
+      "rule": "chave_sem_duplicata",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['nivel', 'sigla_uf', 'ano', 'serie', 'rede']"
+    },
+    {
+      "entity": "evolucao_temporal",
+      "rule": "chaves_obrigatorias_sem_nulo",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['nivel', 'ano', 'rede']"
+    },
+    {
+      "entity": "evolucao_temporal",
+      "rule": "valor_finito_entre_0_e_100:taxa_alfabetizacao",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Null remains null; NaN/infinity/out-of-range block publication"
+    },
+    {
+      "entity": "evolucao_temporal",
+      "rule": "contagem_gravada_confere",
+      "type": "bloqueante",
+      "measured": 52.0,
+      "limit": 52.0,
+      "passed": true,
+      "detail": "built=52, S3=52"
+    },
+    {
+      "entity": "evolucao_temporal",
+      "rule": "chaves_por_nivel",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Municipality needs municipality/series; UF needs UF/series; Brazil has neither geography key"
+    },
+    {
+      "entity": "features_alfabetizacao",
+      "rule": "linhas_maior_que_zero",
+      "type": "bloqueante",
+      "measured": 11345.0,
+      "limit": 1.0,
+      "passed": true,
+      "detail": "Rows in staged table"
+    },
+    {
+      "entity": "features_alfabetizacao",
+      "rule": "chave_sem_duplicata",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano_features', 'id_municipio', 'serie', 'rede']"
+    },
+    {
+      "entity": "features_alfabetizacao",
+      "rule": "chaves_obrigatorias_sem_nulo",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano_features', 'id_municipio', 'serie', 'rede']"
+    },
+    {
+      "entity": "features_alfabetizacao",
+      "rule": "valor_finito_entre_0_e_100:taxa_t",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Null remains null; NaN/infinity/out-of-range block publication"
+    },
+    {
+      "entity": "features_alfabetizacao",
+      "rule": "valor_finito_entre_0_e_100:alvo_taxa_alfabetizacao",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Null remains null; NaN/infinity/out-of-range block publication"
+    },
+    {
+      "entity": "features_alfabetizacao",
+      "rule": "alvo_sem_nulo",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "linhas sem alvo"
+    },
+    {
+      "entity": "features_alfabetizacao",
+      "rule": "linhas_com_meta_do_ano_alvo",
+      "type": "informativa",
+      "measured": 5232.0,
+      "limit": null,
+      "passed": true,
+      "detail": "meta nula é preservada, não vira zero"
+    },
+    {
+      "entity": "features_alfabetizacao",
+      "rule": "contagem_gravada_confere",
+      "type": "bloqueante",
+      "measured": 11345.0,
+      "limit": 11345.0,
+      "passed": true,
+      "detail": "built=11345, S3=11345"
+    },
+    {
+      "entity": "indicador_municipio",
+      "rule": "linhas_maior_que_zero",
+      "type": "bloqueante",
+      "measured": 23995.0,
+      "limit": 1.0,
+      "passed": true,
+      "detail": "Rows in staged table"
+    },
+    {
+      "entity": "indicador_municipio",
+      "rule": "chave_sem_duplicata",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'id_municipio', 'serie', 'rede']"
+    },
+    {
+      "entity": "indicador_municipio",
+      "rule": "chaves_obrigatorias_sem_nulo",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'id_municipio', 'serie', 'rede']"
+    },
+    {
+      "entity": "indicador_municipio",
+      "rule": "valor_finito_entre_0_e_100:taxa_alfabetizacao_oficial",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Null remains null; NaN/infinity/out-of-range block publication"
+    },
+    {
+      "entity": "indicador_municipio",
+      "rule": "valor_finito_entre_0_e_100:taxa_alfabetizacao_calculada",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Null remains null; NaN/infinity/out-of-range block publication"
+    },
+    {
+      "entity": "indicador_municipio",
+      "rule": "recalculada_dentro_da_tolerancia",
+      "type": "informativa",
+      "measured": 0.9687405682749105,
+      "limit": null,
+      "passed": true,
+      "detail": "22468 de 23193 linhas com |recalculada - oficial| <= 0.1 p.p.",
+      "matched_rows": 22468,
+      "eligible_rows": 23193
+    },
+    {
+      "entity": "indicador_municipio",
+      "rule": "linhas_sem_recalculo",
+      "type": "informativa",
+      "measured": 802.0,
+      "limit": null,
+      "passed": true,
+      "detail": "sem microdado correspondente (taxa recalculada nula)"
+    },
+    {
+      "entity": "indicador_municipio",
+      "rule": "contagem_gravada_confere",
+      "type": "bloqueante",
+      "measured": 23995.0,
+      "limit": 23995.0,
+      "passed": true,
+      "detail": "built=23995, S3=23995"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "linhas_maior_que_zero",
+      "type": "bloqueante",
+      "measured": 10948.0,
+      "limit": 1.0,
+      "passed": true,
+      "detail": "Rows in staged table"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "chave_sem_duplicata",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['nivel', 'ano', 'id_municipio', 'sigla_uf', 'serie', 'rede']"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "chaves_obrigatorias_sem_nulo",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['nivel', 'ano', 'rede']"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "valor_finito_entre_0_e_100:taxa_alfabetizacao",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Null remains null; NaN/infinity/out-of-range block publication"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "valor_finito_entre_0_e_100:meta_alfabetizacao_ano",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Null remains null; NaN/infinity/out-of-range block publication"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "status_meta_valores_permitidos",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "valores fora de atingiu / nao_atingiu / sem_meta / sem_resultado"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "linhas_status_meta:atingiu",
+      "type": "informativa",
+      "measured": 2800.0,
+      "limit": null,
+      "passed": true,
+      "detail": "contagem"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "linhas_status_meta:nao_atingiu",
+      "type": "informativa",
+      "measured": 2458.0,
+      "limit": null,
+      "passed": true,
+      "detail": "contagem"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "linhas_status_meta:sem_meta",
+      "type": "informativa",
+      "measured": 5690.0,
+      "limit": null,
+      "passed": true,
+      "detail": "sem_meta > 0 prova que o terceiro estado funciona"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "linhas_status_meta:sem_resultado",
+      "type": "informativa",
+      "measured": 0.0,
+      "limit": null,
+      "passed": true,
+      "detail": "contagem"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "contagem_gravada_confere",
+      "type": "bloqueante",
+      "measured": 10948.0,
+      "limit": 10948.0,
+      "passed": true,
+      "detail": "built=10948, S3=10948"
+    },
+    {
+      "entity": "resultado_vs_meta",
+      "rule": "chaves_por_nivel",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Municipality needs municipality/series; UF needs UF/series; Brazil has neither geography key"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "chaves_nulas:municipio",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'id_municipio', 'serie', 'rede']"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "chaves_duplicadas:municipio",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'id_municipio', 'serie', 'rede']"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "chaves_nulas:uf",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'sigla_uf', 'serie', 'rede']"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "chaves_duplicadas:uf",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'sigla_uf', 'serie', 'rede']"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "chaves_nulas:meta_alfabetizacao_brasil",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'rede_descricao']"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "chaves_duplicadas:meta_alfabetizacao_brasil",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'rede_descricao']"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "chaves_nulas:meta_alfabetizacao_uf",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'sigla_uf', 'rede_descricao']"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "chaves_duplicadas:meta_alfabetizacao_uf",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'sigla_uf', 'rede_descricao']"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "chaves_nulas:meta_alfabetizacao_municipio",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'id_municipio', 'rede_descricao']"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "chaves_duplicadas:meta_alfabetizacao_municipio",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'id_municipio', 'rede_descricao']"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "numericos_finitos:alunos",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "All present numeric input values must be finite; nulls are preserved"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "numericos_finitos:municipio",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "All present numeric input values must be finite; nulls are preserved"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "numericos_finitos:uf",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "All present numeric input values must be finite; nulls are preserved"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "numericos_finitos:meta_alfabetizacao_brasil",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "All present numeric input values must be finite; nulls are preserved"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "numericos_finitos:meta_alfabetizacao_uf",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "All present numeric input values must be finite; nulls are preserved"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "numericos_finitos:meta_alfabetizacao_municipio",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "All present numeric input values must be finite; nulls are preserved"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "avaliados_denominador_valido",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Every evaluated pupil needs known alphabetization, finite positive weight and keys; no silent drop"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "microdados_rede_elementar",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Aggregate networks 5/0 must be built once from elementary networks",
+      "matched_rows": 5,
+      "eligible_rows": 0
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "brasil_serie_unica_por_ano",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Official Brazil has no series key; multiple series require an explicit business decision"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "brasil_serie_compativel_cnca",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "CNCA is end of second year of elementary school; source dictionary maps this cohort to series code 2"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "resultado_meta_outras_series_excluidas:municipio",
+      "type": "informativa",
+      "measured": 0.0,
+      "limit": null,
+      "passed": true,
+      "detail": "Only second-year records enter result-vs-meta; other cohorts remain in their source/indicator tables"
+    },
+    {
+      "entity": "silver_inputs",
+      "rule": "resultado_meta_outras_series_excluidas:uf",
+      "type": "informativa",
+      "measured": 0.0,
+      "limit": null,
+      "passed": true,
+      "detail": "Only second-year records enter result-vs-meta; other cohorts remain in their source/indicator tables"
+    },
+    {
+      "entity": "source_joins",
+      "rule": "rede_de_meta_sem_mapeamento",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "linhas de meta com rede fora do mapa REDE_META_PARA_CODIGO"
+    },
+    {
+      "entity": "source_joins",
+      "rule": "taxa_correspondencia:municipio -> microdados recalculados",
+      "type": "bloqueante",
+      "measured": 0.9665763700770994,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "23193 de 23995 linhas casam",
+      "matched_rows": 23193,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "source_joins",
+      "rule": "taxa_correspondencia:municipio(rede 3) -> meta_alfabetizacao_municipio",
+      "type": "bloqueante",
+      "measured": 0.9777900146842878,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "10654 de 10896 linhas casam",
+      "matched_rows": 10654,
+      "eligible_rows": 10896
+    },
+    {
+      "entity": "source_joins",
+      "rule": "taxa_correspondencia:uf(rede 5) -> meta_alfabetizacao_uf",
+      "type": "bloqueante",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "49 de 49 linhas casam",
+      "matched_rows": 49,
+      "eligible_rows": 49
+    },
+    {
+      "entity": "source_joins",
+      "rule": "meta_sem_resultado:meta_alfabetizacao_municipio sem municipio(rede 3)",
+      "type": "informativa",
+      "measured": 50.0,
+      "limit": null,
+      "passed": true,
+      "detail": "50 de 10704 linhas de meta sem resultado (ex.: anos sem microdado)",
+      "matched_rows": 50,
+      "eligible_rows": 10704
+    },
+    {
+      "entity": "source_joins",
+      "rule": "meta_sem_resultado:meta_alfabetizacao_uf sem uf(rede 5)",
+      "type": "informativa",
+      "measured": 32.0,
+      "limit": null,
+      "passed": true,
+      "detail": "32 de 81 linhas de meta sem resultado (ex.: anos sem microdado)",
+      "matched_rows": 32,
+      "eligible_rows": 81
+    },
+    {
+      "entity": "source_joins",
+      "rule": "consistencia_taxa:meta_municipio x municipio",
+      "type": "informativa",
+      "measured": 0.9997165532879818,
+      "limit": null,
+      "passed": true,
+      "detail": "10581 de 10584 pares dentro de 0.1 p.p.",
+      "matched_rows": 10581,
+      "eligible_rows": 10584
+    },
+    {
+      "entity": "source_joins",
+      "rule": "consistencia_taxa:meta_uf x uf",
+      "type": "informativa",
+      "measured": 1.0,
+      "limit": null,
+      "passed": true,
+      "detail": "49 de 49 pares dentro de 0.1 p.p.",
+      "matched_rows": 49,
+      "eligible_rows": 49
+    },
+    {
+      "entity": "validacao_cruzada_brasil",
+      "rule": "linhas_maior_que_zero",
+      "type": "bloqueante",
+      "measured": 2.0,
+      "limit": 1.0,
+      "passed": true,
+      "detail": "Rows in staged table"
+    },
+    {
+      "entity": "validacao_cruzada_brasil",
+      "rule": "chave_sem_duplicata",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'serie', 'rede']"
+    },
+    {
+      "entity": "validacao_cruzada_brasil",
+      "rule": "chaves_obrigatorias_sem_nulo",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "['ano', 'serie', 'rede']"
+    },
+    {
+      "entity": "validacao_cruzada_brasil",
+      "rule": "valor_finito_entre_0_e_100:taxa_alfabetizacao_calculada",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Null remains null; NaN/infinity/out-of-range block publication"
+    },
+    {
+      "entity": "validacao_cruzada_brasil",
+      "rule": "valor_finito_entre_0_e_100:taxa_oficial_publicada",
+      "type": "bloqueante",
+      "measured": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "detail": "Null remains null; NaN/infinity/out-of-range block publication"
+    },
+    {
+      "entity": "validacao_cruzada_brasil",
+      "rule": "recalculada_dentro_da_tolerancia",
+      "type": "informativa",
+      "measured": 0.5,
+      "limit": null,
+      "passed": true,
+      "detail": "1 de 2 linhas com |recalculada - oficial| <= 0.1 p.p.",
+      "matched_rows": 1,
+      "eligible_rows": 2
+    },
+    {
+      "entity": "validacao_cruzada_brasil",
+      "rule": "linhas_sem_recalculo",
+      "type": "informativa",
+      "measured": 0.0,
+      "limit": null,
+      "passed": true,
+      "detail": "sem microdado correspondente (taxa recalculada nula)"
+    },
+    {
+      "entity": "validacao_cruzada_brasil",
+      "rule": "contagem_gravada_confere",
+      "type": "bloqueante",
+      "measured": 2.0,
+      "limit": 2.0,
+      "passed": true,
+      "detail": "built=2, S3=2"
+    }
+  ],
+  "joins": [
+    {
+      "entity": "all_construction_joins",
+      "rule": "cobertura_total:consistencia_resultado_x_meta:meta_municipio x municipio",
+      "type": "informativa",
+      "measured": 0.44400916857678685,
+      "limit": null,
+      "passed": true,
+      "detail": "10654 of 23995; all left rows including intentionally ineligible cohorts",
+      "matched_rows": 10654,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:consistencia_resultado_x_meta:meta_municipio x municipio",
+      "type": "bloqueante",
+      "measured": 0.9777900146842878,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "10654 of 10896; join=inner; keys=['ano', 'id_municipio', 'rede']; measured before join; Published official second-year results whose year/network pair exists in meta references; no geography-based eligibility filter",
+      "applicable": true,
+      "matched_rows": 10654,
+      "eligible_rows": 10896
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "cobertura_total:consistencia_resultado_x_meta:meta_uf x uf",
+      "type": "informativa",
+      "measured": 0.33793103448275863,
+      "limit": null,
+      "passed": true,
+      "detail": "49 of 145; all left rows including intentionally ineligible cohorts",
+      "matched_rows": 49,
+      "eligible_rows": 145
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:consistencia_resultado_x_meta:meta_uf x uf",
+      "type": "bloqueante",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "49 of 49; join=inner; keys=['ano', 'sigla_uf', 'rede']; measured before join; Published official second-year results whose year/network pair exists in meta references; no geography-based eligibility filter",
+      "applicable": true,
+      "matched_rows": 49,
+      "eligible_rows": 49
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:indicador_municipio",
+      "type": "bloqueante",
+      "measured": 0.9665763700770994,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "23193 of 23995; join=left; keys=['ano', 'id_municipio', 'serie', 'rede']; measured before join; Universe: all left rows",
+      "applicable": true,
+      "matched_rows": 23193,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:resultado_municipio_meta",
+      "type": "bloqueante",
+      "measured": 0.9777900146842878,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "10654 of 10896; join=left; keys=['ano', 'id_municipio', 'rede']; measured before join; Universe: all left rows",
+      "applicable": true,
+      "matched_rows": 10654,
+      "eligible_rows": 10896
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:resultado_uf_meta",
+      "type": "bloqueante",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "49 of 49; join=left; keys=['ano', 'sigla_uf', 'rede']; measured before join; Universe: all left rows",
+      "applicable": true,
+      "matched_rows": 49,
+      "eligible_rows": 49
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:validacao_brasil_oficial",
+      "type": "bloqueante",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "2 of 2; join=left; keys=['ano', 'rede']; measured before join; Universe: all left rows",
+      "applicable": true,
+      "matched_rows": 2,
+      "eligible_rows": 2
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "cobertura_total:features_t_para_t_mais_1",
+      "type": "informativa",
+      "measured": 0.4728068347572411,
+      "limit": null,
+      "passed": true,
+      "detail": "11345 of 23995; all left rows including intentionally ineligible cohorts",
+      "matched_rows": 11345,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:features_t_para_t_mais_1",
+      "type": "bloqueante",
+      "measured": 0.9825062786871048,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "11345 of 11547; join=inner; keys=['ano_features', 'id_municipio', 'serie', 'rede']; measured before join; Universe: all left rows",
+      "applicable": true,
+      "matched_rows": 11345,
+      "eligible_rows": 11547
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "cobertura_total:features_meta_contextual",
+      "type": "informativa",
+      "measured": 0.46734244160423094,
+      "limit": null,
+      "passed": true,
+      "detail": "5302 of 11345; all left rows including intentionally ineligible cohorts",
+      "matched_rows": 5302,
+      "eligible_rows": 11345
+    },
+    {
+      "entity": "all_construction_joins",
+      "rule": "taxa_correspondencia:features_meta_contextual",
+      "type": "bloqueante",
+      "measured": 0.9825796886582654,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "5302 of 5396; join=left; keys=['ano_features', 'id_municipio', 'rede']; measured before join; Network 3 and feature year present in municipal meta; no geography-based eligibility filter",
+      "applicable": true,
+      "matched_rows": 5302,
+      "eligible_rows": 5396
+    },
+    {
+      "entity": "source_joins",
+      "rule": "taxa_correspondencia:municipio -> microdados recalculados",
+      "type": "bloqueante",
+      "measured": 0.9665763700770994,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "23193 de 23995 linhas casam",
+      "matched_rows": 23193,
+      "eligible_rows": 23995
+    },
+    {
+      "entity": "source_joins",
+      "rule": "taxa_correspondencia:municipio(rede 3) -> meta_alfabetizacao_municipio",
+      "type": "bloqueante",
+      "measured": 0.9777900146842878,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "10654 de 10896 linhas casam",
+      "matched_rows": 10654,
+      "eligible_rows": 10896
+    },
+    {
+      "entity": "source_joins",
+      "rule": "taxa_correspondencia:uf(rede 5) -> meta_alfabetizacao_uf",
+      "type": "bloqueante",
+      "measured": 1.0,
+      "limit": 0.95,
+      "passed": true,
+      "detail": "49 de 49 linhas casam",
+      "matched_rows": 49,
+      "eligible_rows": 49
+    }
+  ],
+  "total_output_rows": 46342,
+  "total_parquet_files": 27,
+  "total_parquet_bytes": 2095335,
+  "verification_status": "SUCCEEDED"
+}

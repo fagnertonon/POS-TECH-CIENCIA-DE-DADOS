@@ -1,0 +1,1113 @@
+{
+  "as_of_date": "2026-10-27",
+  "currency": "USD",
+  "aws_region": "us-east-2",
+  "purpose": "Unit rates for a measured FinOps estimate; not usage quantities, invoice or remaining credits.",
+  "verification": {
+    "primary_pricing_pages_checked": true,
+    "regional_price_list_snapshot": "aws/regional_price_list.json",
+    "regional_price_list_sha256": "a3b82e09139114258503d3750734f7cdc1dc72cb1f0ddc78231d9c5e393ceaf1",
+    "regional_price_list_rows": 1158,
+    "regional_services": [
+      "AWSGlue",
+      "AWSLambda",
+      "AWSQueueService",
+      "AWSSecretsManager",
+      "AmazonCloudWatch",
+      "AmazonS3"
+    ],
+    "aws_paid_rate_count_validated": 15,
+    "all_aws_paid_rates_regionally_validated": true,
+    "method": "Independent exact match on service+usageType+unit+firstTier; require Ohio location/regionCode and relevant product attributes. Compare normalized Decimal rate; preserve selected SKU/date/tier and global free-tier rows.",
+    "ordinary_s3_inbound": "Official S3 documentation zero-price rule; explicitly exclude MRAP routing SKU.",
+    "gcp_rates": "Remain conditional primary-source references; source region/billing usage not proven.",
+    "selection_cautions": [
+      "Glue6.0+ Gen2 lower rate not applicable to observed Glue5.1 job.",
+      "S3 Tables/Annotations/Files/Vectors excluded from Standard storage selection.",
+      "FIFO/Fair Queue excluded from Standard SQS request selection.",
+      "ARM/provisioned/durable execution excluded from x86 Lambda selection.",
+      "Composite/high-resolution/query alarms excluded from Standard metric alarm."
+    ]
+  },
+  "prices": [
+    {
+      "id": "glue_etl_dpu_hour",
+      "service": "AWS Glue",
+      "operation": "Standard Spark ETL compute",
+      "unit": "DPU-hour",
+      "usd_per_unit": "0.44",
+      "scope": "us-east-2 Ohio, Glue Standard ETL job (legacy/current Glue5.1); G.1X=one DPU. Excludes Glue6.0+ Gen2/Flex/memory-optimized/Ray SKUs.",
+      "quantity_formula": "Prefer JobRun.DPUSeconds / 3600; if absent, label ExecutionTime * DPUs as an approximation.",
+      "tier": "Standard ETL; Flex, Ray, Python shell and interactive sessions require their own matching SKU.",
+      "metering": "Per second, one-minute minimum for applicable ETL runs.",
+      "free_allowance": "No ETL-compute allowance assumed; apply account credits separately.",
+      "source_urls": [
+        "https://aws.amazon.com/glue/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json"
+      ],
+      "project_evidence": "outputs/gold/evidence_v1_0_2/aws/evidence_final/preco_glue_ohio.json",
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AWSGlue",
+        "sku": "35EA4QMYDXPWWRHJ",
+        "unit": "DPU-Hour",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.4400000000",
+        "description": "$0.44 per Data Processing Unit-Hour for AWS Glue ETL job",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+        "publication_date": "2026-10-12T18:55:42Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-ETL-DPU-Hour",
+        "operation": "Jobrun",
+        "selection_predicate": {
+          "service": "AWSGlue",
+          "usagetype": "USE2-ETL-DPU-Hour",
+          "unit": "DPU-Hour",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.4400000000",
+          "unit": "DPU-Hour",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "s3_standard_storage_gb_month",
+      "service": "Amazon S3",
+      "operation": "Standard storage, general purpose bucket",
+      "unit": "GB-month",
+      "usd_per_unit": "0.023",
+      "scope": "us-east-2 Ohio, General Purpose Standard storage, first50TB/month; excludes S3 Tables, Annotations, Vectors, Files and other storage classes.",
+      "tier": "First 50 TB/month; next 450 TB reference USD0.022/GB-month; over500TB USD0.021.",
+      "quantity_formula": "Average byte-hours / 1073741824 / hours-in-period. For future snapshot accumulation use actual creation dates/assumed run dates, not all final bytes for the whole month.",
+      "free_allowance": "Do not assume the obsolete new-account 5GB/12-month allowance for this 2026 free-plan account; model credits separately.",
+      "source_urls": [
+        "https://aws.amazon.com/s3/pricing/",
+        "https://aws.amazon.com/s3/faqs/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AmazonS3",
+        "sku": "YPGKVRB2EKTVDJDT",
+        "unit": "GB-Mo",
+        "begin_range": "0",
+        "end_range": "51200",
+        "usd": "0.0230000000",
+        "description": "$0.023 per GB - first 50 TB / month of storage used",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-2/index.json",
+        "publication_date": "2026-10-15T17:35:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-TimedStorage-ByteHrs",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AmazonS3",
+          "usagetype": "USE2-TimedStorage-ByteHrs",
+          "unit": "GB-Mo",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "51200",
+          "usd": "0.0230000000",
+          "unit": "GB-Mo",
+          "effective_date": "2026-10-01T00:00:00Z"
+        },
+        {
+          "begin_range": "51200",
+          "end_range": "512000",
+          "usd": "0.0220000000",
+          "unit": "GB-Mo",
+          "effective_date": "2026-10-01T00:00:00Z"
+        },
+        {
+          "begin_range": "512000",
+          "end_range": "Inf",
+          "usd": "0.0210000000",
+          "unit": "GB-Mo",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "s3_standard_put_request",
+      "service": "Amazon S3",
+      "operation": "PUT/COPY/POST/LIST Standard requests",
+      "unit": "request",
+      "usd_per_unit": "0.000005",
+      "display_price": "USD0.005 per1000requests",
+      "scope": "us-east-2 Ohio, Standard general-purpose PUT/COPY/POST/LIST request tier; excludes Tables/FIFO/annotation categories.",
+      "tier": "Standard request tier; multipart uploads and LIST may add requests; do not equate Parquet file count with all requests.",
+      "source_urls": [
+        "https://aws.amazon.com/s3/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AmazonS3",
+        "sku": "GJKK9PMSTKPNGZS9",
+        "unit": "Requests",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.0000050000",
+        "description": "$0.005 per 1,000 PUT, COPY, POST, or LIST requests",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-2/index.json",
+        "publication_date": "2026-10-15T17:35:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-Requests-Tier1",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AmazonS3",
+          "usagetype": "USE2-Requests-Tier1",
+          "unit": "Requests",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.0000050000",
+          "unit": "Requests",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "s3_standard_get_request",
+      "service": "Amazon S3",
+      "operation": "GET and other Standard read requests",
+      "unit": "request",
+      "usd_per_unit": "0.0000004",
+      "display_price": "USD0.0004 per1000requests",
+      "scope": "us-east-2 Ohio, Standard general-purpose GET/all-other request tier; excludes S3 Tables.",
+      "tier": "Standard GET-like request category; HEAD/GET/logical Spark actions must be categorized from actual metrics or billing.",
+      "source_urls": [
+        "https://aws.amazon.com/s3/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AmazonS3",
+        "sku": "DJEKB32FV4HNZJZY",
+        "unit": "Requests",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.0000004000",
+        "description": "$0.004 per 10,000 GET and all other requests",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-2/index.json",
+        "publication_date": "2026-10-15T17:35:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-Requests-Tier2",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AmazonS3",
+          "usagetype": "USE2-Requests-Tier2",
+          "unit": "Requests",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.0000004000",
+          "unit": "Requests",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "s3_transfer_in_internet_gb",
+      "service": "Amazon S3",
+      "operation": "Data transfer IN from internet without acceleration",
+      "unit": "GB",
+      "usd_per_unit": "0",
+      "scope": "AWS inbound leg only",
+      "tier": "A zero AWS inbound rate does not eliminate GCP outbound charges.",
+      "source_urls": [
+        "https://aws.amazon.com/s3/pricing/"
+      ],
+      "validation_status": "OFFICIAL_RULE_NO_MATCHING_PRICED_SKU_REQUIRED",
+      "price_list_note": "The collected S3 inbound SKU with operation MRAP-Dtransfer costs USD0.0033/GB and was explicitly rejected: it is Multi-Region Access Point routing, not ordinary internet ingress. Zero ordinary-ingress price comes from the official S3 service pricing rule."
+    },
+    {
+      "id": "cloudwatch_standard_log_ingestion_gb",
+      "service": "Amazon CloudWatch",
+      "operation": "Standard-class log ingestion",
+      "unit": "GB",
+      "usd_per_unit": "0.5",
+      "scope": "us-east-2 Ohio, custom/application logs in Standard class. Lambda vended Standard first tier has the same low-volume rate, with its own usage SKU included below.",
+      "tier": "Standard low-volume tier. Vended logs may have descending volume tiers; Infrequent Access is a different rate.",
+      "free_allowance": "Pricing page lists 5GB log data allowance; confirm account-wide eligibility/remaining allowance separately.",
+      "quantity_formula": "AWS/Logs IncomingBytes for target log groups over the measured period, converted with documented byte unit; do not substitute compressed storedBytes.",
+      "source_urls": [
+        "https://aws.amazon.com/cloudwatch/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AmazonCloudWatch",
+        "sku": "5T6Z6V26DSR7SZ49",
+        "unit": "GB",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.5000000000",
+        "description": "$0.50 per GB custom log data ingested in Standard log class - US East (Ohio)",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+        "publication_date": "2026-10-07T11:55:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-DataProcessing-Bytes",
+        "operation": "PutLogEvents",
+        "selection_predicate": {
+          "service": "AmazonCloudWatch",
+          "usagetype": "USE2-DataProcessing-Bytes",
+          "unit": "GB",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.5000000000",
+          "unit": "GB",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ],
+      "free_allowance_price_list": {
+        "sku": "SSNSJENVU973ECHE",
+        "unit": "GB",
+        "begin_range": "0",
+        "end_range": "5",
+        "usd": "0.0000000000",
+        "description": "Global",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+        "publication_date": "2026-10-07T11:55:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "Global-DataProcessing-Bytes"
+      },
+      "related_vended_standard_price_list": {
+        "sku": "PRXGWKFJ46PX74MD",
+        "unit": "GB",
+        "begin_range": "0",
+        "end_range": "10240",
+        "usd": "0.5000000000",
+        "description": "$0.50 per GB of vended logs ingested in Standard log class for the first 10TB - US East (Ohio)",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+        "publication_date": "2026-10-07T11:55:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-VendedLog-Bytes"
+      }
+    },
+    {
+      "id": "cloudwatch_log_archive_gb_month",
+      "service": "Amazon CloudWatch",
+      "operation": "Log archive storage",
+      "unit": "GB-month",
+      "usd_per_unit": "0.03",
+      "scope": "us-east-2 Ohio, standard log archive storage.",
+      "tier": "Compressed stored log volume, prorated by time and retention.",
+      "free_allowance": "Pricing page lists 5GB log-data allowance; do not subtract a free allowance twice.",
+      "quantity_formula": "Measured storedBytes snapshot is an inventory, not month-integrated GB-month. State whether held constant or forecast from ingestion+retention.",
+      "source_urls": [
+        "https://aws.amazon.com/cloudwatch/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AmazonCloudWatch",
+        "sku": "X7X4WD4A95NDR9U5",
+        "unit": "GB-Mo",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.0300000000",
+        "description": "$0.03 per GB-mo of log storage - US East (Ohio)",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+        "publication_date": "2026-10-07T11:55:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-TimedStorage-ByteHrs",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AmazonCloudWatch",
+          "usagetype": "USE2-TimedStorage-ByteHrs",
+          "unit": "GB-Mo",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.0300000000",
+          "unit": "GB-Mo",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ],
+      "free_allowance_price_list": {
+        "sku": "6XTVPDAM3VF25UTA",
+        "unit": "GB-Mo",
+        "begin_range": "0",
+        "end_range": "5",
+        "usd": "0.0000000000",
+        "description": "Global",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+        "publication_date": "2026-10-07T11:55:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "Global-TimedStorage-ByteHrs"
+      }
+    },
+    {
+      "id": "cloudwatch_custom_metric_month",
+      "service": "Amazon CloudWatch",
+      "operation": "Classic custom metric",
+      "unit": "metric-month",
+      "usd_per_unit": "0.3",
+      "scope": "us-east-2 Ohio, Classic custom metric first10000 tier, prorated by active publication hours.",
+      "tier": "First10000 custom metrics; later tiers USD0.10 up to250000, USD0.05 up to1000000, USD0.02 thereafter.",
+      "free_allowance": "10 custom/detailed metrics on the pricing-page free tier; shared account usage must be considered.",
+      "quantity_formula": "Sum of active metric-hours / hours-in-month. Identity includes namespace/name/full dimension set. Charges accrue only for hours with published data; a list_metrics result alone is not a full-month quantity.",
+      "source_urls": [
+        "https://aws.amazon.com/cloudwatch/pricing/",
+        "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AmazonCloudWatch",
+        "sku": "XK7C3D2X45XTHURD",
+        "unit": "Metrics",
+        "begin_range": "0",
+        "end_range": "10000",
+        "usd": "0.3000000000",
+        "description": "$0.30 per metric-month for the first 10,000 metrics - US East (Ohio)",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+        "publication_date": "2026-10-07T11:55:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-CW:MetricMonitorUsage",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AmazonCloudWatch",
+          "usagetype": "USE2-CW:MetricMonitorUsage",
+          "unit": "Metrics",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "10000",
+          "usd": "0.3000000000",
+          "unit": "Metrics",
+          "effective_date": "2026-10-01T00:00:00Z"
+        },
+        {
+          "begin_range": "10000",
+          "end_range": "250000",
+          "usd": "0.1000000000",
+          "unit": "Metrics",
+          "effective_date": "2026-10-01T00:00:00Z"
+        },
+        {
+          "begin_range": "250000",
+          "end_range": "1000000",
+          "usd": "0.0500000000",
+          "unit": "Metrics",
+          "effective_date": "2026-10-01T00:00:00Z"
+        },
+        {
+          "begin_range": "1000000",
+          "end_range": "Inf",
+          "usd": "0.0200000000",
+          "unit": "Metrics",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ],
+      "free_allowance_price_list": {
+        "sku": "3ZJZSGX8K87XPW4R",
+        "unit": "Metrics",
+        "begin_range": "0",
+        "end_range": "10",
+        "usd": "0.0000000000",
+        "description": "Global",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+        "publication_date": "2026-10-07T11:55:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "Global-CW:MetricMonitorUsage"
+      }
+    },
+    {
+      "id": "cloudwatch_standard_alarm_metric_month",
+      "service": "Amazon CloudWatch",
+      "operation": "Standard-resolution metric alarm",
+      "unit": "alarm-metric-month",
+      "usd_per_unit": "0.1",
+      "scope": "us-east-2 Ohio, standard-resolution metric alarm; not high-resolution, composite or query alarm.",
+      "tier": "Per evaluated metric in alarm expression, prorated by hours alarm exists. Not applicable to composite/high-resolution/anomaly/query alarms without adjustment.",
+      "free_allowance": "10 standard alarm metrics listing metrics directly; does not cover Metrics Insights query alarms.",
+      "source_urls": [
+        "https://aws.amazon.com/cloudwatch/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AmazonCloudWatch",
+        "sku": "28VSMYRVQXUWCTMA",
+        "unit": "Alarms",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.1000000000",
+        "description": "$0.10 per alarm metric month (standard resolution) - US East (Ohio)",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+        "publication_date": "2026-10-07T11:55:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-CW:AlarmMonitorUsage",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AmazonCloudWatch",
+          "usagetype": "USE2-CW:AlarmMonitorUsage",
+          "unit": "Alarms",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.1000000000",
+          "unit": "Alarms",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ],
+      "free_allowance_price_list": {
+        "sku": "FCH8WPMWVXA4B6VM",
+        "unit": "Alarms",
+        "begin_range": "0",
+        "end_range": "10",
+        "usd": "0.0000000000",
+        "description": "Global",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+        "publication_date": "2026-10-07T11:55:40Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "Global-CW:AlarmMonitorUsage"
+      }
+    },
+    {
+      "id": "lambda_x86_gb_second",
+      "service": "AWS Lambda",
+      "operation": "On-demand x86 compute, non-provisioned",
+      "unit": "GB-second",
+      "usd_per_unit": "0.0000166667",
+      "scope": "us-east-2 Ohio, x86 on-demand Lambda duration first6billion GB-seconds; not ARM or provisioned concurrency.",
+      "tier": "First6billion GB-seconds/month; higher-volume tiers may differ.",
+      "quantity_formula": "Sum(BilledDurationMilliseconds * configuredMemoryMB /1024 /1000). Use billing duration (including applicable initialization), not only EMF processing latency.",
+      "free_allowance": "400000GB-seconds/month on pricing page, shared across eligible architecture usage; credits separately.",
+      "source_urls": [
+        "https://aws.amazon.com/lambda/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSLambda/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AWSLambda",
+        "sku": "3BYZH4NKJN8TJUQ6",
+        "unit": "Lambda-GB-Second",
+        "begin_range": "0",
+        "end_range": "6000000000",
+        "usd": "0.0000166667",
+        "description": "AWS Lambda - Total Compute - US East (Ohio)-Tier-1",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSLambda/current/us-east-2/index.json",
+        "publication_date": "2026-10-22T18:39:59Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-Lambda-GB-Second",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AWSLambda",
+          "usagetype": "USE2-Lambda-GB-Second",
+          "unit": "Lambda-GB-Second",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "6000000000",
+          "usd": "0.0000166667",
+          "unit": "Lambda-GB-Second",
+          "effective_date": "2026-10-01T00:00:00Z"
+        },
+        {
+          "begin_range": "6000000000",
+          "end_range": "15000000000",
+          "usd": "0.0000150000",
+          "unit": "Lambda-GB-Second",
+          "effective_date": "2026-10-01T00:00:00Z"
+        },
+        {
+          "begin_range": "15000000000",
+          "end_range": "Inf",
+          "usd": "0.0000133334",
+          "unit": "Lambda-GB-Second",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ],
+      "free_allowance_price_list": {
+        "sku": "4VCGJ7EG8PJVZG7S",
+        "unit": "Lambda-GB-Second",
+        "begin_range": "0",
+        "end_range": "400000",
+        "usd": "0.0000000000",
+        "description": "AWS Lambda - Compute Free Tier - 400,000 GB-Seconds",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSLambda/current/us-east-2/index.json",
+        "publication_date": "2026-10-22T18:39:59Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "Global-Lambda-GB-Second"
+      }
+    },
+    {
+      "id": "lambda_request",
+      "service": "AWS Lambda",
+      "operation": "Function request",
+      "unit": "request",
+      "usd_per_unit": "0.0000002",
+      "display_price": "USD0.20 per1millionrequests",
+      "scope": "us-east-2 Ohio, on-demand Lambda function request.",
+      "free_allowance": "1million eligible requests/month on pricing page; account-wide.",
+      "quantity_formula": "Lambda Invocations, not received message count; a batch can include multiple SQS messages.",
+      "source_urls": [
+        "https://aws.amazon.com/lambda/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSLambda/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AWSLambda",
+        "sku": "ZEA64MMVK5QRB5TC",
+        "unit": "Request",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.0000002000",
+        "description": "AWS Lambda - Total Requests - US East (Ohio)",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSLambda/current/us-east-2/index.json",
+        "publication_date": "2026-10-22T18:39:59Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-Request",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AWSLambda",
+          "usagetype": "USE2-Request",
+          "unit": "Request",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.0000002000",
+          "unit": "Request",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ],
+      "free_allowance_price_list": {
+        "sku": "ZQVCC2M69R4S79XS",
+        "unit": "Request",
+        "begin_range": "0",
+        "end_range": "1000000",
+        "usd": "0.0000000000",
+        "description": "AWS Lambda - Requests Free Tier - 1,000,000 Requests",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSLambda/current/us-east-2/index.json",
+        "publication_date": "2026-10-22T18:39:59Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "Global-Request"
+      }
+    },
+    {
+      "id": "sqs_standard_request",
+      "service": "Amazon SQS",
+      "operation": "Standard-queue request unit",
+      "unit": "request-unit",
+      "usd_per_unit": "0.0000004",
+      "display_price": "USD0.40 per1millionrequests in first paid tier",
+      "scope": "us-east-2 Ohio, Standard queue request first100billion tier; not FIFO or additional Fair Queue rate.",
+      "tier": "Initial standard paid tier. Fair queue additional rate may apply when MessageGroupId is used; FIFO separate.",
+      "metering": "Actions count, including empty ReceiveMessage. Sending/receiving payloads are metered in64KB chunks, with batch request rules.",
+      "free_allowance": "1million requests/month aggregated across AWS regions excluding GovCloud per current pricing page.",
+      "quantity_formula": "Count billed API/request units, including idle polling, sends, receives, deletes, visibility changes and payload chunks. NumberOfMessagesReceived alone is incomplete.",
+      "source_urls": [
+        "https://aws.amazon.com/sqs/pricing/",
+        "https://repost.aws/knowledge-center/sqs-high-charges",
+        "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSQueueService/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AWSQueueService",
+        "sku": "9C8YFGPNBKF9HP9A",
+        "unit": "Requests",
+        "begin_range": "0",
+        "end_range": "100000000000",
+        "usd": "0.0000004000",
+        "description": "$0.40 per million Amazon SQS standard requests in Tier1 in US East (Ohio)",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSQueueService/current/us-east-2/index.json",
+        "publication_date": "2026-09-11T12:46:07Z",
+        "effective_date": "2025-08-01T00:00:00Z",
+        "usage_type": "USE2-Requests-Tier1",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AWSQueueService",
+          "usagetype": "USE2-Requests-Tier1",
+          "unit": "Requests",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "100000000000",
+          "usd": "0.0000004000",
+          "unit": "Requests",
+          "effective_date": "2025-08-01T00:00:00Z"
+        },
+        {
+          "begin_range": "100000000000",
+          "end_range": "200000000000",
+          "usd": "0.0000003000",
+          "unit": "Requests",
+          "effective_date": "2025-08-01T00:00:00Z"
+        },
+        {
+          "begin_range": "200000000000",
+          "end_range": "Inf",
+          "usd": "0.0000002400",
+          "unit": "Requests",
+          "effective_date": "2025-08-01T00:00:00Z"
+        }
+      ],
+      "free_allowance_price_list": {
+        "sku": "MNCJEPJRCSC9RFY2",
+        "unit": "Requests",
+        "begin_range": "0",
+        "end_range": "1000000",
+        "usd": "0.0000000000",
+        "description": "First 1,000,000 Amazon SQS Requests per month are free",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSQueueService/current/us-east-2/index.json",
+        "publication_date": "2026-09-11T12:46:07Z",
+        "effective_date": "2025-08-01T00:00:00Z",
+        "usage_type": "Global-Requests"
+      }
+    },
+    {
+      "id": "secretsmanager_secret_month",
+      "service": "AWS Secrets Manager",
+      "operation": "Stored secret",
+      "unit": "secret-month",
+      "usd_per_unit": "0.4",
+      "scope": "us-east-2 Ohio, stored Secret SKU; hourly prorating described by pricing documentation.",
+      "metering": "Prorated for time stored; versions do not each count as a separate secret.",
+      "free_allowance": "No independent trial assumed for this account; apply actual credits separately.",
+      "source_urls": [
+        "https://aws.amazon.com/secrets-manager/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSSecretsManager/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AWSSecretsManager",
+        "sku": "HHK3AZN6HN5CFDJM",
+        "unit": "Secrets",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.4000000000",
+        "description": "$0.40 per Secret",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSSecretsManager/current/us-east-2/index.json",
+        "publication_date": "2026-09-11T12:46:10Z",
+        "effective_date": "2025-07-01T00:00:00Z",
+        "usage_type": "USE2-AWSSecretsManager-Secrets",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AWSSecretsManager",
+          "usagetype": "USE2-AWSSecretsManager-Secrets",
+          "unit": "Secrets",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.4000000000",
+          "unit": "Secrets",
+          "effective_date": "2025-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "secretsmanager_api_request",
+      "service": "AWS Secrets Manager",
+      "operation": "API call",
+      "unit": "request",
+      "usd_per_unit": "0.000005",
+      "display_price": "USD0.05 per10000APIcalls",
+      "scope": "us-east-2 Ohio, Secrets Manager API request.",
+      "source_urls": [
+        "https://aws.amazon.com/secrets-manager/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSSecretsManager/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AWSSecretsManager",
+        "sku": "DYZUZWKV5HMGF5A9",
+        "unit": "API Requests",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.0000050000",
+        "description": "$0.05 per 10000 API Requests",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSSecretsManager/current/us-east-2/index.json",
+        "publication_date": "2026-09-11T12:46:10Z",
+        "effective_date": "2025-07-01T00:00:00Z",
+        "usage_type": "USE2-AWSSecretsManagerAPIRequest",
+        "operation": "",
+        "selection_predicate": {
+          "service": "AWSSecretsManager",
+          "usagetype": "USE2-AWSSecretsManagerAPIRequest",
+          "unit": "API Requests",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.0000050000",
+          "unit": "API Requests",
+          "effective_date": "2025-07-01T00:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "glue_catalog_object_month_paid",
+      "service": "AWS Glue Data Catalog",
+      "operation": "Metadata object storage above first million",
+      "unit": "object-month",
+      "usd_per_unit": "0.00001",
+      "display_price": "USD1 per100000metadataobjects above1million/month",
+      "scope": "us-east-2 Ohio paid Catalog metadata-object storage; global first1million allowance is separate.",
+      "free_allowance": "First1millionmetadataobjects; count tables, versions, partitions, partition indexes, statistics, databases and catalogs, not just table rows.",
+      "source_urls": [
+        "https://aws.amazon.com/glue/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AWSGlue",
+        "sku": "C5UPA7D6QYMRDSC6",
+        "unit": "Obj-Month",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.0000100000",
+        "description": "$1 per 100,000 objects per month for AWS Glue Data Catalog storage",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+        "publication_date": "2026-10-12T18:55:42Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-Catalog-Storage",
+        "operation": "Storage",
+        "selection_predicate": {
+          "service": "AWSGlue",
+          "usagetype": "USE2-Catalog-Storage",
+          "unit": "Obj-Month",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.0000100000",
+          "unit": "Obj-Month",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ],
+      "free_allowance_price_list": {
+        "sku": "KQ8UDQCB4YC9MUEX",
+        "unit": "Obj-Month",
+        "begin_range": "0",
+        "end_range": "1000000",
+        "usd": "0.0000000000",
+        "description": "$0 for AWS Glue Data Catalog storage under the free tier",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+        "publication_date": "2026-10-12T18:55:42Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "Global-Catalog-Storage"
+      }
+    },
+    {
+      "id": "glue_catalog_request_paid",
+      "service": "AWS Glue Data Catalog",
+      "operation": "Metadata request above first million",
+      "unit": "request",
+      "usd_per_unit": "0.000001",
+      "display_price": "USD1 per1millionrequests abovefirst1million/month",
+      "scope": "us-east-2 Ohio paid Catalog metadata request; global first1million allowance is separate.",
+      "free_allowance": "First1millionmetadatarequests/month.",
+      "source_urls": [
+        "https://aws.amazon.com/glue/pricing/",
+        "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json"
+      ],
+      "validation_status": "OHIO_PRICE_LIST_VALIDATED",
+      "region": "us-east-2",
+      "price_list": {
+        "service": "AWSGlue",
+        "sku": "ZV78NH9F34YRJ8B6",
+        "unit": "Request",
+        "begin_range": "0",
+        "end_range": "Inf",
+        "usd": "0.0000010000",
+        "description": "$1 per 1,000,000 requests for AWS Glue Data Catalog request",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+        "publication_date": "2026-10-12T18:55:42Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "USE2-Catalog-Request",
+        "operation": "Request",
+        "selection_predicate": {
+          "service": "AWSGlue",
+          "usagetype": "USE2-Catalog-Request",
+          "unit": "Request",
+          "begin_range": "0",
+          "regionCode": "us-east-2",
+          "location": "US East (Ohio)"
+        }
+      },
+      "regional_tiers": [
+        {
+          "begin_range": "0",
+          "end_range": "Inf",
+          "usd": "0.0000010000",
+          "unit": "Request",
+          "effective_date": "2026-10-01T00:00:00Z"
+        }
+      ],
+      "free_allowance_price_list": {
+        "sku": "MBAX62AMGNTGZ4DJ",
+        "unit": "Request",
+        "begin_range": "0",
+        "end_range": "1000000",
+        "usd": "0.0000000000",
+        "description": "$0 for AWS Glue Data Catalog requests under the free tier",
+        "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+        "publication_date": "2026-10-12T18:55:42Z",
+        "effective_date": "2026-10-01T00:00:00Z",
+        "usage_type": "Global-Catalog-Request"
+      }
+    },
+    {
+      "id": "bigquery_query_tib_reference",
+      "service": "Google BigQuery",
+      "operation": "On-demand query analysis",
+      "unit": "TiB-billed",
+      "usd_per_unit": "6.25",
+      "scope": "US/Iowa reference, not confirmation of dataset or billing-project location",
+      "free_allowance": "First1TiB/month eligible query processing per billing account; account-wide availability must be measured.",
+      "quantity_formula": "Use total_bytes_billed for completed query jobs or dry-run estimated bytes for proposed queries. Do not substitute compressed S3 output bytes.",
+      "project_applicability": "PENDING. Bronze code uses sourceType=table through native Glue BigQuery connector; no query option in reviewed reader. Do not automatically add a SQL query charge to every direct table read.",
+      "source_urls": [
+        "https://cloud.google.com/bigquery/pricing",
+        "https://cloud.google.com/bigquery",
+        "https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-connect-bigquery-home.html"
+      ],
+      "validation_status": "GCP_REFERENCE_CONDITIONAL_USAGE_AND_REGION_PENDING"
+    },
+    {
+      "id": "bigquery_storage_read_tib",
+      "service": "Google BigQuery Storage Read API",
+      "operation": "Bytes read",
+      "unit": "TiB-read",
+      "usd_per_unit": "1.10",
+      "scope": "Reference pricing; confirm source location and actual API billing project",
+      "free_allowance": "First300TiB/month bytes-read component per billing account. Temporary query-table reads have their own free rule. This allowance does not cover outbound transfer.",
+      "quantity_formula": "Read-session processed/scanned bytes or matching billing usage/audit fields; failures/retries may still read billable bytes.",
+      "project_applicability": "PENDING confirmed connector read path and measured API usage.",
+      "source_urls": [
+        "https://cloud.google.com/bigquery/pricing",
+        "https://docs.cloud.google.com/bigquery/docs/reference/storage"
+      ],
+      "validation_status": "GCP_REFERENCE_CONDITIONAL_USAGE_AND_REGION_PENDING"
+    },
+    {
+      "id": "bigquery_storage_read_egress_gib_to_aws_reference",
+      "service": "Google BigQuery Storage Read API",
+      "operation": "General network data transfer to worldwide destination excluding Asia/Australia",
+      "unit": "GiB-egress",
+      "usd_per_unit": "0.12",
+      "scope": "First1TiB/month general-network tier to US destination such as AWSOhio; confirm actual route, source/API and billing SKU",
+      "tiers": [
+        {
+          "begin_gib": 0,
+          "end_gib": 1024,
+          "usd_per_gib": "0.12"
+        },
+        {
+          "begin_gib": 1024,
+          "end_gib": 10240,
+          "usd_per_gib": "0.11"
+        },
+        {
+          "begin_gib": 10240,
+          "end_gib": null,
+          "usd_per_gib": "0.08"
+        }
+      ],
+      "free_allowance": "Do not apply the300TiB read allowance to outbound transfer. No generic compute/network free tier is assumed here.",
+      "quantity_formula": "Measured serialized response/network egress usage or matching audit/billing data. S3 compressed Parquet bytes are not measured GCP egress.",
+      "project_applicability": "PENDING measured source-region/API/egress bytes. Do not label a USD amount as actual GCP cost without it.",
+      "source_urls": [
+        "https://cloud.google.com/bigquery/pricing",
+        "https://docs.cloud.google.com/bigquery/docs/reference/storage"
+      ],
+      "validation_status": "GCP_REFERENCE_CONDITIONAL_USAGE_AND_REGION_PENDING"
+    }
+  ],
+  "unit_conventions": {
+    "S3_GB_bytes": 1073741824,
+    "GCP_GiB_bytes": 1073741824,
+    "GCP_TiB_bytes": 1099511627776,
+    "time": "Monthly storage is time-weighted. Distinguish30-day scenario from calendar-month bill.",
+    "prices": "Published USD on-demand list rates; no taxes, commitments, discounts, usage quantities, credits or user-budget deduction embedded."
+  },
+  "important_modeling_rules": [
+    "Keep account billed costs, measured physical quantities, future list-price cost and remaining credits separate.",
+    "Do not infer zero use or zero production cost from a zero Free Tier invoice line.",
+    "Apply eligible always-free quotas once at account scope and do not double count credit offsets.",
+    "Do not assume a continuous workload or inflate spare capacity merely to be conservative.",
+    "Existing history snapshots are preserved: no automated expiry/deletion is implied by this price research.",
+    "Source BigQuery shared-dataset storage may be paid by its owner; attribute only the project-specific billing components proven by evidence.",
+    "Do not add both query and direct-table-read charges without proving both operations occurred.",
+    "Do not sum a parent run's measured DPUSeconds and its worker-time estimate; choose one basis and label it."
+  ],
+  "unit_prices_usd": {
+    "glue_etl_dpu_hour": "0.44",
+    "s3_standard_storage_gb_month": "0.023",
+    "s3_standard_put_request": "0.000005",
+    "s3_standard_get_request": "0.0000004",
+    "s3_transfer_in_internet_gb": "0",
+    "cloudwatch_standard_log_ingestion_gb": "0.5",
+    "cloudwatch_log_archive_gb_month": "0.03",
+    "cloudwatch_custom_metric_month": "0.3",
+    "cloudwatch_standard_alarm_metric_month": "0.1",
+    "lambda_x86_gb_second": "0.0000166667",
+    "lambda_request": "0.0000002",
+    "sqs_standard_request": "0.0000004",
+    "secretsmanager_secret_month": "0.4",
+    "secretsmanager_api_request": "0.000005",
+    "glue_catalog_object_month_paid": "0.00001",
+    "glue_catalog_request_paid": "0.000001",
+    "bigquery_query_tib_reference": "6.25",
+    "bigquery_storage_read_tib": "1.10",
+    "bigquery_storage_read_egress_gib_to_aws_reference": "0.12"
+  },
+  "price_units": {
+    "glue_etl_dpu_hour": "DPU-hour",
+    "s3_standard_storage_gb_month": "GB-month",
+    "s3_standard_put_request": "request",
+    "s3_standard_get_request": "request",
+    "s3_transfer_in_internet_gb": "GB",
+    "cloudwatch_standard_log_ingestion_gb": "GB",
+    "cloudwatch_log_archive_gb_month": "GB-month",
+    "cloudwatch_custom_metric_month": "metric-month",
+    "cloudwatch_standard_alarm_metric_month": "alarm-metric-month",
+    "lambda_x86_gb_second": "GB-second",
+    "lambda_request": "request",
+    "sqs_standard_request": "request-unit",
+    "secretsmanager_secret_month": "secret-month",
+    "secretsmanager_api_request": "request",
+    "glue_catalog_object_month_paid": "object-month",
+    "glue_catalog_request_paid": "request",
+    "bigquery_query_tib_reference": "TiB-billed",
+    "bigquery_storage_read_tib": "TiB-read",
+    "bigquery_storage_read_egress_gib_to_aws_reference": "GiB-egress"
+  },
+  "validated_aws_skus": {
+    "glue_etl_dpu_hour": "35EA4QMYDXPWWRHJ",
+    "s3_standard_storage_gb_month": "YPGKVRB2EKTVDJDT",
+    "s3_standard_put_request": "GJKK9PMSTKPNGZS9",
+    "s3_standard_get_request": "DJEKB32FV4HNZJZY",
+    "cloudwatch_standard_log_ingestion_gb": "5T6Z6V26DSR7SZ49",
+    "cloudwatch_log_archive_gb_month": "X7X4WD4A95NDR9U5",
+    "cloudwatch_custom_metric_month": "XK7C3D2X45XTHURD",
+    "cloudwatch_standard_alarm_metric_month": "28VSMYRVQXUWCTMA",
+    "lambda_x86_gb_second": "3BYZH4NKJN8TJUQ6",
+    "lambda_request": "ZEA64MMVK5QRB5TC",
+    "sqs_standard_request": "9C8YFGPNBKF9HP9A",
+    "secretsmanager_secret_month": "HHK3AZN6HN5CFDJM",
+    "secretsmanager_api_request": "DYZUZWKV5HMGF5A9",
+    "glue_catalog_object_month_paid": "C5UPA7D6QYMRDSC6",
+    "glue_catalog_request_paid": "ZV78NH9F34YRJ8B6"
+  },
+  "catalog_publication_dates": {
+    "AWSGlue": [
+      "2026-10-12T18:55:42Z"
+    ],
+    "AWSLambda": [
+      "2026-10-22T18:39:59Z"
+    ],
+    "AWSQueueService": [
+      "2026-09-11T12:46:07Z"
+    ],
+    "AWSSecretsManager": [
+      "2026-09-11T12:46:10Z"
+    ],
+    "AmazonCloudWatch": [
+      "2026-10-07T11:55:40Z"
+    ],
+    "AmazonS3": [
+      "2026-10-15T17:35:40Z"
+    ]
+  }
+}

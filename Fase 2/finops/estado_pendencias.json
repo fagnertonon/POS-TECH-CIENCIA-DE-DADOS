@@ -1,0 +1,158 @@
+{
+  "schema": "fiap.finops-pending-evidence.v1",
+  "observed_at_utc": "2026-10-27T18:26:31.890506+00:00",
+  "project_ceiling_total_usd": 140,
+  "approved_scope": {
+    "historical_metadata_only": true,
+    "new_data_extractions": false,
+    "enable_billing": false,
+    "enable_apis": false,
+    "change_iam": false
+  },
+  "requirements": {
+    "source_pdf_sha256": "e599dae420e7b72d60f66586a032b7b87ba3fec9dfae58a18025caaeedbde6c0",
+    "pages_reviewed": [
+      4,
+      8,
+      9
+    ],
+    "required_columns": [
+      "Serviço",
+      "Unidade",
+      "Quantidade medida",
+      "Preço unitário",
+      "Custo mensal projetado"
+    ],
+    "production_equivalent_projection_required_in_sandbox": true,
+    "four_cycles_is_a_hypothesis_not_a_requirement": true,
+    "audit": "auditoria_enunciado.json"
+  },
+  "prior_forecast": {
+    "model": "outputs\\finops_atualizado_20261027\\modelo_finops.json",
+    "sha256": "7be254cb6ac49203b63fbbee1c4bd82372525d2a742d038f30b8b8745aea1f84",
+    "unchanged": true,
+    "days": 30,
+    "batches": 4,
+    "replays": 4,
+    "available_partial_subtotal_usd": "2.149659750570316769593299212",
+    "complete_total_usd": null,
+    "numeric_cost_rows": 18,
+    "unmeasured_cost_rows": 3,
+    "credits_remaining_usd": 136.59,
+    "credits_observed_at_utc": "2026-10-27T17:18:45.813843+00:00",
+    "credits_refreshed_this_investigation": false,
+    "caveat": "The 6-day support-request proxy did not contain a Bronze/replay cycle. It needs representative coverage before claiming a complete production cost."
+  },
+  "new_log_measurement": {
+    "summary": "fechamento_logs.json",
+    "sha256": "2ab2e4d922a73774e2a9e64eab91b31b78c70ae2324bb6e569b6ab210d343262",
+    "raw": "raw/aws_logs/log_growth_readonly.json",
+    "raw_sha256": "9592d24083c6520df025c436797ca902e8affb7f495193a8cd680f9f5a55021a",
+    "stock_bytes": 7417226,
+    "reported_ingestion_bytes_uncompressed": 6216753,
+    "reported_ingestion_log_events": 27113,
+    "window_start_utc": "2026-10-27T00:00:00Z",
+    "window_end_exclusive_utc": "2026-10-27T18:00:00Z",
+    "missing_datapoints_not_zero": true,
+    "policy": "STANDARD",
+    "existing_daily_storedbytes_identities": 0,
+    "compressed_archive_growth_per_cycle_bytes": null,
+    "stock_cost_normalized_month_usd": "0.0002072349004447460174560546875",
+    "stock_cost_already_in_prior_forecast": true,
+    "why_pending": "Positive uncompressed ingestion with unchanged reported compressed stock; mixed preview/replay workload and bucket overlap prevent a measured per-cycle archive increment."
+  },
+  "gcp": {
+    "project": "fiap1-512214",
+    "new_script_executed": true,
+    "credential_grant_performed": true,
+    "status": "COLLECTED_EXISTING_EVIDENCE_STORAGE_READ_PROJECTED_EGRESS_PENDING",
+    "auto_review_rejected_action": "Click Autorizar in Google Cloud Shell credential-use dialog",
+    "auto_review_reason": "The dialog permits credential use for this session and future API calls; the broad persistent grant was not explicitly approved.",
+    "permission_question_pending": false,
+    "screenshot": "gcp_autorizacao_pendente.png",
+    "existing_console_observation": {
+      "scope": "BigQuery Storage API, 30-day visible console window; not correlated billable bytes",
+      "create_read_session_requests": 24,
+      "read_rows_requests": 16,
+      "request_counts_are_bytes": false
+    },
+    "prior_billing_snapshot": "../finops_2026_10_27/gcp/project_billing.json",
+    "prior_billing_snapshot_refreshed": false,
+    "table_metadata_search_measured_capacity_bytes": null,
+    "storage_read_bytes": null,
+    "egress_bytes": null,
+    "collector": "scripts/collect_gcp_existing_metrics.py",
+    "scope_note": "Human explicitly approved the credential renewal. It succeeded in the official standalone Cloud Shell. The bounded collector then read metadata/historical telemetry once, without SQL, new Storage Read sessions, billing/API/IAM changes.",
+    "explicit_human_approval": {
+      "answer": "Sim, renovar o acesso para essas leituras",
+      "scope": "Existing Cloud Shell credential renewal for read-only metrics/metadata"
+    },
+    "initial_auto_review_rejection_resolved": true,
+    "credential_renewal_proof": "gcp_acesso_renovado.png",
+    "collection_proof": "gcp_coleta_executada.png",
+    "collection_source": "raw/gcp_existing_metrics.json",
+    "collection_sha256": "517a120707338fcb9d0443a69e346aec1710b77b56d6b1dfbc7141539b56a642",
+    "observed_at_utc": "2026-10-27T18:16:50.016409+00:00",
+    "api_calls": 19,
+    "collection_top_level_errors": [],
+    "billing_snapshot_refreshed": true,
+    "billing_enabled_current": false,
+    "monitoring_now_available": true,
+    "effective_permissions_confirmed": [
+      "logging.logEntries.list",
+      "logging.privateLogEntries.list",
+      "logging.views.access",
+      "monitoring.metricDescriptors.list",
+      "monitoring.timeSeries.list",
+      "serviceusage.quotas.get"
+    ],
+    "measured_logical_capacity_bytes": 271547681,
+    "source_rows_reconciled": 3902954,
+    "current_storage_read_prospective_quantity_TiB_per_cycle": "0.0002469711771482252515852451324462890625",
+    "current_storage_read_prospective_usd_30d": "0.001086673179452191106975078582763671875000",
+    "source_metadata_is_historical_billed_bytes": false,
+    "current_readrows_response_sizes_telemetry_bytes": "1860997.0",
+    "current_readrows_request_count": 13,
+    "current_create_read_session_request_count": 16,
+    "audit_entries": 0,
+    "semantic_review": "fechamento_gcp.json"
+  },
+  "measurement_reference_cost": {
+    "service": "Amazon CloudWatch GetMetricData",
+    "quantity_metrics_requested": 14,
+    "unit_price_usd": "0.0000100000",
+    "one_off_reference_usd": "0.0001400000",
+    "sku": "Y7EVPXWVUXVP9MUM",
+    "source_url": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+    "price_effective_date": "2026-10-01T00:00:00Z",
+    "not_a_posted_bill_or_recurring_projection": true,
+    "cost_explorer_called_this_investigation": false
+  },
+  "completion": {
+    "closed_total_estimate": false,
+    "remaining_cost_components": [
+      "gcp_egress",
+      "logs_archive_growth"
+    ],
+    "unavailable_quantities_assigned_zero": false,
+    "budget_guaranteed": false,
+    "next_steps": [
+      "Recover audited serializedResponseBytes correlated to the original extraction, or historical billed network SKU quantities, if those records exist.",
+      "Do not repeat the same response-size metric query to invent billing equivalence; it does not resolve the streaming/SKU semantics.",
+      "Reconcile compressed log archive after existing workload settles, with attribution/retention checked; do not start a new extraction merely to measure it.",
+      "Maintain both unavailable costs as n.a. and the total as partial until evidence exists; preserve the support-request coverage caveat."
+    ],
+    "resolved_cost_components": {
+      "gcp_read": "Measured prospective full-read projection, not historical billed bytes"
+    }
+  },
+  "forecast_update": {
+    "model": "modelo_finops.json",
+    "sha256": "97cc2f32069a916b479395c0c0026b6997335b12bd23e7f74e5a05478b38c26b",
+    "available_partial_subtotal_usd": "2.150746423749768960700274291",
+    "complete_total_usd": null,
+    "numeric_cost_rows": 19,
+    "unmeasured_cost_rows": 2,
+    "read_cost_basis": "Measured logical capacity; one prospective complete read per batch; no free tier applied, not historical billed usage."
+  }
+}

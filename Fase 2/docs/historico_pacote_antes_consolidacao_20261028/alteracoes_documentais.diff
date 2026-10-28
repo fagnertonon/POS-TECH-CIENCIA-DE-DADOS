@@ -1,0 +1,127 @@
+--- antes/README.md
++++ atual/README.md
+@@ -4,6 +4,20 @@
+ 
+ Pipeline batch + streaming em AWS, com Arquitetura Medalhão (Bronze → Silver → Gold), que integra as sete tabelas (incluindo o dicionário) do dataset `br_inep_avaliacao_alfabetizacao` da Base dos Dados (BigQuery) e produz uma camada analítica
+ versionada, auditada e pronta para a Fase 3 (modelo preditivo).
++
++## Estado consolidado em 28/10/2026
++
++A migração dos alertas para CloudFormation foi concluída: `fiap-inep-observabilidade`
++está `IMPORT_COMPLETE` e `fiap-inep-streaming` está `UPDATE_COMPLETE`. As duas stacks
++ficaram `IN_SYNC` nos 13 recursos avaliados pelo serviço (5 + 8); assinatura SNS e
++EventSourceMapping foram omitidos do relatório nativo de drift. A assinatura foi
++conferida separadamente. O código Lambda e os recursos físicos foram preservados.
++Evidências: `evidencias/migracao_cloudformation_20261028/`; templates efetivamente
++aplicados: `observabilidade/cloudformation/aplicado_20261028/`.
++
++Esta consolidação alterou somente documentação e embalagem local. Não executou
++AWS/GCP, jobs, extrações, replays ou e-mails. Código, dados e provas anteriores foram
++preservados. Leia `LEIA-ME_PROJETO_ATUAL.txt` para o estado e as pendências atuais.
+ 
+ > **Vídeo executivo (até 5 min):** `[LINK PENDENTE – inserir antes da entrega]`
+ 
+@@ -120,7 +134,7 @@
+ | Mensageria / streaming | SQS Standard + DLQ, Lambda Python 3.12 (concorrência 2, lote ≤ 5, `ReportBatchItemFailures`) | Entrega pelo menos uma vez, retentativa e DLQ nativas, custo marginal ~zero | Implementado (simulação por replay) |
+ | Observabilidade | CloudWatch EMF, 5 alarmes, EventBridge, SNS e-mail | Métricas persistidas por execução; notificação fora do console | Implementado |
+ | FinOps | Cost Explorer, AWS Budgets (US$ 30/mês, limiares 15/24/30), limites de workers/timeout | Medição real + Budget configurado; contato de faturamento pendente de verificação | Parcial |
+-| IaC | CloudFormation (stack `fiap-inep-streaming`) | Fila, DLQ, Lambda, role, 3 alarmes | Parcial – ver §9 |
++| IaC | CloudFormation (`fiap-inep-streaming` e `fiap-inep-observabilidade`) | Streaming e alertas adotados; templates aplicados e evidências incluídos | Implementado nesse escopo; jobs e demais recursos não são todos declarados em IaC |
+ | Orquestração | — | — | **Evolução futura** (Glue Workflow/trigger) |
+ | Testes | `unittest` com fixtures locais (clientes AWS simulados; Gold valida contrato e cobertura sem Spark real) | 132 testes originais + 6 verificações de IaC aprovados localmente; ambiente identificado na seção 9 | Implementado |
+ 
+@@ -372,7 +386,7 @@
+ 
+ Para analisar esta entrega, use as evidências já salvas e os testes abaixo. A correção de 28/10 não
+ executou comandos AWS/GCP, instalou dependências pela rede ou enviou notificações. A conta foi observada
+-pela última vez em 27/10: esta documentação não atualiza saldo, estado dos recursos ou preços.
++em 27/10 para o FinOps e em 28/10 para a migração dos alertas. Esta embalagem local não atualiza saldo nem preços.
+ 
+ ```bash
+ python -m unittest discover -s silver -p "test_*.py"                      # 7 testes
+@@ -426,10 +440,11 @@
+ python streaming/finalize_simulation.py --events <dir>/events.jsonl --output-dir <dir-novo>   # Parquet + manifesto da Gold de simulação
+ # streaming/exercise_simulation.py executa a rodada completa (30 válidos + 5 reenvios + 1 inválido) e verify_negative_simulation.py confere a rejeição
+ 
+-# 5. Notificações -- cinco etapas distintas; nenhuma é automática a partir da anterior
++# 5. Notificações -- procedimento histórico de criação, apenas para ambiente novo.
++# Na conta atual a migração já foi concluída: não reaplique nem recrie a assinatura.
+ python observabilidade/scripts/configure_notifications.py --email <destinatario> --output-dir <dir-plano>        # 5a. gera plan.json e imprime plan_sha256 (sem tocar a AWS)
+ #   5b. revisar <dir-plano>/plan.json (tópico, política, regra, 5 alarmes) e registrar o plan_sha256 aprovado
+-python observabilidade/scripts/configure_notifications.py --email <destinatario> --output-dir <dir-apply> --apply   # 5c. aplica o mesmo plano (confere o hash); cria tópico, política, regra, ações e a assinatura -> status CONFIGURED_AWAITING_SUBSCRIPTION_AND_RECEIPT
++python observabilidade/scripts/configure_notifications.py --email <destinatario> --output-dir <dir-apply> --apply   # 5c. aplica a configuração gerada; revisão e conferência do plano aprovado são manuais; cria tópico, política, regra, ações e assinatura -> status CONFIGURED_AWAITING_SUBSCRIPTION_AND_RECEIPT
+ #   5d. o destinatário confirma a assinatura pelo link do e-mail "AWS Notification - Subscription Confirmation" (sem isso nada é entregue)
+ python observabilidade/scripts/verify_notifications.py --output notifications_verified.json                      # 5e. confere ações dos alarmes, política, regra e all_subscriptions_confirmed=true; não envia nada
+ # opcional, uma única vez e com autorização: test_alarm_delivery.py --output-dir <dir-teste> força um estado de alarme
+@@ -459,8 +474,12 @@
+ ```
+ 
+ Esse gerador grava somente o arquivo informado e recusa sobrescrita; não substitui o template histórico.
+-A adoção futura dos recursos existentes está descrita em
+-`observabilidade/cloudformation/PLANO_RECONCILIACAO.md`. Nada desse plano foi executado.
++O plano inicial em `observabilidade/cloudformation/PLANO_RECONCILIACAO.md` é histórico.
++A adoção foi concluída em 28/10 com revisões documentadas: TopicInlinePolicy para
++importação, template sem Outputs e preservação da fonte UTF-8 exata da Lambda.
++Consulte `evidencias/migracao_cloudformation_20261028/LEIA-ME_Migracao.txt` e os
++templates efetivamente aplicados em `observabilidade/cloudformation/aplicado_20261028/`.
++Não reaplique a proposta histórica nem repita a importação.
+ 
+ ### Consultar um ambiente existente (leituras AWS, não executadas nesta correção)
+ 
+@@ -508,12 +527,10 @@
+ - **Streaming é simulação** (replay de amostra real da Bronze, só entidade `alunos`); não há fonte de eventos
+   INEP ao vivo. Não se afirma entrega exatamente uma vez.
+ - **Sem orquestração nem agendamento**: etapas disparadas manualmente; retentativa só na SQS/Lambda.
+-- **IaC parcial**: a stack CloudFormation cobre fila, DLQ, Lambda, role e 3 alarmes; SNS, assinatura, regra
+-  EventBridge, ações dos alarmes e os alarmes Silver/Gold foram aplicados por SDK/CLI. Os templates que refletem o
+-  estado observado estão em `observabilidade/cloudformation/observabilidade_stack.json` e
+-  `streaming/streaming_stack_com_alarmactions_PROPOSTO.json`, **propostos e não implantados**. Foram
+-  corrigidos e verificados apenas localmente em 28/10; suporte/identificadores de importação, drift e
+-  change set ainda precisam de revisão antes de qualquer operação AWS. Ver o plano de reconciliação.
++- **IaC com escopo delimitado**: streaming e alertas estão nas duas stacks CloudFormation
++  após a migração de 28/10; jobs Glue e todos os demais recursos não foram convertidos
++  em uma única infraestrutura recriável por comando. As propostas antigas são histórico;
++  os templates realmente aplicados estão em `observabilidade/cloudformation/aplicado_20261028/`.
+ - **Parquet *staged* da tentativa falha de 26/10** ainda existem sob `gold/inep/`; consumidores devem usar o
+   manifesto `SUCCEEDED` e seus caminhos aprovados. Se usarem o catálogo, também devem validar o
+   `fiap_commit_manifest` da entrada e sua correspondência ao dataset/run aprovado. Limpeza não executada.
+@@ -530,7 +547,7 @@
+ silver/            silver_glue.py, job_defaults.json, notebook Glue, test_manifest_contract.py, LEIA-ME.txt
+ gold/              gold_glue.py (1.0.2), defaults, contrato de colunas, testes, diagnostico/ (investigação 2023)
+ streaming/         código vigente, template histórico, gerador local da proposta com AlarmActions, verificadores e testes
+-observabilidade/   scripts de plano/aplicação/verificação de notificações, plan.json, cloudformation/ (proposto)
++observabilidade/   scripts históricos de notificações; cloudformation/aplicado_20261028/ com templates efetivos
+ finops/            modelo_finops.json, tarifas, scripts de coleta, NOTA_JANELAS_DE_MEDICAO.md, auditoria do enunciado
+ deploy/            deploy_bronze.py, deploy_continuacao.py, verificadores pós-execução
+ evidencias/        manifestos, relatórios de qualidade, runs Glue, falhas preservadas, capturas de console, FinOps
+--- antes/VERSOES.md
++++ atual/VERSOES.md
+@@ -1,9 +1,12 @@
+ # Versões vigentes e histórico
+ 
+ O núcleo de processamento corresponde às **versões executadas e validadas** abaixo.
+-As evidências e os documentos de origem incluem histórico identificado. As propostas de CloudFormation
+-e seu gerador local foram corrigidos em 28/10/2026 e **não foram implantados**. As versões anteriores
+-dos cinco arquivos editados são preservadas no pacote externo, em `originais_antes_da_correcao/`.
++As evidências e os documentos de origem incluem histórico identificado. A migração dos alertas
++foi concluída e verificada em 28/10/2026, com revisões em relação às propostas iniciais.
++Os templates efetivamente aplicados estão em `observabilidade/cloudformation/aplicado_20261028/`.
++As propostas iniciais e os documentos anteriores foram preservados como histórico.
++As versões deste README, VERSOES e manifesto antes da consolidação estão em
++`docs/historico_pacote_antes_consolidacao_20261028/`.
+ 
+ | Componente | Arquivo | Versão | Execução de referência (us-east-2) |
+ |---|---|---|---|
+@@ -35,9 +38,9 @@
+ 
+ ## O que precisa de autorização para mudar na nuvem
+ 
+-- Aplicar `observabilidade/cloudformation/observabilidade_stack.json` e
+-  `streaming/streaming_stack_com_alarmactions_PROPOSTO.json` (integração observada em 27/10: alarmes streaming pertencem à stack; tópico/regra foram
+-  adicionados e ações foram configuradas por SDK. Ver `observabilidade/cloudformation/PLANO_RECONCILIACAO.md`; nada foi importado).
++- Qualquer nova alteração das stacks. A migração autorizada dos alertas já foi concluída
++  (`fiap-inep-observabilidade`: IMPORT_COMPLETE; `fiap-inep-streaming`: UPDATE_COMPLETE).
++  Não reaplique os templates propostos antigos; consulte as evidências de 28/10.
+ - Limpar os Parquet *staged* da tentativa falha de 26/10 que permanecem sob `gold/inep/` (consumidores devem ler
+   apenas os caminhos de manifesto `SUCCEEDED`; uma entrada do catálogo também exige validar seu
+   `fiap_commit_manifest` e a correspondência ao dataset/run aprovado).

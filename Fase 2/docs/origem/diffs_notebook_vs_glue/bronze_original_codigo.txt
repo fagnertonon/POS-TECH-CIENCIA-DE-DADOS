@@ -1,0 +1,86 @@
+# Celula original 3
+import os
+from dotenv import find_dotenv, load_dotenv
+
+# Procura o .env subindo as pastas a partir de onde o notebook está rodando.
+load_dotenv(find_dotenv(usecwd=True), override=True)
+
+def variavel(nome, padrao=None):
+    """Lê uma variável de ambiente. Valor vazio conta como 'não definida'."""
+    valor = os.getenv(nome) or padrao
+    if valor is None:
+        raise RuntimeError(f"Variável de ambiente {nome} não definida. Veja o .env.")
+    return valor
+
+PROJECT_ID = variavel("PROJECT_ID")  # projeto onde as consultas rodam e a Bronze é gravada
+SOURCE_DATASET = variavel("SOURCE_DATASET", "basedosdados.br_inep_avaliacao_alfabetizacao")
+BRONZE_DATASET = variavel("BRONZE_DATASET", "bronze")
+BQ_LOCATION = os.getenv("BQ_LOCATION") or None  # opcional: se vazio, usa a localização da fonte
+DESTINO = os.getenv("DESTINO") or "local"  # opcional: se vazio, grava localmente
+
+# Celula original 4
+def adicionar_metadados_ingestao(df, nome_tabela):
+    """Adiciona colunas de metadados de ingestão ao DataFrame."""
+    from datetime import datetime
+    import pandas as pd
+    import uuid
+    
+    df["id_ingestao"] = uuid.uuid4()
+    df["data_ingestao"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    df["tabela_origem"] = nome_tabela
+
+    return df
+
+# Celula original 5
+from pathlib import Path
+
+BRONZE_DIR = Path(os.getenv("BRONZE_DIR") or Path.cwd().parent / "data" / "bronze")
+
+def gravar_bronze(df, nome_tabela):
+    """Grava o DataFrame na Bronze sem sobrescrever rodadas anteriores."""
+    if DESTINO == "local":
+        id_ingestao = df["id_ingestao"].iloc[0]
+        pasta = BRONZE_DIR / nome_tabela
+        pasta.mkdir(parents=True, exist_ok=True)
+        caminho = pasta / f"id_ingestao={id_ingestao}.parquet"
+        if caminho.exists():
+            raise FileExistsError(f"Rodada já gravada: {caminho}")
+        df.to_parquet(caminho, index=False)
+        return caminho
+    raise ValueError(f"DESTINO inválido ou não implementado: {DESTINO}")
+
+# Celula original 7
+from google.cloud import bigquery
+
+client = bigquery.Client(project=PROJECT_ID)
+
+def carregar_tabela_bq(client, nome_tabela, dataset=SOURCE_DATASET):
+    """Carrega uma tabela do BigQuery em um DataFrame do Pandas."""
+    from google.cloud import bigquery
+
+    query = f"SELECT * FROM `{dataset}.{nome_tabela}`"
+    df = client.query(query).to_dataframe(create_bqstorage_client=True)
+
+    return df
+
+# Celula original 8
+import pandas as pd
+
+TABELAS = ["alunos", "municipio", "uf", "meta_alfabetizacao_brasil",
+           "meta_alfabetizacao_uf", "meta_alfabetizacao_municipio", "dicionario"]
+
+dfs = {}
+for nome in TABELAS:
+    print(f"Carregando tabela {nome}...")
+    df = carregar_tabela_bq(client, nome)
+    print(f"Tabela {nome} carregada com {df.shape[0]} linhas e {df.shape[1]} colunas.")
+    dfs[nome] = adicionar_metadados_ingestao(df, nome)
+    print(f"Tabela {nome} com metadados de ingestão adicionados: {dfs[nome].shape[0]} linhas e {dfs[nome].shape[1]} colunas.")
+    
+    print(f"Gravando tabela {nome} na Bronze...")
+    gravar_bronze(dfs[nome], nome)
+    print(f"Tabela {nome} gravada na Bronze com sucesso.")
+
+
+# Celula original 9
+

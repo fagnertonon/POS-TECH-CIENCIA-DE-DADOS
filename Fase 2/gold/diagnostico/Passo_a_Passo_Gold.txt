@@ -1,0 +1,179 @@
+PASSO A PASSO PARA INVESTIGAR E CORRIGIR A GOLD
+Preparado em 26/10/2026. Projeto FIAP Tech Challenge Fase 2.
+
+OBJETIVO
+Identificar a comparacao nacional que ficou fora de 0,1 ponto percentual,
+apurar a causa e somente entao alterar o codigo ou documentar uma limitacao.
+Ainda nao sabemos qual ano diverge nem se a causa esta no calculo ou na fonte.
+O relatorio anterior comprova 1 de 2 linhas dentro da tolerancia; ele nao traz
+os dois valores completos. O script abaixo obtem esses valores do S3.
+
+O roteiro nao modifica a AWS por si. Etapas 1 a 5 sao investigacao. Implantar
+e executar na etapa 8 sao acoes posteriores que alteram recursos/geram custo.
+
+1. BAIXAR E PRESERVAR OS ARQUIVOS
+Baixe Pacote_Completo_Tech_Challenge_AWS.zip entregue anteriormente e extraia
+em uma pasta nova. Essa sera a raiz do projeto: contem gold/, silver/,
+deploy_continuacao.py, verify_continuacao.py e os arquivos de evidencia.
+Baixe diagnosticar_gold.py, sincronizar_notebook_gold.py e requirements.txt
+desta entrega. Guarde os dois scripts e requirements.txt junto a essa raiz.
+Nao altere gold/03_camada_gold_original.ipynb.
+
+2. ABRIR O CLOUDSHELL
+Entre no console AWS, projeto Try Catch Finally, regiao Ohio (us-east-2).
+Abra CloudShell pelo icone de terminal no topo do console.
+No CloudShell, use Acoes > Carregar arquivo para enviar diagnosticar_gold.py
+e requirements.txt. Esse envio grava arquivos no ambiente CloudShell.
+Nao precisa abrir notebook ou sessao Spark para esta consulta.
+
+3. PREPARAR O PYTHON E CONSULTAR A GOLD
+Os comandos abaixo sao para Bash no CloudShell, nao PowerShell do Windows.
+Execute um por vez:
+
+aws sts get-caller-identity --query Account --output text
+
+O resultado esperado e 637246457028. Se for outra conta, selecione o projeto
+correto no console antes de continuar.
+
+python3 -m venv .venv-diagnostico-gold
+source .venv-diagnostico-gold/bin/activate
+python -m pip install -r requirements.txt
+python diagnosticar_gold.py --output-dir diagnostico_gold_inicial
+
+O script le somente o manifesto Gold aprovado de 22/10/2026 e os Parquet de
+validacao_cruzada_brasil daquela execucao. Nao le o historico inteiro, nao
+consulta BigQuery e nao inicia job Glue. Ha requisicoes de leitura no S3.
+Ele mostra ano, serie, rede, taxa oficial, recalculada, diferenca e situacao.
+Salva diagnostico_gold_inicial/diagnostico_gold.json no CloudShell.
+Se a pasta ja existir, use um nome novo para preservar o diagnostico anterior.
+
+Para baixar o resultado: Acoes > Baixar arquivo e informe:
+/home/cloudshell-user/diagnostico_gold_inicial/diagnostico_gold.json
+Esse caminho pressupoe a execucao na pasta inicial; o script imprime o caminho
+absoluto real ao terminar.
+
+4. INTERPRETAR O RESULTADO
+Localize a linha FORA_DA_TOLERANCIA. Anote o ano e as duas taxas.
+Confira serie=2, rede=5 e a diferenca em pontos percentuais (nao porcentagem
+relativa). Uma taxa de 60 contra 59,8 difere 0,2 p.p.
+O JSON identifica exatamente o manifesto e os objetos lidos, com hashes.
+Uma divergencia nao prova sozinha que o calculo ou a fonte esta errado.
+
+5. CONFERIR AS REGRAS NA ORDEM CERTA
+A. Silver: silver/silver_glue.py, funcao add_evaluation_flags.
+   Verifique o dicionario original e as flags presente/caderno_preenchido.
+   Avaliado exige presenca e caderno preenchido. Nulo/desconhecido nao pode
+   virar automaticamente um valor valido.
+   Para cada avaliado, alfabetizacao precisa ser conhecida e peso positivo finito.
+
+B. Gold: gold/gold_glue.py, funcao taxa_calculada_microdados.
+   Formula: 100 * soma(peso * alfabetizado) / soma(peso), dentro do universo
+   avaliado elegivel. Nao trocar por media simples de municipios.
+   Compare contagem de avaliados, soma dos pesos e soma dos pesos alfabetizados
+   por ano/serie/rede no mesmo snapshot Silver usado pela Gold.
+
+C. Gold: constantes COMPOSICAO_REDE e funcao construir_validacao_cruzada_brasil.
+   A composicao atual de rede 5 deriva das redes 2 e 3. Confira os significados
+   no dicionario e a metodologia do indicador publicado para o ano divergente.
+   Nao inclua ou exclua rede federal, outra serie ou outra rede apenas para
+   aproximar o numero oficial. Confira tambem se existem registros nativos da
+   rede agregada que, somados aos registros de redes componentes, duplicariam
+   o universo. O recorte correto depende da fonte, nao de qual valor fica perto.
+
+D. Fonte: confirme se microdados e taxa oficial se referem a mesma versao,
+   universo, ano e rede. Se for preciso consultar metodologia, use publicacao
+   oficial ou metadados da fonte. Registre links e datas; nao chute a causa.
+
+6. DECIDIR A MUDANCA COM BASE NA EVIDENCIA
+Se a causa for no calculo Gold: altere somente a funcao/recorte comprovadamente
+incorreto em gold/gold_glue.py. Atualize SCRIPT_VERSION para identificar a
+revisao. Preserve o original e registre antes/depois e a justificativa.
+
+Se a causa estiver nas flags ou tratamento Silver: corrija silver/silver_glue.py,
+sincronize seu notebook adaptado e valide/reexecute Silver antes da Gold.
+Uma nova Silver precisa de manifesto aprovado proprio. A Gold nova deve
+apontar para esse novo manifesto, nunca para uma Silver FAILED.
+
+Se a diferenca for da fonte/metodologia e nao houver bug demonstrado: mantenha
+os numeros, a regra informativa e registre a explicacao/limitacao no README.
+Nesse caso, nao e necessario reexecutar Glue apenas para escrever a conclusao.
+
+Nao aumentar TOLERANCIA_PP para esconder a divergencia. Nao diminuir
+LIMIAR_JOIN=0.95. Nao alterar regra para passar sem justificar o contrato.
+Nao transformar a tolerancia nacional em bloqueante antes de decidir se os
+dois indicadores devem ser identicos pela metodologia.
+
+7. VALIDAR UMA ALTERACAO LOCAL NA GOLD
+Execute da raiz do projeto extraido, em Python com as dependencias:
+
+python -m py_compile gold/gold_glue.py
+python -m unittest discover -s gold -p 'test_*.py' -v
+python sincronizar_notebook_gold.py --directory gold
+
+O ultimo comando modifica apenas o notebook adaptado local, sincronizando sua
+celula principal com o script e limpando outputs. Preserve a copia anterior.
+Os 16 testes existentes conferem contratos; nao provam a correcao de uma
+formula nova. Acrescente um teste pequeno do problema encontrado com resultado
+esperado calculado manualmente, e confira em Spark a transformacao alterada.
+Se Silver foi alterada, tambem rode seus testes e atualize sua documentacao.
+
+8. IMPLANTAR E REEXECUTAR SOMENTE SE HOUVE MUDANCA DE CODIGO/DADOS
+Envie o projeto atualizado ao CloudShell em ZIP e extraia em pasta nova.
+Entre nessa raiz. Confira que gold/job_defaults.json aponta para o manifesto
+Silver aprovado desejado e mantenha DEMO_FAILURE=false no processamento normal.
+O deploy abaixo atualiza o job existente; nao inicia processamento:
+
+python deploy_continuacao.py --layer gold --directory gold \
+  --defaults-json gold/job_defaults.json \
+  --output deployment_gold_corrigida.json --update-existing
+
+Confira o relatorio: conta/regiao, SHA256, 2 workers G.1X, timeout 15 min,
+retries 0, script correto e manifesto Silver correto.
+Somente depois inicie uma rodada, que gera custo e outro run_id:
+
+aws glue start-job-run --job-name fiap-gold-inep-batch --region us-east-2
+
+Guarde JobRunId. Consulte o estado substituindo NOVO_RUN_ID pelo valor real:
+
+aws glue get-job-run --job-name fiap-gold-inep-batch \
+  --run-id NOVO_RUN_ID --region us-east-2 \
+  --query 'JobRun.{Estado:JobRunState,Erro:ErrorMessage,Tempo:ExecutionTime}'
+
+Se falhar, consulte o erro e preserve a evidencia. Nao repita varias vezes
+sem corrigir a causa. Nao execute Bronze ou streaming para uma mudanca so na Gold.
+
+9. CONFERIR A NOVA RODADA
+Apos SUCCEEDED, substitua NOVO_RUN_ID e rode:
+
+python verify_continuacao.py --layer gold --run-id NOVO_RUN_ID \
+  --output conferencia_gold_corrigida.json --verify-parquet
+
+Confirme published=true, verification_status=SUCCEEDED, errors=[] e contagens
+fisicas iguais ao manifesto. Conserve o relatorio e o novo manifesto.
+Consulte novamente o dataset nacional usando o manifesto NOVO, nao o padrao:
+
+python diagnosticar_gold.py \
+  --manifest-uri 's3://fiap-tc-fase2-2026/auditoria/gold/ingestion_date=DATA_UTC_DA_RODADA/run_id=NOVO_RUN_ID/manifest.json' \
+  --output-dir diagnostico_gold_corrigida
+
+Substitua os dois marcadores. Prefira copiar manifest_uri que o verificador
+informa, evitando adivinhar a data UTC perto da meia-noite.
+Se o universo mudar de forma justificada, contagens podem mudar. Atualize a
+documentacao com as novas medicoes; nao force contagens antigas.
+
+10. FECHAR A DOCUMENTACAO
+Registre: ano afetado, valores antes/depois, causa comprovada, arquivo/funcao
+alterados, versao/hash, testes, run_id/manifestos e limitacoes que permaneceram.
+Depois avance: repositorio/configuracoes -> README/diagrama -> FinOps completo
+-> teste em clone limpo -> video executivo de ate 5 minutos com link no README.
+Essas etapas de entrega continuam necessarias mesmo depois de resolver a Gold.
+
+REFERENCIAS TECNICAS
+https://docs.aws.amazon.com/cloudshell/latest/userguide/getting-started.html
+https://arrow.apache.org/docs/python/generated/pyarrow.parquet.ParquetFile.html
+
+ESCOPO DESTA ENTREGA
+Os scripts foram preparados para facilitar a reproducao manual. A criacao deste
+roteiro nao leu novos dados AWS, nao publicou uma nova versao do job e nao
+comprovou a causa da divergencia. O primeiro resultado operacional sera o JSON
+gerado quando voce executar a etapa 3 na sessao autenticada do CloudShell.

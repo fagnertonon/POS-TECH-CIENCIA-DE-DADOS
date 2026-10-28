@@ -1,0 +1,140 @@
+{
+  "audited_at_utc": "2026-10-27T18:03:49.536939+00:00",
+  "scope": "Somente arquivos locais; sem chamadas cloud/browser, consultas ou execução de pipeline. Nenhum XLSX, PDF ou modelo alterado.",
+  "sources": {
+    "assignment_pdf": {
+      "path": "C:\\Users\\USER\\Downloads\\POSTECH - IAST - Tech Challenge - Fase 2 (2).pdf",
+      "bytes": 597309,
+      "sha256": "e599dae420e7b72d60f66586a032b7b87ba3fec9dfae58a18025caaeedbde6c0"
+    },
+    "model": {
+      "path": "C:\\Users\\USER\\Documents\\Codex\\2026-10-20\\vo\\outputs\\finops_atualizado_20261027\\modelo_finops.json",
+      "bytes": 49969,
+      "sha256": "7be254cb6ac49203b63fbbee1c4bd82372525d2a742d038f30b8b8745aea1f84"
+    },
+    "finops_text": {
+      "path": "C:\\Users\\USER\\Documents\\Codex\\2026-10-20\\vo\\outputs\\finops_atualizado_20261027\\FinOps_FIAP.txt",
+      "bytes": 14277,
+      "sha256": "eb0fcbcde3a3e81060da2eeb317c8c8b99e853903d59b452b66f9c3d0ac4babf"
+    }
+  },
+  "assignment_pdf_pages": [
+    4,
+    8,
+    9
+  ],
+  "assignment_pdf_total_pages": 14,
+  "source_page_checks": {
+    "page4_access_and_update": true,
+    "page8_measured_estimate": true,
+    "page9_production_projection": true
+  },
+  "five_required_fields": [
+    {
+      "field": "Serviço",
+      "assignment_page": 9,
+      "finding": "PRESENTE",
+      "evidence": "21 parcelas com serviço identificado; tabelas do FinOps nas seções2/3."
+    },
+    {
+      "field": "Unidade",
+      "assignment_page": 9,
+      "finding": "PRESENTE",
+      "evidence": "Unidades por parcela, incluindo DPU-hora, GB-mês, requests, GB-segundo, TiB/GiB."
+    },
+    {
+      "field": "Quantidade medida",
+      "assignment_page": 9,
+      "finding": "PARCIAL",
+      "evidence": "18 quantidades numéricas; 3 sem quantidade. O documento distingue medição direta e proxy histórico.",
+      "limitation": "Uma contagem observada em6dias pode ser real e, ainda assim, não representar as solicitações marginais de4batches completos."
+    },
+    {
+      "field": "Preço unitário",
+      "assignment_page": 9,
+      "finding": "PRESENTE_COM_CONDIÇÕES",
+      "evidence": "Tarifas e fontes por parcela; valores antes de franquias/créditos. Tarifas GCP continuam condicionadas à aplicabilidade de região/rota/faixa."
+    },
+    {
+      "field": "Custo mensal projetado",
+      "assignment_page": 9,
+      "finding": "PARCIAL",
+      "evidence": "18 parcelas numéricas e 3 n.a.; horizonte fixo de30dias; subtotal explicitamente parcial."
+    }
+  ],
+  "local_reconciliation": {
+    "projection_row_count": 21,
+    "numeric_cost_rows": 18,
+    "pending_cost_rows": [
+      "logs_archive_growth",
+      "gcp_read",
+      "gcp_egress"
+    ],
+    "calculated_rows_sum_decimal": "2.1496597505703167695932992117675",
+    "available_subtotal_reference_usd": "2.149659750570316769593299212",
+    "matches_reference_within_1e_8": true,
+    "complete_total_usd": null,
+    "basis_counts": {
+      "per_cycle": 6,
+      "storage_growth": 1,
+      "observed_period": 8,
+      "monthly": 3,
+      "pending": 3
+    }
+  },
+  "free_sandbox_production": {
+    "assignment_pages": [
+      4,
+      9
+    ],
+    "free_or_sandbox_accepted": true,
+    "cloud_execution_evidence_required": true,
+    "paid_production_deployment_required_by_these_pages": false,
+    "same_design_production_cost_projection_required": true,
+    "interpretation": "O enunciado aceita ambiente gratuito/sandbox, mas exige informar essa condição e projetar o mesmo desenho em produção com a cadência pretendida. Não impõe upgrade ou ativação de billing para fins de entrega.",
+    "current_document": "Tarifas brutas antes de franquias/créditos e limitações são declaradas. O cálculo de produção permanece parcial, especialmente na parcela multicloud.",
+    "measurement_examples": "Dry run, dados escaneados, duração e tamanho de objetos são exemplos de ferramentas/evidências; a página9 não ordena iniciar nova extração ou novo job para esta revisão.",
+    "not_zero_evidence": [
+      "Créditos disponíveis",
+      "billingEnabled=false",
+      "Monitoring403",
+      "Auditoria sem resultados",
+      "5.128 eventos sem contador de bytes",
+      "T2 eT3 com mesmo estoque líquido"
+    ]
+  },
+  "cadence": {
+    "assignment_pages": [
+      4,
+      9
+    ],
+    "mandatory_four_executions_found": false,
+    "required_by_assignment": "Explicar a atualização da fonte e usar a cadência pretendida na projeção.",
+    "declared_scenario": {
+      "cycles_30d": 4,
+      "days": 30,
+      "description": "Batch por nova publicação. Quatro ciclos completos e quatro replays em 30 dias são hipótese ajustável, não exigência de frequência do enunciado nem agendamento instalado.",
+      "replays_30d": 4
+    },
+    "finding": "4ciclos batch +4replays em30dias são hipótese do grupo, corretamente identificada; não atribuir essa frequência ao enunciado.",
+    "normalization": "720horas e30dias são uma convenção de planejamento declarada, não uma reprodução exata da fatura de um mês civil."
+  },
+  "production_monitoring_page8": {
+    "required": "Persistência histórica de duração/volume/status, latência real e alguma forma de notificação. README deve indicar responsável e prazo para descobrir falha.",
+    "boundary": "Budget com contatoInactive não prova entrega de alerta. Esse estado financeiro não substitui a verificação separada da política/canal de falha operacional."
+  },
+  "total_estimate_decision": {
+    "closed_total_justified_now": false,
+    "appropriate_label": "Estimativa parcial de30dias ancorada em medições, com18parcelas calculadas e3não fechadas.",
+    "why": "A presença dos cinco cabeçalhos não torna medidas ausentes em zero. O valor2.1496597505703168 é subtotal, não custo completo nem prova de aderência multicloud aosUS$140 totais.",
+    "necessary_conditions": [
+      "BigQueryStorageRead: quantidade elegível à cobrança medida/recuperada no projeto e período corretos e tarifa aplicável confirmada.",
+      "SaídaGCP: rota/região e bytes transferidos elegíveis à cobrança confirmados; não usar tamanho do Parquet como substituto.",
+      "Arquivo de logs: crescimento comprimido por janela/ciclo sustentado por medição, distinguindo retenção, outras cargas e atraso.",
+      "Reconciliar unidades, períodos, faixas e cadência de todas as parcelas; proxies de requests precisam cobrir ou delimitar a carga pretendida, pois a janela atual exclui Bronze e o replay.",
+      "Aplicar zero apenas com evidência de quantidade zero no escopo adequado, tarifa zero aplicável ou não aplicabilidade comprovada. Remover uma parcela do escopo não fecha o custo do desenho original."
+    ],
+    "budget_condition": "US$140 é o teto total do projeto, não mensal. Comparar o custo completo e o histórico atribuível sem descontar o mesmo uso novamente do saldo de créditos.",
+    "cost_vs_alert_pending": "Três linhas de custo n.a. são crescimento de logs e duas parcelasGCP. Verificação de e-mail é uma pendência de controle, não uma quarta linha de custo ausente."
+  }
+}

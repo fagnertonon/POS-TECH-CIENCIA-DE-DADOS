@@ -1,0 +1,107 @@
+MIGRACAO DOS ALERTAS PARA CLOUDFORMATION - CONCLUIDA
+Conta 637246457028 | Ohio/us-east-2 | 28/10/2026
+
+RESULTADO COMPROVADO
+fiap-inep-observabilidade: IMPORT_COMPLETE.
+fiap-inep-streaming: UPDATE_COMPLETE.
+Verificacao final iniciada em 13:22:42 UTC (10:22:42 de Brasilia).
+Detalhes completos: aws_evidence/applied_update/operation/migration_verified.json.
+SHA256: 81642adaec7bde71bad7c1544ffb61594456fd3e0f701ad12728ac7f6233725c
+
+O QUE FOI APLICADO
+1. Importacao de seis recursos EXISTENTES para fiap-inep-observabilidade:
+   - topico SNS fiap-inep-alertas-operacionais;
+   - a mesma assinatura de e-mail confirmada;
+   - politica do topico, adotada como AWS::SNS::TopicInlinePolicy;
+   - regra EventBridge fiap-inep-batch-failures;
+   - alarmes fiap-silver-inep-failure e fiap-gold-inep-failure.
+   Todos possuem DeletionPolicy/UpdateReplacePolicy Retain no template adotado.
+2. Update da stack streaming com somente tres modificacoes sem substituicao:
+   DeadLetterAlarm, RejectedEventAlarm e QueueAgeAlarm. As acoes SNS ja existentes
+   passaram a constar no template. Parametro AlertTopicArn restrito ao topico atual.
+
+PRESERVACAO CONFERIDA
+Mesmo ARN de assinatura:
+arn:aws:sns:us-east-2:637246457028:fiap-inep-alertas-operacionais:a4d3b188-4e11-41f0-a76f-a7426f9dc0b9
+Assinatura continua confirmada. Politica SNS completa, filtro EventBridge,
+InputTransformer e RetryPolicy de 3 tentativas/3600s continuam iguais ao snapshot.
+Os cinco alarmes mantiveram metricas, dimensoes, limiares, periodos e acoes.
+Os nove identificadores de recursos da stack streaming foram preservados.
+Codigo ZIP da Lambda, RevisionId, LastModified, runtime, role, memoria e timeout
+continuam iguais aos anteriores. Nao foi alterado codigo de processamento/IAM,
+nem iniciados Glue, novas extracoes, replay, Lambda de teste ou mensagens SQS.
+Nenhuma nova assinatura, confirmacao ou teste de e-mail foi solicitado.
+
+DRIFT - ESCOPO REAL DA VERIFICACAO
+As duas stacks retornaram IN_SYNC. O servico retornou 5 recursos avaliados da
+observabilidade e 8 do streaming, todos IN_SYNC. SNS Subscription e o mapeamento
+Lambda/SQS nao apareceram nesse resultado de drift, portanto nao se afirmou
+checagem nativa de drift de todos os 15 recursos. A assinatura foi verificada
+diretamente; os nove identificadores streaming e os templates foram comparados.
+
+CHANGE SETS EXECUTADOS
+IMPORT: fiap-alerts-import-20261028T131002Z
+ARN: arn:aws:cloudformation:us-east-2:637246457028:changeSet/fiap-alerts-import-20261028T131002Z/939f4840-1171-43fd-a669-e16549f0524d
+UPDATE: fiap-alerts-update-20261028T131738Z
+ARN: arn:aws:cloudformation:us-east-2:637246457028:changeSet/fiap-alerts-update-20261028T131738Z/7b82efbc-cfd8-43fc-8d7f-089819a3e0a6
+
+AJUSTES DURANTE A PREPARACAO - HISTORICO PRESERVADO
+- Primeira preparacao de IMPORT recusada pela AWS: nao se pode adicionar Outputs
+  na importacao. Nao foi executada. O template adotado nao contem Outputs.
+- A primeira proposta de UPDATE incluiu ConsumerFunction/Code. A protecao bloqueou
+  sua execucao. GetTemplate exporta caracteres nao ASCII como '?'; submeter essa
+  exportacao alteraria a fonte. A proposta final usa a fonte instalada que ja tinha
+  sido verificada em 27/10; o ZIP instalado manteve seu hash nesta coleta.
+  O novo change set listou apenas os tres alarmes e so esse foi executado.
+  Ver lambda_source_identity.json e a revisao nativa em applied_update/operation/.
+- O verificador inicial esperava IMPORT_COMPLETE nos recursos individuais, mas
+  AWS retornou UPDATE_COMPLETE para os seis, com stack IMPORT_COMPLETE. Ajustada
+  apenas essa leitura, preservando a conferencia estrita de ARN, tipo e conjunto.
+
+TESTES E LIMITES
+Sete testes locais de protecao aprovados, sem falhas. Eles recusam importacoes com
+criacao/exclusao, recursos faltantes e updates em Lambda/role/filas ou substituicao.
+O codigo de processamento nao mudou; as suites originais nao foram repetidas.
+A verificacao de preservacao/routing foi feita antes de cada execucao e ao final.
+Nao houve novo teste funcional de e-mail: foi preservada a assinatura confirmada
+e a configuracao do teste ja recebido em 27/10. Nao se mediu novo SLA de entrega.
+
+ARQUIVOS DESTE PACOTE
+- import_template.json e resources_to_import.json: declaracao dos seis importados.
+- streaming_update_template.json: template final submetido ao update, em UTF-8.
+- migration_plan.json: revisao 3 e hashes exatos dos arquivos adotados.
+- migrate_existing_alerts.py: executor com gates de escopo/hash. Nao repetir.
+- verify_migration.py: leitura e comparacao do resultado; nao envia mensagens.
+- test_migration_guards.py / local_validation.json: testes locais da migracao.
+- before.json: snapshot anterior da conta, tipos e identificadores obtidos da AWS.
+- lambda_source_identity.json: prova do defeito de codificacao da exportacao.
+- aws_evidence/: arquivos baixados do CloudShell, incluindo importacao executada,
+  proposta de update bloqueada, update executado, eventos, drift e verificacao final.
+- aws_evidence_original.zip: export original inalterado, SHA256
+  2cff0e1ba14d0277b44831711c472eb496e31818d526c6f2f80ce7b96c4b7d00.
+- attempt_01/attempt_02/: preparacoes superadas; NAO USAR PARA DEPLOY.
+- build_migration_plan.py: builder da preparacao inicial; a revisao 3 inclui a
+  reconciliacao de fonte documentada no plano. O builder nao e comando de operacao.
+- migracao_verificada.png: captura real do resultado no CloudShell.
+- SHA256.json: integridade do pacote, excluindo o proprio manifesto.
+
+AVISO PARA FUTURAS ALTERACOES
+Nao reaplicar os templates PROPOSTOS/historicos do ZIP anterior sobre a conta sem
+revisao. Esta migracao agora e o ultimo estado aplicado de observabilidade.
+GetTemplate nao e fonte fiel dos caracteres nao ASCII do ZipFile: preservar a
+fonte UTF-8 comprovada e conferir que o change set nao inclui ConsumerFunction.
+Importacao existente nao deve ser repetida como criacao nem recriar a assinatura.
+
+ORCAMENTO E PENDENCIAS SEPARADAS
+US$140 permanece o teto TOTAL. A migracao adotou os mesmos recursos operacionais;
+nao expandiu capacidade nem iniciou cargas. Nao foram consultados faturamento ou
+creditos para calcular um novo saldo/fatura. Nenhum total financeiro foi alterado.
+FinOps segue parcial: egress GCP e incremento comprimido dos logs nao recuperados;
+contato do Budget financeiro nao verificado e distinto do SNS operacional.
+O ajuste de texto do README sobre '--apply confere o hash' permanece documental
+e nao foi aplicado ao ZIP anterior nesta demanda de migracao.
+
+REFERENCIAS CONSULTADAS
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html
+https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-sns-topicinlinepolicy.html
+https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-sns-subscription.html

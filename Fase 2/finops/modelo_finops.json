@@ -1,0 +1,1257 @@
+{
+  "as_of": "2026-10-27",
+  "region": "us-east-2",
+  "budget_total_usd": 140,
+  "actual": {
+    "gross_usage_usd": 3.4142741034,
+    "credits_remaining_usd": 136.59,
+    "plan_days": 172,
+    "period": "Cost Explorer DAILY 2026-10-01 até 2026-10-28 exclusive; coleta 2026-10-27 17:10 UTC; dia 27 parcial e todos Estimated=true",
+    "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json; soma de todos os dias e grupos; RECORD_TYPE=Usage",
+    "credits_source": "../finops_atualizado_20261027/raw/creditos_console.json; ../finops_atualizado_20261027/creditos_atuais.png; tela reconferida após a coleta",
+    "scope": "Conta AWS inteira; não alocada por tag. CE preserva o mesmo total anterior e pode ainda não incluir operações novas do dia 27.",
+    "gross_usage_decimal": "3.4142741034",
+    "estimated": true,
+    "credits_observation_note": "US$136,59 foi reconferido no console. A data de atualização contábil não é exposta; novos consumos podem demorar a aparecer. Os172dias vêm da fotografia anterior no mesmo dia. Esta investigação de pendências não consultou novamente créditos ou Cost Explorer.",
+    "credits_observed_at_utc": "2026-10-27T17:18:45.813843+00:00",
+    "one_off_measurement_api_note": "Uma página Cost Explorer foi consultada. Custo de referênciaUS$0,01, ainda não afirmado na fatura e não somado novamente ao uso acumulado. Nesta etapa adicional, GetMetricData solicitou 14 métricas: referência pontual US$0,00014; sem nova consulta CE."
+  },
+  "cadence": {
+    "cycles_30d": 4,
+    "days": 30,
+    "description": "Batch por nova publicação. Quatro ciclos completos e quatro replays em 30 dias são hipótese ajustável, não exigência de frequência do enunciado nem agendamento instalado.",
+    "replays_30d": 4
+  },
+  "projection_rows": [
+    {
+      "id": "glue_bronze",
+      "service": "AWS Glue",
+      "item": "Bronze batch",
+      "unit": "DPU-hora",
+      "quantity": 0.08138888888888889,
+      "tariff_usd": 0.44,
+      "basis": "per_cycle",
+      "period": "2026-10-20 00:00:00+00:00 até 2026-10-27 00:00:00+00:00 (métricas); billing MTD conforme fonte",
+      "source": "../finops_atualizado_20261027/raw/aws/glue_runs.json; ../finops_2026_10_27/controls/latest_gold_manifest.json; referência jr_cdfd2933220ec75b45c04518c6e5afe93eb98915f3b88328f8bde8d7183d3700",
+      "tariff_source": "https://aws.amazon.com/glue/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+      "limits": "DPUSeconds / 3.600 da execução de referência. Mesmo volume e workers como hipótese. O replay novo não iniciou Glue adicional.",
+      "short_note": "DPUSeconds / 3.600; volumes e workers iguais à referência.",
+      "rate_id": "glue_etl_dpu_hour"
+    },
+    {
+      "id": "glue_silver",
+      "service": "AWS Glue",
+      "item": "Silver batch",
+      "unit": "DPU-hora",
+      "quantity": 0.1436111111111111,
+      "tariff_usd": 0.44,
+      "basis": "per_cycle",
+      "period": "2026-10-20 00:00:00+00:00 até 2026-10-27 00:00:00+00:00 (métricas); billing MTD conforme fonte",
+      "source": "../finops_atualizado_20261027/raw/aws/glue_runs.json; ../finops_2026_10_27/controls/latest_gold_manifest.json; referência jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+      "tariff_source": "https://aws.amazon.com/glue/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+      "limits": "DPUSeconds / 3.600 da execução de referência. Mesmo volume e workers como hipótese. O replay novo não iniciou Glue adicional.",
+      "short_note": "DPUSeconds / 3.600; volumes e workers iguais à referência.",
+      "rate_id": "glue_etl_dpu_hour"
+    },
+    {
+      "id": "glue_gold",
+      "service": "AWS Glue",
+      "item": "Gold batch",
+      "unit": "DPU-hora",
+      "quantity": 0.085,
+      "tariff_usd": 0.44,
+      "basis": "per_cycle",
+      "period": "Run 2026-10-27 00:41 UTC; referência de execução, separada da janela geral CloudWatch 20 a 27/10 exclusive",
+      "source": "../finops_atualizado_20261027/raw/aws/glue_runs.json; ../finops_2026_10_27/controls/latest_gold_manifest.json; referência jr_1ae29e48e526f050de2d2d637a5474387a37398466e7af56ed0584132f58e7fe",
+      "tariff_source": "https://aws.amazon.com/glue/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+      "limits": "DPUSeconds / 3.600. Gold recente com fixture desativada. Mesmos volumes e workers como hipótese.",
+      "short_note": "DPUSeconds / 3.600. Gold recente com fixture desativada. Mesmos volumes e workers como hipótese.",
+      "rate_id": "glue_etl_dpu_hour"
+    },
+    {
+      "id": "s3_storage",
+      "service": "Amazon S3",
+      "item": "Armazenamento Standard",
+      "unit": "GB-mês",
+      "quantity": 0.2551854243502021,
+      "tariff_usd": 0.023,
+      "basis": "storage_growth",
+      "period": "2026-10-27 17:10:23.513537+00:00",
+      "source": "../finops_atualizado_20261027/raw/aws/s3_inventory.json; dois buckets; soma de Size e versões não atuais",
+      "tariff_source": "https://aws.amazon.com/s3/pricing/; https://aws.amazon.com/s3/faqs/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-2/index.json",
+      "limits": "Estoque atual de 526 objetos, mais metade do crescimento de quatro ciclos batch e quatro replays uniformemente distribuídos em 30 dias. Growth_per_cycle combina um batch e um replay somente para compatibilidade com o cenário 4+4; growth_components preserva drivers separados. Inclui claims e cópias S3 reais de auditoria, sem somar as mesmas chaves duas vezes. Tamanho de futuras evidências pode variar.",
+      "short_note": "Estoque novo + crescimento de 4 batches e 4 replays, ponderado no tempo.",
+      "rate_id": "s3_standard_storage_gb_month",
+      "growth_per_cycle": 0.13509098440408707,
+      "growth_source": "../finops_atualizado_20261027/raw/aws/s3_inventory.json; 76 objetos dos três runs batch de referência + 171 objetos do replay positivo/negativo",
+      "quantity_decimal": "0.2551854243502020835876464844",
+      "growth_components": [
+        {
+          "driver": "cycles_30d",
+          "bytes_per_execution": 144656163,
+          "quantity_gib_per_execution": "0.1347215501591563224792480469",
+          "object_count": 76,
+          "type": "batch_reference"
+        },
+        {
+          "driver": "replays_30d",
+          "bytes_per_execution": 396677,
+          "quantity_gib_per_execution": "0.000369434244930744171142578125",
+          "object_count": 171,
+          "type": "replay_reference"
+        }
+      ]
+    },
+    {
+      "id": "s3_put",
+      "service": "Amazon S3",
+      "item": "PUT/COPY/POST/LIST",
+      "unit": "requests",
+      "quantity": 690.0,
+      "tariff_usd": 5e-06,
+      "basis": "observed_period",
+      "period": "2026-10-21T00:00:00Z até 2026-10-27T00:00:00Z exclusive; seis dias UTC completos; CE Estimated=true",
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json; DAILY; soma de todos os grupos e dos seis dias selecionados; filtro RECORD_TYPE=Usage",
+      "tariff_source": "https://aws.amazon.com/s3/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-2/index.json",
+      "limits": "Extrapolação histórica de apoio por 30/6. Conta inteira; não é medição de requests por ciclo. Janela sem Bronze nem replay, contém Silver/Gold e desenvolvimento; pode subestimar quatro novas ingestões completas. CE estimado e sujeito a atraso.",
+      "short_note": "Ritmo histórico de apoio de seis dias UTC completos; não isolado por ciclo.",
+      "rate_id": "s3_standard_put_request",
+      "observed_days": 6,
+      "quantity_decimal": "690"
+    },
+    {
+      "id": "s3_get",
+      "service": "Amazon S3",
+      "item": "GET e outras Tier2",
+      "unit": "requests",
+      "quantity": 1032.0,
+      "tariff_usd": 4e-07,
+      "basis": "observed_period",
+      "period": "2026-10-21T00:00:00Z até 2026-10-27T00:00:00Z exclusive; seis dias UTC completos; CE Estimated=true",
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json; DAILY; soma de todos os grupos e dos seis dias selecionados; filtro RECORD_TYPE=Usage",
+      "tariff_source": "https://aws.amazon.com/s3/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-2/index.json",
+      "limits": "Extrapolação histórica de apoio por 30/6. Conta inteira; não é medição de requests por ciclo. Janela sem Bronze nem replay, contém Silver/Gold e desenvolvimento; pode subestimar quatro novas ingestões completas. CE estimado e sujeito a atraso.",
+      "short_note": "Ritmo histórico de apoio de seis dias UTC completos; não isolado por ciclo.",
+      "rate_id": "s3_standard_get_request",
+      "observed_days": 6,
+      "quantity_decimal": "1032"
+    },
+    {
+      "id": "logs_ingestion",
+      "service": "CloudWatch Logs",
+      "item": "Ingestão Standard",
+      "unit": "GB",
+      "quantity": 0.017676384188234806,
+      "tariff_usd": 0.5,
+      "basis": "observed_period",
+      "period": "2026-10-20T00:00:00Z até 2026-10-27T00:00:00Z exclusive; sete dias UTC completos; não inclui replay novo",
+      "source": "../finops_atualizado_20261027/raw/aws/cloudwatch_daily_metrics.json; AWS/Logs IncomingBytes; sete dias UTC completos 20 até 27/10 exclusive",
+      "tariff_source": "https://aws.amazon.com/cloudwatch/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+      "limits": "Ritmo histórico de apoio dos sete dias completos, incluindo logs de previews já feitos. Não foi somado um segundo custo de ingestão do replay sem medição completa; não é fator isolado por ciclo e não inclui a janela operacional nova do dia 27.",
+      "short_note": "Mantém o ritmo observado de logs de jobs, sessões e streaming; não altera retenção nem repete sessões de prévia.",
+      "rate_id": "cloudwatch_standard_log_ingestion_gb",
+      "observed_days": 7,
+      "quantity_decimal": "0.01767638418823480606079101562"
+    },
+    {
+      "id": "logs_archive",
+      "service": "CloudWatch Logs",
+      "item": "Arquivo de logs atual",
+      "unit": "GB-mês",
+      "quantity": 0.006907830014824867,
+      "tariff_usd": 0.03,
+      "basis": "monthly",
+      "period": "2026-10-27T18:02:12.430737Z",
+      "source": "raw/aws_logs/log_growth_readonly.json; fechamento_logs.json",
+      "tariff_source": "https://aws.amazon.com/cloudwatch/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+      "limits": "7.417.226 bytes reportados; hipótese de manter o estoque por 30 dias normalizados. Não inclui crescimento futuro não medido. Retenção pode reduzir estoque. Não somar de novo histórico de arquivo CE.",
+      "short_note": "Custo do estoque atual mantido. Crescimento futuro do arquivo depende de compressão/retenção e fica pendente em linha separada.",
+      "rate_id": "cloudwatch_log_archive_gb_month",
+      "quantity_decimal": "0.00690783001482486724853515625"
+    },
+    {
+      "id": "logs_archive_growth",
+      "service": "CloudWatch Logs",
+      "item": "Crescimento futuro do arquivo",
+      "unit": "GB-mês",
+      "quantity": null,
+      "tariff_usd": 0.03,
+      "basis": "pending",
+      "period": "T3 17:04 UTC, T4 17:57 UTC e coleta detalhada 18:02 UTC de 27/10/2026",
+      "source": "raw/aws_logs/log_growth_readonly.json; fechamento_logs.json; logs_T4.json",
+      "tariff_source": "https://aws.amazon.com/cloudwatch/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+      "limits": "6.216.753 bytes de IncomingBytes não comprimidos e 27.113 eventos observados hoje, com estoque reportado estável. Política STANDARD, nenhuma identidade diária StoredBytes. Janela mista e buckets sobrepostos; incremento comprimido por ciclo permanece indisponível.",
+      "short_note": "Há ingestão medida; delta líquido de estoque zero não fecha crescimento.",
+      "rate_id": "cloudwatch_log_archive_gb_month"
+    },
+    {
+      "id": "custom_metrics",
+      "service": "Amazon CloudWatch",
+      "item": "Métricas customizadas",
+      "unit": "métrica-hora",
+      "quantity": 314.0,
+      "tariff_usd": 0.0004166666666666667,
+      "basis": "per_cycle",
+      "period": "2026-10-20 00:00:00+00:00 até 2026-10-27 00:00:00+00:00 (métricas); billing MTD conforme fonte",
+      "source": "../finops_2026_10_27/controls/finops_glue_metric_hours.json; ../finops_2026_10_27/controls/fiap_metric_active_hours.json; replay novo tem as mesmas cinco identidades em uma hora UTC",
+      "tariff_source": "https://aws.amazon.com/cloudwatch/pricing/; https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/working_with_metrics.html; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+      "limits": "307 horas Glue + 2 FIAP batch + 5 FIAP streaming por ensaio. Preço mensal dividido pelas 720h dos30dias; mesmas séries e amostras como hipótese.",
+      "short_note": "307 horas Glue + 2 FIAP batch + 5 FIAP streaming por ensaio. Preço mensal dividido pelas 720h dos30dias; mesmas séries e amostras como hipótese.",
+      "rate_id": "cloudwatch_custom_metric_month",
+      "cadence_components": {
+        "batch_metric_hours": 309,
+        "replay_metric_hours": 5
+      }
+    },
+    {
+      "id": "alarms",
+      "service": "Amazon CloudWatch",
+      "item": "Cinco alarmes Standard",
+      "unit": "métrica-alarme-mês",
+      "quantity": 5.0,
+      "tariff_usd": 0.1,
+      "basis": "monthly",
+      "period": "2026-10-27 17:10:23.513537+00:00; mantido no horizonte de 30 dias",
+      "source": "../finops_atualizado_20261027/raw/aws/cloudwatch_alarms.json",
+      "tariff_source": "https://aws.amazon.com/cloudwatch/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonCloudWatch/current/us-east-2/index.json",
+      "limits": "Cada alarme avalia uma métrica; recursos mantidos durante o horizonte. Sem assinatura externa operacional comprovada.",
+      "short_note": "Cada alarme avalia uma métrica; recursos mantidos durante o horizonte. Sem assinatura externa operacional comprovada.",
+      "rate_id": "cloudwatch_standard_alarm_metric_month"
+    },
+    {
+      "id": "lambda_compute",
+      "service": "AWS Lambda",
+      "item": "Consumidor x86,256MB",
+      "unit": "GB-segundo",
+      "quantity": 4.40675,
+      "tariff_usd": 1.66667e-05,
+      "basis": "per_cycle",
+      "period": "2026-10-27T15:54:17.722242Z até 2026-10-27T16:00:16.337323Z",
+      "source": "../streaming/release_20261027/aws_evidence/exercise_01/runtime_evidence.json; logs.exclusive_target_invocation_totals; 39 REPORTs únicos correlacionados",
+      "tariff_source": "https://aws.amazon.com/lambda/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSLambda/current/us-east-2/index.json",
+      "limits": "17.627 ms faturados = 17,627 segundos, a 256 MB (0,25 GB): 4,40675 GB-s/replay. Já inclui a duração faturável reportada; não adicionar Init Duration. 30 novos, 5 duplicatas e 5 tentativas da mesma mensagem inválida. Memória máxima observada 93 MB não é a memória cobrada.",
+      "short_note": "4,40675 GB-s por replay; 39 invocações; 256 MB configurados.",
+      "rate_id": "lambda_x86_gb_second",
+      "quantity_decimal": "4.40675",
+      "cadence_driver": "replays_30d"
+    },
+    {
+      "id": "lambda_requests",
+      "service": "AWS Lambda",
+      "item": "Invocações do replay",
+      "unit": "requests",
+      "quantity": 39,
+      "tariff_usd": 2e-07,
+      "basis": "per_cycle",
+      "period": "2026-10-27T15:54:17.722242Z até 2026-10-27T16:00:16.337323Z",
+      "source": "../streaming/release_20261027/aws_evidence/exercise_01/runtime_evidence.json; 39 REPORTs únicos; não adicionar ao CE",
+      "tariff_source": "https://aws.amazon.com/lambda/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSLambda/current/us-east-2/index.json",
+      "limits": "39 invocações do ensaio novo, incluindo cinco tentativas inválidas; substituir a referência antiga, sem acumular os dois ensaios no fator futuro.",
+      "short_note": "39 invocações por replay; cenário não é fluxo ao vivo.",
+      "rate_id": "lambda_request",
+      "quantity_decimal": "39",
+      "cadence_driver": "replays_30d"
+    },
+    {
+      "id": "sqs_requests",
+      "service": "Amazon SQS",
+      "item": "Requests Standard, incluindo polling",
+      "unit": "requests",
+      "quantity": 55158.0,
+      "tariff_usd": 4e-07,
+      "basis": "observed_period",
+      "period": "2026-10-21T00:00:00Z até 2026-10-27T00:00:00Z exclusive; seis dias UTC completos; CE Estimated=true",
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json; DAILY; soma de todos os grupos e dos seis dias selecionados; filtro RECORD_TYPE=Usage",
+      "tariff_source": "https://aws.amazon.com/sqs/pricing/; https://repost.aws/knowledge-center/sqs-high-charges; https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSQueueService/current/us-east-2/index.json",
+      "limits": "Extrapolação histórica de apoio por 30/6. Conta inteira; não é medição de requests por ciclo. Janela sem Bronze nem replay, contém Silver/Gold e desenvolvimento; pode subestimar quatro novas ingestões completas. CE estimado e sujeito a atraso.",
+      "short_note": "Ritmo histórico de apoio de seis dias UTC completos; não isolado por ciclo.",
+      "rate_id": "sqs_standard_request",
+      "observed_days": 6,
+      "quantity_decimal": "55158"
+    },
+    {
+      "id": "secrets",
+      "service": "Secrets Manager",
+      "item": "Um segredo mantido",
+      "unit": "segredo-mês",
+      "quantity": 1.0,
+      "tariff_usd": 0.4,
+      "basis": "monthly",
+      "period": "2026-10-27 17:10:23.513537+00:00; mantido no horizonte de 30 dias",
+      "source": "../finops_atualizado_20261027/raw/aws/secret_metadata.json; somente metadados",
+      "tariff_source": "https://aws.amazon.com/secrets-manager/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSSecretsManager/current/us-east-2/index.json",
+      "limits": "Mantido no mês; não duplicado por cada camada.",
+      "short_note": "Mantido no mês; não duplicado por cada camada.",
+      "rate_id": "secretsmanager_secret_month"
+    },
+    {
+      "id": "secret_api",
+      "service": "Secrets Manager",
+      "item": "Chamadas de API",
+      "unit": "requests",
+      "quantity": 1.0,
+      "tariff_usd": 5e-06,
+      "basis": "observed_period",
+      "period": "2026-10-21T00:00:00Z até 2026-10-27T00:00:00Z exclusive; seis dias UTC completos; CE Estimated=true",
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json; DAILY; soma de todos os grupos e dos seis dias selecionados; filtro RECORD_TYPE=Usage",
+      "tariff_source": "https://aws.amazon.com/secrets-manager/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSSecretsManager/current/us-east-2/index.json",
+      "limits": "Extrapolação histórica de apoio por 30/6. Conta inteira; não é medição de requests por ciclo. Janela sem Bronze nem replay, contém Silver/Gold e desenvolvimento; pode subestimar quatro novas ingestões completas. CE estimado e sujeito a atraso.",
+      "short_note": "Ritmo histórico de apoio de seis dias UTC completos; não isolado por ciclo.",
+      "rate_id": "secretsmanager_api_request",
+      "observed_days": 6,
+      "quantity_decimal": "1"
+    },
+    {
+      "id": "catalog_storage",
+      "service": "Glue Data Catalog",
+      "item": "Armazenamento de metadados",
+      "unit": "objeto-mês",
+      "quantity": 2.455645107,
+      "tariff_usd": 1e-05,
+      "basis": "observed_period",
+      "period": "2026-10-21T00:00:00Z até 2026-10-27T00:00:00Z exclusive; seis dias UTC completos; CE Estimated=true",
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json; DAILY; soma de todos os grupos e dos seis dias selecionados; filtro RECORD_TYPE=Usage",
+      "tariff_source": "https://aws.amazon.com/glue/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+      "limits": "Obj-Month já é uso histórico integrado no tempo: extrapolação por 30/6, não contagem de objetos atuais. Equivale a 12,278225535 Obj-Month/30d, abaixo das 22 tabelas atuais. Tabelas não são todos os objetos faturáveis; versões/partições não foram inventariadas. Proxy de apoio sujeita a subestimação. Cobrança atual zero na franquia.",
+      "short_note": "Ritmo histórico de apoio de seis dias UTC completos; não isolado por ciclo.",
+      "rate_id": "glue_catalog_object_month_paid",
+      "observed_days": 6,
+      "quantity_decimal": "2.4556451070"
+    },
+    {
+      "id": "catalog_requests",
+      "service": "Glue Data Catalog",
+      "item": "Requests de catálogo",
+      "unit": "requests",
+      "quantity": 91.0,
+      "tariff_usd": 1e-06,
+      "basis": "observed_period",
+      "period": "2026-10-21T00:00:00Z até 2026-10-27T00:00:00Z exclusive; seis dias UTC completos; CE Estimated=true",
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json; DAILY; soma de todos os grupos e dos seis dias selecionados; filtro RECORD_TYPE=Usage",
+      "tariff_source": "https://aws.amazon.com/glue/pricing/; https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSGlue/current/us-east-2/index.json",
+      "limits": "Extrapolação histórica de apoio por 30/6. Conta inteira; não é medição de requests por ciclo. Janela sem Bronze nem replay, contém Silver/Gold e desenvolvimento; pode subestimar quatro novas ingestões completas. CE estimado e sujeito a atraso.",
+      "short_note": "Ritmo histórico de apoio de seis dias UTC completos; não isolado por ciclo.",
+      "rate_id": "glue_catalog_request_paid",
+      "observed_days": 6,
+      "quantity_decimal": "91"
+    },
+    {
+      "id": "s3_inbound",
+      "service": "Amazon S3",
+      "item": "Entrada comum de dados",
+      "unit": "GB",
+      "quantity": 0.0,
+      "tariff_usd": 0.0,
+      "basis": "observed_period",
+      "period": "2026-10-21T00:00:00Z até 2026-10-27T00:00:00Z exclusive; seis dias UTC completos; CE Estimated=true",
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json; DAILY; soma de todos os grupos e dos seis dias selecionados; filtro RECORD_TYPE=Usage",
+      "tariff_source": "https://aws.amazon.com/s3/pricing/",
+      "limits": "Nenhuma quantidade desse usage type nos seis dias selecionados (zero observado nesse escopo CE). Tarifa AWS de ingresso comum é zero. Não mede leitura nem egress Google e não os substitui.",
+      "short_note": "Ritmo histórico de apoio de seis dias UTC completos; não isolado por ciclo.",
+      "rate_id": "s3_transfer_in_internet_gb",
+      "observed_days": 6,
+      "quantity_decimal": "0"
+    },
+    {
+      "id": "gcp_read",
+      "service": "Google Cloud",
+      "item": "Leitura integral prospectiva das sete tabelas",
+      "unit": "TiB",
+      "quantity": 0.00024697117714822525,
+      "tariff_usd": 1.1,
+      "basis": "per_cycle",
+      "period": "2026-10-27T18:16:50.016409+00:00; metadados atuais conciliados com a referência Bronze",
+      "source": "raw/gcp_existing_metrics.json; fechamento_gcp.json; ../manifesto_bronze.json; ../../outputs/bronze_glue.py",
+      "tariff_source": "https://cloud.google.com/bigquery/pricing; https://docs.cloud.google.com/bigquery/docs/reference/storage",
+      "limits": "Projeção prospectiva: uma leitura integral por batch das mesmas sete tabelas, todas as colunas e linhas. Não é histórico faturado nem garantia de teto para retries, leituras adicionais ou previews. Atualização da fonte exige nova medição de metadados. Franquia de 300 TiB por conta não aplicada.",
+      "short_note": "Metadados medidos; uma leitura integral por batch; antes de franquias.",
+      "rate_id": "bigquery_storage_read_tib",
+      "quantity_exact_decimal": "0.0002469711771482252515852451324",
+      "measured_source_logical_bytes": 271547681,
+      "cycle_driver": "batch",
+      "measurement_type": "measured_logical_capacity_for_prospective_full_read",
+      "historical_billed_bytes": null
+    },
+    {
+      "id": "gcp_egress",
+      "service": "Google Cloud",
+      "item": "Saída GCP para AWS",
+      "unit": "GiB",
+      "quantity": null,
+      "tariff_usd": 0.12,
+      "basis": "pending",
+      "period": "20/10/2026 18:20–18:30 UTC; coleta 2026-10-27T18:16:50.016409+00:00",
+      "source": "raw/gcp_existing_metrics.json; fechamento_gcp.json",
+      "tariff_source": "https://cloud.google.com/bigquery/pricing; https://docs.cloud.google.com/bigquery/docs/reference/storage",
+      "limits": "ReadRows response_sizes observou 1.860.997 bytes na janela do projeto, que contém batch e previews. Não foi estabelecida equivalência entre a distribuição de respostas e todos os blocos de streaming, rota ou SKU de egress. Auditoria do consumidor não retornou registros com bytes. Tamanho lógico e Parquet não substituem rede.",
+      "short_note": "Telemetria de respostas medida; quantidade faturável de egress indisponível.",
+      "rate_id": "bigquery_storage_read_egress_gib_to_aws_reference"
+    }
+  ],
+  "measurements": [
+    {
+      "id": "s3_stock",
+      "service": "Amazon S3",
+      "metric": "Estoque de dois buckets",
+      "value": 274003263,
+      "unit": "bytes",
+      "source": "../finops_atualizado_20261027/raw/aws/s3_inventory.json",
+      "period": "2026-10-27 17:10:23.513537+00:00",
+      "limits": "526 objetos, dois buckets; todas as classes STANDARD; histórico preservado."
+    },
+    {
+      "id": "snapshot_increment",
+      "service": "Amazon S3",
+      "metric": "Dados e auditorias por ciclo completo",
+      "value": 145052840,
+      "unit": "bytes/ciclo",
+      "source": "../finops_atualizado_20261027/raw/aws/s3_inventory.json; referências batch e replay comprovados",
+      "period": "Batch20/22/27Oct; replay27Oct15:54UTC",
+      "limits": "144.656.163 bytes/batch e 396.677 bytes/replay; soma combinada só para o cenário 4+4; drivers separados na linha S3."
+    },
+    {
+      "id": "lambda_billed",
+      "service": "AWS Lambda",
+      "metric": "Duração faturada",
+      "value": 17627,
+      "unit": "ms",
+      "source": "../streaming/release_20261027/aws_evidence/exercise_01/runtime_evidence.json",
+      "period": "2026-10-27T15:54:17.722242Z até 2026-10-27T16:00:16.337323Z",
+      "limits": "39 REPORTs exclusivos; 256 MB configurados; 4,40675 GB-s. Não somar o ensaio antigo."
+    },
+    {
+      "id": "sqs_idle",
+      "service": "Amazon SQS",
+      "metric": "Polling vazio por dia ocioso",
+      "value": 8636.5,
+      "unit": "empty receives/dia",
+      "source": "AWS/SQS NumberOfEmptyReceives",
+      "period": "21-26/10UTC,6dias completos",
+      "limits": "Não é toda a quantidade de requests faturáveis."
+    },
+    {
+      "id": "preview_compute",
+      "service": "AWS Glue",
+      "metric": "Sessões interativas já registradas",
+      "value": 6.261662,
+      "unit": "DPU-hora",
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json; filtro RECORD_TYPE=Usage; quantidade e unidade da API",
+      "period": "MTD",
+      "limits": "Seis sessões. Não previstas no cenário; não abrirDataPreviewpara reproduzir relatórios."
+    },
+    {
+      "id": "metric_hours",
+      "service": "Amazon CloudWatch",
+      "metric": "Métricas Glue com amostras nas referências",
+      "value": 307,
+      "unit": "métrica-hora/ciclo",
+      "source": "../finops_2026_10_27/controls/finops_glue_metric_hours.json",
+      "period": "Janelas horárias dos3runs",
+      "limits": "255 consultas de séries; incluiJobRunId eALL; métricas FIAP tratadas separadamente."
+    },
+    {
+      "id": "replay_s3_increment",
+      "service": "Amazon S3",
+      "metric": "Objetos comprovados do replay positivo/negativo e auditorias",
+      "value": 396677,
+      "unit": "bytes/replay",
+      "source": "../finops_atualizado_20261027/raw/aws/s3_inventory.json; chaves dos runs sim_gold_20261027T155422Z_a52da0a7 e invalid_weight_489d809c1c474853",
+      "period": "2026-10-27 17:10:23.513537+00:00",
+      "limits": "171 objetos por chave; não representa 171 requests totais."
+    },
+    {
+      "id": "logs_T3_stock",
+      "service": "CloudWatch Logs",
+      "metric": "Estoque reportado na coleta ampliada",
+      "value": 7417226,
+      "unit": "bytes",
+      "source": "raw/aws_logs/log_growth_readonly.json",
+      "period": "2026-10-27T18:02:12.430737Z",
+      "limits": "7.417.226 bytes; estoque estável por grupo; não demonstra geração comprimida zero."
+    },
+    {
+      "id": "gcp_logical_capacity",
+      "service": "BigQuery",
+      "metric": "Capacidade lógica medida das sete tabelas",
+      "value": 271547681,
+      "unit": "bytes",
+      "source": "raw/gcp_existing_metrics.json; fechamento_gcp.json",
+      "period": "2026-10-27T18:16:50.016409+00:00",
+      "limits": "Metadados conciliados com 3.902.954 linhas Bronze; base prospectiva de uma leitura integral, não histórico faturado."
+    },
+    {
+      "id": "gcp_readrows_response_bytes",
+      "service": "BigQuery Storage API",
+      "metric": "Soma de response_sizes de ReadRows",
+      "value": 1860997,
+      "unit": "bytes de telemetria",
+      "source": "raw/gcp_existing_metrics.json",
+      "period": "20/10/2026 18:20–18:30 UTC",
+      "limits": "13 requests. Distribuição da API não comprova quantidade de egress nem isolamento do run."
+    },
+    {
+      "id": "logs_ingestion_today",
+      "service": "CloudWatch Logs",
+      "metric": "IncomingBytes nos pontos reportados hoje",
+      "value": 6216753,
+      "unit": "bytes não comprimidos",
+      "source": "raw/aws_logs/log_growth_readonly.json; fechamento_logs.json",
+      "period": "27/10/2026 00:00–18:00 UTC exclusivo",
+      "limits": "14 séries Complete; logs-v2 sem datapoints preservado como null. Não substitui arquivo comprimido."
+    },
+    {
+      "id": "logs_events_today",
+      "service": "CloudWatch Logs",
+      "metric": "IncomingLogEvents nos pontos reportados hoje",
+      "value": 27113,
+      "unit": "eventos de log",
+      "source": "raw/aws_logs/log_growth_readonly.json; fechamento_logs.json",
+      "period": "27/10/2026 00:00–18:00 UTC exclusivo",
+      "limits": "Eventos de log não são invocações Lambda ou eventos de negócio."
+    }
+  ],
+  "unresolved": [
+    "Egress GCP: telemetria response_sizes medida, sem equivalência comprovada ao volume transferido faturável; custo permanece n.a.",
+    "Crescimento comprimido do arquivo de logs por ciclo: ingresso foi medido, mas as capturas de estoque estável não permitem atribuição; custo permanece n.a.",
+    "Requests de apoio: baseline de seis dias sem Bronze/replay; reconciliar cobertura da cadência pretendida antes de apresentar custo completo.",
+    "E-mail Budget: último estado observado 0/1 verificado e Inactive; entrega não comprovada. Nenhum novo envio foi tentado."
+  ],
+  "controls": {
+    "observed_at_utc": "2026-10-27 11:46:59.964013+00:00",
+    "job_name": "fiap-ingestao-bigquery-uf",
+    "applied": true,
+    "before": {
+      "NumberOfWorkers": 10,
+      "WorkerType": "G.1X",
+      "Timeout": 480,
+      "MaxRetries": 0,
+      "ExecutionProperty": {
+        "MaxConcurrentRuns": 1
+      }
+    },
+    "starts_job": false,
+    "iam_changes": false,
+    "deletes_data": false,
+    "sends_notifications": false,
+    "after": {
+      "NumberOfWorkers": 2,
+      "WorkerType": "G.1X",
+      "Timeout": 30,
+      "MaxRetries": 0,
+      "ExecutionProperty": {
+        "MaxConcurrentRuns": 1
+      }
+    },
+    "max_compute_at_timeout_before_usd": 35.2,
+    "max_compute_at_timeout_after_usd": 0.44
+  },
+  "account_cost_by_service_usd": {
+    "AWS CloudFormation": 0.0,
+    "AWS CloudShell": 3.75e-08,
+    "AWS Glue": 3.32102012,
+    "AWS Key Management Service": 0.0,
+    "AWS Lambda": 0.0,
+    "AWS Secrets Manager": 0.0852402512,
+    "Amazon Simple Notification Service": 0.0,
+    "Amazon Simple Queue Service": 0.0,
+    "Amazon Simple Storage Service": 0.0080136947,
+    "AmazonCloudWatch": 0.0
+  },
+  "method_notes": [
+    "Preços AWS regionais validados por SKUOhio em27/10/2026.",
+    "Estimativa paga equivalente antes de créditos e benefícios gratuitos; DataCatalog na faixa atual tem cobrança zero.",
+    "S3cresce com histórico; média do mês assume execuções distribuídas uniformemente.",
+    "Nenhuma sessão interativa nova faz parte do cenário; sessões históricas explicam consumo passado.",
+    "Sem rateio de custos por tag: CostExplorer é da conta inteira.",
+    "Custo completo não será apresentado enquanto existirem parcelas pendentes.",
+    "A referência Gold ocorreu em 27/10 às 00:41 UTC, fora da janela geral CloudWatch de sete dias; suas DPU-horas e métrica-horas usam o run e janela próprios.",
+    "CE DAILY: baseline de apoio 21/10 inclusive a27/10 exclusive (seis dias completos), somando cada dia e grupo. Dia20 de implantação e dia27 parcial excluídos. Todos os registros continuam estimados.",
+    "Requests e Catalog-Storage de apoio não mudam com o fator de quatro ciclos; não são quantidades isoladas por ciclo. A janela não contém Bronze nem replay; esta limitação impede ler o subtotal como custo completo dos quatro ciclos.",
+    "Horizonte mantido fixo em30dias. A normalização de720h e mensalidades não reproduz cada mês civil; não liberar mudança de dias sem ajustar todas as bases.",
+    "CE corrente, equivalentes futuros e créditos são conceitos separados. O custo calculado do replay não foi adicionado à fatura nem descontado novamente dos créditos.",
+    "Storage Read agora tem projeção medida de uma leitura integral por batch. Egress e crescimento comprimido dos logs permanecem fora do subtotal; nenhum custo indisponível foi convertido em zero.",
+    "271.547.681 bytes lógicos medidos em sete tabelas TABLE/US; linhas e contagem de colunas conciliam a referência Bronze. O hash de schema atual é baseline e não prova igualdade de hashes históricos Spark/BigQuery.",
+    "Preço de leitura pré-franquias. Não aplicar 300 TiB gratuitos sem confirmar elegibilidade/saldo da conta; a franquia de leitura não cobre egress.",
+    "19 APIs GCP de metadados/históricos e seis APIs AWS de leitura foram executadas. Billing continua desativado; nenhum SQL, ReadRows novo, ReadSession nova, API ou IAM foi ativado.",
+    "Consulta CloudWatch GetMetricData: 14 métricas, referência pontual US$0,00014 antes de franquias. Valor não afirmado como já faturado e não recorrente nesta projeção.",
+    "Créditos e Cost Explorer não foram reconferidos nesta investigação. Não descontar o preço da consulta novamente do saldo observado."
+  ],
+  "calculated_reference": {
+    "cycles_30d": 4,
+    "replays_30d": 4,
+    "available_subtotal_usd": "2.150746423749768960700274291",
+    "complete_total_usd": null,
+    "rows": {
+      "glue_bronze": "0.1432444444444444464",
+      "glue_silver": "0.252755555555555536",
+      "glue_gold": "0.14960",
+      "s3_storage": "0.01208345004264265298843383789",
+      "s3_put": "0.017250",
+      "s3_get": "0.0020640",
+      "logs_ingestion": "0.03787796611764601298740931919",
+      "logs_archive": "0.0002072349004447460174560546875",
+      "logs_archive_growth": null,
+      "custom_metrics": "0.5233333333333333752",
+      "alarms": "0.50",
+      "lambda_compute": "0.000293783920900",
+      "lambda_requests": "0.0000312",
+      "sqs_requests": "0.1103160",
+      "secrets": "0.40",
+      "secret_api": "0.000025",
+      "catalog_storage": "0.000122782255350",
+      "catalog_requests": "0.000455",
+      "s3_inbound": "0.0",
+      "gcp_read": "0.001086673179452191106975078583",
+      "gcp_egress": null
+    }
+  },
+  "budget_applied": {
+    "observed_at_utc": "2026-10-27 12:02:01.985454+00:00",
+    "operation": "created",
+    "budget_name": "FIAP-Acompanhamento-Bruto-30USD",
+    "account": "637246457028",
+    "budget_limit_usd": 30,
+    "time_unit": "MONTHLY",
+    "total_project_ceiling_usd": 140,
+    "credits_included": false,
+    "refunds_included": false,
+    "notifications_usd": [
+      15,
+      24,
+      30
+    ],
+    "subscriber_type": "EMAIL",
+    "subscriber_count": 1,
+    "same_recipient_as_source_budget": true,
+    "recipient_verification_status": "0/1 verified; Inactive. Sending verification denied by AWS IAM.",
+    "recipient_address_exported": false,
+    "automatic_resource_actions": [],
+    "authorization": "Human explicitly approved alerts using the already registered budget email on2026-10-27.",
+    "note": "USD30 is a monthly monitoring reserve, not the project estimate or a renewable USD140 budget. No hard cap, upgrade, IAM change or new Glue execution.",
+    "verification_evidence": "../finops_2026_10_27/budget/verification_console.json; ../finops_2026_10_27/orcamento_criado.jpg; não reconferido por esta coleta API"
+  },
+  "gcp_evidence": {
+    "summary": {
+      "project": "fiap1-512214",
+      "observed_at_utc": "2026-10-27T12:15:33.516237+00:00",
+      "dataset": {
+        "id": "basedosdados:br_inep_avaliacao_alfabetizacao",
+        "location": "US",
+        "creationTime": "1768400407562",
+        "lastModifiedTime": "1768400408210"
+      },
+      "billing": {
+        "billingEnabled": false,
+        "projectId": "fiap1-512214"
+      },
+      "table_queries_started": 0,
+      "read_sessions_started": 0,
+      "billing_changes": false,
+      "audit_entries_available": 0,
+      "audit_limit_reached": false,
+      "response_size_bytes_by_method": {},
+      "requests_by_method": {},
+      "scanned_bytes": null,
+      "serialized_bytes": null,
+      "limits": [
+        "API response_sizes is observed telemetry, not proof of a billed egress SKU.",
+        "Empty audit logs or unavailable byte fields are not zero consumption.",
+        "No SQL query, table download, storage read session, trial or billing linkage was created."
+      ]
+    },
+    "errors": [
+      {
+        "operation": "monitoring.timeSeries.list",
+        "metric": "serviceruntime.googleapis.com/api/response_sizes",
+        "http_status": 403,
+        "body": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"This API method requires billing to be enabled. Please enable billing on project #947840284476 by visiting https://console.developers.google.com/billing/enable?project=947840284476 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+      },
+      {
+        "operation": "monitoring.timeSeries.list",
+        "metric": "serviceruntime.googleapis.com/api/request_count",
+        "http_status": 403,
+        "body": "{\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"This API method requires billing to be enabled. Please enable billing on project #947840284476 by visiting https://console.developers.google.com/billing/enable?project=947840284476 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+      }
+    ],
+    "ui_observation": {
+      "window": "30 days shown by API dashboard on 2026-10-27",
+      "create_read_session_requests": 24,
+      "create_read_session_error_percent": 12.5,
+      "read_rows_requests": 16,
+      "read_rows_error_percent": 0,
+      "note": "Request counts are not read bytes or billable egress quantities."
+    },
+    "new_spark_probe": "../finops_atualizado_20261027/raw/spark_probe.json",
+    "new_driver_probe": "../finops_atualizado_20261027/raw/bq_driver_probe.json",
+    "driver_scan_complete": true,
+    "driver_events_scanned": 5128,
+    "billed_bytes_still_unavailable": true,
+    "latest_collection": {
+      "source": "raw/gcp_existing_metrics.json",
+      "sha256": "517a120707338fcb9d0443a69e346aec1710b77b56d6b1dfbc7141539b56a642",
+      "analysis": "fechamento_gcp.json",
+      "observed_at_utc": "2026-10-27T18:16:50.016409+00:00",
+      "monitoring_now_available": true,
+      "billing_enabled_current": false,
+      "cloud_calls": 19,
+      "storage_read_prospective_line_quantified": true,
+      "historical_billed_read_bytes": null,
+      "billed_egress_bytes": null,
+      "prior_403_errors_are_historical": true,
+      "credential_renewal_authorized_by_human": true
+    }
+  },
+  "candidate_status": "APPROVED_PARTIAL_FORECAST",
+  "candidate_audit": {
+    "chosen_support_baseline": {
+      "start_inclusive": "2026-10-21",
+      "end_exclusive": "2026-10-27",
+      "calendar_days": 6,
+      "all_estimated": true,
+      "quantities": {
+        "s3_put": "690",
+        "s3_get": "1032",
+        "sqs_requests": "55158",
+        "secret_api": "1",
+        "catalog_storage": "2.4556451070",
+        "catalog_requests": "91",
+        "s3_inbound": "0"
+      }
+    },
+    "alternative_seven_complete_calendar_days": {
+      "start_inclusive": "2026-10-20",
+      "end_exclusive": "2026-10-27",
+      "calendar_days": 7,
+      "all_estimated": true,
+      "quantities": {
+        "s3_put": "1041",
+        "s3_get": "1375",
+        "sqs_requests": "57388",
+        "secret_api": "66",
+        "catalog_storage": "2.4717741268",
+        "catalog_requests": "262",
+        "s3_inbound": "0"
+      }
+    },
+    "partial_day_excluded": {
+      "start_inclusive": "2026-10-27",
+      "end_exclusive": "2026-10-28",
+      "calendar_days": 1,
+      "all_estimated": true,
+      "quantities": {
+        "s3_put": "179",
+        "s3_get": "227",
+        "sqs_requests": "1917",
+        "secret_api": "7",
+        "catalog_storage": "0.1680107529",
+        "catalog_requests": "64",
+        "s3_inbound": "0"
+      }
+    },
+    "billing_actual_scope": "All27dailyperiods1Octthrough27Oct were summed, including prior setup16-19Oct; actual must not be replaced by a six-day sum.",
+    "price_validation": {
+      "count_exact_matches": 15,
+      "fresh_regional_rows": 1158,
+      "fresh_regional_sha256": "a3b82e09139114258503d3750734f7cdc1dc72cb1f0ddc78231d9c5e393ceaf1",
+      "source": "../finops_atualizado_20261027/raw/aws/regional_price_list.json",
+      "validated": [
+        {
+          "rate_id": "glue_etl_dpu_hour",
+          "sku": "35EA4QMYDXPWWRHJ",
+          "usd": "0.4400000000",
+          "unit": "DPU-Hour",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-12T18:55:42Z"
+        },
+        {
+          "rate_id": "s3_standard_storage_gb_month",
+          "sku": "YPGKVRB2EKTVDJDT",
+          "usd": "0.0230000000",
+          "unit": "GB-Mo",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-15T17:35:40Z"
+        },
+        {
+          "rate_id": "s3_standard_put_request",
+          "sku": "GJKK9PMSTKPNGZS9",
+          "usd": "0.0000050000",
+          "unit": "Requests",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-15T17:35:40Z"
+        },
+        {
+          "rate_id": "s3_standard_get_request",
+          "sku": "DJEKB32FV4HNZJZY",
+          "usd": "0.0000004000",
+          "unit": "Requests",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-15T17:35:40Z"
+        },
+        {
+          "rate_id": "cloudwatch_standard_log_ingestion_gb",
+          "sku": "5T6Z6V26DSR7SZ49",
+          "usd": "0.5000000000",
+          "unit": "GB",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-07T11:55:40Z"
+        },
+        {
+          "rate_id": "cloudwatch_log_archive_gb_month",
+          "sku": "X7X4WD4A95NDR9U5",
+          "usd": "0.0300000000",
+          "unit": "GB-Mo",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-07T11:55:40Z"
+        },
+        {
+          "rate_id": "cloudwatch_custom_metric_month",
+          "sku": "XK7C3D2X45XTHURD",
+          "usd": "0.3000000000",
+          "unit": "Metrics",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-07T11:55:40Z"
+        },
+        {
+          "rate_id": "cloudwatch_standard_alarm_metric_month",
+          "sku": "28VSMYRVQXUWCTMA",
+          "usd": "0.1000000000",
+          "unit": "Alarms",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-07T11:55:40Z"
+        },
+        {
+          "rate_id": "lambda_x86_gb_second",
+          "sku": "3BYZH4NKJN8TJUQ6",
+          "usd": "0.0000166667",
+          "unit": "Lambda-GB-Second",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-22T18:39:59Z"
+        },
+        {
+          "rate_id": "lambda_request",
+          "sku": "ZEA64MMVK5QRB5TC",
+          "usd": "0.0000002000",
+          "unit": "Request",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-22T18:39:59Z"
+        },
+        {
+          "rate_id": "sqs_standard_request",
+          "sku": "9C8YFGPNBKF9HP9A",
+          "usd": "0.0000004000",
+          "unit": "Requests",
+          "effective_date": "2025-08-01T00:00:00Z",
+          "publication_date": "2026-09-11T12:46:07Z"
+        },
+        {
+          "rate_id": "secretsmanager_secret_month",
+          "sku": "HHK3AZN6HN5CFDJM",
+          "usd": "0.4000000000",
+          "unit": "Secrets",
+          "effective_date": "2025-07-01T00:00:00Z",
+          "publication_date": "2026-09-11T12:46:10Z"
+        },
+        {
+          "rate_id": "secretsmanager_api_request",
+          "sku": "DYZUZWKV5HMGF5A9",
+          "usd": "0.0000050000",
+          "unit": "API Requests",
+          "effective_date": "2025-07-01T00:00:00Z",
+          "publication_date": "2026-09-11T12:46:10Z"
+        },
+        {
+          "rate_id": "glue_catalog_object_month_paid",
+          "sku": "C5UPA7D6QYMRDSC6",
+          "usd": "0.0000100000",
+          "unit": "Obj-Month",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-12T18:55:42Z"
+        },
+        {
+          "rate_id": "glue_catalog_request_paid",
+          "sku": "ZV78NH9F34YRJ8B6",
+          "usd": "0.0000010000",
+          "unit": "Request",
+          "effective_date": "2026-10-01T00:00:00Z",
+          "publication_date": "2026-10-12T18:55:42Z"
+        }
+      ],
+      "gcp_rates": "Conditional references only; sourceUSalreadyconfirmed, billedbytes/SKUnotproven."
+    },
+    "archive_historical_metering_check": {
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json",
+      "usage_type": "USE2-TimedStorage-ByteHrs",
+      "period": "21Octinclusive27Octexclusive",
+      "quantity": "0.0006137753",
+      "unit": "GB-Month",
+      "days": 6,
+      "reference_30d_quantity": "0.0030688765",
+      "reference_30d_usd": "0.000092066295",
+      "used_in_main_projection": false,
+      "reason": "Historical time-integrated billed quantity with lag, not current stock or future increase. It cannot close logs_archive_growth; do not add it to existing archive stock cost."
+    },
+    "known_limitations": [
+      "Six-day support proxy excludes the original Bronze and replay; it may understate four-cycle requests even though its date window is exact.",
+      "CatalogStorage historical proxy below22currenttables is not a complete current/future metadata-object inventory. Metadata versions and partitions were not counted.",
+      "No ingestion-byte measurement exclusively covers the new replay, so no additional replay log bill was invented or double-counted.",
+      "All CE daily records remainEstimated=true; no final invoice or post-replay credit balance asserted.",
+      "Raw expectedNoSuchLifecycleConfiguration errors mean no lifecycle policy, not failed collection.",
+      "No new frequency, schedule, upgrade, IAM mutation, BigQuery read or Glue run was created by this local audit."
+    ],
+    "stock_reconciliation": {
+      "old_bytes": 273422339,
+      "new_bytes": 274003263,
+      "net_bytes": 580924,
+      "known_replay_bytes": 396677,
+      "other_net_bytes": 184247,
+      "old_objects": 348,
+      "new_objects": 526,
+      "new_unique_keys": 178,
+      "removed_keys": 0,
+      "changed_existing_sizes": 0
+    },
+    "one_off_cost_explorer_query": {
+      "api_pages": 1,
+      "estimated_reference_usd": 0.01,
+      "included_in_recurring_projection": false,
+      "already_billed_claimed": false
+    },
+    "old_available_subtotal_usd": "2.149659750570316769593299212",
+    "delta_from_old_available_subtotal_usd": "0.001086673179452191106975079",
+    "prior_revision_audit": {
+      "chosen_support_baseline": {
+        "start_inclusive": "2026-10-21",
+        "end_exclusive": "2026-10-27",
+        "calendar_days": 6,
+        "all_estimated": true,
+        "quantities": {
+          "s3_put": "690",
+          "s3_get": "1032",
+          "sqs_requests": "55158",
+          "secret_api": "1",
+          "catalog_storage": "2.4556451070",
+          "catalog_requests": "91",
+          "s3_inbound": "0"
+        }
+      },
+      "alternative_seven_complete_calendar_days": {
+        "start_inclusive": "2026-10-20",
+        "end_exclusive": "2026-10-27",
+        "calendar_days": 7,
+        "all_estimated": true,
+        "quantities": {
+          "s3_put": "1041",
+          "s3_get": "1375",
+          "sqs_requests": "57388",
+          "secret_api": "66",
+          "catalog_storage": "2.4717741268",
+          "catalog_requests": "262",
+          "s3_inbound": "0"
+        }
+      },
+      "partial_day_excluded": {
+        "start_inclusive": "2026-10-27",
+        "end_exclusive": "2026-10-28",
+        "calendar_days": 1,
+        "all_estimated": true,
+        "quantities": {
+          "s3_put": "179",
+          "s3_get": "227",
+          "sqs_requests": "1917",
+          "secret_api": "7",
+          "catalog_storage": "0.1680107529",
+          "catalog_requests": "64",
+          "s3_inbound": "0"
+        }
+      },
+      "billing_actual_scope": "All27dailyperiods1Octthrough27Oct were summed, including prior setup16-19Oct; actual must not be replaced by a six-day sum.",
+      "price_validation": {
+        "count_exact_matches": 15,
+        "fresh_regional_rows": 1158,
+        "fresh_regional_sha256": "a3b82e09139114258503d3750734f7cdc1dc72cb1f0ddc78231d9c5e393ceaf1",
+        "source": "raw/aws/regional_price_list.json",
+        "validated": [
+          {
+            "rate_id": "glue_etl_dpu_hour",
+            "sku": "35EA4QMYDXPWWRHJ",
+            "usd": "0.4400000000",
+            "unit": "DPU-Hour",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-12T18:55:42Z"
+          },
+          {
+            "rate_id": "s3_standard_storage_gb_month",
+            "sku": "YPGKVRB2EKTVDJDT",
+            "usd": "0.0230000000",
+            "unit": "GB-Mo",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-15T17:35:40Z"
+          },
+          {
+            "rate_id": "s3_standard_put_request",
+            "sku": "GJKK9PMSTKPNGZS9",
+            "usd": "0.0000050000",
+            "unit": "Requests",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-15T17:35:40Z"
+          },
+          {
+            "rate_id": "s3_standard_get_request",
+            "sku": "DJEKB32FV4HNZJZY",
+            "usd": "0.0000004000",
+            "unit": "Requests",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-15T17:35:40Z"
+          },
+          {
+            "rate_id": "cloudwatch_standard_log_ingestion_gb",
+            "sku": "5T6Z6V26DSR7SZ49",
+            "usd": "0.5000000000",
+            "unit": "GB",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-07T11:55:40Z"
+          },
+          {
+            "rate_id": "cloudwatch_log_archive_gb_month",
+            "sku": "X7X4WD4A95NDR9U5",
+            "usd": "0.0300000000",
+            "unit": "GB-Mo",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-07T11:55:40Z"
+          },
+          {
+            "rate_id": "cloudwatch_custom_metric_month",
+            "sku": "XK7C3D2X45XTHURD",
+            "usd": "0.3000000000",
+            "unit": "Metrics",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-07T11:55:40Z"
+          },
+          {
+            "rate_id": "cloudwatch_standard_alarm_metric_month",
+            "sku": "28VSMYRVQXUWCTMA",
+            "usd": "0.1000000000",
+            "unit": "Alarms",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-07T11:55:40Z"
+          },
+          {
+            "rate_id": "lambda_x86_gb_second",
+            "sku": "3BYZH4NKJN8TJUQ6",
+            "usd": "0.0000166667",
+            "unit": "Lambda-GB-Second",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-22T18:39:59Z"
+          },
+          {
+            "rate_id": "lambda_request",
+            "sku": "ZEA64MMVK5QRB5TC",
+            "usd": "0.0000002000",
+            "unit": "Request",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-22T18:39:59Z"
+          },
+          {
+            "rate_id": "sqs_standard_request",
+            "sku": "9C8YFGPNBKF9HP9A",
+            "usd": "0.0000004000",
+            "unit": "Requests",
+            "effective_date": "2025-08-01T00:00:00Z",
+            "publication_date": "2026-09-11T12:46:07Z"
+          },
+          {
+            "rate_id": "secretsmanager_secret_month",
+            "sku": "HHK3AZN6HN5CFDJM",
+            "usd": "0.4000000000",
+            "unit": "Secrets",
+            "effective_date": "2025-07-01T00:00:00Z",
+            "publication_date": "2026-09-11T12:46:10Z"
+          },
+          {
+            "rate_id": "secretsmanager_api_request",
+            "sku": "DYZUZWKV5HMGF5A9",
+            "usd": "0.0000050000",
+            "unit": "API Requests",
+            "effective_date": "2025-07-01T00:00:00Z",
+            "publication_date": "2026-09-11T12:46:10Z"
+          },
+          {
+            "rate_id": "glue_catalog_object_month_paid",
+            "sku": "C5UPA7D6QYMRDSC6",
+            "usd": "0.0000100000",
+            "unit": "Obj-Month",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-12T18:55:42Z"
+          },
+          {
+            "rate_id": "glue_catalog_request_paid",
+            "sku": "ZV78NH9F34YRJ8B6",
+            "usd": "0.0000010000",
+            "unit": "Request",
+            "effective_date": "2026-10-01T00:00:00Z",
+            "publication_date": "2026-10-12T18:55:42Z"
+          }
+        ],
+        "gcp_rates": "Conditional references only; sourceUSalreadyconfirmed, billedbytes/SKUnotproven."
+      },
+      "archive_historical_metering_check": {
+        "source": "raw/aws/cost_explorer_usage_types.json",
+        "usage_type": "USE2-TimedStorage-ByteHrs",
+        "period": "21Octinclusive27Octexclusive",
+        "quantity": "0.0006137753",
+        "unit": "GB-Month",
+        "days": 6,
+        "reference_30d_quantity": "0.0030688765",
+        "reference_30d_usd": "0.000092066295",
+        "used_in_main_projection": false,
+        "reason": "Historical time-integrated billed quantity with lag, not current stock or future increase. It cannot close logs_archive_growth; do not add it to existing archive stock cost."
+      },
+      "known_limitations": [
+        "Six-day support proxy excludes the original Bronze and replay; it may understate four-cycle requests even though its date window is exact.",
+        "CatalogStorage historical proxy below22currenttables is not a complete current/future metadata-object inventory. Metadata versions and partitions were not counted.",
+        "No ingestion-byte measurement exclusively covers the new replay, so no additional replay log bill was invented or double-counted.",
+        "All CE daily records remainEstimated=true; no final invoice or post-replay credit balance asserted.",
+        "Raw expectedNoSuchLifecycleConfiguration errors mean no lifecycle policy, not failed collection.",
+        "No new frequency, schedule, upgrade, IAM mutation, BigQuery read or Glue run was created by this local audit."
+      ],
+      "stock_reconciliation": {
+        "old_bytes": 273422339,
+        "new_bytes": 274003263,
+        "net_bytes": 580924,
+        "known_replay_bytes": 396677,
+        "other_net_bytes": 184247,
+        "old_objects": 348,
+        "new_objects": 526,
+        "new_unique_keys": 178,
+        "removed_keys": 0,
+        "changed_existing_sizes": 0
+      },
+      "one_off_cost_explorer_query": {
+        "api_pages": 1,
+        "estimated_reference_usd": 0.01,
+        "included_in_recurring_projection": false,
+        "already_billed_claimed": false
+      },
+      "old_available_subtotal_usd": "2.153727359314417228867142857",
+      "delta_from_old_available_subtotal_usd": "-0.004067608744100459273843645"
+    },
+    "predecessor_model_sha256": "7be254cb6ac49203b63fbbee1c4bd82372525d2a742d038f30b8b8745aea1f84",
+    "delta_interpretation": "Incremento da linha prospectiva BigQuery Storage Read, com referência à revisão imediatamente anterior; auditoria mais antiga preservada separadamente."
+  },
+  "projection_status": "PARTIAL_TWO_UNMEASURED_COST_COMPONENTS",
+  "final_document_ready": true,
+  "reviewed_at_utc": "2026-10-27T18:26:29.629051+00:00",
+  "evidence_notes": [
+    {
+      "service": "Cenário30dias",
+      "description": "4ciclos batch e4replays, sob demanda. Nenhum agendamento foi instalado.",
+      "source": "Enunciado Fase2 e cadence do modelo",
+      "limits": "O enunciado pede explicar frequência, sem impor esses4ensaios. Horizonte fixo30dias; volumes e configuração das referências como hipótese."
+    },
+    {
+      "service": "Amazon S3",
+      "description": "274.003.263bytes e526objetos medidos nos2buckets.",
+      "source": "../finops_atualizado_20261027/raw/aws/s3_inventory.json",
+      "limits": "Crescimento por referência:144.656.163bytes/batch e396.677bytes/replay. Histórico preservado; mesma chave nunca contada duas vezes."
+    },
+    {
+      "service": "AWS Lambda",
+      "description": "39REPORTs;17.627ms faturados a256MB =4,40675GB-s por replay.",
+      "source": "../streaming/release_20261027/aws_evidence/exercise_01/runtime_evidence.json",
+      "limits": "93MB é pico de uso, não memória cobrada. Não somar InitDuration aos BilledDuration já capturados. O replay não iniciou Glue/BigQuery."
+    },
+    {
+      "service": "Requests de apoio",
+      "description": "Proxy21/10inclusive→27/10exclusive:6dias UTC completos; dados aindaEstimated.",
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json",
+      "limits": "A janela não contém Bronze nem replay e pode subestimar requests de4novos ciclos. Não é uma medição isolada de requests por ciclo."
+    },
+    {
+      "service": "CloudWatch Logs",
+      "description": "Estoque de 7.417.226 bytes confirmado na coleta ampliada; 6.216.753 bytes não comprimidos e 27.113 eventos de log observados hoje.",
+      "source": "raw/aws_logs/log_growth_readonly.json; fechamento_logs.json",
+      "limits": "14 séries Complete e duas sem datapoints, preservadas como null. Política STANDARD, sem identidade diária StoredBytes. Estoque estável não fecha incremento comprimido por ciclo."
+    },
+    {
+      "service": "Google Cloud",
+      "description": "Coleta de 18:16 UTC: 19 chamadas de metadados e históricos, sem erros; Monitoring respondeu, billingEnabled permaneceu false.",
+      "source": "raw/gcp_existing_metrics.json; fechamento_gcp.json",
+      "limits": "Erros 403 da coleta de 12:15 UTC são históricos. A nova sessão foi autorizada pelo usuário; não houve ativação de faturamento. Auditoria do consumidor vazia não prova consumo zero nem cobre o dono da tabela."
+    },
+    {
+      "service": "Logs da extração",
+      "description": "Spark histórico lido apenas em memória; driver/executor5.128eventos, sem contador útil de bytes.",
+      "source": "../finops_atualizado_20261027/raw/spark_probe.json; ../finops_atualizado_20261027/raw/bq_driver_probe.json",
+      "limits": "Métricas genéricas Spark/Parquet não são egressGoogle. Nenhuma query, nova sessão de leitura, ativação de billing ou reextração foi feita para preencher valores."
+    },
+    {
+      "service": "Créditos e orçamento",
+      "description": "Teto total US$140. Fotografia de créditos às 17:18 UTC: US$136,59; uso bruto CE anterior estimado US$3,4142741034.",
+      "source": "../finops_atualizado_20261027/raw/creditos_console.json; ../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json",
+      "limits": "Não descontar o uso novamente dos créditos. CréditosAWS não pagam outros provedores. O subtotal disponível não garante o custo completo da arquitetura."
+    },
+    {
+      "service": "AWS Budgets",
+      "description": "Acompanhamento brutoUS$30/mês, alertasUS$15/24/30; sem bloqueio automático de recursos.",
+      "source": "../finops_atualizado_20261027/raw/aws/budgets_redacted.json; evidência anterior de verificação do contato",
+      "limits": "Último estado0/1verificado,Inactive. A entrega de e-mail segue sem comprovação; não foi enviado outro e-mail nem alterado IAM."
+    },
+    {
+      "service": "Coleta FinOps",
+      "description": "1página Cost Explorer; tarifa de referênciaUS$0,01 pela chamada.",
+      "source": "../finops_atualizado_20261027/raw/aws/cost_explorer_usage_types.json",
+      "limits": "Custo de medição pontual, sem afirmar lançamento imediato em fatura nem criar uma auditoria recorrente."
+    },
+    {
+      "service": "Leitura prospectiva BigQuery",
+      "description": "271.547.681 bytes lógicos medidos; uma leitura integral por batch, quatro ciclos hipotéticos em 30 dias.",
+      "source": "raw/gcp_existing_metrics.json; fechamento_gcp.json; ../manifesto_bronze.json",
+      "limits": "Projeção bruta pré-franquias, não histórico faturado. Leituras extras e retries ficam fora do fator. Egress e crescimento comprimido dos logs seguem n.a."
+    },
+    {
+      "service": "Coleta GCP atual",
+      "description": "Monitoring respondeu na sessão autorizada; foram feitas 19 chamadas de leitura de metadados/históricos.",
+      "source": "raw/gcp_existing_metrics.json; gcp_acesso_renovado.png; gcp_coleta_executada.png",
+      "limits": "A recusa automática inicial de renovação foi resolvida com aprovação explícita do usuário. Não ativou billing, APIs ou IAM; nenhum SQL, ReadRows ou ReadSession novo foi iniciado."
+    },
+    {
+      "service": "Telemetria GCP",
+      "description": "ReadRows: 1.860.997 bytes de response_sizes e 13 requests na janela de dez minutos.",
+      "source": "raw/gcp_existing_metrics.json; fechamento_gcp.json",
+      "limits": "A janela do consumidor contém batch e previews. A distribuição de respostas não estabelece equivalência aos bytes de rede faturáveis; não usá-la como egress."
+    }
+  ],
+  "measurement_attempts": {
+    "spark_event_log": {
+      "source": "../finops_atualizado_20261027/raw/spark_probe.json",
+      "status": "DISCOVERY_ONLY_NOT_BILLED_GCP_BYTES"
+    },
+    "driver_logs": {
+      "source": "../finops_atualizado_20261027/raw/bq_driver_probe.json",
+      "status": "UNAVAILABLE_NO_BYTE_METRIC_MATCHES",
+      "events": 5128
+    },
+    "log_stock_T3": {
+      "source": "../finops_atualizado_20261027/raw/logs_T3.json",
+      "status": "MEASURED_STOCK_NOT_FUTURE_GROWTH"
+    },
+    "no_new_data_jobs": true,
+    "no_bigquery_queries": true,
+    "no_billing_activation": true,
+    "no_iam_change": true,
+    "gcp_existing_metadata": {
+      "source": "raw/gcp_existing_metrics.json",
+      "status": "MEASURED_LOGICAL_CAPACITY_SUPPORTS_PROSPECTIVE_READ_ESTIMATE",
+      "new_extractions": false
+    },
+    "logs_latest": {
+      "source": "raw/aws_logs/log_growth_readonly.json",
+      "status": "MEASURED_INGESTION_AND_STOCK_NOT_FUTURE_COMPRESSED_INCREMENT"
+    }
+  },
+  "predecessor": {
+    "model": "../finops_atualizado_20261027/modelo_finops.json",
+    "sha256": "7be254cb6ac49203b63fbbee1c4bd82372525d2a742d038f30b8b8745aea1f84",
+    "preserved_unchanged": true
+  }
+}

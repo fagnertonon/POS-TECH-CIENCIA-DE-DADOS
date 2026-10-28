@@ -1,0 +1,21 @@
+{
+  "FunctionName": "fiap-inep-streaming-consumer",
+  "FunctionArn": "arn:aws:lambda:us-east-2:637246457028:function:fiap-inep-streaming-consumer",
+  "Runtime": "python3.12",
+  "Role": "arn:aws:iam::637246457028:role/fiap-lambda-inep-streaming",
+  "CodeSize": 6673,
+  "Timeout": 10,
+  "MemorySize": 256,
+  "LastModified": "2026-10-27T15:48:20.000+0000",
+  "CodeSha256": "ZlKsp6oUtqxAFOYudrhcxgFuDAETZFMiVjXdk+yxAoo=",
+  "RevisionId": "6d25cb7f-b5cb-45cc-be3a-951b864732ce",
+  "State": "Active",
+  "LastUpdateStatus": "Successful",
+  "PackageType": "Zip",
+  "Architectures": [
+    "x86_64"
+  ],
+  "EphemeralStorage": {
+    "Size": 512
+  }
+}

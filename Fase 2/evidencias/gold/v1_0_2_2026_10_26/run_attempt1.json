@@ -1,0 +1,28 @@
+{
+  "Id": "jr_8544c209aa38c4721b3669728ad5c701a96e60e604c8e33ed536798061470c29",
+  "Attempt": 0,
+  "JobName": "fiap-gold-inep-batch",
+  "JobMode": "SCRIPT",
+  "JobRunQueuingEnabled": false,
+  "StartedOn": "2026-10-26 12:31:18.883000+00:00",
+  "LastModifiedOn": "2026-10-26 12:33:54.651000+00:00",
+  "CompletedOn": "2026-10-26 12:33:54.651000+00:00",
+  "JobRunState": "FAILED",
+  "Arguments": {
+    "--VERIFY_COVERAGE_FIXTURE": "true",
+    "--COVERAGE_DEPLOYMENT_ID": "coverage_eb75f862ecad4cdf9533ec6405448462",
+    "--DEMO_FAILURE": "false"
+  },
+  "ErrorMessage": "SparkRuntimeException: [UNSUPPORTED_FEATURE.LITERAL_TYPE] The feature is not supported: Literal for '[REFERENCIA_UF_INDISPONIVEL, COBERTURA_DIFERENTE_ENTRE_BASES, COBERTURA_UF_COINCIDENTE_METODOLOGIA_NAO_COMPROVADA]' of class java.util.ArrayList.",
+  "PredecessorRuns": [],
+  "AllocatedCapacity": 2,
+  "ExecutionTime": 148,
+  "Timeout": 15,
+  "MaxCapacity": 2.0,
+  "WorkerType": "G.1X",
+  "NumberOfWorkers": 2,
+  "LogGroupName": "/aws-glue/jobs",
+  "GlueVersion": "5.1",
+  "DPUSeconds": 296.0,
+  "ExecutionClass": "STANDARD"
+}

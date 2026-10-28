@@ -220,3 +220,38 @@ __marimo__/
 # Saidas geradas pelos notebooks (dados e graficos)
 data/
 reports/
+
+# --- Credenciais e chaves: nunca versionar, em nenhuma fase ---
+# A autenticacao usa perfil da AWS CLI, role do job e Secrets Manager.
+.aws/
+.gcloud/
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+id_rsa*
+id_ed25519*
+credentials
+credentials.*
+*.credentials.json
+service-account*.json
+*-sa-key*.json
+gcp-key*.json
+client_secret*.json
+token.json
+*.tfvars
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# --- Arquivos de sistema e de editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+# arquivo temporario do Office enquanto a planilha esta aberta
+~$*

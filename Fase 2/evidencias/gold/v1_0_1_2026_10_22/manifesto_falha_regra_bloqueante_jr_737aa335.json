@@ -1,0 +1,461 @@
+{
+  "demo_failure": false,
+  "duration_seconds": 81.604,
+  "error": "[join:consistencia_meta_uf x uf] regras bloqueantes reprovadas: taxa_correspondencia:consistencia_meta_uf x uf=0.9074",
+  "error_type": "RuntimeError",
+  "finished_at_utc": "2026-10-22T14:06:02.374219Z",
+  "joins": [
+    {
+      "detalhe": "10654 of 10704; all left rows including intentionally ineligible cohorts",
+      "limite": null,
+      "passou": true,
+      "regra": "cobertura_total:consistencia_meta_municipio x municipio",
+      "tipo": "informativa",
+      "valor_medido": 0.9953288490284006
+    },
+    {
+      "aplicavel": true,
+      "detalhe": "10654 of 10704; join=inner; keys=['ano', 'id_municipio', 'rede']; measured before join; Meta year/network pair present in official second-year results; no geography-based eligibility filter",
+      "limite": 0.95,
+      "passou": true,
+      "regra": "taxa_correspondencia:consistencia_meta_municipio x municipio",
+      "tipo": "bloqueante",
+      "valor_medido": 0.9953288490284006
+    },
+    {
+      "detalhe": "49 of 81; all left rows including intentionally ineligible cohorts",
+      "limite": null,
+      "passou": true,
+      "regra": "cobertura_total:consistencia_meta_uf x uf",
+      "tipo": "informativa",
+      "valor_medido": 0.6049382716049383
+    },
+    {
+      "aplicavel": true,
+      "detalhe": "49 of 54; join=inner; keys=['ano', 'sigla_uf', 'rede']; measured before join; Meta year/network pair present in official second-year results; no geography-based eligibility filter",
+      "limite": 0.95,
+      "passou": false,
+      "regra": "taxa_correspondencia:consistencia_meta_uf x uf",
+      "tipo": "bloqueante",
+      "valor_medido": 0.9074074074074074
+    }
+  ],
+  "published": false,
+  "quality": {
+    "silver_inputs": [
+      {
+        "detalhe": "['ano', 'id_municipio', 'serie', 'rede']",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "chaves_nulas:municipio",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "['ano', 'id_municipio', 'serie', 'rede']",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "chaves_duplicadas:municipio",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "['ano', 'sigla_uf', 'serie', 'rede']",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "chaves_nulas:uf",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "['ano', 'sigla_uf', 'serie', 'rede']",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "chaves_duplicadas:uf",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "['ano', 'rede_descricao']",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "chaves_nulas:meta_alfabetizacao_brasil",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "['ano', 'rede_descricao']",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "chaves_duplicadas:meta_alfabetizacao_brasil",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "['ano', 'sigla_uf', 'rede_descricao']",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "chaves_nulas:meta_alfabetizacao_uf",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "['ano', 'sigla_uf', 'rede_descricao']",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "chaves_duplicadas:meta_alfabetizacao_uf",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "['ano', 'id_municipio', 'rede_descricao']",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "chaves_nulas:meta_alfabetizacao_municipio",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "['ano', 'id_municipio', 'rede_descricao']",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "chaves_duplicadas:meta_alfabetizacao_municipio",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "All present numeric input values must be finite; nulls are preserved",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "numericos_finitos:alunos",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "All present numeric input values must be finite; nulls are preserved",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "numericos_finitos:municipio",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "All present numeric input values must be finite; nulls are preserved",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "numericos_finitos:uf",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "All present numeric input values must be finite; nulls are preserved",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "numericos_finitos:meta_alfabetizacao_brasil",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "All present numeric input values must be finite; nulls are preserved",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "numericos_finitos:meta_alfabetizacao_uf",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "All present numeric input values must be finite; nulls are preserved",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "numericos_finitos:meta_alfabetizacao_municipio",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "Every evaluated pupil needs known alphabetization, finite positive weight and keys; no silent drop",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "avaliados_denominador_valido",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "Aggregate networks 5/0 must be built once from elementary networks",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "microdados_rede_elementar",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "Official Brazil has no series key; multiple series require an explicit business decision",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "brasil_serie_unica_por_ano",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "CNCA is end of second year of elementary school; source dictionary maps this cohort to series code 2",
+        "limite": 0.0,
+        "passou": true,
+        "regra": "brasil_serie_compativel_cnca",
+        "tipo": "bloqueante",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "Only second-year records enter result-vs-meta; other cohorts remain in their source/indicator tables",
+        "limite": null,
+        "passou": true,
+        "regra": "resultado_meta_outras_series_excluidas:municipio",
+        "tipo": "informativa",
+        "valor_medido": 0.0
+      },
+      {
+        "detalhe": "Only second-year records enter result-vs-meta; other cohorts remain in their source/indicator tables",
+        "limite": null,
+        "passou": true,
+        "regra": "resultado_meta_outras_series_excluidas:uf",
+        "tipo": "informativa",
+        "valor_medido": 0.0
+      }
+    ]
+  },
+  "run_id": "jr_737aa335fc338309fb383cb2ac7874b3d1f05f609e607e4e64e40758d6c7576e",
+  "source_tables": {
+    "alunos": {
+      "columns": {
+        "alfabetizado": "string",
+        "alfabetizado_avaliado": "boolean",
+        "alfabetizado_descricao": "string",
+        "ano": "integer",
+        "avaliado": "boolean",
+        "bronze_run_id": "string",
+        "caderno": "string",
+        "caderno_preenchido": "boolean",
+        "data_ingestao": "timestamp",
+        "data_processamento_silver": "timestamp",
+        "id_aluno": "string",
+        "id_escola": "string",
+        "id_ingestao": "string",
+        "id_municipio": "string",
+        "id_processamento_silver": "string",
+        "peso_aluno": "double",
+        "preenchimento_caderno": "string",
+        "preenchimento_caderno_descricao": "string",
+        "presenca": "string",
+        "presenca_descricao": "string",
+        "presente": "boolean",
+        "proficiencia": "double",
+        "rede": "string",
+        "rede_descricao": "string",
+        "serie": "string",
+        "serie_descricao": "string",
+        "tabela_origem": "string"
+      },
+      "database": "tech_challenge_fase2_silver",
+      "expected_count": 3867999,
+      "location": "s3://fiap-tc-fase2-2026/silver/inep/alunos/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "row_count": 3867999,
+      "silver_manifest_sha256": "a3492216b59dc5aa8d4eeb840a14c34b6451757783c7270bf4d5f898cd5c955f",
+      "silver_manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+      "silver_run_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+      "table": "alunos",
+      "version_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288"
+    },
+    "dicionario": {
+      "columns": {
+        "bronze_run_id": "string",
+        "chave": "string",
+        "cobertura_temporal": "string",
+        "data_ingestao": "timestamp",
+        "data_processamento_silver": "timestamp",
+        "id_ingestao": "string",
+        "id_processamento_silver": "string",
+        "id_tabela": "string",
+        "nome_coluna": "string",
+        "tabela_origem": "string",
+        "valor": "string"
+      },
+      "database": "tech_challenge_fase2_silver",
+      "expected_count": 27,
+      "location": "s3://fiap-tc-fase2-2026/silver/inep/dicionario/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "row_count": 27,
+      "silver_manifest_sha256": "a3492216b59dc5aa8d4eeb840a14c34b6451757783c7270bf4d5f898cd5c955f",
+      "silver_manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+      "silver_run_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+      "table": "dicionario",
+      "version_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288"
+    },
+    "meta_alfabetizacao_brasil": {
+      "columns": {
+        "ano": "integer",
+        "bronze_run_id": "string",
+        "data_ingestao": "timestamp",
+        "data_processamento_silver": "timestamp",
+        "id_ingestao": "string",
+        "id_processamento_silver": "string",
+        "meta_alfabetizacao_2024": "double",
+        "meta_alfabetizacao_2025": "double",
+        "meta_alfabetizacao_2026": "double",
+        "meta_alfabetizacao_2027": "double",
+        "meta_alfabetizacao_2028": "double",
+        "meta_alfabetizacao_2029": "double",
+        "meta_alfabetizacao_2030": "double",
+        "percentual_participacao": "double",
+        "rede": "string",
+        "rede_descricao": "string",
+        "tabela_origem": "string",
+        "taxa_alfabetizacao": "double"
+      },
+      "database": "tech_challenge_fase2_silver",
+      "expected_count": 3,
+      "location": "s3://fiap-tc-fase2-2026/silver/inep/meta_alfabetizacao_brasil/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "row_count": 3,
+      "silver_manifest_sha256": "a3492216b59dc5aa8d4eeb840a14c34b6451757783c7270bf4d5f898cd5c955f",
+      "silver_manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+      "silver_run_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+      "table": "meta_alfabetizacao_brasil",
+      "version_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288"
+    },
+    "meta_alfabetizacao_municipio": {
+      "columns": {
+        "ano": "integer",
+        "bronze_run_id": "string",
+        "data_ingestao": "timestamp",
+        "data_processamento_silver": "timestamp",
+        "id_ingestao": "string",
+        "id_municipio": "string",
+        "id_processamento_silver": "string",
+        "meta_alfabetizacao_2024": "double",
+        "meta_alfabetizacao_2025": "double",
+        "meta_alfabetizacao_2026": "double",
+        "meta_alfabetizacao_2027": "double",
+        "meta_alfabetizacao_2028": "double",
+        "meta_alfabetizacao_2029": "double",
+        "meta_alfabetizacao_2030": "double",
+        "nivel_alfabetizacao": "long",
+        "percentual_participacao": "double",
+        "rede": "string",
+        "rede_descricao": "string",
+        "tabela_origem": "string",
+        "taxa_alfabetizacao": "double"
+      },
+      "database": "tech_challenge_fase2_silver",
+      "expected_count": 10704,
+      "location": "s3://fiap-tc-fase2-2026/silver/inep/meta_alfabetizacao_municipio/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "row_count": 10704,
+      "silver_manifest_sha256": "a3492216b59dc5aa8d4eeb840a14c34b6451757783c7270bf4d5f898cd5c955f",
+      "silver_manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+      "silver_run_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+      "table": "meta_alfabetizacao_municipio",
+      "version_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288"
+    },
+    "meta_alfabetizacao_uf": {
+      "columns": {
+        "ano": "integer",
+        "bronze_run_id": "string",
+        "data_ingestao": "timestamp",
+        "data_processamento_silver": "timestamp",
+        "id_ingestao": "string",
+        "id_processamento_silver": "string",
+        "meta_alfabetizacao_2024": "double",
+        "meta_alfabetizacao_2025": "double",
+        "meta_alfabetizacao_2026": "double",
+        "meta_alfabetizacao_2027": "double",
+        "meta_alfabetizacao_2028": "double",
+        "meta_alfabetizacao_2029": "double",
+        "meta_alfabetizacao_2030": "double",
+        "percentual_participacao": "double",
+        "rede": "string",
+        "rede_descricao": "string",
+        "sigla_uf": "string",
+        "tabela_origem": "string",
+        "taxa_alfabetizacao": "double"
+      },
+      "database": "tech_challenge_fase2_silver",
+      "expected_count": 81,
+      "location": "s3://fiap-tc-fase2-2026/silver/inep/meta_alfabetizacao_uf/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "row_count": 81,
+      "silver_manifest_sha256": "a3492216b59dc5aa8d4eeb840a14c34b6451757783c7270bf4d5f898cd5c955f",
+      "silver_manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+      "silver_run_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+      "table": "meta_alfabetizacao_uf",
+      "version_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288"
+    },
+    "municipio": {
+      "columns": {
+        "ano": "integer",
+        "bronze_run_id": "string",
+        "data_ingestao": "timestamp",
+        "data_processamento_silver": "timestamp",
+        "id_ingestao": "string",
+        "id_municipio": "string",
+        "id_processamento_silver": "string",
+        "media_portugues": "double",
+        "proporcao_aluno_nivel_0": "double",
+        "proporcao_aluno_nivel_1": "double",
+        "proporcao_aluno_nivel_2": "double",
+        "proporcao_aluno_nivel_3": "double",
+        "proporcao_aluno_nivel_4": "double",
+        "proporcao_aluno_nivel_5": "double",
+        "proporcao_aluno_nivel_6": "double",
+        "proporcao_aluno_nivel_7": "double",
+        "proporcao_aluno_nivel_8": "double",
+        "rede": "string",
+        "rede_descricao": "string",
+        "serie": "string",
+        "serie_descricao": "string",
+        "tabela_origem": "string",
+        "taxa_alfabetizacao": "double"
+      },
+      "database": "tech_challenge_fase2_silver",
+      "expected_count": 23995,
+      "location": "s3://fiap-tc-fase2-2026/silver/inep/municipio/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "row_count": 23995,
+      "silver_manifest_sha256": "a3492216b59dc5aa8d4eeb840a14c34b6451757783c7270bf4d5f898cd5c955f",
+      "silver_manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+      "silver_run_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+      "table": "municipio",
+      "version_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288"
+    },
+    "uf": {
+      "columns": {
+        "ano": "integer",
+        "bronze_run_id": "string",
+        "data_ingestao": "timestamp",
+        "data_processamento_silver": "timestamp",
+        "id_ingestao": "string",
+        "id_processamento_silver": "string",
+        "media_portugues": "double",
+        "proporcao_aluno_nivel_0": "double",
+        "proporcao_aluno_nivel_1": "double",
+        "proporcao_aluno_nivel_2": "double",
+        "proporcao_aluno_nivel_3": "double",
+        "proporcao_aluno_nivel_4": "double",
+        "proporcao_aluno_nivel_5": "double",
+        "proporcao_aluno_nivel_6": "double",
+        "proporcao_aluno_nivel_7": "double",
+        "proporcao_aluno_nivel_8": "double",
+        "rede": "string",
+        "rede_descricao": "string",
+        "serie": "string",
+        "serie_descricao": "string",
+        "sigla_uf": "string",
+        "tabela_origem": "string",
+        "taxa_alfabetizacao": "double"
+      },
+      "database": "tech_challenge_fase2_silver",
+      "expected_count": 145,
+      "location": "s3://fiap-tc-fase2-2026/silver/inep/uf/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/",
+      "row_count": 145,
+      "silver_manifest_sha256": "a3492216b59dc5aa8d4eeb840a14c34b6451757783c7270bf4d5f898cd5c955f",
+      "silver_manifest_uri": "s3://fiap-tc-fase2-2026/auditoria/silver/process_date=2026-10-22/run_id=jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288/manifest.json",
+      "silver_run_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288",
+      "table": "uf",
+      "version_id": "jr_9c58c50a3e452ab6fff7f8560524b5235aa0d0c92036feccc6768ce2499b0288"
+    }
+  },
+  "staged_tables": [],
+  "status": "FAILED"
+}

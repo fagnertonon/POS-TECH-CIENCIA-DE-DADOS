@@ -1,0 +1,18 @@
+{
+  "Parameters": [],
+  "Description": "FIAP: importacao de recursos operacionais existentes; preservar assinatura e configuracao, sem criar alertas adicionais.",
+  "ResponseMetadata": {
+    "RequestId": "31b34e12-d61c-44f9-b1db-7ad646119fc9",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "31b34e12-d61c-44f9-b1db-7ad646119fc9",
+      "strict-transport-security": "max-age=47304000; includeSubDomains",
+      "cache-control": "no-store, no-cache",
+      "date": "Wed, 28 Oct 2026 13:10:02 GMT",
+      "content-type": "text/xml",
+      "content-length": "447",
+      "connection": "keep-alive"
+    },
+    "RetryAttempts": 0
+  }
+}

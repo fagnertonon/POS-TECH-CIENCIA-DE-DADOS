@@ -1,0 +1,197 @@
+{
+  "requested_at_utc": "2026-10-28T13:18:57.714280+00:00",
+  "change_set_id": "arn:aws:cloudformation:us-east-2:637246457028:changeSet/fiap-alerts-update-20261028T131738Z/7b82efbc-cfd8-43fc-8d7f-089819a3e0a6",
+  "changes": [
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "DeadLetterAlarm",
+      "PhysicalResourceId": "fiap-inep-streaming-dlq",
+      "ResourceType": "AWS::CloudWatch::Alarm",
+      "Replacement": "False",
+      "Scope": [
+        "Properties"
+      ],
+      "Details": [
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "InsufficientDataActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "ActionsEnabled",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "AlarmActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Dynamic",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "OKActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "AlarmActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "ParameterReference",
+          "CausingEntity": "AlertTopicArn"
+        }
+      ]
+    },
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "QueueAgeAlarm",
+      "PhysicalResourceId": "fiap-inep-streaming-age",
+      "ResourceType": "AWS::CloudWatch::Alarm",
+      "Replacement": "False",
+      "Scope": [
+        "Properties"
+      ],
+      "Details": [
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "InsufficientDataActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "ActionsEnabled",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "AlarmActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Dynamic",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "OKActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "AlarmActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "ParameterReference",
+          "CausingEntity": "AlertTopicArn"
+        }
+      ]
+    },
+    {
+      "Action": "Modify",
+      "LogicalResourceId": "RejectedEventAlarm",
+      "PhysicalResourceId": "fiap-inep-streaming-rejected",
+      "ResourceType": "AWS::CloudWatch::Alarm",
+      "Replacement": "False",
+      "Scope": [
+        "Properties"
+      ],
+      "Details": [
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "InsufficientDataActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "ActionsEnabled",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "AlarmActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Dynamic",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "OKActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "DirectModification"
+        },
+        {
+          "Target": {
+            "Attribute": "Properties",
+            "Name": "AlarmActions",
+            "RequiresRecreation": "Never"
+          },
+          "Evaluation": "Static",
+          "ChangeSource": "ParameterReference",
+          "CausingEntity": "AlertTopicArn"
+        }
+      ]
+    }
+  ],
+  "response": {
+    "ResponseMetadata": {
+      "RequestId": "b153b73f-f8da-4227-b63f-0c77d9271fa3",
+      "HTTPStatusCode": 200,
+      "HTTPHeaders": {
+        "x-amzn-requestid": "b153b73f-f8da-4227-b63f-0c77d9271fa3",
+        "strict-transport-security": "max-age=47304000; includeSubDomains",
+        "cache-control": "no-store, no-cache",
+        "date": "Wed, 28 Oct 2026 13:18:57 GMT",
+        "content-type": "text/xml",
+        "content-length": "250",
+        "connection": "keep-alive"
+      },
+      "RetryAttempts": 0
+    }
+  },
+  "emails_sent_by_script": 0
+}
