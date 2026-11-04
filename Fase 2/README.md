@@ -576,7 +576,7 @@ tools/             sync_notebooks.py (mantém notebook e script da camada com o 
 manifesto_bronze.json  fixture lida por silver/test_manifest_contract.py (cópia de evidencias/bronze/)
 ```
 
-Vídeo executivo: `[LINK PENDENTE]`.
+Vídeo executivo: [https://youtu.be/wB-97oAO7aM](https://youtu.be/wB-97oAO7aM).
 
 Correções locais de 28/10: `CORRECOES_20261028.txt`, `validacao_local.json` e `SHA256_Arquivos.json`.
 Migração para o repositório: `MIGRACAO_REPOSITORIO_20261028.md` (conferível com `python tools/verificar_integridade.py --detalhe`).
