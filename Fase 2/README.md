@@ -23,7 +23,7 @@ O pacote foi migrado para o repositório do grupo em 28/10, também sem nenhuma 
 `MIGRACAO_REPOSITORIO_20261028.md` lista o que mudou em relação ao `SHA256_Arquivos.json`, o que
 foi descartado da versão paralela que existia aqui e o resultado dos testes depois da mudança.
 
-> **Vídeo executivo (até 5 min):** `[LINK PENDENTE – inserir antes da entrega]`
+> **Vídeo executivo (até 5 min):** [https://youtu.be/wB-97oAO7aM](https://youtu.be/wB-97oAO7aM)
 
 | | |
 |---|---|
