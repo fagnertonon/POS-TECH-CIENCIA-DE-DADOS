@@ -569,14 +569,19 @@ observabilidade/   scripts históricos de notificações; cloudformation/aplicad
 finops/            modelo_finops.json, tarifas, scripts de coleta, NOTA_JANELAS_DE_MEDICAO.md, auditoria do enunciado
 deploy/            deploy_bronze.py, deploy_continuacao.py, verificadores pós-execução
 evidencias/        manifestos, relatórios de qualidade, runs Glue, falhas preservadas, capturas de console, FinOps
-docs/              enunciado, notebooks originais + diffs, relatórios técnicos por etapa, Leia-me INEP
+docs/              enunciado, notebooks originais + diffs, relatórios técnicos por etapa, Leia-me INEP,
+                   apresentacao/ (roteiro e slides do vídeo executivo)
 VERSOES.md         versões vigentes × superadas, execuções de referência, pendências que exigem autorização
 tests/             verificações locais das propostas IaC contra gerador e evidências + sincronia notebook↔script
 tools/             sync_notebooks.py (mantém notebook e script da camada com o mesmo código)
 manifesto_bronze.json  fixture lida por silver/test_manifest_contract.py (cópia de evidencias/bronze/)
 ```
 
-Vídeo executivo: `[LINK PENDENTE]`.
+Vídeo executivo: `[LINK PENDENTE]`. Os slides usados na gravação estão em
+`docs/apresentacao/Video_Executivo_Fase_2.pdf` (11 páginas); o roteiro anterior, que ainda não
+corresponde a esta versão, está em `docs/apresentacao/Roteiro_historico_20261026_requer_atualizacao.txt`.
 
 Correções locais de 28/10: `CORRECOES_20261028.txt`, `validacao_local.json` e `SHA256_Arquivos.json`.
 Migração para o repositório: `MIGRACAO_REPOSITORIO_20261028.md` (conferível com `python tools/verificar_integridade.py --detalhe`).
+Acrescentado depois daquele pacote: `docs/apresentacao/Video_Executivo_Fase_2.pdf`. Por isso o verificador
+lista **seis** arquivos fora do manifesto, e não os cinco descritos naquele documento.
