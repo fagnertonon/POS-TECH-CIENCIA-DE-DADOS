@@ -23,7 +23,7 @@ O pacote foi migrado para o repositório do grupo em 28/10, também sem nenhuma 
 `MIGRACAO_REPOSITORIO_20261028.md` lista o que mudou em relação ao `SHA256_Arquivos.json`, o que
 foi descartado da versão paralela que existia aqui e o resultado dos testes depois da mudança.
 
-> **Vídeo executivo (até 5 min):** `[LINK PENDENTE – inserir antes da entrega]`
+> **Vídeo executivo (até 5 min):** [https://youtu.be/wB-97oAO7aM](https://youtu.be/wB-97oAO7aM)
 
 | | |
 |---|---|
@@ -577,11 +577,12 @@ tools/             sync_notebooks.py (mantém notebook e script da camada com o 
 manifesto_bronze.json  fixture lida por silver/test_manifest_contract.py (cópia de evidencias/bronze/)
 ```
 
-Vídeo executivo: `[LINK PENDENTE]`. Os slides usados na gravação estão em
-`docs/apresentacao/Video_Executivo_Fase_2.pdf` (11 páginas); o roteiro anterior, que ainda não
-corresponde a esta versão, está em `docs/apresentacao/Roteiro_historico_20261026_requer_atualizacao.txt`.
+Vídeo executivo: [https://youtu.be/wB-97oAO7aM](https://youtu.be/wB-97oAO7aM). Os slides usados na
+gravação estão em `docs/apresentacao/Video_Executivo_Fase_2.pdf` (11 páginas); o roteiro anterior, que
+ainda não corresponde a esta versão, está em `docs/apresentacao/Roteiro_historico_20261026_requer_atualizacao.txt`.
 
 Correções locais de 28/10: `CORRECOES_20261028.txt`, `validacao_local.json` e `SHA256_Arquivos.json`.
 Migração para o repositório: `MIGRACAO_REPOSITORIO_20261028.md` (conferível com `python tools/verificar_integridade.py --detalhe`).
-Acrescentado depois daquele pacote: `docs/apresentacao/Video_Executivo_Fase_2.pdf`. Por isso o verificador
-lista **seis** arquivos fora do manifesto, e não os cinco descritos naquele documento.
+Acrescentados depois daquele pacote: `docs/apresentacao/Video_Executivo_Fase_2.pdf` e o par
+`Projeto_FIAP_Streaming_IaC_S3_Glue_20261103.zip` + `.sha256`. Por isso o verificador lista **oito**
+arquivos fora do manifesto, e não os cinco descritos naquele documento.
