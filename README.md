@@ -12,13 +12,13 @@ que integra os conteúdos de todas as disciplinas daquela fase e vale **90% da n
 
 ## Autores
 
-| Nome | E-mail |
-|---|---|
-| Fagner Carvalho Tonon | fagnertonon@hotmail.com |
-| Beatriz Marciliano Sant Anna | bia.santanna13@outlook.com |
-| Gustavo Mendes de Oliveira | guhmendes20@hotmail.com |
-| Vanessa Silva Menezes | vssamenezes@gmail.com |
-| Júlio Wehba Bruna | julio@web-assessoria.com |
+| Nome |
+|---|
+| Fagner Carvalho Tonon |
+| Beatriz Marciliano Sant Anna |
+| Gustavo Mendes de Oliveira |
+| Vanessa Silva Menezes |
+| Júlio Wehba Bruna |
 
 ---
 
